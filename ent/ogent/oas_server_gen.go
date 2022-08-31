@@ -3,140 +3,148 @@
 package ogent
 
 import (
-	"bytes"
 	"context"
-	"fmt"
-	"io"
-	"math"
-	"math/big"
-	"math/bits"
-	"net"
-	"net/http"
-	"net/url"
-	"regexp"
-	"sort"
-	"strconv"
-	"strings"
-	"sync"
-	"time"
-
-	"github.com/go-faster/errors"
-	"github.com/go-faster/jx"
-	"github.com/google/uuid"
-	"github.com/ogen-go/ogen/conv"
-	ht "github.com/ogen-go/ogen/http"
-	"github.com/ogen-go/ogen/json"
-	"github.com/ogen-go/ogen/otelogen"
-	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/metric"
-	"go.opentelemetry.io/otel/trace"
-)
-
-// No-op definition for keeping imports.
-var (
-	_ = context.Background()
-	_ = fmt.Stringer(nil)
-	_ = strings.Builder{}
-	_ = errors.Is
-	_ = sort.Ints
-	_ = http.MethodGet
-	_ = io.Copy
-	_ = json.Marshal
-	_ = bytes.NewReader
-	_ = strconv.ParseInt
-	_ = time.Time{}
-	_ = conv.ToInt32
-	_ = uuid.UUID{}
-	_ = uri.PathEncoder{}
-	_ = url.URL{}
-	_ = math.Mod
-	_ = bits.LeadingZeros64
-	_ = big.Rat{}
-	_ = validate.Int{}
-	_ = ht.NewRequest
-	_ = net.IP{}
-	_ = otelogen.Version
-	_ = attribute.KeyValue{}
-	_ = trace.TraceIDFromHex
-	_ = otel.GetTracerProvider
-	_ = metric.NewNoopMeterProvider
-	_ = regexp.MustCompile
-	_ = jx.Null
-	_ = sync.Pool{}
-	_ = codes.Unset
 )
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
-	// CreateUsers implements createUsers operation.
+	// CreateCard implements createCard operation.
 	//
-	// Creates a new Users and persists it to storage.
+	// Creates a new Card and persists it to storage.
+	//
+	// POST /cards
+	CreateCard(ctx context.Context, req *CreateCardReq) (CreateCardRes, error)
+	// CreateGroup implements createGroup operation.
+	//
+	// Creates a new Group and persists it to storage.
+	//
+	// POST /groups
+	CreateGroup(ctx context.Context, req *CreateGroupReq) (CreateGroupRes, error)
+	// CreateUser implements createUser operation.
+	//
+	// Creates a new User and persists it to storage.
 	//
 	// POST /users
-	CreateUsers(ctx context.Context, req CreateUsersReq) (CreateUsersRes, error)
-	// DeleteUsers implements deleteUsers operation.
+	CreateUser(ctx context.Context, req *CreateUserReq) (CreateUserRes, error)
+	// DeleteCard implements deleteCard operation.
 	//
-	// Deletes the Users with the requested ID.
+	// Deletes the Card with the requested ID.
+	//
+	// DELETE /cards/{id}
+	DeleteCard(ctx context.Context, params DeleteCardParams) (DeleteCardRes, error)
+	// DeleteGroup implements deleteGroup operation.
+	//
+	// Deletes the Group with the requested ID.
+	//
+	// DELETE /groups/{id}
+	DeleteGroup(ctx context.Context, params DeleteGroupParams) (DeleteGroupRes, error)
+	// DeleteUser implements deleteUser operation.
+	//
+	// Deletes the User with the requested ID.
 	//
 	// DELETE /users/{id}
-	DeleteUsers(ctx context.Context, params DeleteUsersParams) (DeleteUsersRes, error)
+	DeleteUser(ctx context.Context, params DeleteUserParams) (DeleteUserRes, error)
 	// DrawDone implements drawDone operation.
 	//
-	// PUT /users/{id}/d
-	DrawDone(ctx context.Context, params DrawDoneParams) (DrawDoneNoContent, error)
+	// Draws a card item as done.
+	//
+	// PUT /cards/{id}/d
+	DrawDone(ctx context.Context, params DrawDoneParams) error
 	// DrawStart implements drawStart operation.
 	//
-	// PATCH /users/{id}/start
-	DrawStart(ctx context.Context, params DrawStartParams) (DrawStartNoContent, error)
-	// ListUsers implements listUsers operation.
+	// Draws a card item as done.
+	//
+	// PATCH /users/{id}/card/start
+	DrawStart(ctx context.Context, params DrawStartParams) error
+	// ListCard implements listCard operation.
+	//
+	// List Cards.
+	//
+	// GET /cards
+	ListCard(ctx context.Context, params ListCardParams) (ListCardRes, error)
+	// ListGroup implements listGroup operation.
+	//
+	// List Groups.
+	//
+	// GET /groups
+	ListGroup(ctx context.Context, params ListGroupParams) (ListGroupRes, error)
+	// ListGroupUsers implements listGroupUsers operation.
+	//
+	// List attached Users.
+	//
+	// GET /groups/{id}/users
+	ListGroupUsers(ctx context.Context, params ListGroupUsersParams) (ListGroupUsersRes, error)
+	// ListUser implements listUser operation.
 	//
 	// List Users.
 	//
 	// GET /users
-	ListUsers(ctx context.Context, params ListUsersParams) (ListUsersRes, error)
-	// ReadUsers implements readUsers operation.
+	ListUser(ctx context.Context, params ListUserParams) (ListUserRes, error)
+	// ListUserCard implements listUserCard operation.
 	//
-	// Finds the Users with the requested ID and returns it.
+	// List attached Cards.
+	//
+	// GET /users/{id}/card
+	ListUserCard(ctx context.Context, params ListUserCardParams) (ListUserCardRes, error)
+	// ReadCard implements readCard operation.
+	//
+	// Finds the Card with the requested ID and returns it.
+	//
+	// GET /cards/{id}
+	ReadCard(ctx context.Context, params ReadCardParams) (ReadCardRes, error)
+	// ReadCardOwner implements readCardOwner operation.
+	//
+	// Find the attached User of the Card with the given ID.
+	//
+	// GET /cards/{id}/owner
+	ReadCardOwner(ctx context.Context, params ReadCardOwnerParams) (ReadCardOwnerRes, error)
+	// ReadGroup implements readGroup operation.
+	//
+	// Finds the Group with the requested ID and returns it.
+	//
+	// GET /groups/{id}
+	ReadGroup(ctx context.Context, params ReadGroupParams) (ReadGroupRes, error)
+	// ReadUser implements readUser operation.
+	//
+	// Finds the User with the requested ID and returns it.
 	//
 	// GET /users/{id}
-	ReadUsers(ctx context.Context, params ReadUsersParams) (ReadUsersRes, error)
-	// UpdateUsers implements updateUsers operation.
+	ReadUser(ctx context.Context, params ReadUserParams) (ReadUserRes, error)
+	// UpdateCard implements updateCard operation.
 	//
-	// Updates a Users and persists changes to storage.
+	// Updates a Card and persists changes to storage.
+	//
+	// PATCH /cards/{id}
+	UpdateCard(ctx context.Context, req *UpdateCardReq, params UpdateCardParams) (UpdateCardRes, error)
+	// UpdateGroup implements updateGroup operation.
+	//
+	// Updates a Group and persists changes to storage.
+	//
+	// PATCH /groups/{id}
+	UpdateGroup(ctx context.Context, req *UpdateGroupReq, params UpdateGroupParams) (UpdateGroupRes, error)
+	// UpdateUser implements updateUser operation.
+	//
+	// Updates a User and persists changes to storage.
 	//
 	// PATCH /users/{id}
-	UpdateUsers(ctx context.Context, req UpdateUsersReq, params UpdateUsersParams) (UpdateUsersRes, error)
+	UpdateUser(ctx context.Context, req *UpdateUserReq, params UpdateUserParams) (UpdateUserRes, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and
 // calls Handler to handle requests.
 type Server struct {
-	h   Handler
-	cfg config
-
-	requests metric.Int64Counter
-	errors   metric.Int64Counter
-	duration metric.Int64Histogram
+	h Handler
+	baseServer
 }
 
-func NewServer(h Handler, opts ...Option) (*Server, error) {
-	s := &Server{
-		h:   h,
-		cfg: newConfig(opts...),
-	}
-	var err error
-	if s.requests, err = s.cfg.Meter.NewInt64Counter(otelogen.ServerRequestCount); err != nil {
+// NewServer creates new Server.
+func NewServer(h Handler, opts ...ServerOption) (*Server, error) {
+	s, err := newServerConfig(opts...).baseServer()
+	if err != nil {
 		return nil, err
 	}
-	if s.errors, err = s.cfg.Meter.NewInt64Counter(otelogen.ServerErrorsCount); err != nil {
-		return nil, err
-	}
-	if s.duration, err = s.cfg.Meter.NewInt64Histogram(otelogen.ServerDuration); err != nil {
-		return nil, err
-	}
-	return s, nil
+	return &Server{
+		h:          h,
+		baseServer: s,
+	}, nil
 }

@@ -3,98 +3,524 @@
 package ogent
 
 import (
-	"bytes"
-	"context"
-	"fmt"
-	"io"
-	"math"
-	"math/big"
-	"math/bits"
-	"net"
-	"net/http"
-	"net/url"
-	"regexp"
-	"sort"
-	"strconv"
-	"strings"
-	"sync"
 	"time"
 
-	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"github.com/google/uuid"
-	"github.com/ogen-go/ogen/conv"
-	ht "github.com/ogen-go/ogen/http"
-	"github.com/ogen-go/ogen/json"
-	"github.com/ogen-go/ogen/otelogen"
-	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/metric"
-	"go.opentelemetry.io/otel/trace"
 )
 
-// No-op definition for keeping imports.
-var (
-	_ = context.Background()
-	_ = fmt.Stringer(nil)
-	_ = strings.Builder{}
-	_ = errors.Is
-	_ = sort.Ints
-	_ = http.MethodGet
-	_ = io.Copy
-	_ = json.Marshal
-	_ = bytes.NewReader
-	_ = strconv.ParseInt
-	_ = time.Time{}
-	_ = conv.ToInt32
-	_ = uuid.UUID{}
-	_ = uri.PathEncoder{}
-	_ = url.URL{}
-	_ = math.Mod
-	_ = bits.LeadingZeros64
-	_ = big.Rat{}
-	_ = validate.Int{}
-	_ = ht.NewRequest
-	_ = net.IP{}
-	_ = otelogen.Version
-	_ = attribute.KeyValue{}
-	_ = trace.TraceIDFromHex
-	_ = otel.GetTracerProvider
-	_ = metric.NewNoopMeterProvider
-	_ = regexp.MustCompile
-	_ = jx.Null
-	_ = sync.Pool{}
-	_ = codes.Unset
-)
-
-type CreateUsersReq struct {
-	User       string      "json:\"user\""
-	Chara      OptString   "json:\"chara\""
-	Skill      OptInt      "json:\"skill\""
-	Hp         OptInt      "json:\"hp\""
-	Attack     OptInt      "json:\"attack\""
-	Defense    OptInt      "json:\"defense\""
-	Critical   OptInt      "json:\"critical\""
-	Battle     OptInt      "json:\"battle\""
-	Win        OptInt      "json:\"win\""
-	Day        OptInt      "json:\"day\""
-	Percentage OptFloat64  "json:\"percentage\""
-	Limit      OptBool     "json:\"limit\""
-	Status     OptString   "json:\"status\""
-	Comment    OptString   "json:\"comment\""
-	CreatedAt  OptDateTime "json:\"created_at\""
-	Next       OptString   "json:\"next\""
-	UpdatedAt  OptDateTime "json:\"updated_at\""
-	URL        OptString   "json:\"url\""
+// Ref: #/components/schemas/CardCreate
+type CardCreate struct {
+	ID        int         `json:"id"`
+	Card      OptInt      `json:"card"`
+	Status    OptString   `json:"status"`
+	Cp        OptInt      `json:"cp"`
+	URL       OptString   `json:"url"`
+	CreatedAt OptDateTime `json:"created_at"`
 }
 
-// DeleteUsersNoContent is response for DeleteUsers operation.
-type DeleteUsersNoContent struct{}
+// GetID returns the value of ID.
+func (s *CardCreate) GetID() int {
+	return s.ID
+}
 
-func (*DeleteUsersNoContent) deleteUsersRes() {}
+// GetCard returns the value of Card.
+func (s *CardCreate) GetCard() OptInt {
+	return s.Card
+}
+
+// GetStatus returns the value of Status.
+func (s *CardCreate) GetStatus() OptString {
+	return s.Status
+}
+
+// GetCp returns the value of Cp.
+func (s *CardCreate) GetCp() OptInt {
+	return s.Cp
+}
+
+// GetURL returns the value of URL.
+func (s *CardCreate) GetURL() OptString {
+	return s.URL
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *CardCreate) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// SetID sets the value of ID.
+func (s *CardCreate) SetID(val int) {
+	s.ID = val
+}
+
+// SetCard sets the value of Card.
+func (s *CardCreate) SetCard(val OptInt) {
+	s.Card = val
+}
+
+// SetStatus sets the value of Status.
+func (s *CardCreate) SetStatus(val OptString) {
+	s.Status = val
+}
+
+// SetCp sets the value of Cp.
+func (s *CardCreate) SetCp(val OptInt) {
+	s.Cp = val
+}
+
+// SetURL sets the value of URL.
+func (s *CardCreate) SetURL(val OptString) {
+	s.URL = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *CardCreate) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+func (*CardCreate) createCardRes() {}
+
+// Ref: #/components/schemas/CardList
+type CardList struct {
+	ID        int         `json:"id"`
+	Card      OptInt      `json:"card"`
+	Status    OptString   `json:"status"`
+	Cp        OptInt      `json:"cp"`
+	URL       OptString   `json:"url"`
+	CreatedAt OptDateTime `json:"created_at"`
+}
+
+// GetID returns the value of ID.
+func (s *CardList) GetID() int {
+	return s.ID
+}
+
+// GetCard returns the value of Card.
+func (s *CardList) GetCard() OptInt {
+	return s.Card
+}
+
+// GetStatus returns the value of Status.
+func (s *CardList) GetStatus() OptString {
+	return s.Status
+}
+
+// GetCp returns the value of Cp.
+func (s *CardList) GetCp() OptInt {
+	return s.Cp
+}
+
+// GetURL returns the value of URL.
+func (s *CardList) GetURL() OptString {
+	return s.URL
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *CardList) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// SetID sets the value of ID.
+func (s *CardList) SetID(val int) {
+	s.ID = val
+}
+
+// SetCard sets the value of Card.
+func (s *CardList) SetCard(val OptInt) {
+	s.Card = val
+}
+
+// SetStatus sets the value of Status.
+func (s *CardList) SetStatus(val OptString) {
+	s.Status = val
+}
+
+// SetCp sets the value of Cp.
+func (s *CardList) SetCp(val OptInt) {
+	s.Cp = val
+}
+
+// SetURL sets the value of URL.
+func (s *CardList) SetURL(val OptString) {
+	s.URL = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *CardList) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+// Ref: #/components/schemas/Card_OwnerRead
+type CardOwnerRead struct {
+	ID        int         `json:"id"`
+	Username  string      `json:"username"`
+	CreatedAt OptDateTime `json:"created_at"`
+	UpdatedAt OptDateTime `json:"updated_at"`
+	Next      OptString   `json:"next"`
+}
+
+// GetID returns the value of ID.
+func (s *CardOwnerRead) GetID() int {
+	return s.ID
+}
+
+// GetUsername returns the value of Username.
+func (s *CardOwnerRead) GetUsername() string {
+	return s.Username
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *CardOwnerRead) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// GetUpdatedAt returns the value of UpdatedAt.
+func (s *CardOwnerRead) GetUpdatedAt() OptDateTime {
+	return s.UpdatedAt
+}
+
+// GetNext returns the value of Next.
+func (s *CardOwnerRead) GetNext() OptString {
+	return s.Next
+}
+
+// SetID sets the value of ID.
+func (s *CardOwnerRead) SetID(val int) {
+	s.ID = val
+}
+
+// SetUsername sets the value of Username.
+func (s *CardOwnerRead) SetUsername(val string) {
+	s.Username = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *CardOwnerRead) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+// SetUpdatedAt sets the value of UpdatedAt.
+func (s *CardOwnerRead) SetUpdatedAt(val OptDateTime) {
+	s.UpdatedAt = val
+}
+
+// SetNext sets the value of Next.
+func (s *CardOwnerRead) SetNext(val OptString) {
+	s.Next = val
+}
+
+func (*CardOwnerRead) readCardOwnerRes() {}
+
+// Ref: #/components/schemas/CardRead
+type CardRead struct {
+	ID        int         `json:"id"`
+	Card      OptInt      `json:"card"`
+	Status    OptString   `json:"status"`
+	Cp        OptInt      `json:"cp"`
+	URL       OptString   `json:"url"`
+	CreatedAt OptDateTime `json:"created_at"`
+}
+
+// GetID returns the value of ID.
+func (s *CardRead) GetID() int {
+	return s.ID
+}
+
+// GetCard returns the value of Card.
+func (s *CardRead) GetCard() OptInt {
+	return s.Card
+}
+
+// GetStatus returns the value of Status.
+func (s *CardRead) GetStatus() OptString {
+	return s.Status
+}
+
+// GetCp returns the value of Cp.
+func (s *CardRead) GetCp() OptInt {
+	return s.Cp
+}
+
+// GetURL returns the value of URL.
+func (s *CardRead) GetURL() OptString {
+	return s.URL
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *CardRead) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// SetID sets the value of ID.
+func (s *CardRead) SetID(val int) {
+	s.ID = val
+}
+
+// SetCard sets the value of Card.
+func (s *CardRead) SetCard(val OptInt) {
+	s.Card = val
+}
+
+// SetStatus sets the value of Status.
+func (s *CardRead) SetStatus(val OptString) {
+	s.Status = val
+}
+
+// SetCp sets the value of Cp.
+func (s *CardRead) SetCp(val OptInt) {
+	s.Cp = val
+}
+
+// SetURL sets the value of URL.
+func (s *CardRead) SetURL(val OptString) {
+	s.URL = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *CardRead) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+func (*CardRead) readCardRes() {}
+
+// Ref: #/components/schemas/CardUpdate
+type CardUpdate struct {
+	ID        int         `json:"id"`
+	Card      OptInt      `json:"card"`
+	Status    OptString   `json:"status"`
+	Cp        OptInt      `json:"cp"`
+	URL       OptString   `json:"url"`
+	CreatedAt OptDateTime `json:"created_at"`
+}
+
+// GetID returns the value of ID.
+func (s *CardUpdate) GetID() int {
+	return s.ID
+}
+
+// GetCard returns the value of Card.
+func (s *CardUpdate) GetCard() OptInt {
+	return s.Card
+}
+
+// GetStatus returns the value of Status.
+func (s *CardUpdate) GetStatus() OptString {
+	return s.Status
+}
+
+// GetCp returns the value of Cp.
+func (s *CardUpdate) GetCp() OptInt {
+	return s.Cp
+}
+
+// GetURL returns the value of URL.
+func (s *CardUpdate) GetURL() OptString {
+	return s.URL
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *CardUpdate) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// SetID sets the value of ID.
+func (s *CardUpdate) SetID(val int) {
+	s.ID = val
+}
+
+// SetCard sets the value of Card.
+func (s *CardUpdate) SetCard(val OptInt) {
+	s.Card = val
+}
+
+// SetStatus sets the value of Status.
+func (s *CardUpdate) SetStatus(val OptString) {
+	s.Status = val
+}
+
+// SetCp sets the value of Cp.
+func (s *CardUpdate) SetCp(val OptInt) {
+	s.Cp = val
+}
+
+// SetURL sets the value of URL.
+func (s *CardUpdate) SetURL(val OptString) {
+	s.URL = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *CardUpdate) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+func (*CardUpdate) updateCardRes() {}
+
+type CreateCardReq struct {
+	Card      OptInt      `json:"card"`
+	Status    OptString   `json:"status"`
+	Cp        OptInt      `json:"cp"`
+	URL       OptString   `json:"url"`
+	CreatedAt OptDateTime `json:"created_at"`
+	Owner     int         `json:"owner"`
+}
+
+// GetCard returns the value of Card.
+func (s *CreateCardReq) GetCard() OptInt {
+	return s.Card
+}
+
+// GetStatus returns the value of Status.
+func (s *CreateCardReq) GetStatus() OptString {
+	return s.Status
+}
+
+// GetCp returns the value of Cp.
+func (s *CreateCardReq) GetCp() OptInt {
+	return s.Cp
+}
+
+// GetURL returns the value of URL.
+func (s *CreateCardReq) GetURL() OptString {
+	return s.URL
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *CreateCardReq) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// GetOwner returns the value of Owner.
+func (s *CreateCardReq) GetOwner() int {
+	return s.Owner
+}
+
+// SetCard sets the value of Card.
+func (s *CreateCardReq) SetCard(val OptInt) {
+	s.Card = val
+}
+
+// SetStatus sets the value of Status.
+func (s *CreateCardReq) SetStatus(val OptString) {
+	s.Status = val
+}
+
+// SetCp sets the value of Cp.
+func (s *CreateCardReq) SetCp(val OptInt) {
+	s.Cp = val
+}
+
+// SetURL sets the value of URL.
+func (s *CreateCardReq) SetURL(val OptString) {
+	s.URL = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *CreateCardReq) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+// SetOwner sets the value of Owner.
+func (s *CreateCardReq) SetOwner(val int) {
+	s.Owner = val
+}
+
+type CreateGroupReq struct {
+	Name  string `json:"name"`
+	Users []int  `json:"users"`
+}
+
+// GetName returns the value of Name.
+func (s *CreateGroupReq) GetName() string {
+	return s.Name
+}
+
+// GetUsers returns the value of Users.
+func (s *CreateGroupReq) GetUsers() []int {
+	return s.Users
+}
+
+// SetName sets the value of Name.
+func (s *CreateGroupReq) SetName(val string) {
+	s.Name = val
+}
+
+// SetUsers sets the value of Users.
+func (s *CreateGroupReq) SetUsers(val []int) {
+	s.Users = val
+}
+
+type CreateUserReq struct {
+	Username  string      `json:"username"`
+	CreatedAt OptDateTime `json:"created_at"`
+	UpdatedAt OptDateTime `json:"updated_at"`
+	Next      OptString   `json:"next"`
+	Card      []int       `json:"card"`
+}
+
+// GetUsername returns the value of Username.
+func (s *CreateUserReq) GetUsername() string {
+	return s.Username
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *CreateUserReq) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// GetUpdatedAt returns the value of UpdatedAt.
+func (s *CreateUserReq) GetUpdatedAt() OptDateTime {
+	return s.UpdatedAt
+}
+
+// GetNext returns the value of Next.
+func (s *CreateUserReq) GetNext() OptString {
+	return s.Next
+}
+
+// GetCard returns the value of Card.
+func (s *CreateUserReq) GetCard() []int {
+	return s.Card
+}
+
+// SetUsername sets the value of Username.
+func (s *CreateUserReq) SetUsername(val string) {
+	s.Username = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *CreateUserReq) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+// SetUpdatedAt sets the value of UpdatedAt.
+func (s *CreateUserReq) SetUpdatedAt(val OptDateTime) {
+	s.UpdatedAt = val
+}
+
+// SetNext sets the value of Next.
+func (s *CreateUserReq) SetNext(val OptString) {
+	s.Next = val
+}
+
+// SetCard sets the value of Card.
+func (s *CreateUserReq) SetCard(val []int) {
+	s.Card = val
+}
+
+// DeleteCardNoContent is response for DeleteCard operation.
+type DeleteCardNoContent struct{}
+
+func (*DeleteCardNoContent) deleteCardRes() {}
+
+// DeleteGroupNoContent is response for DeleteGroup operation.
+type DeleteGroupNoContent struct{}
+
+func (*DeleteGroupNoContent) deleteGroupRes() {}
+
+// DeleteUserNoContent is response for DeleteUser operation.
+type DeleteUserNoContent struct{}
+
+func (*DeleteUserNoContent) deleteUserRes() {}
 
 // DrawDoneNoContent is response for DrawDone operation.
 type DrawDoneNoContent struct{}
@@ -102,55 +528,194 @@ type DrawDoneNoContent struct{}
 // DrawStartNoContent is response for DrawStart operation.
 type DrawStartNoContent struct{}
 
-type ListUsersOKApplicationJSON []UsersList
-
-func (ListUsersOKApplicationJSON) listUsersRes() {}
-
-// NewOptBool returns new OptBool with value set to v.
-func NewOptBool(v bool) OptBool {
-	return OptBool{
-		Value: v,
-		Set:   true,
-	}
+// Ref: #/components/schemas/GroupCreate
+type GroupCreate struct {
+	ID   int    `json:"id"`
+	Name string `json:"name"`
 }
 
-// OptBool is optional bool.
-type OptBool struct {
-	Value bool
-	Set   bool
+// GetID returns the value of ID.
+func (s *GroupCreate) GetID() int {
+	return s.ID
 }
 
-// IsSet returns true if OptBool was set.
-func (o OptBool) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptBool) Reset() {
-	var v bool
-	o.Value = v
-	o.Set = false
+// GetName returns the value of Name.
+func (s *GroupCreate) GetName() string {
+	return s.Name
 }
 
-// SetTo sets value to v.
-func (o *OptBool) SetTo(v bool) {
-	o.Set = true
-	o.Value = v
+// SetID sets the value of ID.
+func (s *GroupCreate) SetID(val int) {
+	s.ID = val
 }
 
-// Get returns value and boolean that denotes whether value was set.
-func (o OptBool) Get() (v bool, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
+// SetName sets the value of Name.
+func (s *GroupCreate) SetName(val string) {
+	s.Name = val
 }
 
-// Or returns value if set, or given parameter if does not.
-func (o OptBool) Or(d bool) bool {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
+func (*GroupCreate) createGroupRes() {}
+
+// Ref: #/components/schemas/GroupList
+type GroupList struct {
+	ID   int    `json:"id"`
+	Name string `json:"name"`
 }
+
+// GetID returns the value of ID.
+func (s *GroupList) GetID() int {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s *GroupList) GetName() string {
+	return s.Name
+}
+
+// SetID sets the value of ID.
+func (s *GroupList) SetID(val int) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *GroupList) SetName(val string) {
+	s.Name = val
+}
+
+// Ref: #/components/schemas/GroupRead
+type GroupRead struct {
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+}
+
+// GetID returns the value of ID.
+func (s *GroupRead) GetID() int {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s *GroupRead) GetName() string {
+	return s.Name
+}
+
+// SetID sets the value of ID.
+func (s *GroupRead) SetID(val int) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *GroupRead) SetName(val string) {
+	s.Name = val
+}
+
+func (*GroupRead) readGroupRes() {}
+
+// Ref: #/components/schemas/GroupUpdate
+type GroupUpdate struct {
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+}
+
+// GetID returns the value of ID.
+func (s *GroupUpdate) GetID() int {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s *GroupUpdate) GetName() string {
+	return s.Name
+}
+
+// SetID sets the value of ID.
+func (s *GroupUpdate) SetID(val int) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *GroupUpdate) SetName(val string) {
+	s.Name = val
+}
+
+func (*GroupUpdate) updateGroupRes() {}
+
+// Ref: #/components/schemas/Group_UsersList
+type GroupUsersList struct {
+	ID        int         `json:"id"`
+	Username  string      `json:"username"`
+	CreatedAt OptDateTime `json:"created_at"`
+	UpdatedAt OptDateTime `json:"updated_at"`
+	Next      OptString   `json:"next"`
+}
+
+// GetID returns the value of ID.
+func (s *GroupUsersList) GetID() int {
+	return s.ID
+}
+
+// GetUsername returns the value of Username.
+func (s *GroupUsersList) GetUsername() string {
+	return s.Username
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *GroupUsersList) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// GetUpdatedAt returns the value of UpdatedAt.
+func (s *GroupUsersList) GetUpdatedAt() OptDateTime {
+	return s.UpdatedAt
+}
+
+// GetNext returns the value of Next.
+func (s *GroupUsersList) GetNext() OptString {
+	return s.Next
+}
+
+// SetID sets the value of ID.
+func (s *GroupUsersList) SetID(val int) {
+	s.ID = val
+}
+
+// SetUsername sets the value of Username.
+func (s *GroupUsersList) SetUsername(val string) {
+	s.Username = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *GroupUsersList) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+// SetUpdatedAt sets the value of UpdatedAt.
+func (s *GroupUsersList) SetUpdatedAt(val OptDateTime) {
+	s.UpdatedAt = val
+}
+
+// SetNext sets the value of Next.
+func (s *GroupUsersList) SetNext(val OptString) {
+	s.Next = val
+}
+
+type ListCardOKApplicationJSON []CardList
+
+func (*ListCardOKApplicationJSON) listCardRes() {}
+
+type ListGroupOKApplicationJSON []GroupList
+
+func (*ListGroupOKApplicationJSON) listGroupRes() {}
+
+type ListGroupUsersOKApplicationJSON []GroupUsersList
+
+func (*ListGroupUsersOKApplicationJSON) listGroupUsersRes() {}
+
+type ListUserCardOKApplicationJSON []UserCardList
+
+func (*ListUserCardOKApplicationJSON) listUserCardRes() {}
+
+type ListUserOKApplicationJSON []UserList
+
+func (*ListUserOKApplicationJSON) listUserRes() {}
 
 // NewOptDateTime returns new OptDateTime with value set to v.
 func NewOptDateTime(v time.Time) OptDateTime {
@@ -192,52 +757,6 @@ func (o OptDateTime) Get() (v time.Time, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptDateTime) Or(d time.Time) time.Time {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptFloat64 returns new OptFloat64 with value set to v.
-func NewOptFloat64(v float64) OptFloat64 {
-	return OptFloat64{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptFloat64 is optional float64.
-type OptFloat64 struct {
-	Value float64
-	Set   bool
-}
-
-// IsSet returns true if OptFloat64 was set.
-func (o OptFloat64) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptFloat64) Reset() {
-	var v float64
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptFloat64) SetTo(v float64) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptFloat64) Get() (v float64, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptFloat64) Or(d float64) float64 {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -337,161 +856,605 @@ func (o OptString) Or(d string) string {
 }
 
 type R400 struct {
-	Code   int    "json:\"code\""
-	Status string "json:\"status\""
-	Errors jx.Raw "json:\"errors\""
+	Code   int    `json:"code"`
+	Status string `json:"status"`
+	Errors jx.Raw `json:"errors"`
 }
 
-func (*R400) createUsersRes() {}
-func (*R400) deleteUsersRes() {}
-func (*R400) listUsersRes()   {}
-func (*R400) readUsersRes()   {}
-func (*R400) updateUsersRes() {}
+// GetCode returns the value of Code.
+func (s *R400) GetCode() int {
+	return s.Code
+}
+
+// GetStatus returns the value of Status.
+func (s *R400) GetStatus() string {
+	return s.Status
+}
+
+// GetErrors returns the value of Errors.
+func (s *R400) GetErrors() jx.Raw {
+	return s.Errors
+}
+
+// SetCode sets the value of Code.
+func (s *R400) SetCode(val int) {
+	s.Code = val
+}
+
+// SetStatus sets the value of Status.
+func (s *R400) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetErrors sets the value of Errors.
+func (s *R400) SetErrors(val jx.Raw) {
+	s.Errors = val
+}
+
+func (*R400) createCardRes()     {}
+func (*R400) createGroupRes()    {}
+func (*R400) createUserRes()     {}
+func (*R400) deleteCardRes()     {}
+func (*R400) deleteGroupRes()    {}
+func (*R400) deleteUserRes()     {}
+func (*R400) listCardRes()       {}
+func (*R400) listGroupRes()      {}
+func (*R400) listGroupUsersRes() {}
+func (*R400) listUserCardRes()   {}
+func (*R400) listUserRes()       {}
+func (*R400) readCardOwnerRes()  {}
+func (*R400) readCardRes()       {}
+func (*R400) readGroupRes()      {}
+func (*R400) readUserRes()       {}
+func (*R400) updateCardRes()     {}
+func (*R400) updateGroupRes()    {}
+func (*R400) updateUserRes()     {}
 
 type R404 struct {
-	Code   int    "json:\"code\""
-	Status string "json:\"status\""
-	Errors jx.Raw "json:\"errors\""
+	Code   int    `json:"code"`
+	Status string `json:"status"`
+	Errors jx.Raw `json:"errors"`
 }
 
-func (*R404) deleteUsersRes() {}
-func (*R404) listUsersRes()   {}
-func (*R404) readUsersRes()   {}
-func (*R404) updateUsersRes() {}
+// GetCode returns the value of Code.
+func (s *R404) GetCode() int {
+	return s.Code
+}
+
+// GetStatus returns the value of Status.
+func (s *R404) GetStatus() string {
+	return s.Status
+}
+
+// GetErrors returns the value of Errors.
+func (s *R404) GetErrors() jx.Raw {
+	return s.Errors
+}
+
+// SetCode sets the value of Code.
+func (s *R404) SetCode(val int) {
+	s.Code = val
+}
+
+// SetStatus sets the value of Status.
+func (s *R404) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetErrors sets the value of Errors.
+func (s *R404) SetErrors(val jx.Raw) {
+	s.Errors = val
+}
+
+func (*R404) deleteCardRes()     {}
+func (*R404) deleteGroupRes()    {}
+func (*R404) deleteUserRes()     {}
+func (*R404) listCardRes()       {}
+func (*R404) listGroupRes()      {}
+func (*R404) listGroupUsersRes() {}
+func (*R404) listUserCardRes()   {}
+func (*R404) listUserRes()       {}
+func (*R404) readCardOwnerRes()  {}
+func (*R404) readCardRes()       {}
+func (*R404) readGroupRes()      {}
+func (*R404) readUserRes()       {}
+func (*R404) updateCardRes()     {}
+func (*R404) updateGroupRes()    {}
+func (*R404) updateUserRes()     {}
 
 type R409 struct {
-	Code   int    "json:\"code\""
-	Status string "json:\"status\""
-	Errors jx.Raw "json:\"errors\""
+	Code   int    `json:"code"`
+	Status string `json:"status"`
+	Errors jx.Raw `json:"errors"`
 }
 
-func (*R409) createUsersRes() {}
-func (*R409) deleteUsersRes() {}
-func (*R409) listUsersRes()   {}
-func (*R409) readUsersRes()   {}
-func (*R409) updateUsersRes() {}
+// GetCode returns the value of Code.
+func (s *R409) GetCode() int {
+	return s.Code
+}
+
+// GetStatus returns the value of Status.
+func (s *R409) GetStatus() string {
+	return s.Status
+}
+
+// GetErrors returns the value of Errors.
+func (s *R409) GetErrors() jx.Raw {
+	return s.Errors
+}
+
+// SetCode sets the value of Code.
+func (s *R409) SetCode(val int) {
+	s.Code = val
+}
+
+// SetStatus sets the value of Status.
+func (s *R409) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetErrors sets the value of Errors.
+func (s *R409) SetErrors(val jx.Raw) {
+	s.Errors = val
+}
+
+func (*R409) createCardRes()     {}
+func (*R409) createGroupRes()    {}
+func (*R409) createUserRes()     {}
+func (*R409) deleteCardRes()     {}
+func (*R409) deleteGroupRes()    {}
+func (*R409) deleteUserRes()     {}
+func (*R409) listCardRes()       {}
+func (*R409) listGroupRes()      {}
+func (*R409) listGroupUsersRes() {}
+func (*R409) listUserCardRes()   {}
+func (*R409) listUserRes()       {}
+func (*R409) readCardOwnerRes()  {}
+func (*R409) readCardRes()       {}
+func (*R409) readGroupRes()      {}
+func (*R409) readUserRes()       {}
+func (*R409) updateCardRes()     {}
+func (*R409) updateGroupRes()    {}
+func (*R409) updateUserRes()     {}
 
 type R500 struct {
-	Code   int    "json:\"code\""
-	Status string "json:\"status\""
-	Errors jx.Raw "json:\"errors\""
+	Code   int    `json:"code"`
+	Status string `json:"status"`
+	Errors jx.Raw `json:"errors"`
 }
 
-func (*R500) createUsersRes() {}
-func (*R500) deleteUsersRes() {}
-func (*R500) listUsersRes()   {}
-func (*R500) readUsersRes()   {}
-func (*R500) updateUsersRes() {}
-
-type UpdateUsersReq struct {
-	Hp         OptInt      "json:\"hp\""
-	Attack     OptInt      "json:\"attack\""
-	Defense    OptInt      "json:\"defense\""
-	Critical   OptInt      "json:\"critical\""
-	Battle     OptInt      "json:\"battle\""
-	Win        OptInt      "json:\"win\""
-	Day        OptInt      "json:\"day\""
-	Percentage OptFloat64  "json:\"percentage\""
-	Limit      OptBool     "json:\"limit\""
-	Comment    OptString   "json:\"comment\""
-	Next       OptString   "json:\"next\""
-	UpdatedAt  OptDateTime "json:\"updated_at\""
+// GetCode returns the value of Code.
+func (s *R500) GetCode() int {
+	return s.Code
 }
 
-// Ref: #/components/schemas/UsersCreate
-type UsersCreate struct {
-	ID         int         "json:\"id\""
-	User       string      "json:\"user\""
-	Chara      OptString   "json:\"chara\""
-	Skill      OptInt      "json:\"skill\""
-	Hp         OptInt      "json:\"hp\""
-	Attack     OptInt      "json:\"attack\""
-	Defense    OptInt      "json:\"defense\""
-	Critical   OptInt      "json:\"critical\""
-	Battle     OptInt      "json:\"battle\""
-	Win        OptInt      "json:\"win\""
-	Day        OptInt      "json:\"day\""
-	Percentage OptFloat64  "json:\"percentage\""
-	Limit      OptBool     "json:\"limit\""
-	Status     OptString   "json:\"status\""
-	Comment    OptString   "json:\"comment\""
-	CreatedAt  OptDateTime "json:\"created_at\""
-	Next       OptString   "json:\"next\""
-	UpdatedAt  OptDateTime "json:\"updated_at\""
-	URL        OptString   "json:\"url\""
+// GetStatus returns the value of Status.
+func (s *R500) GetStatus() string {
+	return s.Status
 }
 
-func (*UsersCreate) createUsersRes() {}
-
-// Ref: #/components/schemas/UsersList
-type UsersList struct {
-	ID         int         "json:\"id\""
-	User       string      "json:\"user\""
-	Chara      OptString   "json:\"chara\""
-	Skill      OptInt      "json:\"skill\""
-	Hp         OptInt      "json:\"hp\""
-	Attack     OptInt      "json:\"attack\""
-	Defense    OptInt      "json:\"defense\""
-	Critical   OptInt      "json:\"critical\""
-	Battle     OptInt      "json:\"battle\""
-	Win        OptInt      "json:\"win\""
-	Day        OptInt      "json:\"day\""
-	Percentage OptFloat64  "json:\"percentage\""
-	Limit      OptBool     "json:\"limit\""
-	Status     OptString   "json:\"status\""
-	Comment    OptString   "json:\"comment\""
-	CreatedAt  OptDateTime "json:\"created_at\""
-	Next       OptString   "json:\"next\""
-	UpdatedAt  OptDateTime "json:\"updated_at\""
-	URL        OptString   "json:\"url\""
+// GetErrors returns the value of Errors.
+func (s *R500) GetErrors() jx.Raw {
+	return s.Errors
 }
 
-// Ref: #/components/schemas/UsersRead
-type UsersRead struct {
-	ID         int         "json:\"id\""
-	User       string      "json:\"user\""
-	Chara      OptString   "json:\"chara\""
-	Skill      OptInt      "json:\"skill\""
-	Hp         OptInt      "json:\"hp\""
-	Attack     OptInt      "json:\"attack\""
-	Defense    OptInt      "json:\"defense\""
-	Critical   OptInt      "json:\"critical\""
-	Battle     OptInt      "json:\"battle\""
-	Win        OptInt      "json:\"win\""
-	Day        OptInt      "json:\"day\""
-	Percentage OptFloat64  "json:\"percentage\""
-	Limit      OptBool     "json:\"limit\""
-	Status     OptString   "json:\"status\""
-	Comment    OptString   "json:\"comment\""
-	CreatedAt  OptDateTime "json:\"created_at\""
-	Next       OptString   "json:\"next\""
-	UpdatedAt  OptDateTime "json:\"updated_at\""
-	URL        OptString   "json:\"url\""
+// SetCode sets the value of Code.
+func (s *R500) SetCode(val int) {
+	s.Code = val
 }
 
-func (*UsersRead) readUsersRes() {}
-
-// Ref: #/components/schemas/UsersUpdate
-type UsersUpdate struct {
-	ID         int         "json:\"id\""
-	User       string      "json:\"user\""
-	Chara      OptString   "json:\"chara\""
-	Skill      OptInt      "json:\"skill\""
-	Hp         OptInt      "json:\"hp\""
-	Attack     OptInt      "json:\"attack\""
-	Defense    OptInt      "json:\"defense\""
-	Critical   OptInt      "json:\"critical\""
-	Battle     OptInt      "json:\"battle\""
-	Win        OptInt      "json:\"win\""
-	Day        OptInt      "json:\"day\""
-	Percentage OptFloat64  "json:\"percentage\""
-	Limit      OptBool     "json:\"limit\""
-	Status     OptString   "json:\"status\""
-	Comment    OptString   "json:\"comment\""
-	CreatedAt  OptDateTime "json:\"created_at\""
-	Next       OptString   "json:\"next\""
-	UpdatedAt  OptDateTime "json:\"updated_at\""
-	URL        OptString   "json:\"url\""
+// SetStatus sets the value of Status.
+func (s *R500) SetStatus(val string) {
+	s.Status = val
 }
 
-func (*UsersUpdate) updateUsersRes() {}
+// SetErrors sets the value of Errors.
+func (s *R500) SetErrors(val jx.Raw) {
+	s.Errors = val
+}
+
+func (*R500) createCardRes()     {}
+func (*R500) createGroupRes()    {}
+func (*R500) createUserRes()     {}
+func (*R500) deleteCardRes()     {}
+func (*R500) deleteGroupRes()    {}
+func (*R500) deleteUserRes()     {}
+func (*R500) listCardRes()       {}
+func (*R500) listGroupRes()      {}
+func (*R500) listGroupUsersRes() {}
+func (*R500) listUserCardRes()   {}
+func (*R500) listUserRes()       {}
+func (*R500) readCardOwnerRes()  {}
+func (*R500) readCardRes()       {}
+func (*R500) readGroupRes()      {}
+func (*R500) readUserRes()       {}
+func (*R500) updateCardRes()     {}
+func (*R500) updateGroupRes()    {}
+func (*R500) updateUserRes()     {}
+
+type UpdateCardReq struct {
+	Owner OptInt `json:"owner"`
+}
+
+// GetOwner returns the value of Owner.
+func (s *UpdateCardReq) GetOwner() OptInt {
+	return s.Owner
+}
+
+// SetOwner sets the value of Owner.
+func (s *UpdateCardReq) SetOwner(val OptInt) {
+	s.Owner = val
+}
+
+type UpdateGroupReq struct {
+	Name  OptString `json:"name"`
+	Users []int     `json:"users"`
+}
+
+// GetName returns the value of Name.
+func (s *UpdateGroupReq) GetName() OptString {
+	return s.Name
+}
+
+// GetUsers returns the value of Users.
+func (s *UpdateGroupReq) GetUsers() []int {
+	return s.Users
+}
+
+// SetName sets the value of Name.
+func (s *UpdateGroupReq) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetUsers sets the value of Users.
+func (s *UpdateGroupReq) SetUsers(val []int) {
+	s.Users = val
+}
+
+type UpdateUserReq struct {
+	UpdatedAt OptDateTime `json:"updated_at"`
+	Next      OptString   `json:"next"`
+	Card      []int       `json:"card"`
+}
+
+// GetUpdatedAt returns the value of UpdatedAt.
+func (s *UpdateUserReq) GetUpdatedAt() OptDateTime {
+	return s.UpdatedAt
+}
+
+// GetNext returns the value of Next.
+func (s *UpdateUserReq) GetNext() OptString {
+	return s.Next
+}
+
+// GetCard returns the value of Card.
+func (s *UpdateUserReq) GetCard() []int {
+	return s.Card
+}
+
+// SetUpdatedAt sets the value of UpdatedAt.
+func (s *UpdateUserReq) SetUpdatedAt(val OptDateTime) {
+	s.UpdatedAt = val
+}
+
+// SetNext sets the value of Next.
+func (s *UpdateUserReq) SetNext(val OptString) {
+	s.Next = val
+}
+
+// SetCard sets the value of Card.
+func (s *UpdateUserReq) SetCard(val []int) {
+	s.Card = val
+}
+
+// Ref: #/components/schemas/User_CardList
+type UserCardList struct {
+	ID        int         `json:"id"`
+	Card      OptInt      `json:"card"`
+	Status    OptString   `json:"status"`
+	Cp        OptInt      `json:"cp"`
+	URL       OptString   `json:"url"`
+	CreatedAt OptDateTime `json:"created_at"`
+}
+
+// GetID returns the value of ID.
+func (s *UserCardList) GetID() int {
+	return s.ID
+}
+
+// GetCard returns the value of Card.
+func (s *UserCardList) GetCard() OptInt {
+	return s.Card
+}
+
+// GetStatus returns the value of Status.
+func (s *UserCardList) GetStatus() OptString {
+	return s.Status
+}
+
+// GetCp returns the value of Cp.
+func (s *UserCardList) GetCp() OptInt {
+	return s.Cp
+}
+
+// GetURL returns the value of URL.
+func (s *UserCardList) GetURL() OptString {
+	return s.URL
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *UserCardList) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// SetID sets the value of ID.
+func (s *UserCardList) SetID(val int) {
+	s.ID = val
+}
+
+// SetCard sets the value of Card.
+func (s *UserCardList) SetCard(val OptInt) {
+	s.Card = val
+}
+
+// SetStatus sets the value of Status.
+func (s *UserCardList) SetStatus(val OptString) {
+	s.Status = val
+}
+
+// SetCp sets the value of Cp.
+func (s *UserCardList) SetCp(val OptInt) {
+	s.Cp = val
+}
+
+// SetURL sets the value of URL.
+func (s *UserCardList) SetURL(val OptString) {
+	s.URL = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *UserCardList) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+// Ref: #/components/schemas/UserCreate
+type UserCreate struct {
+	ID        int         `json:"id"`
+	Username  string      `json:"username"`
+	CreatedAt OptDateTime `json:"created_at"`
+	UpdatedAt OptDateTime `json:"updated_at"`
+	Next      OptString   `json:"next"`
+}
+
+// GetID returns the value of ID.
+func (s *UserCreate) GetID() int {
+	return s.ID
+}
+
+// GetUsername returns the value of Username.
+func (s *UserCreate) GetUsername() string {
+	return s.Username
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *UserCreate) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// GetUpdatedAt returns the value of UpdatedAt.
+func (s *UserCreate) GetUpdatedAt() OptDateTime {
+	return s.UpdatedAt
+}
+
+// GetNext returns the value of Next.
+func (s *UserCreate) GetNext() OptString {
+	return s.Next
+}
+
+// SetID sets the value of ID.
+func (s *UserCreate) SetID(val int) {
+	s.ID = val
+}
+
+// SetUsername sets the value of Username.
+func (s *UserCreate) SetUsername(val string) {
+	s.Username = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *UserCreate) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+// SetUpdatedAt sets the value of UpdatedAt.
+func (s *UserCreate) SetUpdatedAt(val OptDateTime) {
+	s.UpdatedAt = val
+}
+
+// SetNext sets the value of Next.
+func (s *UserCreate) SetNext(val OptString) {
+	s.Next = val
+}
+
+func (*UserCreate) createUserRes() {}
+
+// Ref: #/components/schemas/UserList
+type UserList struct {
+	ID        int         `json:"id"`
+	Username  string      `json:"username"`
+	CreatedAt OptDateTime `json:"created_at"`
+	UpdatedAt OptDateTime `json:"updated_at"`
+	Next      OptString   `json:"next"`
+}
+
+// GetID returns the value of ID.
+func (s *UserList) GetID() int {
+	return s.ID
+}
+
+// GetUsername returns the value of Username.
+func (s *UserList) GetUsername() string {
+	return s.Username
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *UserList) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// GetUpdatedAt returns the value of UpdatedAt.
+func (s *UserList) GetUpdatedAt() OptDateTime {
+	return s.UpdatedAt
+}
+
+// GetNext returns the value of Next.
+func (s *UserList) GetNext() OptString {
+	return s.Next
+}
+
+// SetID sets the value of ID.
+func (s *UserList) SetID(val int) {
+	s.ID = val
+}
+
+// SetUsername sets the value of Username.
+func (s *UserList) SetUsername(val string) {
+	s.Username = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *UserList) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+// SetUpdatedAt sets the value of UpdatedAt.
+func (s *UserList) SetUpdatedAt(val OptDateTime) {
+	s.UpdatedAt = val
+}
+
+// SetNext sets the value of Next.
+func (s *UserList) SetNext(val OptString) {
+	s.Next = val
+}
+
+// Ref: #/components/schemas/UserRead
+type UserRead struct {
+	ID        int         `json:"id"`
+	Username  string      `json:"username"`
+	CreatedAt OptDateTime `json:"created_at"`
+	UpdatedAt OptDateTime `json:"updated_at"`
+	Next      OptString   `json:"next"`
+}
+
+// GetID returns the value of ID.
+func (s *UserRead) GetID() int {
+	return s.ID
+}
+
+// GetUsername returns the value of Username.
+func (s *UserRead) GetUsername() string {
+	return s.Username
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *UserRead) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// GetUpdatedAt returns the value of UpdatedAt.
+func (s *UserRead) GetUpdatedAt() OptDateTime {
+	return s.UpdatedAt
+}
+
+// GetNext returns the value of Next.
+func (s *UserRead) GetNext() OptString {
+	return s.Next
+}
+
+// SetID sets the value of ID.
+func (s *UserRead) SetID(val int) {
+	s.ID = val
+}
+
+// SetUsername sets the value of Username.
+func (s *UserRead) SetUsername(val string) {
+	s.Username = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *UserRead) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+// SetUpdatedAt sets the value of UpdatedAt.
+func (s *UserRead) SetUpdatedAt(val OptDateTime) {
+	s.UpdatedAt = val
+}
+
+// SetNext sets the value of Next.
+func (s *UserRead) SetNext(val OptString) {
+	s.Next = val
+}
+
+func (*UserRead) readUserRes() {}
+
+// Ref: #/components/schemas/UserUpdate
+type UserUpdate struct {
+	ID        int         `json:"id"`
+	Username  string      `json:"username"`
+	CreatedAt OptDateTime `json:"created_at"`
+	UpdatedAt OptDateTime `json:"updated_at"`
+	Next      OptString   `json:"next"`
+}
+
+// GetID returns the value of ID.
+func (s *UserUpdate) GetID() int {
+	return s.ID
+}
+
+// GetUsername returns the value of Username.
+func (s *UserUpdate) GetUsername() string {
+	return s.Username
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *UserUpdate) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// GetUpdatedAt returns the value of UpdatedAt.
+func (s *UserUpdate) GetUpdatedAt() OptDateTime {
+	return s.UpdatedAt
+}
+
+// GetNext returns the value of Next.
+func (s *UserUpdate) GetNext() OptString {
+	return s.Next
+}
+
+// SetID sets the value of ID.
+func (s *UserUpdate) SetID(val int) {
+	s.ID = val
+}
+
+// SetUsername sets the value of Username.
+func (s *UserUpdate) SetUsername(val string) {
+	s.Username = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *UserUpdate) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+// SetUpdatedAt sets the value of UpdatedAt.
+func (s *UserUpdate) SetUpdatedAt(val OptDateTime) {
+	s.UpdatedAt = val
+}
+
+// SetNext sets the value of Next.
+func (s *UserUpdate) SetNext(val OptString) {
+	s.Next = val
+}
+
+func (*UserUpdate) updateUserRes() {}

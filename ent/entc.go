@@ -5,12 +5,13 @@ package main
 import (
 	"log"
 
+	"ariga.io/ogent"
 	"entgo.io/contrib/entoas"
 	"entgo.io/ent/entc"
 	"entgo.io/ent/entc/gen"
-	"github.com/ariga/ogent"
 	"github.com/ogen-go/ogen"
 )
+
 
 func main() {
 	spec := new(ogen.Spec)
@@ -19,12 +20,12 @@ func main() {
 	oas, err := entoas.NewExtension(
 		entoas.Spec(spec),
 		entoas.Mutations(func(_ *gen.Graph, spec *ogen.Spec) error {
-			spec.AddPathItem("/users/{id}/start", ogen.NewPathItem().
+			spec.AddPathItem("/users/{id}/card/start", ogen.NewPathItem().
 			SetDescription("Start an draw as done").
 			SetPatch(ogen.NewOperation().
 			SetOperationID("drawStart").
 			SetSummary("Draws a card item as done.").
-			AddTags("Users").
+			AddTags("Card").
 			AddResponse("204", ogen.NewResponse().SetDescription("Item marked as done")),
 		).
 		AddParameters(ogen.NewParameter().
@@ -51,12 +52,12 @@ return nil
 //						return nil
 //					}),
 								entoas.Mutations(func(_ *gen.Graph, spec *ogen.Spec) error {
-									spec.AddPathItem("/users/{id}/d", ogen.NewPathItem().
+									spec.AddPathItem("/cards/{id}/d", ogen.NewPathItem().
 									SetDescription("Start an draw as done").
 									SetPut(ogen.NewOperation().
 									SetOperationID("drawDone").
 									SetSummary("Draws a card item as done.").
-									AddTags("Users").
+									AddTags("Card").
 									AddResponse("204", ogen.NewResponse().SetDescription("Item marked as done")),
 									//AddResponse("204", ogen.NewResponse().SetDescription("Item marked as done").SetSchema("test")),
 								).

@@ -261,7 +261,6 @@ func (uq *UsersQuery) Clone() *UsersQuery {
 //		GroupBy(users.FieldUser).
 //		Aggregate(ent.Count()).
 //		Scan(ctx, &v)
-//
 func (uq *UsersQuery) GroupBy(field string, fields ...string) *UsersGroupBy {
 	group := &UsersGroupBy{config: uq.config}
 	group.fields = append([]string{field}, fields...)
@@ -286,7 +285,6 @@ func (uq *UsersQuery) GroupBy(field string, fields ...string) *UsersGroupBy {
 //	client.Users.Query().
 //		Select(users.FieldUser).
 //		Scan(ctx, &v)
-//
 func (uq *UsersQuery) Select(fields ...string) *UsersSelect {
 	uq.fields = append(uq.fields, fields...)
 	return &UsersSelect{UsersQuery: uq}

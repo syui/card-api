@@ -384,6 +384,7 @@ func (*R500) readUsersRes()   {}
 func (*R500) updateUsersRes() {}
 
 type UpdateUsersReq struct {
+	Chara      OptString   "json:\"chara\""
 	Hp         OptInt      "json:\"hp\""
 	Attack     OptInt      "json:\"attack\""
 	Defense    OptInt      "json:\"defense\""

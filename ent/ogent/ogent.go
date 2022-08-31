@@ -31,7 +31,8 @@ func rawError(err error) jx.Raw {
 func (h *OgentHandler) CreateUsers(ctx context.Context, req CreateUsersReq) (CreateUsersRes, error) {
 	b := h.client.Users.Create()
 	// Add all fields.
-	b.SetUser(req.User)
+	b.SetUser("syui")
+	//b.SetUser(req.User)
 	if v, ok := req.Chara.Get(); ok {
 		b.SetChara(v)
 	}
@@ -145,42 +146,45 @@ func (h *OgentHandler) ReadUsers(ctx context.Context, params ReadUsersParams) (R
 func (h *OgentHandler) UpdateUsers(ctx context.Context, req UpdateUsersReq, params UpdateUsersParams) (UpdateUsersRes, error) {
 	b := h.client.Users.UpdateOneID(params.ID)
 	// Add all fields.
-	if v, ok := req.Hp.Get(); ok {
-		b.SetHp(v)
-	}
-	if v, ok := req.Attack.Get(); ok {
-		b.SetAttack(v)
-	}
-	if v, ok := req.Defense.Get(); ok {
-		b.SetDefense(v)
-	}
-	if v, ok := req.Critical.Get(); ok {
-		b.SetCritical(v)
-	}
-	if v, ok := req.Battle.Get(); ok {
-		b.SetBattle(v)
-	}
-	if v, ok := req.Win.Get(); ok {
-		b.SetWin(v)
-	}
-	if v, ok := req.Day.Get(); ok {
-		b.SetDay(v)
-	}
-	if v, ok := req.Percentage.Get(); ok {
-		b.SetPercentage(v)
-	}
-	if v, ok := req.Limit.Get(); ok {
-		b.SetLimit(v)
-	}
-	if v, ok := req.Comment.Get(); ok {
-		b.SetComment(v)
-	}
-	if v, ok := req.Next.Get(); ok {
-		b.SetNext(v)
-	}
-	if v, ok := req.UpdatedAt.Get(); ok {
-		b.SetUpdatedAt(v)
-	}
+	//if v, ok := req.Chara.Get(); ok {
+	//	b.SetChara(v)
+	//}
+	//if v, ok := req.Hp.Get(); ok {
+	//	b.SetHp(v)
+	//}
+	//if v, ok := req.Attack.Get(); ok {
+	//	b.SetAttack(v)
+	//}
+	//if v, ok := req.Defense.Get(); ok {
+	//	b.SetDefense(v)
+	//}
+	//if v, ok := req.Critical.Get(); ok {
+	//	b.SetCritical(v)
+	//}
+	//if v, ok := req.Battle.Get(); ok {
+	//	b.SetBattle(v)
+	//}
+	//if v, ok := req.Win.Get(); ok {
+	//	b.SetWin(v)
+	//}
+	//if v, ok := req.Day.Get(); ok {
+	//	b.SetDay(v)
+	//}
+	//if v, ok := req.Percentage.Get(); ok {
+	//	b.SetPercentage(v)
+	//}
+	//if v, ok := req.Limit.Get(); ok {
+	//	b.SetLimit(v)
+	//}
+	//if v, ok := req.Comment.Get(); ok {
+	//	b.SetComment(v)
+	//}
+	//if v, ok := req.Next.Get(); ok {
+	//	b.SetNext(v)
+	//}
+	//if v, ok := req.UpdatedAt.Get(); ok {
+	//	b.SetUpdatedAt(v)
+	//}
 	// Add all edges.
 	// Persist to storage.
 	e, err := b.Save(ctx)
@@ -215,28 +219,29 @@ func (h *OgentHandler) UpdateUsers(ctx context.Context, req UpdateUsersReq, para
 
 // DeleteUsers handles DELETE /users-slice/{id} requests.
 func (h *OgentHandler) DeleteUsers(ctx context.Context, params DeleteUsersParams) (DeleteUsersRes, error) {
-	err := h.client.Users.DeleteOneID(params.ID).Exec(ctx)
-	if err != nil {
-		switch {
-		case ent.IsNotFound(err):
-			return &R404{
-				Code:   http.StatusNotFound,
-				Status: http.StatusText(http.StatusNotFound),
-				Errors: rawError(err),
-			}, nil
-		case ent.IsConstraintError(err):
-			return &R409{
-				Code:   http.StatusConflict,
-				Status: http.StatusText(http.StatusConflict),
-				Errors: rawError(err),
-			}, nil
-		default:
-			// Let the server handle the error.
-			return nil, err
+	if params.ID != 1 {
+		err := h.client.Users.DeleteOneID(params.ID).Exec(ctx)
+		if err != nil {
+			switch {
+			case ent.IsNotFound(err):
+				return &R404{
+					Code:   http.StatusNotFound,
+					Status: http.StatusText(http.StatusNotFound),
+					Errors: rawError(err),
+				}, nil
+			case ent.IsConstraintError(err):
+				return &R409{
+					Code:   http.StatusConflict,
+					Status: http.StatusText(http.StatusConflict),
+					Errors: rawError(err),
+				}, nil
+			default:
+				// Let the server handle the error.
+				return nil, err
+			}
 		}
 	}
 	return new(DeleteUsersNoContent), nil
-
 }
 
 // ListUsers handles GET /users-slice requests.

@@ -28,6 +28,26 @@ func (uu *UsersUpdate) Where(ps ...predicate.Users) *UsersUpdate {
 	return uu
 }
 
+// SetChara sets the "chara" field.
+func (uu *UsersUpdate) SetChara(s string) *UsersUpdate {
+	uu.mutation.SetChara(s)
+	return uu
+}
+
+// SetNillableChara sets the "chara" field if the given value is not nil.
+func (uu *UsersUpdate) SetNillableChara(s *string) *UsersUpdate {
+	if s != nil {
+		uu.SetChara(*s)
+	}
+	return uu
+}
+
+// ClearChara clears the value of the "chara" field.
+func (uu *UsersUpdate) ClearChara() *UsersUpdate {
+	uu.mutation.ClearChara()
+	return uu
+}
+
 // SetHp sets the "hp" field.
 func (uu *UsersUpdate) SetHp(i int) *UsersUpdate {
 	uu.mutation.ResetHp()
@@ -401,6 +421,13 @@ func (uu *UsersUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			}
 		}
 	}
+	if value, ok := uu.mutation.Chara(); ok {
+		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
+			Type:   field.TypeString,
+			Value:  value,
+			Column: users.FieldChara,
+		})
+	}
 	if uu.mutation.CharaCleared() {
 		_spec.Fields.Clear = append(_spec.Fields.Clear, &sqlgraph.FieldSpec{
 			Type:   field.TypeString,
@@ -660,6 +687,26 @@ type UsersUpdateOne struct {
 	fields   []string
 	hooks    []Hook
 	mutation *UsersMutation
+}
+
+// SetChara sets the "chara" field.
+func (uuo *UsersUpdateOne) SetChara(s string) *UsersUpdateOne {
+	uuo.mutation.SetChara(s)
+	return uuo
+}
+
+// SetNillableChara sets the "chara" field if the given value is not nil.
+func (uuo *UsersUpdateOne) SetNillableChara(s *string) *UsersUpdateOne {
+	if s != nil {
+		uuo.SetChara(*s)
+	}
+	return uuo
+}
+
+// ClearChara clears the value of the "chara" field.
+func (uuo *UsersUpdateOne) ClearChara() *UsersUpdateOne {
+	uuo.mutation.ClearChara()
+	return uuo
 }
 
 // SetHp sets the "hp" field.
@@ -1058,6 +1105,13 @@ func (uuo *UsersUpdateOne) sqlSave(ctx context.Context) (_node *Users, err error
 				ps[i](selector)
 			}
 		}
+	}
+	if value, ok := uuo.mutation.Chara(); ok {
+		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
+			Type:   field.TypeString,
+			Value:  value,
+			Column: users.FieldChara,
+		})
 	}
 	if uuo.mutation.CharaCleared() {
 		_spec.Fields.Clear = append(_spec.Fields.Clear, &sqlgraph.FieldSpec{

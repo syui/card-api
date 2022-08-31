@@ -1085,6 +1085,12 @@ func (s UpdateUsersReq) Encode(e *jx.Encoder) {
 // encodeFields implements json.Marshaler.
 func (s UpdateUsersReq) encodeFields(e *jx.Encoder) {
 	{
+		if s.Chara.Set {
+			e.FieldStart("chara")
+			s.Chara.Encode(e)
+		}
+	}
+	{
 		if s.Hp.Set {
 			e.FieldStart("hp")
 			s.Hp.Encode(e)
@@ -1158,19 +1164,20 @@ func (s UpdateUsersReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUpdateUsersReq = [12]string{
-	0:  "hp",
-	1:  "attack",
-	2:  "defense",
-	3:  "critical",
-	4:  "battle",
-	5:  "win",
-	6:  "day",
-	7:  "percentage",
-	8:  "limit",
-	9:  "comment",
-	10: "next",
-	11: "updated_at",
+var jsonFieldsNameOfUpdateUsersReq = [13]string{
+	0:  "chara",
+	1:  "hp",
+	2:  "attack",
+	3:  "defense",
+	4:  "critical",
+	5:  "battle",
+	6:  "win",
+	7:  "day",
+	8:  "percentage",
+	9:  "limit",
+	10: "comment",
+	11: "next",
+	12: "updated_at",
 }
 
 // Decode decodes UpdateUsersReq from json.
@@ -1181,6 +1188,16 @@ func (s *UpdateUsersReq) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "chara":
+			if err := func() error {
+				s.Chara.Reset()
+				if err := s.Chara.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"chara\"")
+			}
 		case "hp":
 			if err := func() error {
 				s.Hp.Reset()

@@ -1,34 +1,34 @@
-heroku open-api ent example
-
-- go-module-name : t
-
-- onconflict
+### build
 
 ```sh
-$ curl -X POST -H "Content-Type: application/json" -d '{"user":"syui"}' api.syui.cf/users
-...ok
+$ vim ent/entc.go
+$ vim ent/schema/users.go
+$ go generate ./...
+$ go build
+$ ./card
 
+$ go generate ./...
+$ go run -mod=mod main.go
+$ curl -X POST -H "Content-Type: application/json" -d '{"username":"syui"}' localhost:8080/users
+$ curl -X POST -H "Content-Type: application/json" -d '{"owner":1}' localhost:8080/cards
+$ curl localhost:8080/users
+$ curl localhost:8080/cards
+$ curl localhost:8080/users/1
+$ curl localhost:8080/users/1/card
+```
+
+### use
+
+```sh
+$ curl -X POST -H "Content-Type: application/json" -d '{"username":"syui"}' https://api.syui.ai/users
+
+# onconflict
 $ !!
-...err
 
-$ heroku logs
+$ curl -sL https://api.syui.ai/users/1
 ```
 
-
-```sh
-# delete
-$ curl -X DELETE https://api.syui.cf/users/1
-
-# card draw
-$ curl -X PUT api.syui.cf/users/1/d
-$ curl api.syui.cf/users/1
-
-# patch
-$ curl -X PATCH -H "Content-Type: application/json" -d '{"battle":2}' api.syui.cf/users/1 
-$ curl -X PATCH -H "Content-Type: application/json" -d '{"limit":false}' api.syui.cf/users/1 
-$ d=`date "+%Y%m%d"`
-$ curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"$d\"}" api.syui.cf/users/1 
-```
+### ref
 
 ```sh
 $ vim ./ent/ogent/ogent.go
@@ -59,20 +59,13 @@ func (h *OgentHandler) UpdateUsers(ctx context.Context, req UpdateUsersReq, para
 	//}
 ```
 
-ref : 
-
-- https://github.com/ent/ent/blob/master/dialect/sql/schema/postgres_test.go
-
-- https://github.com/go-kratos/beer-shop/tree/main/app/catalog/service/internal/data/ent
+### link
 
 - https://entgo.io/ja/blog/2022/02/15/generate-rest-crud-with-ent-and-ogen/
 
 - https://github.com/ariga/ogent/blob/main/example/todo/ent/entc.go
 
-```sh
-$ vim ent/entc.go
-$ vim ent/schema/users.go
-$ go generate ./...
-$ go build
-$ ./t
-```
+- https://github.com/ent/ent/blob/master/dialect/sql/schema/postgres_test.go
+
+- https://github.com/go-kratos/beer-shop/tree/main/app/catalog/service/internal/data/ent
+

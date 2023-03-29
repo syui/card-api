@@ -3,133 +3,192 @@
 package ogent
 
 import (
-	"bytes"
 	"context"
-	"fmt"
-	"io"
-	"math"
-	"math/big"
-	"math/bits"
-	"net"
-	"net/http"
-	"net/url"
-	"regexp"
-	"sort"
-	"strconv"
-	"strings"
-	"sync"
-	"time"
 
-	"github.com/go-faster/errors"
-	"github.com/go-faster/jx"
-	"github.com/google/uuid"
-	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
-	"github.com/ogen-go/ogen/json"
-	"github.com/ogen-go/ogen/otelogen"
-	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/metric"
-	"go.opentelemetry.io/otel/trace"
 )
-
-// No-op definition for keeping imports.
-var (
-	_ = context.Background()
-	_ = fmt.Stringer(nil)
-	_ = strings.Builder{}
-	_ = errors.Is
-	_ = sort.Ints
-	_ = http.MethodGet
-	_ = io.Copy
-	_ = json.Marshal
-	_ = bytes.NewReader
-	_ = strconv.ParseInt
-	_ = time.Time{}
-	_ = conv.ToInt32
-	_ = uuid.UUID{}
-	_ = uri.PathEncoder{}
-	_ = url.URL{}
-	_ = math.Mod
-	_ = bits.LeadingZeros64
-	_ = big.Rat{}
-	_ = validate.Int{}
-	_ = ht.NewRequest
-	_ = net.IP{}
-	_ = otelogen.Version
-	_ = attribute.KeyValue{}
-	_ = trace.TraceIDFromHex
-	_ = otel.GetTracerProvider
-	_ = metric.NewNoopMeterProvider
-	_ = regexp.MustCompile
-	_ = jx.Null
-	_ = sync.Pool{}
-	_ = codes.Unset
-)
-
-var _ Handler = UnimplementedHandler{}
 
 // UnimplementedHandler is no-op Handler which returns http.ErrNotImplemented.
 type UnimplementedHandler struct{}
 
-// CreateUsers implements createUsers operation.
+var _ Handler = UnimplementedHandler{}
+
+// CreateCard implements createCard operation.
 //
-// Creates a new Users and persists it to storage.
+// Creates a new Card and persists it to storage.
 //
-// POST /users
-func (UnimplementedHandler) CreateUsers(ctx context.Context, req CreateUsersReq) (r CreateUsersRes, _ error) {
+// POST /cards
+func (UnimplementedHandler) CreateCard(ctx context.Context, req *CreateCardReq) (r CreateCardRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// DeleteUsers implements deleteUsers operation.
+// CreateGroup implements createGroup operation.
 //
-// Deletes the Users with the requested ID.
+// Creates a new Group and persists it to storage.
+//
+// POST /groups
+func (UnimplementedHandler) CreateGroup(ctx context.Context, req *CreateGroupReq) (r CreateGroupRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// CreateUser implements createUser operation.
+//
+// Creates a new User and persists it to storage.
+//
+// POST /users
+func (UnimplementedHandler) CreateUser(ctx context.Context, req *CreateUserReq) (r CreateUserRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// DeleteCard implements deleteCard operation.
+//
+// Deletes the Card with the requested ID.
+//
+// DELETE /cards/{id}
+func (UnimplementedHandler) DeleteCard(ctx context.Context, params DeleteCardParams) (r DeleteCardRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// DeleteGroup implements deleteGroup operation.
+//
+// Deletes the Group with the requested ID.
+//
+// DELETE /groups/{id}
+func (UnimplementedHandler) DeleteGroup(ctx context.Context, params DeleteGroupParams) (r DeleteGroupRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// DeleteUser implements deleteUser operation.
+//
+// Deletes the User with the requested ID.
 //
 // DELETE /users/{id}
-func (UnimplementedHandler) DeleteUsers(ctx context.Context, params DeleteUsersParams) (r DeleteUsersRes, _ error) {
+func (UnimplementedHandler) DeleteUser(ctx context.Context, params DeleteUserParams) (r DeleteUserRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // DrawDone implements drawDone operation.
 //
-// PUT /users/{id}/d
-func (UnimplementedHandler) DrawDone(ctx context.Context, params DrawDoneParams) (r DrawDoneNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+// Draws a card item as done.
+//
+// PUT /cards/{id}/d
+func (UnimplementedHandler) DrawDone(ctx context.Context, params DrawDoneParams) error {
+	return ht.ErrNotImplemented
 }
 
 // DrawStart implements drawStart operation.
 //
-// PATCH /users/{id}/start
-func (UnimplementedHandler) DrawStart(ctx context.Context, params DrawStartParams) (r DrawStartNoContent, _ error) {
+// Draws a card item as done.
+//
+// PATCH /users/{id}/card/start
+func (UnimplementedHandler) DrawStart(ctx context.Context, params DrawStartParams) error {
+	return ht.ErrNotImplemented
+}
+
+// ListCard implements listCard operation.
+//
+// List Cards.
+//
+// GET /cards
+func (UnimplementedHandler) ListCard(ctx context.Context, params ListCardParams) (r ListCardRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// ListUsers implements listUsers operation.
+// ListGroup implements listGroup operation.
+//
+// List Groups.
+//
+// GET /groups
+func (UnimplementedHandler) ListGroup(ctx context.Context, params ListGroupParams) (r ListGroupRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ListGroupUsers implements listGroupUsers operation.
+//
+// List attached Users.
+//
+// GET /groups/{id}/users
+func (UnimplementedHandler) ListGroupUsers(ctx context.Context, params ListGroupUsersParams) (r ListGroupUsersRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ListUser implements listUser operation.
 //
 // List Users.
 //
 // GET /users
-func (UnimplementedHandler) ListUsers(ctx context.Context, params ListUsersParams) (r ListUsersRes, _ error) {
+func (UnimplementedHandler) ListUser(ctx context.Context, params ListUserParams) (r ListUserRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// ReadUsers implements readUsers operation.
+// ListUserCard implements listUserCard operation.
 //
-// Finds the Users with the requested ID and returns it.
+// List attached Cards.
+//
+// GET /users/{id}/card
+func (UnimplementedHandler) ListUserCard(ctx context.Context, params ListUserCardParams) (r ListUserCardRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ReadCard implements readCard operation.
+//
+// Finds the Card with the requested ID and returns it.
+//
+// GET /cards/{id}
+func (UnimplementedHandler) ReadCard(ctx context.Context, params ReadCardParams) (r ReadCardRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ReadCardOwner implements readCardOwner operation.
+//
+// Find the attached User of the Card with the given ID.
+//
+// GET /cards/{id}/owner
+func (UnimplementedHandler) ReadCardOwner(ctx context.Context, params ReadCardOwnerParams) (r ReadCardOwnerRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ReadGroup implements readGroup operation.
+//
+// Finds the Group with the requested ID and returns it.
+//
+// GET /groups/{id}
+func (UnimplementedHandler) ReadGroup(ctx context.Context, params ReadGroupParams) (r ReadGroupRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ReadUser implements readUser operation.
+//
+// Finds the User with the requested ID and returns it.
 //
 // GET /users/{id}
-func (UnimplementedHandler) ReadUsers(ctx context.Context, params ReadUsersParams) (r ReadUsersRes, _ error) {
+func (UnimplementedHandler) ReadUser(ctx context.Context, params ReadUserParams) (r ReadUserRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// UpdateUsers implements updateUsers operation.
+// UpdateCard implements updateCard operation.
 //
-// Updates a Users and persists changes to storage.
+// Updates a Card and persists changes to storage.
+//
+// PATCH /cards/{id}
+func (UnimplementedHandler) UpdateCard(ctx context.Context, req *UpdateCardReq, params UpdateCardParams) (r UpdateCardRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// UpdateGroup implements updateGroup operation.
+//
+// Updates a Group and persists changes to storage.
+//
+// PATCH /groups/{id}
+func (UnimplementedHandler) UpdateGroup(ctx context.Context, req *UpdateGroupReq, params UpdateGroupParams) (r UpdateGroupRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// UpdateUser implements updateUser operation.
+//
+// Updates a User and persists changes to storage.
 //
 // PATCH /users/{id}
-func (UnimplementedHandler) UpdateUsers(ctx context.Context, req UpdateUsersReq, params UpdateUsersParams) (r UpdateUsersRes, _ error) {
+func (UnimplementedHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, params UpdateUserParams) (r UpdateUserRes, _ error) {
 	return r, ht.ErrNotImplemented
 }

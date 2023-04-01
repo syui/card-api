@@ -31,7 +31,7 @@ func (User) Fields() []ent.Field {
 		field.String("username").
 		NotEmpty().
 		Immutable().
-		MaxLen(13).
+		MaxLen(30).
 		//Match(regexp.MustCompile("[a-z]+$")).
 		Unique(),
 

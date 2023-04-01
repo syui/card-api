@@ -2,8 +2,8 @@ package schema
 
 import (
 	"time"
-	"regexp"
-//	"math/rand"
+	//"regexp"
+	//"math/rand"
 	"entgo.io/ent"
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
@@ -31,8 +31,8 @@ func (User) Fields() []ent.Field {
 		field.String("username").
 		NotEmpty().
 		Immutable().
-		MaxLen(7).
-		Match(regexp.MustCompile("[a-z]+$")).
+		MaxLen(13).
+		//Match(regexp.MustCompile("[a-z]+$")).
 		Unique(),
 
 		//field.Bool("limit").

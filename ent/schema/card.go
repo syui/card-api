@@ -26,9 +26,12 @@ func (Card) Fields() []ent.Field {
 			rand.Seed(time.Now().UnixNano())
 			var a = rand.Intn(10)
 			if a == 1 {
-				card = rand.Intn(12)
+				card = rand.Intn(15)
 			} else {
 				card = 0
+			}
+			if card == 13 {
+				card = 14
 			}
 			return card
 		}).

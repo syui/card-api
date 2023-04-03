@@ -56,7 +56,7 @@ var (
 		{Name: "username", Type: field.TypeString, Unique: true, Size: 30},
 		{Name: "created_at", Type: field.TypeTime, Nullable: true},
 		{Name: "updated_at", Type: field.TypeTime, Nullable: true},
-		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230403"},
+		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230404"},
 		{Name: "group_users", Type: field.TypeInt, Nullable: true},
 	}
 	// UsersTable holds the schema information for the "users" table.

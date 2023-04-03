@@ -35,15 +35,15 @@ func (s *CardCreate) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Cp.Set {
-			e.FieldStart("cp")
-			s.Cp.Encode(e)
-		}
-	}
-	{
 		if s.Status.Set {
 			e.FieldStart("status")
 			s.Status.Encode(e)
+		}
+	}
+	{
+		if s.Cp.Set {
+			e.FieldStart("cp")
+			s.Cp.Encode(e)
 		}
 	}
 	{
@@ -63,8 +63,8 @@ func (s *CardCreate) encodeFields(e *jx.Encoder) {
 var jsonFieldsNameOfCardCreate = [6]string{
 	0: "id",
 	1: "card",
-	2: "cp",
-	3: "status",
+	2: "status",
+	3: "cp",
 	4: "url",
 	5: "created_at",
 }
@@ -100,16 +100,6 @@ func (s *CardCreate) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"card\"")
 			}
-		case "cp":
-			if err := func() error {
-				s.Cp.Reset()
-				if err := s.Cp.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"cp\"")
-			}
 		case "status":
 			if err := func() error {
 				s.Status.Reset()
@@ -119,6 +109,16 @@ func (s *CardCreate) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"status\"")
+			}
+		case "cp":
+			if err := func() error {
+				s.Cp.Reset()
+				if err := s.Cp.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"cp\"")
 			}
 		case "url":
 			if err := func() error {
@@ -217,15 +217,15 @@ func (s *CardList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Cp.Set {
-			e.FieldStart("cp")
-			s.Cp.Encode(e)
-		}
-	}
-	{
 		if s.Status.Set {
 			e.FieldStart("status")
 			s.Status.Encode(e)
+		}
+	}
+	{
+		if s.Cp.Set {
+			e.FieldStart("cp")
+			s.Cp.Encode(e)
 		}
 	}
 	{
@@ -245,8 +245,8 @@ func (s *CardList) encodeFields(e *jx.Encoder) {
 var jsonFieldsNameOfCardList = [6]string{
 	0: "id",
 	1: "card",
-	2: "cp",
-	3: "status",
+	2: "status",
+	3: "cp",
 	4: "url",
 	5: "created_at",
 }
@@ -282,16 +282,6 @@ func (s *CardList) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"card\"")
 			}
-		case "cp":
-			if err := func() error {
-				s.Cp.Reset()
-				if err := s.Cp.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"cp\"")
-			}
 		case "status":
 			if err := func() error {
 				s.Status.Reset()
@@ -301,6 +291,16 @@ func (s *CardList) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"status\"")
+			}
+		case "cp":
+			if err := func() error {
+				s.Cp.Reset()
+				if err := s.Cp.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"cp\"")
 			}
 		case "url":
 			if err := func() error {
@@ -565,15 +565,15 @@ func (s *CardRead) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Cp.Set {
-			e.FieldStart("cp")
-			s.Cp.Encode(e)
-		}
-	}
-	{
 		if s.Status.Set {
 			e.FieldStart("status")
 			s.Status.Encode(e)
+		}
+	}
+	{
+		if s.Cp.Set {
+			e.FieldStart("cp")
+			s.Cp.Encode(e)
 		}
 	}
 	{
@@ -593,8 +593,8 @@ func (s *CardRead) encodeFields(e *jx.Encoder) {
 var jsonFieldsNameOfCardRead = [6]string{
 	0: "id",
 	1: "card",
-	2: "cp",
-	3: "status",
+	2: "status",
+	3: "cp",
 	4: "url",
 	5: "created_at",
 }
@@ -630,16 +630,6 @@ func (s *CardRead) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"card\"")
 			}
-		case "cp":
-			if err := func() error {
-				s.Cp.Reset()
-				if err := s.Cp.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"cp\"")
-			}
 		case "status":
 			if err := func() error {
 				s.Status.Reset()
@@ -649,6 +639,16 @@ func (s *CardRead) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"status\"")
+			}
+		case "cp":
+			if err := func() error {
+				s.Cp.Reset()
+				if err := s.Cp.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"cp\"")
 			}
 		case "url":
 			if err := func() error {
@@ -747,15 +747,15 @@ func (s *CardUpdate) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Cp.Set {
-			e.FieldStart("cp")
-			s.Cp.Encode(e)
-		}
-	}
-	{
 		if s.Status.Set {
 			e.FieldStart("status")
 			s.Status.Encode(e)
+		}
+	}
+	{
+		if s.Cp.Set {
+			e.FieldStart("cp")
+			s.Cp.Encode(e)
 		}
 	}
 	{
@@ -775,8 +775,8 @@ func (s *CardUpdate) encodeFields(e *jx.Encoder) {
 var jsonFieldsNameOfCardUpdate = [6]string{
 	0: "id",
 	1: "card",
-	2: "cp",
-	3: "status",
+	2: "status",
+	3: "cp",
 	4: "url",
 	5: "created_at",
 }
@@ -812,16 +812,6 @@ func (s *CardUpdate) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"card\"")
 			}
-		case "cp":
-			if err := func() error {
-				s.Cp.Reset()
-				if err := s.Cp.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"cp\"")
-			}
 		case "status":
 			if err := func() error {
 				s.Status.Reset()
@@ -831,6 +821,16 @@ func (s *CardUpdate) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"status\"")
+			}
+		case "cp":
+			if err := func() error {
+				s.Cp.Reset()
+				if err := s.Cp.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"cp\"")
 			}
 		case "url":
 			if err := func() error {
@@ -924,15 +924,15 @@ func (s *CreateCardReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Cp.Set {
-			e.FieldStart("cp")
-			s.Cp.Encode(e)
-		}
-	}
-	{
 		if s.Status.Set {
 			e.FieldStart("status")
 			s.Status.Encode(e)
+		}
+	}
+	{
+		if s.Cp.Set {
+			e.FieldStart("cp")
+			s.Cp.Encode(e)
 		}
 	}
 	{
@@ -956,8 +956,8 @@ func (s *CreateCardReq) encodeFields(e *jx.Encoder) {
 
 var jsonFieldsNameOfCreateCardReq = [6]string{
 	0: "card",
-	1: "cp",
-	2: "status",
+	1: "status",
+	2: "cp",
 	3: "url",
 	4: "created_at",
 	5: "owner",
@@ -982,16 +982,6 @@ func (s *CreateCardReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"card\"")
 			}
-		case "cp":
-			if err := func() error {
-				s.Cp.Reset()
-				if err := s.Cp.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"cp\"")
-			}
 		case "status":
 			if err := func() error {
 				s.Status.Reset()
@@ -1001,6 +991,16 @@ func (s *CreateCardReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"status\"")
+			}
+		case "cp":
+			if err := func() error {
+				s.Cp.Reset()
+				if err := s.Cp.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"cp\"")
 			}
 		case "url":
 			if err := func() error {
@@ -3199,15 +3199,15 @@ func (s *UserCardList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Cp.Set {
-			e.FieldStart("cp")
-			s.Cp.Encode(e)
-		}
-	}
-	{
 		if s.Status.Set {
 			e.FieldStart("status")
 			s.Status.Encode(e)
+		}
+	}
+	{
+		if s.Cp.Set {
+			e.FieldStart("cp")
+			s.Cp.Encode(e)
 		}
 	}
 	{
@@ -3227,8 +3227,8 @@ func (s *UserCardList) encodeFields(e *jx.Encoder) {
 var jsonFieldsNameOfUserCardList = [6]string{
 	0: "id",
 	1: "card",
-	2: "cp",
-	3: "status",
+	2: "status",
+	3: "cp",
 	4: "url",
 	5: "created_at",
 }
@@ -3264,16 +3264,6 @@ func (s *UserCardList) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"card\"")
 			}
-		case "cp":
-			if err := func() error {
-				s.Cp.Reset()
-				if err := s.Cp.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"cp\"")
-			}
 		case "status":
 			if err := func() error {
 				s.Status.Reset()
@@ -3283,6 +3273,16 @@ func (s *UserCardList) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"status\"")
+			}
+		case "cp":
+			if err := func() error {
+				s.Cp.Reset()
+				if err := s.Cp.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"cp\"")
 			}
 		case "url":
 			if err := func() error {

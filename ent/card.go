@@ -19,10 +19,10 @@ type Card struct {
 	ID int `json:"id,omitempty"`
 	// Card holds the value of the "card" field.
 	Card int `json:"card,omitempty"`
-	// Cp holds the value of the "cp" field.
-	Cp int `json:"cp,omitempty"`
 	// Status holds the value of the "status" field.
 	Status string `json:"status,omitempty"`
+	// Cp holds the value of the "cp" field.
+	Cp int `json:"cp,omitempty"`
 	// URL holds the value of the "url" field.
 	URL string `json:"url,omitempty"`
 	// CreatedAt holds the value of the "created_at" field.
@@ -95,17 +95,17 @@ func (c *Card) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				c.Card = int(value.Int64)
 			}
-		case card.FieldCp:
-			if value, ok := values[i].(*sql.NullInt64); !ok {
-				return fmt.Errorf("unexpected type %T for field cp", values[i])
-			} else if value.Valid {
-				c.Cp = int(value.Int64)
-			}
 		case card.FieldStatus:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field status", values[i])
 			} else if value.Valid {
 				c.Status = value.String
+			}
+		case card.FieldCp:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field cp", values[i])
+			} else if value.Valid {
+				c.Cp = int(value.Int64)
 			}
 		case card.FieldURL:
 			if value, ok := values[i].(*sql.NullString); !ok {
@@ -162,11 +162,11 @@ func (c *Card) String() string {
 	builder.WriteString("card=")
 	builder.WriteString(fmt.Sprintf("%v", c.Card))
 	builder.WriteString(", ")
-	builder.WriteString("cp=")
-	builder.WriteString(fmt.Sprintf("%v", c.Cp))
-	builder.WriteString(", ")
 	builder.WriteString("status=")
 	builder.WriteString(c.Status)
+	builder.WriteString(", ")
+	builder.WriteString("cp=")
+	builder.WriteString(fmt.Sprintf("%v", c.Cp))
 	builder.WriteString(", ")
 	builder.WriteString("url=")
 	builder.WriteString(c.URL)

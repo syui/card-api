@@ -36,11 +36,11 @@ func (h *OgentHandler) CreateCard(ctx context.Context, req *CreateCardReq) (Crea
 	if v, ok := req.Card.Get(); ok {
 		b.SetCard(v)
 	}
-	if v, ok := req.Cp.Get(); ok {
-		b.SetCp(v)
-	}
 	if v, ok := req.Status.Get(); ok {
 		b.SetStatus(v)
+	}
+	if v, ok := req.Cp.Get(); ok {
+		b.SetCp(v)
 	}
 	if v, ok := req.URL.Get(); ok {
 		b.SetURL(v)

@@ -80,11 +80,11 @@
                   "card": {
                     "type": "integer"
                   },
-                  "cp": {
-                    "type": "integer"
-                  },
                   "status": {
                     "type": "string"
+                  },
+                  "cp": {
+                    "type": "integer"
                   },
                   "url": {
                     "type": "string"
@@ -1034,11 +1034,11 @@
           "card": {
             "type": "integer"
           },
-          "cp": {
-            "type": "integer"
-          },
           "status": {
             "type": "string"
+          },
+          "cp": {
+            "type": "integer"
           },
           "url": {
             "type": "string"
@@ -1065,11 +1065,11 @@
           "card": {
             "type": "integer"
           },
-          "cp": {
-            "type": "integer"
-          },
           "status": {
             "type": "string"
+          },
+          "cp": {
+            "type": "integer"
           },
           "url": {
             "type": "string"
@@ -1092,11 +1092,11 @@
           "card": {
             "type": "integer"
           },
-          "cp": {
-            "type": "integer"
-          },
           "status": {
             "type": "string"
+          },
+          "cp": {
+            "type": "integer"
           },
           "url": {
             "type": "string"
@@ -1119,11 +1119,11 @@
           "card": {
             "type": "integer"
           },
-          "cp": {
-            "type": "integer"
-          },
           "status": {
             "type": "string"
+          },
+          "cp": {
+            "type": "integer"
           },
           "url": {
             "type": "string"
@@ -1146,11 +1146,11 @@
           "card": {
             "type": "integer"
           },
-          "cp": {
-            "type": "integer"
-          },
           "status": {
             "type": "string"
+          },
+          "cp": {
+            "type": "integer"
           },
           "url": {
             "type": "string"
@@ -1442,11 +1442,11 @@
           "card": {
             "type": "integer"
           },
-          "cp": {
-            "type": "integer"
-          },
           "status": {
             "type": "string"
+          },
+          "cp": {
+            "type": "integer"
           },
           "url": {
             "type": "string"

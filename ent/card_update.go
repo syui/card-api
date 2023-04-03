@@ -100,11 +100,11 @@ func (cu *CardUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	if cu.mutation.CardCleared() {
 		_spec.ClearField(card.FieldCard, field.TypeInt)
 	}
-	if cu.mutation.CpCleared() {
-		_spec.ClearField(card.FieldCp, field.TypeInt)
-	}
 	if cu.mutation.StatusCleared() {
 		_spec.ClearField(card.FieldStatus, field.TypeString)
+	}
+	if cu.mutation.CpCleared() {
+		_spec.ClearField(card.FieldCp, field.TypeInt)
 	}
 	if cu.mutation.URLCleared() {
 		_spec.ClearField(card.FieldURL, field.TypeString)
@@ -269,11 +269,11 @@ func (cuo *CardUpdateOne) sqlSave(ctx context.Context) (_node *Card, err error) 
 	if cuo.mutation.CardCleared() {
 		_spec.ClearField(card.FieldCard, field.TypeInt)
 	}
-	if cuo.mutation.CpCleared() {
-		_spec.ClearField(card.FieldCp, field.TypeInt)
-	}
 	if cuo.mutation.StatusCleared() {
 		_spec.ClearField(card.FieldStatus, field.TypeString)
+	}
+	if cuo.mutation.CpCleared() {
+		_spec.ClearField(card.FieldCp, field.TypeInt)
 	}
 	if cuo.mutation.URLCleared() {
 		_spec.ClearField(card.FieldURL, field.TypeString)

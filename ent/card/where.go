@@ -60,14 +60,14 @@ func Card(v int) predicate.Card {
 	return predicate.Card(sql.FieldEQ(FieldCard, v))
 }
 
-// Cp applies equality check predicate on the "cp" field. It's identical to CpEQ.
-func Cp(v int) predicate.Card {
-	return predicate.Card(sql.FieldEQ(FieldCp, v))
-}
-
 // Status applies equality check predicate on the "status" field. It's identical to StatusEQ.
 func Status(v string) predicate.Card {
 	return predicate.Card(sql.FieldEQ(FieldStatus, v))
+}
+
+// Cp applies equality check predicate on the "cp" field. It's identical to CpEQ.
+func Cp(v int) predicate.Card {
+	return predicate.Card(sql.FieldEQ(FieldCp, v))
 }
 
 // URL applies equality check predicate on the "url" field. It's identical to URLEQ.
@@ -128,56 +128,6 @@ func CardIsNil() predicate.Card {
 // CardNotNil applies the NotNil predicate on the "card" field.
 func CardNotNil() predicate.Card {
 	return predicate.Card(sql.FieldNotNull(FieldCard))
-}
-
-// CpEQ applies the EQ predicate on the "cp" field.
-func CpEQ(v int) predicate.Card {
-	return predicate.Card(sql.FieldEQ(FieldCp, v))
-}
-
-// CpNEQ applies the NEQ predicate on the "cp" field.
-func CpNEQ(v int) predicate.Card {
-	return predicate.Card(sql.FieldNEQ(FieldCp, v))
-}
-
-// CpIn applies the In predicate on the "cp" field.
-func CpIn(vs ...int) predicate.Card {
-	return predicate.Card(sql.FieldIn(FieldCp, vs...))
-}
-
-// CpNotIn applies the NotIn predicate on the "cp" field.
-func CpNotIn(vs ...int) predicate.Card {
-	return predicate.Card(sql.FieldNotIn(FieldCp, vs...))
-}
-
-// CpGT applies the GT predicate on the "cp" field.
-func CpGT(v int) predicate.Card {
-	return predicate.Card(sql.FieldGT(FieldCp, v))
-}
-
-// CpGTE applies the GTE predicate on the "cp" field.
-func CpGTE(v int) predicate.Card {
-	return predicate.Card(sql.FieldGTE(FieldCp, v))
-}
-
-// CpLT applies the LT predicate on the "cp" field.
-func CpLT(v int) predicate.Card {
-	return predicate.Card(sql.FieldLT(FieldCp, v))
-}
-
-// CpLTE applies the LTE predicate on the "cp" field.
-func CpLTE(v int) predicate.Card {
-	return predicate.Card(sql.FieldLTE(FieldCp, v))
-}
-
-// CpIsNil applies the IsNil predicate on the "cp" field.
-func CpIsNil() predicate.Card {
-	return predicate.Card(sql.FieldIsNull(FieldCp))
-}
-
-// CpNotNil applies the NotNil predicate on the "cp" field.
-func CpNotNil() predicate.Card {
-	return predicate.Card(sql.FieldNotNull(FieldCp))
 }
 
 // StatusEQ applies the EQ predicate on the "status" field.
@@ -253,6 +203,56 @@ func StatusEqualFold(v string) predicate.Card {
 // StatusContainsFold applies the ContainsFold predicate on the "status" field.
 func StatusContainsFold(v string) predicate.Card {
 	return predicate.Card(sql.FieldContainsFold(FieldStatus, v))
+}
+
+// CpEQ applies the EQ predicate on the "cp" field.
+func CpEQ(v int) predicate.Card {
+	return predicate.Card(sql.FieldEQ(FieldCp, v))
+}
+
+// CpNEQ applies the NEQ predicate on the "cp" field.
+func CpNEQ(v int) predicate.Card {
+	return predicate.Card(sql.FieldNEQ(FieldCp, v))
+}
+
+// CpIn applies the In predicate on the "cp" field.
+func CpIn(vs ...int) predicate.Card {
+	return predicate.Card(sql.FieldIn(FieldCp, vs...))
+}
+
+// CpNotIn applies the NotIn predicate on the "cp" field.
+func CpNotIn(vs ...int) predicate.Card {
+	return predicate.Card(sql.FieldNotIn(FieldCp, vs...))
+}
+
+// CpGT applies the GT predicate on the "cp" field.
+func CpGT(v int) predicate.Card {
+	return predicate.Card(sql.FieldGT(FieldCp, v))
+}
+
+// CpGTE applies the GTE predicate on the "cp" field.
+func CpGTE(v int) predicate.Card {
+	return predicate.Card(sql.FieldGTE(FieldCp, v))
+}
+
+// CpLT applies the LT predicate on the "cp" field.
+func CpLT(v int) predicate.Card {
+	return predicate.Card(sql.FieldLT(FieldCp, v))
+}
+
+// CpLTE applies the LTE predicate on the "cp" field.
+func CpLTE(v int) predicate.Card {
+	return predicate.Card(sql.FieldLTE(FieldCp, v))
+}
+
+// CpIsNil applies the IsNil predicate on the "cp" field.
+func CpIsNil() predicate.Card {
+	return predicate.Card(sql.FieldIsNull(FieldCp))
+}
+
+// CpNotNil applies the NotNil predicate on the "cp" field.
+func CpNotNil() predicate.Card {
+	return predicate.Card(sql.FieldNotNull(FieldCp))
 }
 
 // URLEQ applies the EQ predicate on the "url" field.

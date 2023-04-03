@@ -12,8 +12,8 @@ var (
 	CardsColumns = []*schema.Column{
 		{Name: "id", Type: field.TypeInt, Increment: true},
 		{Name: "card", Type: field.TypeInt, Nullable: true},
-		{Name: "cp", Type: field.TypeInt, Nullable: true},
 		{Name: "status", Type: field.TypeString, Nullable: true},
+		{Name: "cp", Type: field.TypeInt, Nullable: true},
 		{Name: "url", Type: field.TypeString, Nullable: true, Default: "https://card.syui.ai"},
 		{Name: "created_at", Type: field.TypeTime, Nullable: true},
 		{Name: "user_card", Type: field.TypeInt},
@@ -56,7 +56,7 @@ var (
 		{Name: "username", Type: field.TypeString, Unique: true, Size: 30},
 		{Name: "created_at", Type: field.TypeTime, Nullable: true},
 		{Name: "updated_at", Type: field.TypeTime, Nullable: true},
-		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230401"},
+		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230403"},
 		{Name: "group_users", Type: field.TypeInt, Nullable: true},
 	}
 	// UsersTable holds the schema information for the "users" table.

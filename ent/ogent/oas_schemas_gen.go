@@ -12,8 +12,8 @@ import (
 type CardCreate struct {
 	ID        int         `json:"id"`
 	Card      OptInt      `json:"card"`
-	Cp        OptInt      `json:"cp"`
 	Status    OptString   `json:"status"`
+	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
 	CreatedAt OptDateTime `json:"created_at"`
 }
@@ -28,14 +28,14 @@ func (s *CardCreate) GetCard() OptInt {
 	return s.Card
 }
 
-// GetCp returns the value of Cp.
-func (s *CardCreate) GetCp() OptInt {
-	return s.Cp
-}
-
 // GetStatus returns the value of Status.
 func (s *CardCreate) GetStatus() OptString {
 	return s.Status
+}
+
+// GetCp returns the value of Cp.
+func (s *CardCreate) GetCp() OptInt {
+	return s.Cp
 }
 
 // GetURL returns the value of URL.
@@ -58,14 +58,14 @@ func (s *CardCreate) SetCard(val OptInt) {
 	s.Card = val
 }
 
-// SetCp sets the value of Cp.
-func (s *CardCreate) SetCp(val OptInt) {
-	s.Cp = val
-}
-
 // SetStatus sets the value of Status.
 func (s *CardCreate) SetStatus(val OptString) {
 	s.Status = val
+}
+
+// SetCp sets the value of Cp.
+func (s *CardCreate) SetCp(val OptInt) {
+	s.Cp = val
 }
 
 // SetURL sets the value of URL.
@@ -84,8 +84,8 @@ func (*CardCreate) createCardRes() {}
 type CardList struct {
 	ID        int         `json:"id"`
 	Card      OptInt      `json:"card"`
-	Cp        OptInt      `json:"cp"`
 	Status    OptString   `json:"status"`
+	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
 	CreatedAt OptDateTime `json:"created_at"`
 }
@@ -100,14 +100,14 @@ func (s *CardList) GetCard() OptInt {
 	return s.Card
 }
 
-// GetCp returns the value of Cp.
-func (s *CardList) GetCp() OptInt {
-	return s.Cp
-}
-
 // GetStatus returns the value of Status.
 func (s *CardList) GetStatus() OptString {
 	return s.Status
+}
+
+// GetCp returns the value of Cp.
+func (s *CardList) GetCp() OptInt {
+	return s.Cp
 }
 
 // GetURL returns the value of URL.
@@ -130,14 +130,14 @@ func (s *CardList) SetCard(val OptInt) {
 	s.Card = val
 }
 
-// SetCp sets the value of Cp.
-func (s *CardList) SetCp(val OptInt) {
-	s.Cp = val
-}
-
 // SetStatus sets the value of Status.
 func (s *CardList) SetStatus(val OptString) {
 	s.Status = val
+}
+
+// SetCp sets the value of Cp.
+func (s *CardList) SetCp(val OptInt) {
+	s.Cp = val
 }
 
 // SetURL sets the value of URL.
@@ -215,8 +215,8 @@ func (*CardOwnerRead) readCardOwnerRes() {}
 type CardRead struct {
 	ID        int         `json:"id"`
 	Card      OptInt      `json:"card"`
-	Cp        OptInt      `json:"cp"`
 	Status    OptString   `json:"status"`
+	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
 	CreatedAt OptDateTime `json:"created_at"`
 }
@@ -231,14 +231,14 @@ func (s *CardRead) GetCard() OptInt {
 	return s.Card
 }
 
-// GetCp returns the value of Cp.
-func (s *CardRead) GetCp() OptInt {
-	return s.Cp
-}
-
 // GetStatus returns the value of Status.
 func (s *CardRead) GetStatus() OptString {
 	return s.Status
+}
+
+// GetCp returns the value of Cp.
+func (s *CardRead) GetCp() OptInt {
+	return s.Cp
 }
 
 // GetURL returns the value of URL.
@@ -261,14 +261,14 @@ func (s *CardRead) SetCard(val OptInt) {
 	s.Card = val
 }
 
-// SetCp sets the value of Cp.
-func (s *CardRead) SetCp(val OptInt) {
-	s.Cp = val
-}
-
 // SetStatus sets the value of Status.
 func (s *CardRead) SetStatus(val OptString) {
 	s.Status = val
+}
+
+// SetCp sets the value of Cp.
+func (s *CardRead) SetCp(val OptInt) {
+	s.Cp = val
 }
 
 // SetURL sets the value of URL.
@@ -287,8 +287,8 @@ func (*CardRead) readCardRes() {}
 type CardUpdate struct {
 	ID        int         `json:"id"`
 	Card      OptInt      `json:"card"`
-	Cp        OptInt      `json:"cp"`
 	Status    OptString   `json:"status"`
+	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
 	CreatedAt OptDateTime `json:"created_at"`
 }
@@ -303,14 +303,14 @@ func (s *CardUpdate) GetCard() OptInt {
 	return s.Card
 }
 
-// GetCp returns the value of Cp.
-func (s *CardUpdate) GetCp() OptInt {
-	return s.Cp
-}
-
 // GetStatus returns the value of Status.
 func (s *CardUpdate) GetStatus() OptString {
 	return s.Status
+}
+
+// GetCp returns the value of Cp.
+func (s *CardUpdate) GetCp() OptInt {
+	return s.Cp
 }
 
 // GetURL returns the value of URL.
@@ -333,14 +333,14 @@ func (s *CardUpdate) SetCard(val OptInt) {
 	s.Card = val
 }
 
-// SetCp sets the value of Cp.
-func (s *CardUpdate) SetCp(val OptInt) {
-	s.Cp = val
-}
-
 // SetStatus sets the value of Status.
 func (s *CardUpdate) SetStatus(val OptString) {
 	s.Status = val
+}
+
+// SetCp sets the value of Cp.
+func (s *CardUpdate) SetCp(val OptInt) {
+	s.Cp = val
 }
 
 // SetURL sets the value of URL.
@@ -357,8 +357,8 @@ func (*CardUpdate) updateCardRes() {}
 
 type CreateCardReq struct {
 	Card      OptInt      `json:"card"`
-	Cp        OptInt      `json:"cp"`
 	Status    OptString   `json:"status"`
+	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
 	CreatedAt OptDateTime `json:"created_at"`
 	Owner     int         `json:"owner"`
@@ -369,14 +369,14 @@ func (s *CreateCardReq) GetCard() OptInt {
 	return s.Card
 }
 
-// GetCp returns the value of Cp.
-func (s *CreateCardReq) GetCp() OptInt {
-	return s.Cp
-}
-
 // GetStatus returns the value of Status.
 func (s *CreateCardReq) GetStatus() OptString {
 	return s.Status
+}
+
+// GetCp returns the value of Cp.
+func (s *CreateCardReq) GetCp() OptInt {
+	return s.Cp
 }
 
 // GetURL returns the value of URL.
@@ -399,14 +399,14 @@ func (s *CreateCardReq) SetCard(val OptInt) {
 	s.Card = val
 }
 
-// SetCp sets the value of Cp.
-func (s *CreateCardReq) SetCp(val OptInt) {
-	s.Cp = val
-}
-
 // SetStatus sets the value of Status.
 func (s *CreateCardReq) SetStatus(val OptString) {
 	s.Status = val
+}
+
+// SetCp sets the value of Cp.
+func (s *CreateCardReq) SetCp(val OptInt) {
+	s.Cp = val
 }
 
 // SetURL sets the value of URL.
@@ -1151,8 +1151,8 @@ func (s *UpdateUserReq) SetCard(val []int) {
 type UserCardList struct {
 	ID        int         `json:"id"`
 	Card      OptInt      `json:"card"`
-	Cp        OptInt      `json:"cp"`
 	Status    OptString   `json:"status"`
+	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
 	CreatedAt OptDateTime `json:"created_at"`
 }
@@ -1167,14 +1167,14 @@ func (s *UserCardList) GetCard() OptInt {
 	return s.Card
 }
 
-// GetCp returns the value of Cp.
-func (s *UserCardList) GetCp() OptInt {
-	return s.Cp
-}
-
 // GetStatus returns the value of Status.
 func (s *UserCardList) GetStatus() OptString {
 	return s.Status
+}
+
+// GetCp returns the value of Cp.
+func (s *UserCardList) GetCp() OptInt {
+	return s.Cp
 }
 
 // GetURL returns the value of URL.
@@ -1197,14 +1197,14 @@ func (s *UserCardList) SetCard(val OptInt) {
 	s.Card = val
 }
 
-// SetCp sets the value of Cp.
-func (s *UserCardList) SetCp(val OptInt) {
-	s.Cp = val
-}
-
 // SetStatus sets the value of Status.
 func (s *UserCardList) SetStatus(val OptString) {
 	s.Status = val
+}
+
+// SetCp sets the value of Cp.
+func (s *UserCardList) SetCp(val OptInt) {
+	s.Cp = val
 }
 
 // SetURL sets the value of URL.

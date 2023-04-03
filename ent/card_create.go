@@ -35,20 +35,6 @@ func (cc *CardCreate) SetNillableCard(i *int) *CardCreate {
 	return cc
 }
 
-// SetCp sets the "cp" field.
-func (cc *CardCreate) SetCp(i int) *CardCreate {
-	cc.mutation.SetCp(i)
-	return cc
-}
-
-// SetNillableCp sets the "cp" field if the given value is not nil.
-func (cc *CardCreate) SetNillableCp(i *int) *CardCreate {
-	if i != nil {
-		cc.SetCp(*i)
-	}
-	return cc
-}
-
 // SetStatus sets the "status" field.
 func (cc *CardCreate) SetStatus(s string) *CardCreate {
 	cc.mutation.SetStatus(s)
@@ -59,6 +45,20 @@ func (cc *CardCreate) SetStatus(s string) *CardCreate {
 func (cc *CardCreate) SetNillableStatus(s *string) *CardCreate {
 	if s != nil {
 		cc.SetStatus(*s)
+	}
+	return cc
+}
+
+// SetCp sets the "cp" field.
+func (cc *CardCreate) SetCp(i int) *CardCreate {
+	cc.mutation.SetCp(i)
+	return cc
+}
+
+// SetNillableCp sets the "cp" field if the given value is not nil.
+func (cc *CardCreate) SetNillableCp(i *int) *CardCreate {
+	if i != nil {
+		cc.SetCp(*i)
 	}
 	return cc
 }
@@ -141,13 +141,13 @@ func (cc *CardCreate) defaults() {
 		v := card.DefaultCard()
 		cc.mutation.SetCard(v)
 	}
-	if _, ok := cc.mutation.Cp(); !ok {
-		v := card.DefaultCp()
-		cc.mutation.SetCp(v)
-	}
 	if _, ok := cc.mutation.Status(); !ok {
 		v := card.DefaultStatus()
 		cc.mutation.SetStatus(v)
+	}
+	if _, ok := cc.mutation.Cp(); !ok {
+		v := card.DefaultCp()
+		cc.mutation.SetCp(v)
 	}
 	if _, ok := cc.mutation.URL(); !ok {
 		v := card.DefaultURL
@@ -194,13 +194,13 @@ func (cc *CardCreate) createSpec() (*Card, *sqlgraph.CreateSpec) {
 		_spec.SetField(card.FieldCard, field.TypeInt, value)
 		_node.Card = value
 	}
-	if value, ok := cc.mutation.Cp(); ok {
-		_spec.SetField(card.FieldCp, field.TypeInt, value)
-		_node.Cp = value
-	}
 	if value, ok := cc.mutation.Status(); ok {
 		_spec.SetField(card.FieldStatus, field.TypeString, value)
 		_node.Status = value
+	}
+	if value, ok := cc.mutation.Cp(); ok {
+		_spec.SetField(card.FieldCp, field.TypeInt, value)
+		_node.Cp = value
 	}
 	if value, ok := cc.mutation.URL(); ok {
 		_spec.SetField(card.FieldURL, field.TypeString, value)

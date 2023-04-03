@@ -19,14 +19,14 @@ func init() {
 	cardDescCard := cardFields[0].Descriptor()
 	// card.DefaultCard holds the default value on creation for the card field.
 	card.DefaultCard = cardDescCard.Default.(func() int)
-	// cardDescCp is the schema descriptor for cp field.
-	cardDescCp := cardFields[1].Descriptor()
-	// card.DefaultCp holds the default value on creation for the cp field.
-	card.DefaultCp = cardDescCp.Default.(func() int)
 	// cardDescStatus is the schema descriptor for status field.
-	cardDescStatus := cardFields[2].Descriptor()
+	cardDescStatus := cardFields[1].Descriptor()
 	// card.DefaultStatus holds the default value on creation for the status field.
 	card.DefaultStatus = cardDescStatus.Default.(func() string)
+	// cardDescCp is the schema descriptor for cp field.
+	cardDescCp := cardFields[2].Descriptor()
+	// card.DefaultCp holds the default value on creation for the cp field.
+	card.DefaultCp = cardDescCp.Default.(func() int)
 	// cardDescURL is the schema descriptor for url field.
 	cardDescURL := cardFields[3].Descriptor()
 	// card.DefaultURL holds the default value on creation for the url field.

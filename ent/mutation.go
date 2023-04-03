@@ -39,9 +39,9 @@ type CardMutation struct {
 	id            *int
 	card          *int
 	addcard       *int
+	status        *string
 	cp            *int
 	addcp         *int
-	status        *string
 	url           *string
 	created_at    *time.Time
 	clearedFields map[string]struct{}
@@ -220,6 +220,55 @@ func (m *CardMutation) ResetCard() {
 	delete(m.clearedFields, card.FieldCard)
 }
 
+// SetStatus sets the "status" field.
+func (m *CardMutation) SetStatus(s string) {
+	m.status = &s
+}
+
+// Status returns the value of the "status" field in the mutation.
+func (m *CardMutation) Status() (r string, exists bool) {
+	v := m.status
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldStatus returns the old "status" field's value of the Card entity.
+// If the Card object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *CardMutation) OldStatus(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldStatus is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldStatus requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldStatus: %w", err)
+	}
+	return oldValue.Status, nil
+}
+
+// ClearStatus clears the value of the "status" field.
+func (m *CardMutation) ClearStatus() {
+	m.status = nil
+	m.clearedFields[card.FieldStatus] = struct{}{}
+}
+
+// StatusCleared returns if the "status" field was cleared in this mutation.
+func (m *CardMutation) StatusCleared() bool {
+	_, ok := m.clearedFields[card.FieldStatus]
+	return ok
+}
+
+// ResetStatus resets all changes to the "status" field.
+func (m *CardMutation) ResetStatus() {
+	m.status = nil
+	delete(m.clearedFields, card.FieldStatus)
+}
+
 // SetCp sets the "cp" field.
 func (m *CardMutation) SetCp(i int) {
 	m.cp = &i
@@ -288,55 +337,6 @@ func (m *CardMutation) ResetCp() {
 	m.cp = nil
 	m.addcp = nil
 	delete(m.clearedFields, card.FieldCp)
-}
-
-// SetStatus sets the "status" field.
-func (m *CardMutation) SetStatus(s string) {
-	m.status = &s
-}
-
-// Status returns the value of the "status" field in the mutation.
-func (m *CardMutation) Status() (r string, exists bool) {
-	v := m.status
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldStatus returns the old "status" field's value of the Card entity.
-// If the Card object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CardMutation) OldStatus(ctx context.Context) (v string, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldStatus is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldStatus requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldStatus: %w", err)
-	}
-	return oldValue.Status, nil
-}
-
-// ClearStatus clears the value of the "status" field.
-func (m *CardMutation) ClearStatus() {
-	m.status = nil
-	m.clearedFields[card.FieldStatus] = struct{}{}
-}
-
-// StatusCleared returns if the "status" field was cleared in this mutation.
-func (m *CardMutation) StatusCleared() bool {
-	_, ok := m.clearedFields[card.FieldStatus]
-	return ok
-}
-
-// ResetStatus resets all changes to the "status" field.
-func (m *CardMutation) ResetStatus() {
-	m.status = nil
-	delete(m.clearedFields, card.FieldStatus)
 }
 
 // SetURL sets the "url" field.
@@ -514,11 +514,11 @@ func (m *CardMutation) Fields() []string {
 	if m.card != nil {
 		fields = append(fields, card.FieldCard)
 	}
-	if m.cp != nil {
-		fields = append(fields, card.FieldCp)
-	}
 	if m.status != nil {
 		fields = append(fields, card.FieldStatus)
+	}
+	if m.cp != nil {
+		fields = append(fields, card.FieldCp)
 	}
 	if m.url != nil {
 		fields = append(fields, card.FieldURL)
@@ -536,10 +536,10 @@ func (m *CardMutation) Field(name string) (ent.Value, bool) {
 	switch name {
 	case card.FieldCard:
 		return m.Card()
-	case card.FieldCp:
-		return m.Cp()
 	case card.FieldStatus:
 		return m.Status()
+	case card.FieldCp:
+		return m.Cp()
 	case card.FieldURL:
 		return m.URL()
 	case card.FieldCreatedAt:
@@ -555,10 +555,10 @@ func (m *CardMutation) OldField(ctx context.Context, name string) (ent.Value, er
 	switch name {
 	case card.FieldCard:
 		return m.OldCard(ctx)
-	case card.FieldCp:
-		return m.OldCp(ctx)
 	case card.FieldStatus:
 		return m.OldStatus(ctx)
+	case card.FieldCp:
+		return m.OldCp(ctx)
 	case card.FieldURL:
 		return m.OldURL(ctx)
 	case card.FieldCreatedAt:
@@ -579,19 +579,19 @@ func (m *CardMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetCard(v)
 		return nil
-	case card.FieldCp:
-		v, ok := value.(int)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetCp(v)
-		return nil
 	case card.FieldStatus:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetStatus(v)
+		return nil
+	case card.FieldCp:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCp(v)
 		return nil
 	case card.FieldURL:
 		v, ok := value.(string)
@@ -667,11 +667,11 @@ func (m *CardMutation) ClearedFields() []string {
 	if m.FieldCleared(card.FieldCard) {
 		fields = append(fields, card.FieldCard)
 	}
-	if m.FieldCleared(card.FieldCp) {
-		fields = append(fields, card.FieldCp)
-	}
 	if m.FieldCleared(card.FieldStatus) {
 		fields = append(fields, card.FieldStatus)
+	}
+	if m.FieldCleared(card.FieldCp) {
+		fields = append(fields, card.FieldCp)
 	}
 	if m.FieldCleared(card.FieldURL) {
 		fields = append(fields, card.FieldURL)
@@ -696,11 +696,11 @@ func (m *CardMutation) ClearField(name string) error {
 	case card.FieldCard:
 		m.ClearCard()
 		return nil
-	case card.FieldCp:
-		m.ClearCp()
-		return nil
 	case card.FieldStatus:
 		m.ClearStatus()
+		return nil
+	case card.FieldCp:
+		m.ClearCp()
 		return nil
 	case card.FieldURL:
 		m.ClearURL()
@@ -719,11 +719,11 @@ func (m *CardMutation) ResetField(name string) error {
 	case card.FieldCard:
 		m.ResetCard()
 		return nil
-	case card.FieldCp:
-		m.ResetCp()
-		return nil
 	case card.FieldStatus:
 		m.ResetStatus()
+		return nil
+	case card.FieldCp:
+		m.ResetCp()
 		return nil
 	case card.FieldURL:
 		m.ResetURL()

@@ -12,68 +12,16 @@ import (
 type Card struct {
 	ent.Schema
 }
-
 var url = "https://card.syui.ai"
 
-func Random(i int) (l int){
-	rand.Seed(time.Now().UnixNano())
-	l = rand.Intn(20)
-	for l == 0 {
-		l = rand.Intn(20)
-	}
-	return
-}
-
-func CardR()(card int){
-	var a = Random(10)
-	if a == 1 {
-		card = Random(12)
-		return card
-	} else {
-		card = 0
-		return card
-	}
-	return
-}
-
-var card = CardR()
-
-func SuperR()(super string){
-	var b = Random(100)
-	if card == 0 || b != 1 {
-		super = "normal"
-		return super
-	} else {
-		if b == 1 {
-			super = "super"
-			return super
-		}
-		return
-	}
-}
-var super = SuperR()
-
-func CpR()(cp int){
-	if super == "super" {
-		var cp = Random(1000)
-		return cp
-	} else if card != 0 {
-		var cp = Random(100)
-		return cp
-	} else {
-		var cp = Random(20)
-		return cp
-	}
-	return
-}
-
-var cp = CpR()
+var card int
+var super string
+var cp int
 
 func (Card) Fields() []ent.Field {
 	return []ent.Field{  
 		field.Int("card").
 		Immutable().
-		//Default(card).
 		DefaultFunc(func() int {
 			rand.Seed(time.Now().UnixNano())
 			var a = rand.Intn(10)
@@ -86,31 +34,39 @@ func (Card) Fields() []ent.Field {
 		}).
 		Optional(),
 
-		field.Int("cp").
-		Immutable().
-		//Default(cp).
-		DefaultFunc(func() int {
-			rand.Seed(time.Now().UnixNano())
-			var a = rand.Intn(100)
-			if a == 1 {
-				a = rand.Intn(1000)
-			}
-			return a
-		}).
-		Optional(),
-
 		field.String("status").
 		Immutable().
-		//Default(super).
 		DefaultFunc(func() string {
 			rand.Seed(time.Now().UnixNano())
-			var a = rand.Intn(20)
+			var a = rand.Intn(10)
 			if a == 1 {
 				super = "super"
 			} else {
 				super = "normal"
 			}
+			if card == 0 {
+				super = "normal"
+			}
 			return super
+		}).
+		Optional(),
+
+		field.Int("cp").
+		Immutable().
+		DefaultFunc(func() int {
+			rand.Seed(time.Now().UnixNano())
+			var cp = rand.Intn(100)
+			if cp == 1 {
+				cp = rand.Intn(250)
+			}
+			if card > 1 {
+				cp = cp + rand.Intn(250)
+			}
+			if super == "super" {
+				cp = cp + rand.Intn(500)
+			}
+
+			return cp
 		}).
 		Optional(),
 

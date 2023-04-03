@@ -13,10 +13,10 @@ const (
 	FieldID = "id"
 	// FieldCard holds the string denoting the card field in the database.
 	FieldCard = "card"
-	// FieldCp holds the string denoting the cp field in the database.
-	FieldCp = "cp"
 	// FieldStatus holds the string denoting the status field in the database.
 	FieldStatus = "status"
+	// FieldCp holds the string denoting the cp field in the database.
+	FieldCp = "cp"
 	// FieldURL holds the string denoting the url field in the database.
 	FieldURL = "url"
 	// FieldCreatedAt holds the string denoting the created_at field in the database.
@@ -38,8 +38,8 @@ const (
 var Columns = []string{
 	FieldID,
 	FieldCard,
-	FieldCp,
 	FieldStatus,
+	FieldCp,
 	FieldURL,
 	FieldCreatedAt,
 }
@@ -68,10 +68,10 @@ func ValidColumn(column string) bool {
 var (
 	// DefaultCard holds the default value on creation for the "card" field.
 	DefaultCard func() int
-	// DefaultCp holds the default value on creation for the "cp" field.
-	DefaultCp func() int
 	// DefaultStatus holds the default value on creation for the "status" field.
 	DefaultStatus func() string
+	// DefaultCp holds the default value on creation for the "cp" field.
+	DefaultCp func() int
 	// DefaultURL holds the default value on creation for the "url" field.
 	DefaultURL string
 	// DefaultCreatedAt holds the default value on creation for the "created_at" field.

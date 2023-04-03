@@ -11,8 +11,8 @@ func NewCardCreate(e *ent.Card) *CardCreate {
 	var ret CardCreate
 	ret.ID = e.ID
 	ret.Card = NewOptInt(e.Card)
-	ret.Cp = NewOptInt(e.Cp)
 	ret.Status = NewOptString(e.Status)
+	ret.Cp = NewOptInt(e.Cp)
 	ret.URL = NewOptString(e.URL)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	return &ret
@@ -43,8 +43,8 @@ func NewCardList(e *ent.Card) *CardList {
 	var ret CardList
 	ret.ID = e.ID
 	ret.Card = NewOptInt(e.Card)
-	ret.Cp = NewOptInt(e.Cp)
 	ret.Status = NewOptString(e.Status)
+	ret.Cp = NewOptInt(e.Cp)
 	ret.URL = NewOptString(e.URL)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	return &ret
@@ -75,8 +75,8 @@ func NewCardRead(e *ent.Card) *CardRead {
 	var ret CardRead
 	ret.ID = e.ID
 	ret.Card = NewOptInt(e.Card)
-	ret.Cp = NewOptInt(e.Cp)
 	ret.Status = NewOptString(e.Status)
+	ret.Cp = NewOptInt(e.Cp)
 	ret.URL = NewOptString(e.URL)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	return &ret
@@ -107,8 +107,8 @@ func NewCardUpdate(e *ent.Card) *CardUpdate {
 	var ret CardUpdate
 	ret.ID = e.ID
 	ret.Card = NewOptInt(e.Card)
-	ret.Cp = NewOptInt(e.Cp)
 	ret.Status = NewOptString(e.Status)
+	ret.Cp = NewOptInt(e.Cp)
 	ret.URL = NewOptString(e.URL)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	return &ret
@@ -437,8 +437,8 @@ func NewUserCardList(e *ent.Card) *UserCardList {
 	var ret UserCardList
 	ret.ID = e.ID
 	ret.Card = NewOptInt(e.Card)
-	ret.Cp = NewOptInt(e.Cp)
 	ret.Status = NewOptString(e.Status)
+	ret.Cp = NewOptInt(e.Cp)
 	ret.URL = NewOptString(e.URL)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	return &ret

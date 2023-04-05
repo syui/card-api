@@ -7,8 +7,10 @@ import (
 
 	"t/ent"
 	"t/ent/ogent"
+	//"t/ent/migrate"
 	"entgo.io/ent/dialect"
 	_ "github.com/mattn/go-sqlite3"
+	"entgo.io/ent/dialect/sql/schema"
 	"time"
 )
 
@@ -56,8 +58,13 @@ func main() {
 		log.Fatal(err)
 	}
 	// Run the migrations.
-	if err := client.Schema.Create(context.Background()); err != nil {
-		log.Fatal(err)
+	//if err := client.Schema.Create(context.Background()); err != nil {
+	//	log.Fatal(err)
+	//}
+	ctx := context.Background()
+	err = client.Schema.Create(ctx, schema.WithAtlas(true))
+	if err != nil {
+		log.Fatalf("failed creating schema resources: %v", err)
 	}
 	// Create the handler.
 	h := handler{

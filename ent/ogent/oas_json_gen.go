@@ -918,6 +918,11 @@ func (s *CreateCardReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *CreateCardReq) encodeFields(e *jx.Encoder) {
 	{
+
+		e.FieldStart("password")
+		e.Str(s.Password)
+	}
+	{
 		if s.Card.Set {
 			e.FieldStart("card")
 			s.Card.Encode(e)
@@ -954,13 +959,14 @@ func (s *CreateCardReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCreateCardReq = [6]string{
-	0: "card",
-	1: "status",
-	2: "cp",
-	3: "url",
-	4: "created_at",
-	5: "owner",
+var jsonFieldsNameOfCreateCardReq = [7]string{
+	0: "password",
+	1: "card",
+	2: "status",
+	3: "cp",
+	4: "url",
+	5: "created_at",
+	6: "owner",
 }
 
 // Decode decodes CreateCardReq from json.
@@ -972,6 +978,18 @@ func (s *CreateCardReq) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "password":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Password = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"password\"")
+			}
 		case "card":
 			if err := func() error {
 				s.Card.Reset()
@@ -1023,7 +1041,7 @@ func (s *CreateCardReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"created_at\"")
 			}
 		case "owner":
-			requiredBitSet[0] |= 1 << 5
+			requiredBitSet[0] |= 1 << 6
 			if err := func() error {
 				v, err := d.Int()
 				s.Owner = int(v)
@@ -1044,7 +1062,7 @@ func (s *CreateCardReq) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00100000,
+		0b01000001,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -1105,6 +1123,11 @@ func (s *CreateGroupReq) encodeFields(e *jx.Encoder) {
 		e.Str(s.Name)
 	}
 	{
+
+		e.FieldStart("password")
+		e.Str(s.Password)
+	}
+	{
 		if s.Users != nil {
 			e.FieldStart("users")
 			e.ArrStart()
@@ -1116,9 +1139,10 @@ func (s *CreateGroupReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCreateGroupReq = [2]string{
+var jsonFieldsNameOfCreateGroupReq = [3]string{
 	0: "name",
-	1: "users",
+	1: "password",
+	2: "users",
 }
 
 // Decode decodes CreateGroupReq from json.
@@ -1141,6 +1165,18 @@ func (s *CreateGroupReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"name\"")
+			}
+		case "password":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				v, err := d.Str()
+				s.Password = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"password\"")
 			}
 		case "users":
 			if err := func() error {
@@ -1171,7 +1207,7 @@ func (s *CreateGroupReq) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000001,
+		0b00000011,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -1232,6 +1268,11 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 		e.Str(s.Username)
 	}
 	{
+
+		e.FieldStart("password")
+		e.Str(s.Password)
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -1261,12 +1302,13 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCreateUserReq = [5]string{
+var jsonFieldsNameOfCreateUserReq = [6]string{
 	0: "username",
-	1: "created_at",
-	2: "updated_at",
-	3: "next",
-	4: "card",
+	1: "password",
+	2: "created_at",
+	3: "updated_at",
+	4: "next",
+	5: "card",
 }
 
 // Decode decodes CreateUserReq from json.
@@ -1289,6 +1331,18 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"username\"")
+			}
+		case "password":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				v, err := d.Str()
+				s.Password = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"password\"")
 			}
 		case "created_at":
 			if err := func() error {
@@ -1349,7 +1403,7 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000001,
+		0b00000011,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.

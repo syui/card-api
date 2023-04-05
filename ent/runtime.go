@@ -4,6 +4,7 @@ package ent
 
 import (
 	"t/ent/card"
+	"t/ent/group"
 	"t/ent/schema"
 	"t/ent/user"
 	"time"
@@ -15,26 +16,36 @@ import (
 func init() {
 	cardFields := schema.Card{}.Fields()
 	_ = cardFields
+	// cardDescPassword is the schema descriptor for password field.
+	cardDescPassword := cardFields[0].Descriptor()
+	// card.PasswordValidator is a validator for the "password" field. It is called by the builders before save.
+	card.PasswordValidator = cardDescPassword.Validators[0].(func(string) error)
 	// cardDescCard is the schema descriptor for card field.
-	cardDescCard := cardFields[0].Descriptor()
+	cardDescCard := cardFields[1].Descriptor()
 	// card.DefaultCard holds the default value on creation for the card field.
 	card.DefaultCard = cardDescCard.Default.(func() int)
 	// cardDescStatus is the schema descriptor for status field.
-	cardDescStatus := cardFields[1].Descriptor()
+	cardDescStatus := cardFields[2].Descriptor()
 	// card.DefaultStatus holds the default value on creation for the status field.
 	card.DefaultStatus = cardDescStatus.Default.(func() string)
 	// cardDescCp is the schema descriptor for cp field.
-	cardDescCp := cardFields[2].Descriptor()
+	cardDescCp := cardFields[3].Descriptor()
 	// card.DefaultCp holds the default value on creation for the cp field.
 	card.DefaultCp = cardDescCp.Default.(func() int)
 	// cardDescURL is the schema descriptor for url field.
-	cardDescURL := cardFields[3].Descriptor()
+	cardDescURL := cardFields[4].Descriptor()
 	// card.DefaultURL holds the default value on creation for the url field.
 	card.DefaultURL = cardDescURL.Default.(string)
 	// cardDescCreatedAt is the schema descriptor for created_at field.
-	cardDescCreatedAt := cardFields[4].Descriptor()
+	cardDescCreatedAt := cardFields[5].Descriptor()
 	// card.DefaultCreatedAt holds the default value on creation for the created_at field.
 	card.DefaultCreatedAt = cardDescCreatedAt.Default.(func() time.Time)
+	groupFields := schema.Group{}.Fields()
+	_ = groupFields
+	// groupDescPassword is the schema descriptor for password field.
+	groupDescPassword := groupFields[1].Descriptor()
+	// group.PasswordValidator is a validator for the "password" field. It is called by the builders before save.
+	group.PasswordValidator = groupDescPassword.Validators[0].(func(string) error)
 	userFields := schema.User{}.Fields()
 	_ = userFields
 	// userDescUsername is the schema descriptor for username field.
@@ -55,16 +66,20 @@ func init() {
 			return nil
 		}
 	}()
+	// userDescPassword is the schema descriptor for password field.
+	userDescPassword := userFields[1].Descriptor()
+	// user.PasswordValidator is a validator for the "password" field. It is called by the builders before save.
+	user.PasswordValidator = userDescPassword.Validators[0].(func(string) error)
 	// userDescCreatedAt is the schema descriptor for created_at field.
-	userDescCreatedAt := userFields[1].Descriptor()
+	userDescCreatedAt := userFields[2].Descriptor()
 	// user.DefaultCreatedAt holds the default value on creation for the created_at field.
 	user.DefaultCreatedAt = userDescCreatedAt.Default.(func() time.Time)
 	// userDescUpdatedAt is the schema descriptor for updated_at field.
-	userDescUpdatedAt := userFields[2].Descriptor()
+	userDescUpdatedAt := userFields[3].Descriptor()
 	// user.DefaultUpdatedAt holds the default value on creation for the updated_at field.
 	user.DefaultUpdatedAt = userDescUpdatedAt.Default.(func() time.Time)
 	// userDescNext is the schema descriptor for next field.
-	userDescNext := userFields[3].Descriptor()
+	userDescNext := userFields[4].Descriptor()
 	// user.DefaultNext holds the default value on creation for the next field.
 	user.DefaultNext = userDescNext.Default.(string)
 }

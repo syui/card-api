@@ -26,6 +26,12 @@ func (gc *GroupCreate) SetName(s string) *GroupCreate {
 	return gc
 }
 
+// SetPassword sets the "password" field.
+func (gc *GroupCreate) SetPassword(s string) *GroupCreate {
+	gc.mutation.SetPassword(s)
+	return gc
+}
+
 // AddUserIDs adds the "users" edge to the User entity by IDs.
 func (gc *GroupCreate) AddUserIDs(ids ...int) *GroupCreate {
 	gc.mutation.AddUserIDs(ids...)
@@ -78,6 +84,14 @@ func (gc *GroupCreate) check() error {
 	if _, ok := gc.mutation.Name(); !ok {
 		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "Group.name"`)}
 	}
+	if _, ok := gc.mutation.Password(); !ok {
+		return &ValidationError{Name: "password", err: errors.New(`ent: missing required field "Group.password"`)}
+	}
+	if v, ok := gc.mutation.Password(); ok {
+		if err := group.PasswordValidator(v); err != nil {
+			return &ValidationError{Name: "password", err: fmt.Errorf(`ent: validator failed for field "Group.password": %w`, err)}
+		}
+	}
 	return nil
 }
 
@@ -108,6 +122,10 @@ func (gc *GroupCreate) createSpec() (*Group, *sqlgraph.CreateSpec) {
 		_spec.SetField(group.FieldName, field.TypeString, value)
 		_node.Name = value
 	}
+	if value, ok := gc.mutation.Password(); ok {
+		_spec.SetField(group.FieldPassword, field.TypeString, value)
+		_node.Password = value
+	}
 	if nodes := gc.mutation.UsersIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
@@ -116,10 +134,7 @@ func (gc *GroupCreate) createSpec() (*Group, *sqlgraph.CreateSpec) {
 			Columns: []string{group.UsersColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: &sqlgraph.FieldSpec{
-					Type:   field.TypeInt,
-					Column: user.FieldID,
-				},
+				IDSpec: sqlgraph.NewFieldSpec(user.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {

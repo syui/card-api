@@ -356,12 +356,18 @@ func (s *CardUpdate) SetCreatedAt(val OptDateTime) {
 func (*CardUpdate) updateCardRes() {}
 
 type CreateCardReq struct {
+	Password  string      `json:"password"`
 	Card      OptInt      `json:"card"`
 	Status    OptString   `json:"status"`
 	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
 	CreatedAt OptDateTime `json:"created_at"`
 	Owner     int         `json:"owner"`
+}
+
+// GetPassword returns the value of Password.
+func (s *CreateCardReq) GetPassword() string {
+	return s.Password
 }
 
 // GetCard returns the value of Card.
@@ -392,6 +398,11 @@ func (s *CreateCardReq) GetCreatedAt() OptDateTime {
 // GetOwner returns the value of Owner.
 func (s *CreateCardReq) GetOwner() int {
 	return s.Owner
+}
+
+// SetPassword sets the value of Password.
+func (s *CreateCardReq) SetPassword(val string) {
+	s.Password = val
 }
 
 // SetCard sets the value of Card.
@@ -425,13 +436,19 @@ func (s *CreateCardReq) SetOwner(val int) {
 }
 
 type CreateGroupReq struct {
-	Name  string `json:"name"`
-	Users []int  `json:"users"`
+	Name     string `json:"name"`
+	Password string `json:"password"`
+	Users    []int  `json:"users"`
 }
 
 // GetName returns the value of Name.
 func (s *CreateGroupReq) GetName() string {
 	return s.Name
+}
+
+// GetPassword returns the value of Password.
+func (s *CreateGroupReq) GetPassword() string {
+	return s.Password
 }
 
 // GetUsers returns the value of Users.
@@ -444,6 +461,11 @@ func (s *CreateGroupReq) SetName(val string) {
 	s.Name = val
 }
 
+// SetPassword sets the value of Password.
+func (s *CreateGroupReq) SetPassword(val string) {
+	s.Password = val
+}
+
 // SetUsers sets the value of Users.
 func (s *CreateGroupReq) SetUsers(val []int) {
 	s.Users = val
@@ -451,6 +473,7 @@ func (s *CreateGroupReq) SetUsers(val []int) {
 
 type CreateUserReq struct {
 	Username  string      `json:"username"`
+	Password  string      `json:"password"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	Next      OptString   `json:"next"`
@@ -460,6 +483,11 @@ type CreateUserReq struct {
 // GetUsername returns the value of Username.
 func (s *CreateUserReq) GetUsername() string {
 	return s.Username
+}
+
+// GetPassword returns the value of Password.
+func (s *CreateUserReq) GetPassword() string {
+	return s.Password
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -485,6 +513,11 @@ func (s *CreateUserReq) GetCard() []int {
 // SetUsername sets the value of Username.
 func (s *CreateUserReq) SetUsername(val string) {
 	s.Username = val
+}
+
+// SetPassword sets the value of Password.
+func (s *CreateUserReq) SetPassword(val string) {
+	s.Password = val
 }
 
 // SetCreatedAt sets the value of CreatedAt.

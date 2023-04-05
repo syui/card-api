@@ -35,6 +35,11 @@ func (User) Fields() []ent.Field {
 		//Match(regexp.MustCompile("[a-z]+$")).
 		Unique(),
 
+		field.String("password").
+		NotEmpty().
+		Immutable().
+		Sensitive(),
+
 		//field.Bool("limit").
 		//Optional().
 		//Default(false),

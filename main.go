@@ -9,6 +9,7 @@ import (
 	"t/ent/ogent"
 	"entgo.io/ent/dialect"
 	_ "github.com/mattn/go-sqlite3"
+	"entgo.io/ent/dialect/sql/schema"
 	"time"
 )
 
@@ -50,14 +51,21 @@ func (h handler) DrawDone(ctx context.Context, params ogent.DrawDoneParams) erro
 
 func main() {
 	// Create ent client.
-	client, err := ent.Open(dialect.SQLite, "file:/data/ent.sqlite?_fk=1")
+	client, err := ent.Open(dialect.SQLite, "file:/data/new.sqlite?_fk=1")
+	//client, err := ent.Open(dialect.SQLite, "file:data/ent.sqlite?_fk=1")
+	//client, err := ent.Open(dialect.SQLite, "file:/data/ent.sqlite?_fk=1")
 	//client, err := ent.Open(dialect.SQLite, "file:data?mode=memory&cache=shared&_fk=1")
 	if err != nil {
 		log.Fatal(err)
 	}
 	// Run the migrations.
-	if err := client.Schema.Create(context.Background()); err != nil {
-		log.Fatal(err)
+	//if err := client.Schema.Create(context.Background()); err != nil {
+	//	log.Fatal(err)
+	//}
+	ctx := context.Background()
+	err = client.Schema.Create(ctx, schema.WithAtlas(true))
+	if err != nil {
+		log.Fatalf("failed creating schema resources: %v", err)
 	}
 	// Create the handler.
 	h := handler{

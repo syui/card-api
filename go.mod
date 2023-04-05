@@ -5,7 +5,7 @@ go 1.19
 //replace ariga.io/ogent => ../../
 
 require (
-	entgo.io/ent v0.11.9
+	entgo.io/ent v0.11.10
 	github.com/go-faster/errors v0.6.1
 	github.com/go-faster/jx v0.42.0-alpha.1
 	github.com/mattn/go-sqlite3 v1.14.16
@@ -18,7 +18,7 @@ require (
 )
 
 require (
-	ariga.io/atlas v0.9.1 // indirect
+	ariga.io/atlas v0.9.2-0.20230303073438-03a4779a6338 // indirect
 	ariga.io/entviz v0.0.0-20230125130633-6c9be8e08c7c // indirect
 	ariga.io/ogent v0.0.0-20230309073626-8dc564a6a73e // indirect
 	entgo.io/contrib v0.3.5 // indirect
@@ -31,10 +31,12 @@ require (
 	github.com/go-logr/logr v1.2.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-openapi/inflect v0.19.0 // indirect
+	github.com/go-sql-driver/mysql v1.7.0 // indirect
 	github.com/golang/mock v1.6.0 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/hashicorp/hcl/v2 v2.15.0 // indirect
+	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/kyokomi/lottery v1.2.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.17 // indirect

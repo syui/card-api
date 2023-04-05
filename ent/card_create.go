@@ -21,6 +21,12 @@ type CardCreate struct {
 	hooks    []Hook
 }
 
+// SetPassword sets the "password" field.
+func (cc *CardCreate) SetPassword(s string) *CardCreate {
+	cc.mutation.SetPassword(s)
+	return cc
+}
+
 // SetCard sets the "card" field.
 func (cc *CardCreate) SetCard(i int) *CardCreate {
 	cc.mutation.SetCard(i)
@@ -161,6 +167,14 @@ func (cc *CardCreate) defaults() {
 
 // check runs all checks and user-defined validators on the builder.
 func (cc *CardCreate) check() error {
+	if _, ok := cc.mutation.Password(); !ok {
+		return &ValidationError{Name: "password", err: errors.New(`ent: missing required field "Card.password"`)}
+	}
+	if v, ok := cc.mutation.Password(); ok {
+		if err := card.PasswordValidator(v); err != nil {
+			return &ValidationError{Name: "password", err: fmt.Errorf(`ent: validator failed for field "Card.password": %w`, err)}
+		}
+	}
 	if _, ok := cc.mutation.OwnerID(); !ok {
 		return &ValidationError{Name: "owner", err: errors.New(`ent: missing required edge "Card.owner"`)}
 	}
@@ -190,6 +204,10 @@ func (cc *CardCreate) createSpec() (*Card, *sqlgraph.CreateSpec) {
 		_node = &Card{config: cc.config}
 		_spec = sqlgraph.NewCreateSpec(card.Table, sqlgraph.NewFieldSpec(card.FieldID, field.TypeInt))
 	)
+	if value, ok := cc.mutation.Password(); ok {
+		_spec.SetField(card.FieldPassword, field.TypeString, value)
+		_node.Password = value
+	}
 	if value, ok := cc.mutation.Card(); ok {
 		_spec.SetField(card.FieldCard, field.TypeInt, value)
 		_node.Card = value
@@ -218,10 +236,7 @@ func (cc *CardCreate) createSpec() (*Card, *sqlgraph.CreateSpec) {
 			Columns: []string{card.OwnerColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: &sqlgraph.FieldSpec{
-					Type:   field.TypeInt,
-					Column: user.FieldID,
-				},
+				IDSpec: sqlgraph.NewFieldSpec(user.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {

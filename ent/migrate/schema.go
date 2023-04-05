@@ -11,6 +11,7 @@ var (
 	// CardsColumns holds the columns for the "cards" table.
 	CardsColumns = []*schema.Column{
 		{Name: "id", Type: field.TypeInt, Increment: true},
+		{Name: "password", Type: field.TypeString},
 		{Name: "card", Type: field.TypeInt, Nullable: true},
 		{Name: "status", Type: field.TypeString, Nullable: true},
 		{Name: "cp", Type: field.TypeInt, Nullable: true},
@@ -26,7 +27,7 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cards_users_card",
-				Columns:    []*schema.Column{CardsColumns[6]},
+				Columns:    []*schema.Column{CardsColumns[7]},
 				RefColumns: []*schema.Column{UsersColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -36,6 +37,7 @@ var (
 	GroupsColumns = []*schema.Column{
 		{Name: "id", Type: field.TypeInt, Increment: true},
 		{Name: "name", Type: field.TypeString},
+		{Name: "password", Type: field.TypeString},
 	}
 	// GroupsTable holds the schema information for the "groups" table.
 	GroupsTable = &schema.Table{
@@ -54,9 +56,10 @@ var (
 	UsersColumns = []*schema.Column{
 		{Name: "id", Type: field.TypeInt, Increment: true},
 		{Name: "username", Type: field.TypeString, Unique: true, Size: 30},
+		{Name: "password", Type: field.TypeString},
 		{Name: "created_at", Type: field.TypeTime, Nullable: true},
 		{Name: "updated_at", Type: field.TypeTime, Nullable: true},
-		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230404"},
+		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230406"},
 		{Name: "group_users", Type: field.TypeInt, Nullable: true},
 	}
 	// UsersTable holds the schema information for the "users" table.
@@ -67,7 +70,7 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "users_groups_users",
-				Columns:    []*schema.Column{UsersColumns[5]},
+				Columns:    []*schema.Column{UsersColumns[6]},
 				RefColumns: []*schema.Column{GroupsColumns[0]},
 				OnDelete:   schema.SetNull,
 			},

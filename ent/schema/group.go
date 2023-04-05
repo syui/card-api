@@ -16,6 +16,11 @@ type Group struct {
 func (Group) Fields() []ent.Field {
     return []ent.Field{
         field.String("name"),
+
+								field.String("password").
+								NotEmpty().
+								Immutable().
+								Sensitive(),
     }
 }
 

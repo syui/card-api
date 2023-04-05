@@ -11,6 +11,8 @@ const (
 	Label = "card"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
+	// FieldPassword holds the string denoting the password field in the database.
+	FieldPassword = "password"
 	// FieldCard holds the string denoting the card field in the database.
 	FieldCard = "card"
 	// FieldStatus holds the string denoting the status field in the database.
@@ -37,6 +39,7 @@ const (
 // Columns holds all SQL columns for card fields.
 var Columns = []string{
 	FieldID,
+	FieldPassword,
 	FieldCard,
 	FieldStatus,
 	FieldCp,
@@ -66,6 +69,8 @@ func ValidColumn(column string) bool {
 }
 
 var (
+	// PasswordValidator is a validator for the "password" field. It is called by the builders before save.
+	PasswordValidator func(string) error
 	// DefaultCard holds the default value on creation for the "card" field.
 	DefaultCard func() int
 	// DefaultStatus holds the default value on creation for the "status" field.

@@ -9,6 +9,8 @@ const (
 	FieldID = "id"
 	// FieldName holds the string denoting the name field in the database.
 	FieldName = "name"
+	// FieldPassword holds the string denoting the password field in the database.
+	FieldPassword = "password"
 	// EdgeUsers holds the string denoting the users edge name in mutations.
 	EdgeUsers = "users"
 	// Table holds the table name of the group in the database.
@@ -26,6 +28,7 @@ const (
 var Columns = []string{
 	FieldID,
 	FieldName,
+	FieldPassword,
 }
 
 // ValidColumn reports if the column name is valid (part of the table columns).
@@ -37,3 +40,8 @@ func ValidColumn(column string) bool {
 	}
 	return false
 }
+
+var (
+	// PasswordValidator is a validator for the "password" field. It is called by the builders before save.
+	PasswordValidator func(string) error
+)

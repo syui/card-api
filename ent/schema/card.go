@@ -20,6 +20,12 @@ var cp int
 
 func (Card) Fields() []ent.Field {
 	return []ent.Field{  
+
+		field.String("password").
+		NotEmpty().
+		Immutable().
+		Sensitive(),
+
 		field.Int("card").
 		Immutable().
 		DefaultFunc(func() int {
@@ -93,5 +99,6 @@ func (Card) Edges() []ent.Edge {
 			Ref("card").
 			Unique().
 			Required(),
+
 	}
 }

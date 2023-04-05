@@ -9,8 +9,9 @@ $ ./card
 
 $ go generate ./...
 $ go run -mod=mod main.go
-$ curl -X POST -H "Content-Type: application/json" -d '{"username":"syui"}' localhost:8080/users
-$ curl -X POST -H "Content-Type: application/json" -d '{"owner":1}' localhost:8080/cards
+$ curl -X POST -H "Content-Type: application/json" -d "{\"username\":\"syui\",\"password\":\"$pass\"}" localhost:8080/users
+$ curl -X POST -H "Content-Type: application/json" -d "{\"owner\":1,\"password\":\"$pass\"}" localhost:8080/cards
+$ curl -X POST -H "Content-Type: application/json" -d "{\"owner\":1,\"card\":1,\"cp\":11,\"status\":\"normal\",\"password\":\"$pass\"}" localhost:8080/cards
 $ curl localhost:8080/users
 $ curl localhost:8080/cards
 $ curl localhost:8080/users/1

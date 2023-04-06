@@ -21,12 +21,19 @@ $ curl localhost:8080/users/1/card
 ### use
 
 ```sh
-$ curl -X POST -H "Content-Type: application/json" -d '{"username":"syui"}' https://api.syui.ai/users
+$ curl -X POST -H "Content-Type: application/json" -d '{"username":"syui",\"password\":\"$pass\"}' https://api.syui.ai/users
 
 # onconflict
 $ !!
 
 $ curl -sL https://api.syui.ai/users/1
+```
+
+```sh
+# item select
+$ curl -sL "https://api.syui.ai/users?itemsPerPage=255"
+$ curl -sL "https://api.syui.ai/cards?itemsPerPage=255"
+$ curl -sL "https://api.syui.ai/users/1/card?itemsPerPage=255"
 ```
 
 ### ref

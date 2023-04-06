@@ -1,5 +1,5 @@
 t
 .env
-*.zsh
 *.json
-#*.sqlite
+*.sqlite
+#*.zsh

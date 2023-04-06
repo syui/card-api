@@ -64,15 +64,15 @@ func (Card) Fields() []ent.Field {
 		Immutable().
 		DefaultFunc(func() int {
 			rand.Seed(time.Now().UnixNano())
-			var cp = rand.Intn(100)
-			if cp == 1 {
-				cp = rand.Intn(250)
+			var cp = 1 + rand.Intn(100)
+			if cp == 2 {
+				cp = 50 + rand.Intn(200)
 			}
-			if card > 1 {
-				cp = cp + rand.Intn(250)
+			if card > 2 {
+				cp = 50 + cp + rand.Intn(200)
 			}
 			if super == "super" {
-				cp = cp + rand.Intn(500)
+				cp = 200 + cp + rand.Intn(300)
 			}
 
 			return cp

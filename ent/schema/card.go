@@ -66,9 +66,9 @@ func (Card) Fields() []ent.Field {
 			rand.Seed(time.Now().UnixNano())
 			var cp = 1 + rand.Intn(100)
 			if cp == 2 {
-				cp = 50 + rand.Intn(200)
+				cp = 50 + rand.Intn(100)
 			}
-			if card > 2 {
+			if card >= 1 {
 				cp = 50 + cp + rand.Intn(200)
 			}
 			if super == "super" {

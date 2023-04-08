@@ -3,3 +3,4 @@ t
 *.json
 *.sqlite
 #*.zsh
+tmp/card_limit.zsh

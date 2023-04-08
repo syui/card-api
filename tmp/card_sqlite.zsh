@@ -45,6 +45,5 @@ do
 			l_cards
 		fi
 	done
-
 done
 

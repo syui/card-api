@@ -36,14 +36,15 @@ func (Card) Fields() []ent.Field {
 			} else {
 				card = 0
 			}
+
 			if card == 13 {
-				card = 14
+				card = 1
 			}
+				
 			// 2023/04/09 premium card id:15
-			//if card == 15 {
-			//	card = 1
-			//}
-			card = 15
+			if card == 15 {
+				card = 1
+			}
 			return card
 		}).
 		Optional(),
@@ -71,13 +72,13 @@ func (Card) Fields() []ent.Field {
 			rand.Seed(time.Now().UnixNano())
 			var cp = 1 + rand.Intn(100)
 			if cp == 2 {
-				cp = 50 + rand.Intn(100)
+				cp = 50 + rand.Intn(150)
 			}
 			if card >= 1 {
-				cp = 50 + cp + rand.Intn(200)
+				cp = 150 + cp + rand.Intn(300)
 			}
 			if super == "super" {
-				cp = 200 + cp + rand.Intn(300)
+				cp = 300 + cp + rand.Intn(500)
 			}
 
 			return cp

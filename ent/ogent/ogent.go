@@ -12,8 +12,11 @@ import (
 	"t/ent/user"
 
 	"github.com/go-faster/jx"
+	"os"
 )
 
+var password = os.Getenv("PASS")
+var zero = "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
 // OgentHandler implements the ogen generated Handler interface and uses Ent as data layer.
 type OgentHandler struct {
 	client *ent.Client
@@ -50,7 +53,12 @@ func (h *OgentHandler) CreateCard(ctx context.Context, req *CreateCardReq) (Crea
 		b.SetCreatedAt(v)
 	}
 	// Add all edges.
-	b.SetOwnerID(req.Owner)
+
+	if req.Password == password {
+		b.SetOwnerID(req.Owner)
+	} else {
+		b.SetOwnerID(0)
+	}
 	// Persist to storage.
 	e, err := b.Save(ctx)
 	if err != nil {
@@ -110,7 +118,7 @@ func (h *OgentHandler) ReadCard(ctx context.Context, params ReadCardParams) (Rea
 
 // UpdateCard handles PATCH /cards/{id} requests.
 func (h *OgentHandler) UpdateCard(ctx context.Context, req *UpdateCardReq, params UpdateCardParams) (UpdateCardRes, error) {
-	b := h.client.Card.UpdateOneID(params.ID)
+	b := h.client.Card.UpdateOneID(0)
 	// Add all fields.
 	// Add all edges.
 	if v, ok := req.Owner.Get(); ok {
@@ -149,7 +157,7 @@ func (h *OgentHandler) UpdateCard(ctx context.Context, req *UpdateCardReq, param
 
 // DeleteCard handles DELETE /cards/{id} requests.
 func (h *OgentHandler) DeleteCard(ctx context.Context, params DeleteCardParams) (DeleteCardRes, error) {
-	err := h.client.Card.DeleteOneID(params.ID).Exec(ctx)
+	err := h.client.Card.DeleteOneID(0).Exec(ctx)
 	if err != nil {
 		switch {
 		case ent.IsNotFound(err):
@@ -303,7 +311,7 @@ func (h *OgentHandler) ReadGroup(ctx context.Context, params ReadGroupParams) (R
 
 // UpdateGroup handles PATCH /groups/{id} requests.
 func (h *OgentHandler) UpdateGroup(ctx context.Context, req *UpdateGroupReq, params UpdateGroupParams) (UpdateGroupRes, error) {
-	b := h.client.Group.UpdateOneID(params.ID)
+	b := h.client.Group.UpdateOneID(0)
 	// Add all fields.
 	if v, ok := req.Name.Get(); ok {
 		b.SetName(v)
@@ -446,7 +454,11 @@ func (h *OgentHandler) ListGroupUsers(ctx context.Context, params ListGroupUsers
 func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (CreateUserRes, error) {
 	b := h.client.User.Create()
 	// Add all fields.
-	b.SetUsername(req.Username)
+	if req.Password == password {
+		b.SetUsername(req.Username)
+	} else {
+		b.SetUsername("")
+	}
 	b.SetPassword(req.Password)
 	if v, ok := req.CreatedAt.Get(); ok {
 		b.SetCreatedAt(v)
@@ -461,6 +473,7 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	b.AddCardIDs(req.Card...)
 	// Persist to storage.
 	e, err := b.Save(ctx)
+
 	if err != nil {
 		switch {
 		case ent.IsNotSingular(err):
@@ -563,7 +576,7 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 
 // DeleteUser handles DELETE /users/{id} requests.
 func (h *OgentHandler) DeleteUser(ctx context.Context, params DeleteUserParams) (DeleteUserRes, error) {
-	err := h.client.User.DeleteOneID(params.ID).Exec(ctx)
+	err := h.client.User.DeleteOneID(0).Exec(ctx)
 	if err != nil {
 		switch {
 		case ent.IsNotFound(err):

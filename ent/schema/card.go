@@ -32,7 +32,7 @@ func (Card) Fields() []ent.Field {
 			rand.Seed(time.Now().UnixNano())
 			var a = rand.Intn(10)
 			if a == 1 {
-				card = rand.Intn(15)
+				card = rand.Intn(16)
 			} else {
 				card = 0
 			}

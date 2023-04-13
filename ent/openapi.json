@@ -742,6 +742,9 @@
                   "username": {
                     "type": "string"
                   },
+                  "did": {
+                    "type": "string"
+                  },
                   "password": {
                     "type": "string"
                   },
@@ -1189,6 +1192,9 @@
           "username": {
             "type": "string"
           },
+          "did": {
+            "type": "string"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1300,6 +1306,9 @@
           "username": {
             "type": "string"
           },
+          "did": {
+            "type": "string"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1324,6 +1333,9 @@
             "type": "integer"
           },
           "username": {
+            "type": "string"
+          },
+          "did": {
             "type": "string"
           },
           "password": {
@@ -1362,6 +1374,9 @@
           "username": {
             "type": "string"
           },
+          "did": {
+            "type": "string"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1386,6 +1401,9 @@
             "type": "integer"
           },
           "username": {
+            "type": "string"
+          },
+          "did": {
             "type": "string"
           },
           "created_at": {
@@ -1414,6 +1432,9 @@
           "username": {
             "type": "string"
           },
+          "did": {
+            "type": "string"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1438,6 +1459,9 @@
             "type": "integer"
           },
           "username": {
+            "type": "string"
+          },
+          "did": {
             "type": "string"
           },
           "created_at": {

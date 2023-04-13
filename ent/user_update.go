@@ -146,6 +146,9 @@ func (uu *UserUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			}
 		}
 	}
+	if uu.mutation.DidCleared() {
+		_spec.ClearField(user.FieldDid, field.TypeString)
+	}
 	if uu.mutation.CreatedAtCleared() {
 		_spec.ClearField(user.FieldCreatedAt, field.TypeTime)
 	}
@@ -372,6 +375,9 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 				ps[i](selector)
 			}
 		}
+	}
+	if uuo.mutation.DidCleared() {
+		_spec.ClearField(user.FieldDid, field.TypeString)
 	}
 	if uuo.mutation.CreatedAtCleared() {
 		_spec.ClearField(user.FieldCreatedAt, field.TypeTime)

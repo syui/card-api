@@ -31,18 +31,18 @@ func (User) Fields() []ent.Field {
 		field.String("username").
 		NotEmpty().
 		Immutable().
-		MaxLen(30).
+		MaxLen(100).
 		//Match(regexp.MustCompile("[a-z]+$")).
 		Unique(),
+
+		field.String("did").
+		Optional().
+		Immutable(),
 
 		field.String("password").
 		NotEmpty().
 		Immutable().
 		Sensitive(),
-
-		//field.Bool("limit").
-		//Optional().
-		//Default(false),
 
 		field.Time("created_at").
 		Immutable().

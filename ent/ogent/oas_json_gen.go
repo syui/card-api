@@ -398,6 +398,12 @@ func (s *CardOwnerRead) encodeFields(e *jx.Encoder) {
 		e.Str(s.Username)
 	}
 	{
+		if s.Did.Set {
+			e.FieldStart("did")
+			s.Did.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -417,12 +423,13 @@ func (s *CardOwnerRead) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCardOwnerRead = [5]string{
+var jsonFieldsNameOfCardOwnerRead = [6]string{
 	0: "id",
 	1: "username",
-	2: "created_at",
-	3: "updated_at",
-	4: "next",
+	2: "did",
+	3: "created_at",
+	4: "updated_at",
+	5: "next",
 }
 
 // Decode decodes CardOwnerRead from json.
@@ -457,6 +464,16 @@ func (s *CardOwnerRead) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"username\"")
+			}
+		case "did":
+			if err := func() error {
+				s.Did.Reset()
+				if err := s.Did.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"did\"")
 			}
 		case "created_at":
 			if err := func() error {
@@ -1268,6 +1285,12 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 		e.Str(s.Username)
 	}
 	{
+		if s.Did.Set {
+			e.FieldStart("did")
+			s.Did.Encode(e)
+		}
+	}
+	{
 
 		e.FieldStart("password")
 		e.Str(s.Password)
@@ -1302,13 +1325,14 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCreateUserReq = [6]string{
+var jsonFieldsNameOfCreateUserReq = [7]string{
 	0: "username",
-	1: "password",
-	2: "created_at",
-	3: "updated_at",
-	4: "next",
-	5: "card",
+	1: "did",
+	2: "password",
+	3: "created_at",
+	4: "updated_at",
+	5: "next",
+	6: "card",
 }
 
 // Decode decodes CreateUserReq from json.
@@ -1332,8 +1356,18 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"username\"")
 			}
+		case "did":
+			if err := func() error {
+				s.Did.Reset()
+				if err := s.Did.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"did\"")
+			}
 		case "password":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.Password = string(v)
@@ -1403,7 +1437,7 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000011,
+		0b00000101,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -1929,6 +1963,12 @@ func (s *GroupUsersList) encodeFields(e *jx.Encoder) {
 		e.Str(s.Username)
 	}
 	{
+		if s.Did.Set {
+			e.FieldStart("did")
+			s.Did.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -1948,12 +1988,13 @@ func (s *GroupUsersList) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfGroupUsersList = [5]string{
+var jsonFieldsNameOfGroupUsersList = [6]string{
 	0: "id",
 	1: "username",
-	2: "created_at",
-	3: "updated_at",
-	4: "next",
+	2: "did",
+	3: "created_at",
+	4: "updated_at",
+	5: "next",
 }
 
 // Decode decodes GroupUsersList from json.
@@ -1988,6 +2029,16 @@ func (s *GroupUsersList) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"username\"")
+			}
+		case "did":
+			if err := func() error {
+				s.Did.Reset()
+				if err := s.Did.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"did\"")
 			}
 		case "created_at":
 			if err := func() error {
@@ -3434,6 +3485,12 @@ func (s *UserCreate) encodeFields(e *jx.Encoder) {
 		e.Str(s.Username)
 	}
 	{
+		if s.Did.Set {
+			e.FieldStart("did")
+			s.Did.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -3453,12 +3510,13 @@ func (s *UserCreate) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserCreate = [5]string{
+var jsonFieldsNameOfUserCreate = [6]string{
 	0: "id",
 	1: "username",
-	2: "created_at",
-	3: "updated_at",
-	4: "next",
+	2: "did",
+	3: "created_at",
+	4: "updated_at",
+	5: "next",
 }
 
 // Decode decodes UserCreate from json.
@@ -3493,6 +3551,16 @@ func (s *UserCreate) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"username\"")
+			}
+		case "did":
+			if err := func() error {
+				s.Did.Reset()
+				if err := s.Did.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"did\"")
 			}
 		case "created_at":
 			if err := func() error {
@@ -3600,6 +3668,12 @@ func (s *UserList) encodeFields(e *jx.Encoder) {
 		e.Str(s.Username)
 	}
 	{
+		if s.Did.Set {
+			e.FieldStart("did")
+			s.Did.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -3619,12 +3693,13 @@ func (s *UserList) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserList = [5]string{
+var jsonFieldsNameOfUserList = [6]string{
 	0: "id",
 	1: "username",
-	2: "created_at",
-	3: "updated_at",
-	4: "next",
+	2: "did",
+	3: "created_at",
+	4: "updated_at",
+	5: "next",
 }
 
 // Decode decodes UserList from json.
@@ -3659,6 +3734,16 @@ func (s *UserList) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"username\"")
+			}
+		case "did":
+			if err := func() error {
+				s.Did.Reset()
+				if err := s.Did.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"did\"")
 			}
 		case "created_at":
 			if err := func() error {
@@ -3766,6 +3851,12 @@ func (s *UserRead) encodeFields(e *jx.Encoder) {
 		e.Str(s.Username)
 	}
 	{
+		if s.Did.Set {
+			e.FieldStart("did")
+			s.Did.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -3785,12 +3876,13 @@ func (s *UserRead) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserRead = [5]string{
+var jsonFieldsNameOfUserRead = [6]string{
 	0: "id",
 	1: "username",
-	2: "created_at",
-	3: "updated_at",
-	4: "next",
+	2: "did",
+	3: "created_at",
+	4: "updated_at",
+	5: "next",
 }
 
 // Decode decodes UserRead from json.
@@ -3825,6 +3917,16 @@ func (s *UserRead) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"username\"")
+			}
+		case "did":
+			if err := func() error {
+				s.Did.Reset()
+				if err := s.Did.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"did\"")
 			}
 		case "created_at":
 			if err := func() error {
@@ -3932,6 +4034,12 @@ func (s *UserUpdate) encodeFields(e *jx.Encoder) {
 		e.Str(s.Username)
 	}
 	{
+		if s.Did.Set {
+			e.FieldStart("did")
+			s.Did.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -3951,12 +4059,13 @@ func (s *UserUpdate) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserUpdate = [5]string{
+var jsonFieldsNameOfUserUpdate = [6]string{
 	0: "id",
 	1: "username",
-	2: "created_at",
-	3: "updated_at",
-	4: "next",
+	2: "did",
+	3: "created_at",
+	4: "updated_at",
+	5: "next",
 }
 
 // Decode decodes UserUpdate from json.
@@ -3991,6 +4100,16 @@ func (s *UserUpdate) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"username\"")
+			}
+		case "did":
+			if err := func() error {
+				s.Did.Reset()
+				if err := s.Did.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"did\"")
 			}
 		case "created_at":
 			if err := func() error {

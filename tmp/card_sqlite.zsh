@@ -7,15 +7,32 @@ host_users="$host/users?itemsPerPage=255"
 d=${0:a:h}
 dd=${0:a:h:h}
 pass=`cat $dd/token.json|jq -r .password`
+host_at=bsky.social
+
+if [ -f $d/user.json ] && [ "$1" = "-s" ];then
+	rm $d/user.json
+fi
+function did() {
+	unset did
+	url="https://$host_at/xrpc/com.atproto.repo.listRecords?repo=${name}.${host_at}&collection=app.bsky.actor.profile"
+	if [ "`curl -sL $url| jq -r .error`" = "null" ];then
+		t=`curl -sL $url | jq -r ".records|.[]|.uri"|cut -d / -f 3`
+		did=$t
+	else
+		#did=`curl -sL "search.bsky.social/search/posts?q=$name" | jq -r ".[0].user.did"`
+		did="null"
+	fi
+	echo "{\"name\":\"$name\",\"did\":\"$did\"}," >> $d/user.json
+}
 
 function l_users() {
-	curl -X POST -H "Content-Type: application/json" -d "{\"username\":\"$name\",\"password\":\"$pass\"}" $api/users
-	sleep 1
+	curl -X POST -H "Content-Type: application/json" -d "{\"username\":\"$name\",\"password\":\"$pass\",\"did\":\"$did\"}" $api/users
+	#sleep 1
 }
 
 function l_cards() {
 	curl -X POST -H "Content-Type: application/json" -d "{\"owner\":$id,\"card\":$card,\"status\":\"$s\",\"cp\":$cp,\"password\":\"$pass\"}" $api/cards
-	sleep 1
+	#sleep 1
 }
 
 data=`curl -sL "$host_users"|jq .`
@@ -26,7 +43,17 @@ do
 
 	name=`echo $data|jq ".[$i]"|jq -r .username`
 	id=`echo $data|jq ".[$i]"|jq -r .id`
-	echo "{\"username\":\"$name\"} localhost:8080/users"
+	if [ "$1" = "-s" ];then
+		did
+	else
+		did=`cat $d/user.json|jq -r ".[]|select(.name == \"$name\")|.did"`
+	fi
+	echo "{\"username\":\"$name\", \"password\":\"$pass\",\"did\":\"$did\"} localhost:8080/users"
+	#if [ "$did" = "null" ];then
+	#	echo "{\"username\":\"$name\", \"password\":\"$pass\",\"did\":\"$did\"} localhost:8080/users"
+	#else
+	#	echo "{\"username\":\"$name\", \"password\":\"$pass\"} localhost:8080/users"
+	#fi
 	if [ "$1" = "-a" ];then
 		l_users
 	fi
@@ -35,15 +62,16 @@ do
 	nn=`echo $data_card|jq length`
 	nn=$((nn - 1))
 
-	for ((ii=0;ii<=$nn;ii++))
-	do
-		card=`echo $data_card|jq -r ".[$ii].card"`
-		s=`echo $data_card|jq -r ".[$ii].status"`
-		cp=`echo $data_card|jq -r ".[$ii].cp"`
-		echo "{\"owner\":$id,\"card\":\"$card\",\"status\":\"$s\",\"cp\":\"$cp\"} localhost:8080/cards"
-		if [ "$1" = "-a" ];then
-			l_cards
-		fi
-	done
+	if [ "$1" != "-s" ];then
+		for ((ii=0;ii<=$nn;ii++))
+		do
+			card=`echo $data_card|jq -r ".[$ii].card"`
+			s=`echo $data_card|jq -r ".[$ii].status"`
+			cp=`echo $data_card|jq -r ".[$ii].cp"`
+			echo "{\"owner\":$id,\"card\":\"$card\",\"status\":\"$s\",\"cp\":\"$cp\", \"password\":\"$pass\"} localhost:8080/cards"
+			if [ "$1" = "-a" ];then
+				l_cards
+			fi
+		done
+	fi
 done
-

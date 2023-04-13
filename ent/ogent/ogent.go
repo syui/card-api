@@ -459,7 +459,11 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	} else {
 		b.SetUsername("")
 	}
+
 	b.SetPassword(req.Password)
+	if v, ok := req.Did.Get(); ok {
+		b.SetDid(v)
+	}
 	if v, ok := req.CreatedAt.Get(); ok {
 		b.SetCreatedAt(v)
 	}

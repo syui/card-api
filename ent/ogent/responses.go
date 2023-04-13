@@ -139,6 +139,7 @@ func NewCardOwnerRead(e *ent.User) *CardOwnerRead {
 	var ret CardOwnerRead
 	ret.ID = e.ID
 	ret.Username = e.Username
+	ret.Did = NewOptString(e.Did)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	ret.UpdatedAt = NewOptDateTime(e.UpdatedAt)
 	ret.Next = NewOptString(e.Next)
@@ -282,6 +283,7 @@ func NewGroupUsersList(e *ent.User) *GroupUsersList {
 	var ret GroupUsersList
 	ret.ID = e.ID
 	ret.Username = e.Username
+	ret.Did = NewOptString(e.Did)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	ret.UpdatedAt = NewOptDateTime(e.UpdatedAt)
 	ret.Next = NewOptString(e.Next)
@@ -313,6 +315,7 @@ func NewUserCreate(e *ent.User) *UserCreate {
 	var ret UserCreate
 	ret.ID = e.ID
 	ret.Username = e.Username
+	ret.Did = NewOptString(e.Did)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	ret.UpdatedAt = NewOptDateTime(e.UpdatedAt)
 	ret.Next = NewOptString(e.Next)
@@ -344,6 +347,7 @@ func NewUserList(e *ent.User) *UserList {
 	var ret UserList
 	ret.ID = e.ID
 	ret.Username = e.Username
+	ret.Did = NewOptString(e.Did)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	ret.UpdatedAt = NewOptDateTime(e.UpdatedAt)
 	ret.Next = NewOptString(e.Next)
@@ -375,6 +379,7 @@ func NewUserRead(e *ent.User) *UserRead {
 	var ret UserRead
 	ret.ID = e.ID
 	ret.Username = e.Username
+	ret.Did = NewOptString(e.Did)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	ret.UpdatedAt = NewOptDateTime(e.UpdatedAt)
 	ret.Next = NewOptString(e.Next)
@@ -406,6 +411,7 @@ func NewUserUpdate(e *ent.User) *UserUpdate {
 	var ret UserUpdate
 	ret.ID = e.ID
 	ret.Username = e.Username
+	ret.Did = NewOptString(e.Did)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	ret.UpdatedAt = NewOptDateTime(e.UpdatedAt)
 	ret.Next = NewOptString(e.Next)

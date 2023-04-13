@@ -154,6 +154,7 @@ func (s *CardList) SetCreatedAt(val OptDateTime) {
 type CardOwnerRead struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
+	Did       OptString   `json:"did"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	Next      OptString   `json:"next"`
@@ -167,6 +168,11 @@ func (s *CardOwnerRead) GetID() int {
 // GetUsername returns the value of Username.
 func (s *CardOwnerRead) GetUsername() string {
 	return s.Username
+}
+
+// GetDid returns the value of Did.
+func (s *CardOwnerRead) GetDid() OptString {
+	return s.Did
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -192,6 +198,11 @@ func (s *CardOwnerRead) SetID(val int) {
 // SetUsername sets the value of Username.
 func (s *CardOwnerRead) SetUsername(val string) {
 	s.Username = val
+}
+
+// SetDid sets the value of Did.
+func (s *CardOwnerRead) SetDid(val OptString) {
+	s.Did = val
 }
 
 // SetCreatedAt sets the value of CreatedAt.
@@ -473,6 +484,7 @@ func (s *CreateGroupReq) SetUsers(val []int) {
 
 type CreateUserReq struct {
 	Username  string      `json:"username"`
+	Did       OptString   `json:"did"`
 	Password  string      `json:"password"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
@@ -483,6 +495,11 @@ type CreateUserReq struct {
 // GetUsername returns the value of Username.
 func (s *CreateUserReq) GetUsername() string {
 	return s.Username
+}
+
+// GetDid returns the value of Did.
+func (s *CreateUserReq) GetDid() OptString {
+	return s.Did
 }
 
 // GetPassword returns the value of Password.
@@ -513,6 +530,11 @@ func (s *CreateUserReq) GetCard() []int {
 // SetUsername sets the value of Username.
 func (s *CreateUserReq) SetUsername(val string) {
 	s.Username = val
+}
+
+// SetDid sets the value of Did.
+func (s *CreateUserReq) SetDid(val OptString) {
+	s.Did = val
 }
 
 // SetPassword sets the value of Password.
@@ -675,6 +697,7 @@ func (*GroupUpdate) updateGroupRes() {}
 type GroupUsersList struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
+	Did       OptString   `json:"did"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	Next      OptString   `json:"next"`
@@ -688,6 +711,11 @@ func (s *GroupUsersList) GetID() int {
 // GetUsername returns the value of Username.
 func (s *GroupUsersList) GetUsername() string {
 	return s.Username
+}
+
+// GetDid returns the value of Did.
+func (s *GroupUsersList) GetDid() OptString {
+	return s.Did
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -713,6 +741,11 @@ func (s *GroupUsersList) SetID(val int) {
 // SetUsername sets the value of Username.
 func (s *GroupUsersList) SetUsername(val string) {
 	s.Username = val
+}
+
+// SetDid sets the value of Did.
+func (s *GroupUsersList) SetDid(val OptString) {
+	s.Did = val
 }
 
 // SetCreatedAt sets the value of CreatedAt.
@@ -1254,6 +1287,7 @@ func (s *UserCardList) SetCreatedAt(val OptDateTime) {
 type UserCreate struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
+	Did       OptString   `json:"did"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	Next      OptString   `json:"next"`
@@ -1267,6 +1301,11 @@ func (s *UserCreate) GetID() int {
 // GetUsername returns the value of Username.
 func (s *UserCreate) GetUsername() string {
 	return s.Username
+}
+
+// GetDid returns the value of Did.
+func (s *UserCreate) GetDid() OptString {
+	return s.Did
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -1294,6 +1333,11 @@ func (s *UserCreate) SetUsername(val string) {
 	s.Username = val
 }
 
+// SetDid sets the value of Did.
+func (s *UserCreate) SetDid(val OptString) {
+	s.Did = val
+}
+
 // SetCreatedAt sets the value of CreatedAt.
 func (s *UserCreate) SetCreatedAt(val OptDateTime) {
 	s.CreatedAt = val
@@ -1315,6 +1359,7 @@ func (*UserCreate) createUserRes() {}
 type UserList struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
+	Did       OptString   `json:"did"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	Next      OptString   `json:"next"`
@@ -1328,6 +1373,11 @@ func (s *UserList) GetID() int {
 // GetUsername returns the value of Username.
 func (s *UserList) GetUsername() string {
 	return s.Username
+}
+
+// GetDid returns the value of Did.
+func (s *UserList) GetDid() OptString {
+	return s.Did
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -1355,6 +1405,11 @@ func (s *UserList) SetUsername(val string) {
 	s.Username = val
 }
 
+// SetDid sets the value of Did.
+func (s *UserList) SetDid(val OptString) {
+	s.Did = val
+}
+
 // SetCreatedAt sets the value of CreatedAt.
 func (s *UserList) SetCreatedAt(val OptDateTime) {
 	s.CreatedAt = val
@@ -1374,6 +1429,7 @@ func (s *UserList) SetNext(val OptString) {
 type UserRead struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
+	Did       OptString   `json:"did"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	Next      OptString   `json:"next"`
@@ -1387,6 +1443,11 @@ func (s *UserRead) GetID() int {
 // GetUsername returns the value of Username.
 func (s *UserRead) GetUsername() string {
 	return s.Username
+}
+
+// GetDid returns the value of Did.
+func (s *UserRead) GetDid() OptString {
+	return s.Did
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -1414,6 +1475,11 @@ func (s *UserRead) SetUsername(val string) {
 	s.Username = val
 }
 
+// SetDid sets the value of Did.
+func (s *UserRead) SetDid(val OptString) {
+	s.Did = val
+}
+
 // SetCreatedAt sets the value of CreatedAt.
 func (s *UserRead) SetCreatedAt(val OptDateTime) {
 	s.CreatedAt = val
@@ -1435,6 +1501,7 @@ func (*UserRead) readUserRes() {}
 type UserUpdate struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
+	Did       OptString   `json:"did"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	Next      OptString   `json:"next"`
@@ -1448,6 +1515,11 @@ func (s *UserUpdate) GetID() int {
 // GetUsername returns the value of Username.
 func (s *UserUpdate) GetUsername() string {
 	return s.Username
+}
+
+// GetDid returns the value of Did.
+func (s *UserUpdate) GetDid() OptString {
+	return s.Did
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -1473,6 +1545,11 @@ func (s *UserUpdate) SetID(val int) {
 // SetUsername sets the value of Username.
 func (s *UserUpdate) SetUsername(val string) {
 	s.Username = val
+}
+
+// SetDid sets the value of Did.
+func (s *UserUpdate) SetDid(val OptString) {
+	s.Did = val
 }
 
 // SetCreatedAt sets the value of CreatedAt.

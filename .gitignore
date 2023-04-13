@@ -5,3 +5,5 @@ t
 #*.zsh
 tmp/card_limit.zsh
 tmp/card_day.zsh
+tmp/card_delete.zsh
+memo.md

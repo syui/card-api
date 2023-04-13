@@ -13,6 +13,8 @@ const (
 	FieldID = "id"
 	// FieldUsername holds the string denoting the username field in the database.
 	FieldUsername = "username"
+	// FieldDid holds the string denoting the did field in the database.
+	FieldDid = "did"
 	// FieldPassword holds the string denoting the password field in the database.
 	FieldPassword = "password"
 	// FieldCreatedAt holds the string denoting the created_at field in the database.
@@ -38,6 +40,7 @@ const (
 var Columns = []string{
 	FieldID,
 	FieldUsername,
+	FieldDid,
 	FieldPassword,
 	FieldCreatedAt,
 	FieldUpdatedAt,

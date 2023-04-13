@@ -45,6 +45,11 @@ func (Card) Fields() []ent.Field {
 			if card == 15 {
 				card = 1
 			}
+
+			// 2023/04/13 premium card id:16
+			if card == 16 {
+				card = 1
+			}
 			return card
 		}).
 		Optional(),

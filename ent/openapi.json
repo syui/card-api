@@ -30,7 +30,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 255,
+              "maximum": 25500,
               "minimum": 1
             }
           }
@@ -366,7 +366,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 255,
+              "maximum": 2550,
               "minimum": 1
             }
           }
@@ -692,7 +692,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 255,
+              "maximum": 2550,
               "minimum": 1
             }
           }

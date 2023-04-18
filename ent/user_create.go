@@ -41,6 +41,20 @@ func (uc *UserCreate) SetNillableDid(s *string) *UserCreate {
 	return uc
 }
 
+// SetToken sets the "token" field.
+func (uc *UserCreate) SetToken(s string) *UserCreate {
+	uc.mutation.SetToken(s)
+	return uc
+}
+
+// SetNillableToken sets the "token" field if the given value is not nil.
+func (uc *UserCreate) SetNillableToken(s *string) *UserCreate {
+	if s != nil {
+		uc.SetToken(*s)
+	}
+	return uc
+}
+
 // SetPassword sets the "password" field.
 func (uc *UserCreate) SetPassword(s string) *UserCreate {
 	uc.mutation.SetPassword(s)
@@ -204,6 +218,10 @@ func (uc *UserCreate) createSpec() (*User, *sqlgraph.CreateSpec) {
 	if value, ok := uc.mutation.Did(); ok {
 		_spec.SetField(user.FieldDid, field.TypeString, value)
 		_node.Did = value
+	}
+	if value, ok := uc.mutation.Token(); ok {
+		_spec.SetField(user.FieldToken, field.TypeString, value)
+		_node.Token = value
 	}
 	if value, ok := uc.mutation.Password(); ok {
 		_spec.SetField(user.FieldPassword, field.TypeString, value)

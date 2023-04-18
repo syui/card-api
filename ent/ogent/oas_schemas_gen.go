@@ -485,6 +485,7 @@ func (s *CreateGroupReq) SetUsers(val []int) {
 type CreateUserReq struct {
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
+	Token     OptString   `json:"token"`
 	Password  string      `json:"password"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
@@ -500,6 +501,11 @@ func (s *CreateUserReq) GetUsername() string {
 // GetDid returns the value of Did.
 func (s *CreateUserReq) GetDid() OptString {
 	return s.Did
+}
+
+// GetToken returns the value of Token.
+func (s *CreateUserReq) GetToken() OptString {
+	return s.Token
 }
 
 // GetPassword returns the value of Password.
@@ -535,6 +541,11 @@ func (s *CreateUserReq) SetUsername(val string) {
 // SetDid sets the value of Did.
 func (s *CreateUserReq) SetDid(val OptString) {
 	s.Did = val
+}
+
+// SetToken sets the value of Token.
+func (s *CreateUserReq) SetToken(val OptString) {
+	s.Token = val
 }
 
 // SetPassword sets the value of Password.
@@ -1178,9 +1189,15 @@ func (s *UpdateGroupReq) SetUsers(val []int) {
 }
 
 type UpdateUserReq struct {
+	Token     OptString   `json:"token"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	Next      OptString   `json:"next"`
 	Card      []int       `json:"card"`
+}
+
+// GetToken returns the value of Token.
+func (s *UpdateUserReq) GetToken() OptString {
+	return s.Token
 }
 
 // GetUpdatedAt returns the value of UpdatedAt.
@@ -1196,6 +1213,11 @@ func (s *UpdateUserReq) GetNext() OptString {
 // GetCard returns the value of Card.
 func (s *UpdateUserReq) GetCard() []int {
 	return s.Card
+}
+
+// SetToken sets the value of Token.
+func (s *UpdateUserReq) SetToken(val OptString) {
+	s.Token = val
 }
 
 // SetUpdatedAt sets the value of UpdatedAt.

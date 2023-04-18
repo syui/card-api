@@ -16,6 +16,8 @@ import (
 )
 
 var password = os.Getenv("PASS")
+var token = os.Getenv("TOKEN")
+
 var zero = "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
 // OgentHandler implements the ogen generated Handler interface and uses Ent as data layer.
 type OgentHandler struct {
@@ -536,19 +538,26 @@ func (h *OgentHandler) ReadUser(ctx context.Context, params ReadUserParams) (Rea
 // UpdateUser handles PATCH /users/{id} requests.
 func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, params UpdateUserParams) (UpdateUserRes, error) {
 	b := h.client.User.UpdateOneID(params.ID)
-	// Add all fields.
-	if v, ok := req.UpdatedAt.Get(); ok {
-		b.SetUpdatedAt(v)
+
+	if v, ok := req.Token.Get(); ok {
+		if v == token {
+			b.SetToken(v)
+			// Add all fields.
+			if v, ok := req.UpdatedAt.Get(); ok {
+				b.SetUpdatedAt(v)
+			}
+			if v, ok := req.Next.Get(); ok {
+				b.SetNext(v)
+			}
+			// Add all edges.
+			if req.Card != nil {
+				b.ClearCard().AddCardIDs(req.Card...)
+			}
+			// Persist to storage.
+		}
 	}
-	if v, ok := req.Next.Get(); ok {
-		b.SetNext(v)
-	}
-	// Add all edges.
-	if req.Card != nil {
-		b.ClearCard().AddCardIDs(req.Card...)
-	}
-	// Persist to storage.
 	e, err := b.Save(ctx)
+
 	if err != nil {
 		switch {
 		case ent.IsNotFound(err):

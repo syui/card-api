@@ -20,6 +20,8 @@ type User struct {
 	Username string `json:"username,omitempty"`
 	// Did holds the value of the "did" field.
 	Did string `json:"did,omitempty"`
+	// Token holds the value of the "token" field.
+	Token string `json:"-"`
 	// Password holds the value of the "password" field.
 	Password string `json:"-"`
 	// CreatedAt holds the value of the "created_at" field.
@@ -59,7 +61,7 @@ func (*User) scanValues(columns []string) ([]any, error) {
 		switch columns[i] {
 		case user.FieldID:
 			values[i] = new(sql.NullInt64)
-		case user.FieldUsername, user.FieldDid, user.FieldPassword, user.FieldNext:
+		case user.FieldUsername, user.FieldDid, user.FieldToken, user.FieldPassword, user.FieldNext:
 			values[i] = new(sql.NullString)
 		case user.FieldCreatedAt, user.FieldUpdatedAt:
 			values[i] = new(sql.NullTime)
@@ -97,6 +99,12 @@ func (u *User) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field did", values[i])
 			} else if value.Valid {
 				u.Did = value.String
+			}
+		case user.FieldToken:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field token", values[i])
+			} else if value.Valid {
+				u.Token = value.String
 			}
 		case user.FieldPassword:
 			if value, ok := values[i].(*sql.NullString); !ok {
@@ -167,6 +175,8 @@ func (u *User) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("did=")
 	builder.WriteString(u.Did)
+	builder.WriteString(", ")
+	builder.WriteString("token=<sensitive>")
 	builder.WriteString(", ")
 	builder.WriteString("password=<sensitive>")
 	builder.WriteString(", ")

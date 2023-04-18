@@ -29,6 +29,26 @@ func (uu *UserUpdate) Where(ps ...predicate.User) *UserUpdate {
 	return uu
 }
 
+// SetToken sets the "token" field.
+func (uu *UserUpdate) SetToken(s string) *UserUpdate {
+	uu.mutation.SetToken(s)
+	return uu
+}
+
+// SetNillableToken sets the "token" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableToken(s *string) *UserUpdate {
+	if s != nil {
+		uu.SetToken(*s)
+	}
+	return uu
+}
+
+// ClearToken clears the value of the "token" field.
+func (uu *UserUpdate) ClearToken() *UserUpdate {
+	uu.mutation.ClearToken()
+	return uu
+}
+
 // SetUpdatedAt sets the "updated_at" field.
 func (uu *UserUpdate) SetUpdatedAt(t time.Time) *UserUpdate {
 	uu.mutation.SetUpdatedAt(t)
@@ -149,6 +169,12 @@ func (uu *UserUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	if uu.mutation.DidCleared() {
 		_spec.ClearField(user.FieldDid, field.TypeString)
 	}
+	if value, ok := uu.mutation.Token(); ok {
+		_spec.SetField(user.FieldToken, field.TypeString, value)
+	}
+	if uu.mutation.TokenCleared() {
+		_spec.ClearField(user.FieldToken, field.TypeString)
+	}
 	if uu.mutation.CreatedAtCleared() {
 		_spec.ClearField(user.FieldCreatedAt, field.TypeTime)
 	}
@@ -227,6 +253,26 @@ type UserUpdateOne struct {
 	fields   []string
 	hooks    []Hook
 	mutation *UserMutation
+}
+
+// SetToken sets the "token" field.
+func (uuo *UserUpdateOne) SetToken(s string) *UserUpdateOne {
+	uuo.mutation.SetToken(s)
+	return uuo
+}
+
+// SetNillableToken sets the "token" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableToken(s *string) *UserUpdateOne {
+	if s != nil {
+		uuo.SetToken(*s)
+	}
+	return uuo
+}
+
+// ClearToken clears the value of the "token" field.
+func (uuo *UserUpdateOne) ClearToken() *UserUpdateOne {
+	uuo.mutation.ClearToken()
+	return uuo
 }
 
 // SetUpdatedAt sets the "updated_at" field.
@@ -378,6 +424,12 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 	}
 	if uuo.mutation.DidCleared() {
 		_spec.ClearField(user.FieldDid, field.TypeString)
+	}
+	if value, ok := uuo.mutation.Token(); ok {
+		_spec.SetField(user.FieldToken, field.TypeString, value)
+	}
+	if uuo.mutation.TokenCleared() {
+		_spec.ClearField(user.FieldToken, field.TypeString)
 	}
 	if uuo.mutation.CreatedAtCleared() {
 		_spec.ClearField(user.FieldCreatedAt, field.TypeTime)

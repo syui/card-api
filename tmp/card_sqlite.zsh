@@ -3,7 +3,7 @@
 host=https://api.syui.ai
 api=localhost:8080
 
-host_users="$host/users?itemsPerPage=255"
+host_users="$host/users?itemsPerPage=2550"
 d=${0:a:h}
 dd=${0:a:h:h}
 pass=`cat $dd/token.json|jq -r .password`
@@ -43,22 +43,14 @@ do
 
 	name=`echo $data|jq ".[$i]"|jq -r .username`
 	id=`echo $data|jq ".[$i]"|jq -r .id`
-	if [ "$1" = "-s" ];then
-		did
-	else
-		did=`cat $d/user.json|jq -r ".[]|select(.name == \"$name\")|.did"`
-	fi
+	did=`echo $data|jq ".[$i]"|jq -r .did`
+
 	echo "{\"username\":\"$name\", \"password\":\"$pass\",\"did\":\"$did\"} localhost:8080/users"
-	#if [ "$did" = "null" ];then
-	#	echo "{\"username\":\"$name\", \"password\":\"$pass\",\"did\":\"$did\"} localhost:8080/users"
-	#else
-	#	echo "{\"username\":\"$name\", \"password\":\"$pass\"} localhost:8080/users"
-	#fi
 	if [ "$1" = "-a" ];then
 		l_users
 	fi
 
-	data_card=`curl -sL "$host/users/$id/card?itemsPerPage=255"`
+	data_card=`curl -sL "$host/users/$id/card?itemsPerPage=2550"`
 	nn=`echo $data_card|jq length`
 	nn=$((nn - 1))
 

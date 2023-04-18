@@ -39,6 +39,10 @@ func (User) Fields() []ent.Field {
 		Optional().
 		Immutable(),
 
+		field.String("token").
+		Optional().
+		Sensitive(),
+
 		field.String("password").
 		NotEmpty().
 		Immutable().

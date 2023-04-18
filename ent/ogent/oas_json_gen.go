@@ -1291,6 +1291,12 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Token.Set {
+			e.FieldStart("token")
+			s.Token.Encode(e)
+		}
+	}
+	{
 
 		e.FieldStart("password")
 		e.Str(s.Password)
@@ -1325,14 +1331,15 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCreateUserReq = [7]string{
+var jsonFieldsNameOfCreateUserReq = [8]string{
 	0: "username",
 	1: "did",
-	2: "password",
-	3: "created_at",
-	4: "updated_at",
-	5: "next",
-	6: "card",
+	2: "token",
+	3: "password",
+	4: "created_at",
+	5: "updated_at",
+	6: "next",
+	7: "card",
 }
 
 // Decode decodes CreateUserReq from json.
@@ -1366,8 +1373,18 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"did\"")
 			}
+		case "token":
+			if err := func() error {
+				s.Token.Reset()
+				if err := s.Token.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"token\"")
+			}
 		case "password":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.Password = string(v)
@@ -1437,7 +1454,7 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000101,
+		0b00001001,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -3183,6 +3200,12 @@ func (s *UpdateUserReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UpdateUserReq) encodeFields(e *jx.Encoder) {
 	{
+		if s.Token.Set {
+			e.FieldStart("token")
+			s.Token.Encode(e)
+		}
+	}
+	{
 		if s.UpdatedAt.Set {
 			e.FieldStart("updated_at")
 			s.UpdatedAt.Encode(e, json.EncodeDateTime)
@@ -3206,10 +3229,11 @@ func (s *UpdateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUpdateUserReq = [3]string{
-	0: "updated_at",
-	1: "next",
-	2: "card",
+var jsonFieldsNameOfUpdateUserReq = [4]string{
+	0: "token",
+	1: "updated_at",
+	2: "next",
+	3: "card",
 }
 
 // Decode decodes UpdateUserReq from json.
@@ -3220,6 +3244,16 @@ func (s *UpdateUserReq) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "token":
+			if err := func() error {
+				s.Token.Reset()
+				if err := s.Token.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"token\"")
+			}
 		case "updated_at":
 			if err := func() error {
 				s.UpdatedAt.Reset()

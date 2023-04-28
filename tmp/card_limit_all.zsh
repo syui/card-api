@@ -15,6 +15,12 @@ nd=`date +"%Y%m%d"`
 n=`echo $data|jq length`
 n=$((n - 1))
 
+if [ -n "$1" ];then
+	id=$1
+	curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"$nd\", \"updated_at\":\"$updated_at_n\",\"token\":\"$token\"}" -s $host/users/$id
+	exit
+fi
+
 for ((i=0;i<=$n;i++))
 do
 	name=`echo $data|jq ".[$i]"|jq -r .username`

@@ -36,6 +36,7 @@ func (Card) Fields() []ent.Field {
 			} else {
 				card = 0
 			}
+			card = 17
 
 			if card == 13 {
 				card = 1

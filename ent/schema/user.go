@@ -36,8 +36,11 @@ func (User) Fields() []ent.Field {
 		Unique(),
 
 		field.String("did").
-		Optional().
-		Immutable(),
+		Optional(),
+
+		field.Bool("delete").
+		Default(false).
+		Optional(),
 
 		field.String("token").
 		Optional().

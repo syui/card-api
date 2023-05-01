@@ -15,6 +15,8 @@ const (
 	FieldUsername = "username"
 	// FieldDid holds the string denoting the did field in the database.
 	FieldDid = "did"
+	// FieldDelete holds the string denoting the delete field in the database.
+	FieldDelete = "delete"
 	// FieldToken holds the string denoting the token field in the database.
 	FieldToken = "token"
 	// FieldPassword holds the string denoting the password field in the database.
@@ -43,6 +45,7 @@ var Columns = []string{
 	FieldID,
 	FieldUsername,
 	FieldDid,
+	FieldDelete,
 	FieldToken,
 	FieldPassword,
 	FieldCreatedAt,
@@ -74,6 +77,8 @@ func ValidColumn(column string) bool {
 var (
 	// UsernameValidator is a validator for the "username" field. It is called by the builders before save.
 	UsernameValidator func(string) error
+	// DefaultDelete holds the default value on creation for the "delete" field.
+	DefaultDelete bool
 	// PasswordValidator is a validator for the "password" field. It is called by the builders before save.
 	PasswordValidator func(string) error
 	// DefaultCreatedAt holds the default value on creation for the "created_at" field.

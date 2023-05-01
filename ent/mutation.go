@@ -1344,6 +1344,7 @@ type UserMutation struct {
 	id            *int
 	username      *string
 	did           *string
+	delete        *bool
 	token         *string
 	password      *string
 	created_at    *time.Time
@@ -1539,6 +1540,55 @@ func (m *UserMutation) DidCleared() bool {
 func (m *UserMutation) ResetDid() {
 	m.did = nil
 	delete(m.clearedFields, user.FieldDid)
+}
+
+// SetDelete sets the "delete" field.
+func (m *UserMutation) SetDelete(b bool) {
+	m.delete = &b
+}
+
+// Delete returns the value of the "delete" field in the mutation.
+func (m *UserMutation) Delete() (r bool, exists bool) {
+	v := m.delete
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldDelete returns the old "delete" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldDelete(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldDelete is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldDelete requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldDelete: %w", err)
+	}
+	return oldValue.Delete, nil
+}
+
+// ClearDelete clears the value of the "delete" field.
+func (m *UserMutation) ClearDelete() {
+	m.delete = nil
+	m.clearedFields[user.FieldDelete] = struct{}{}
+}
+
+// DeleteCleared returns if the "delete" field was cleared in this mutation.
+func (m *UserMutation) DeleteCleared() bool {
+	_, ok := m.clearedFields[user.FieldDelete]
+	return ok
+}
+
+// ResetDelete resets all changes to the "delete" field.
+func (m *UserMutation) ResetDelete() {
+	m.delete = nil
+	delete(m.clearedFields, user.FieldDelete)
 }
 
 // SetToken sets the "token" field.
@@ -1861,12 +1911,15 @@ func (m *UserMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *UserMutation) Fields() []string {
-	fields := make([]string, 0, 7)
+	fields := make([]string, 0, 8)
 	if m.username != nil {
 		fields = append(fields, user.FieldUsername)
 	}
 	if m.did != nil {
 		fields = append(fields, user.FieldDid)
+	}
+	if m.delete != nil {
+		fields = append(fields, user.FieldDelete)
 	}
 	if m.token != nil {
 		fields = append(fields, user.FieldToken)
@@ -1895,6 +1948,8 @@ func (m *UserMutation) Field(name string) (ent.Value, bool) {
 		return m.Username()
 	case user.FieldDid:
 		return m.Did()
+	case user.FieldDelete:
+		return m.Delete()
 	case user.FieldToken:
 		return m.Token()
 	case user.FieldPassword:
@@ -1918,6 +1973,8 @@ func (m *UserMutation) OldField(ctx context.Context, name string) (ent.Value, er
 		return m.OldUsername(ctx)
 	case user.FieldDid:
 		return m.OldDid(ctx)
+	case user.FieldDelete:
+		return m.OldDelete(ctx)
 	case user.FieldToken:
 		return m.OldToken(ctx)
 	case user.FieldPassword:
@@ -1950,6 +2007,13 @@ func (m *UserMutation) SetField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetDid(v)
+		return nil
+	case user.FieldDelete:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetDelete(v)
 		return nil
 	case user.FieldToken:
 		v, ok := value.(string)
@@ -2019,6 +2083,9 @@ func (m *UserMutation) ClearedFields() []string {
 	if m.FieldCleared(user.FieldDid) {
 		fields = append(fields, user.FieldDid)
 	}
+	if m.FieldCleared(user.FieldDelete) {
+		fields = append(fields, user.FieldDelete)
+	}
 	if m.FieldCleared(user.FieldToken) {
 		fields = append(fields, user.FieldToken)
 	}
@@ -2048,6 +2115,9 @@ func (m *UserMutation) ClearField(name string) error {
 	case user.FieldDid:
 		m.ClearDid()
 		return nil
+	case user.FieldDelete:
+		m.ClearDelete()
+		return nil
 	case user.FieldToken:
 		m.ClearToken()
 		return nil
@@ -2073,6 +2143,9 @@ func (m *UserMutation) ResetField(name string) error {
 		return nil
 	case user.FieldDid:
 		m.ResetDid()
+		return nil
+	case user.FieldDelete:
+		m.ResetDelete()
 		return nil
 	case user.FieldToken:
 		m.ResetToken()

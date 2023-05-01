@@ -30,7 +30,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 3000,
+              "maximum": 3500,
               "minimum": 1
             }
           }
@@ -366,7 +366,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 3000,
+              "maximum": 3500,
               "minimum": 1
             }
           }
@@ -692,7 +692,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 3000,
+              "maximum": 3500,
               "minimum": 1
             }
           }
@@ -744,6 +744,9 @@
                   },
                   "did": {
                     "type": "string"
+                  },
+                  "delete": {
+                    "type": "boolean"
                   },
                   "token": {
                     "type": "string"
@@ -906,6 +909,12 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "did": {
+                    "type": "string"
+                  },
+                  "delete": {
+                    "type": "boolean"
+                  },
                   "token": {
                     "type": "string"
                   },
@@ -1201,6 +1210,9 @@
           "did": {
             "type": "string"
           },
+          "delete": {
+            "type": "boolean"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1315,6 +1327,9 @@
           "did": {
             "type": "string"
           },
+          "delete": {
+            "type": "boolean"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1343,6 +1358,9 @@
           },
           "did": {
             "type": "string"
+          },
+          "delete": {
+            "type": "boolean"
           },
           "token": {
             "type": "string"
@@ -1386,6 +1404,9 @@
           "did": {
             "type": "string"
           },
+          "delete": {
+            "type": "boolean"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1414,6 +1435,9 @@
           },
           "did": {
             "type": "string"
+          },
+          "delete": {
+            "type": "boolean"
           },
           "created_at": {
             "type": "string",
@@ -1444,6 +1468,9 @@
           "did": {
             "type": "string"
           },
+          "delete": {
+            "type": "boolean"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1472,6 +1499,9 @@
           },
           "did": {
             "type": "string"
+          },
+          "delete": {
+            "type": "boolean"
           },
           "created_at": {
             "type": "string",

@@ -29,6 +29,46 @@ func (uu *UserUpdate) Where(ps ...predicate.User) *UserUpdate {
 	return uu
 }
 
+// SetDid sets the "did" field.
+func (uu *UserUpdate) SetDid(s string) *UserUpdate {
+	uu.mutation.SetDid(s)
+	return uu
+}
+
+// SetNillableDid sets the "did" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableDid(s *string) *UserUpdate {
+	if s != nil {
+		uu.SetDid(*s)
+	}
+	return uu
+}
+
+// ClearDid clears the value of the "did" field.
+func (uu *UserUpdate) ClearDid() *UserUpdate {
+	uu.mutation.ClearDid()
+	return uu
+}
+
+// SetDelete sets the "delete" field.
+func (uu *UserUpdate) SetDelete(b bool) *UserUpdate {
+	uu.mutation.SetDelete(b)
+	return uu
+}
+
+// SetNillableDelete sets the "delete" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableDelete(b *bool) *UserUpdate {
+	if b != nil {
+		uu.SetDelete(*b)
+	}
+	return uu
+}
+
+// ClearDelete clears the value of the "delete" field.
+func (uu *UserUpdate) ClearDelete() *UserUpdate {
+	uu.mutation.ClearDelete()
+	return uu
+}
+
 // SetToken sets the "token" field.
 func (uu *UserUpdate) SetToken(s string) *UserUpdate {
 	uu.mutation.SetToken(s)
@@ -166,8 +206,17 @@ func (uu *UserUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			}
 		}
 	}
+	if value, ok := uu.mutation.Did(); ok {
+		_spec.SetField(user.FieldDid, field.TypeString, value)
+	}
 	if uu.mutation.DidCleared() {
 		_spec.ClearField(user.FieldDid, field.TypeString)
+	}
+	if value, ok := uu.mutation.Delete(); ok {
+		_spec.SetField(user.FieldDelete, field.TypeBool, value)
+	}
+	if uu.mutation.DeleteCleared() {
+		_spec.ClearField(user.FieldDelete, field.TypeBool)
 	}
 	if value, ok := uu.mutation.Token(); ok {
 		_spec.SetField(user.FieldToken, field.TypeString, value)
@@ -253,6 +302,46 @@ type UserUpdateOne struct {
 	fields   []string
 	hooks    []Hook
 	mutation *UserMutation
+}
+
+// SetDid sets the "did" field.
+func (uuo *UserUpdateOne) SetDid(s string) *UserUpdateOne {
+	uuo.mutation.SetDid(s)
+	return uuo
+}
+
+// SetNillableDid sets the "did" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableDid(s *string) *UserUpdateOne {
+	if s != nil {
+		uuo.SetDid(*s)
+	}
+	return uuo
+}
+
+// ClearDid clears the value of the "did" field.
+func (uuo *UserUpdateOne) ClearDid() *UserUpdateOne {
+	uuo.mutation.ClearDid()
+	return uuo
+}
+
+// SetDelete sets the "delete" field.
+func (uuo *UserUpdateOne) SetDelete(b bool) *UserUpdateOne {
+	uuo.mutation.SetDelete(b)
+	return uuo
+}
+
+// SetNillableDelete sets the "delete" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableDelete(b *bool) *UserUpdateOne {
+	if b != nil {
+		uuo.SetDelete(*b)
+	}
+	return uuo
+}
+
+// ClearDelete clears the value of the "delete" field.
+func (uuo *UserUpdateOne) ClearDelete() *UserUpdateOne {
+	uuo.mutation.ClearDelete()
+	return uuo
 }
 
 // SetToken sets the "token" field.
@@ -422,8 +511,17 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 			}
 		}
 	}
+	if value, ok := uuo.mutation.Did(); ok {
+		_spec.SetField(user.FieldDid, field.TypeString, value)
+	}
 	if uuo.mutation.DidCleared() {
 		_spec.ClearField(user.FieldDid, field.TypeString)
+	}
+	if value, ok := uuo.mutation.Delete(); ok {
+		_spec.SetField(user.FieldDelete, field.TypeBool, value)
+	}
+	if uuo.mutation.DeleteCleared() {
+		_spec.ClearField(user.FieldDelete, field.TypeBool)
 	}
 	if value, ok := uuo.mutation.Token(); ok {
 		_spec.SetField(user.FieldToken, field.TypeString, value)

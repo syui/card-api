@@ -41,19 +41,23 @@ func (Card) Fields() []ent.Field {
 				card = 2
 			}
 
-			if card == 17 {
-				card = 2
-			}
-				
 			// 2023/04/09 premium card id:15
 			if card == 15 {
 				card = 3
 			}
 
-			// 2023/04/13 premium card id:16
 			if card == 16 {
 				card = 4
 			}
+
+			if card == 17 {
+				card = 5
+			}
+
+			if card == 18 {
+				card = 6
+			}			
+
 			return card
 		}).
 		Optional(),

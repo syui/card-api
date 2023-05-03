@@ -65,6 +65,11 @@ func Card(v int) predicate.Card {
 	return predicate.Card(sql.FieldEQ(FieldCard, v))
 }
 
+// Skill applies equality check predicate on the "skill" field. It's identical to SkillEQ.
+func Skill(v string) predicate.Card {
+	return predicate.Card(sql.FieldEQ(FieldSkill, v))
+}
+
 // Status applies equality check predicate on the "status" field. It's identical to StatusEQ.
 func Status(v string) predicate.Card {
 	return predicate.Card(sql.FieldEQ(FieldStatus, v))
@@ -198,6 +203,81 @@ func CardIsNil() predicate.Card {
 // CardNotNil applies the NotNil predicate on the "card" field.
 func CardNotNil() predicate.Card {
 	return predicate.Card(sql.FieldNotNull(FieldCard))
+}
+
+// SkillEQ applies the EQ predicate on the "skill" field.
+func SkillEQ(v string) predicate.Card {
+	return predicate.Card(sql.FieldEQ(FieldSkill, v))
+}
+
+// SkillNEQ applies the NEQ predicate on the "skill" field.
+func SkillNEQ(v string) predicate.Card {
+	return predicate.Card(sql.FieldNEQ(FieldSkill, v))
+}
+
+// SkillIn applies the In predicate on the "skill" field.
+func SkillIn(vs ...string) predicate.Card {
+	return predicate.Card(sql.FieldIn(FieldSkill, vs...))
+}
+
+// SkillNotIn applies the NotIn predicate on the "skill" field.
+func SkillNotIn(vs ...string) predicate.Card {
+	return predicate.Card(sql.FieldNotIn(FieldSkill, vs...))
+}
+
+// SkillGT applies the GT predicate on the "skill" field.
+func SkillGT(v string) predicate.Card {
+	return predicate.Card(sql.FieldGT(FieldSkill, v))
+}
+
+// SkillGTE applies the GTE predicate on the "skill" field.
+func SkillGTE(v string) predicate.Card {
+	return predicate.Card(sql.FieldGTE(FieldSkill, v))
+}
+
+// SkillLT applies the LT predicate on the "skill" field.
+func SkillLT(v string) predicate.Card {
+	return predicate.Card(sql.FieldLT(FieldSkill, v))
+}
+
+// SkillLTE applies the LTE predicate on the "skill" field.
+func SkillLTE(v string) predicate.Card {
+	return predicate.Card(sql.FieldLTE(FieldSkill, v))
+}
+
+// SkillContains applies the Contains predicate on the "skill" field.
+func SkillContains(v string) predicate.Card {
+	return predicate.Card(sql.FieldContains(FieldSkill, v))
+}
+
+// SkillHasPrefix applies the HasPrefix predicate on the "skill" field.
+func SkillHasPrefix(v string) predicate.Card {
+	return predicate.Card(sql.FieldHasPrefix(FieldSkill, v))
+}
+
+// SkillHasSuffix applies the HasSuffix predicate on the "skill" field.
+func SkillHasSuffix(v string) predicate.Card {
+	return predicate.Card(sql.FieldHasSuffix(FieldSkill, v))
+}
+
+// SkillIsNil applies the IsNil predicate on the "skill" field.
+func SkillIsNil() predicate.Card {
+	return predicate.Card(sql.FieldIsNull(FieldSkill))
+}
+
+// SkillNotNil applies the NotNil predicate on the "skill" field.
+func SkillNotNil() predicate.Card {
+	return predicate.Card(sql.FieldNotNull(FieldSkill))
+}
+
+// SkillEqualFold applies the EqualFold predicate on the "skill" field.
+func SkillEqualFold(v string) predicate.Card {
+	return predicate.Card(sql.FieldEqualFold(FieldSkill, v))
+}
+
+// SkillContainsFold applies the ContainsFold predicate on the "skill" field.
+func SkillContainsFold(v string) predicate.Card {
+	return predicate.Card(sql.FieldContainsFold(FieldSkill, v))
 }
 
 // StatusEQ applies the EQ predicate on the "status" field.

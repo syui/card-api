@@ -40,6 +40,7 @@ type CardMutation struct {
 	password      *string
 	card          *int
 	addcard       *int
+	skill         *string
 	status        *string
 	cp            *int
 	addcp         *int
@@ -255,6 +256,55 @@ func (m *CardMutation) ResetCard() {
 	m.card = nil
 	m.addcard = nil
 	delete(m.clearedFields, card.FieldCard)
+}
+
+// SetSkill sets the "skill" field.
+func (m *CardMutation) SetSkill(s string) {
+	m.skill = &s
+}
+
+// Skill returns the value of the "skill" field in the mutation.
+func (m *CardMutation) Skill() (r string, exists bool) {
+	v := m.skill
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldSkill returns the old "skill" field's value of the Card entity.
+// If the Card object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *CardMutation) OldSkill(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldSkill is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldSkill requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldSkill: %w", err)
+	}
+	return oldValue.Skill, nil
+}
+
+// ClearSkill clears the value of the "skill" field.
+func (m *CardMutation) ClearSkill() {
+	m.skill = nil
+	m.clearedFields[card.FieldSkill] = struct{}{}
+}
+
+// SkillCleared returns if the "skill" field was cleared in this mutation.
+func (m *CardMutation) SkillCleared() bool {
+	_, ok := m.clearedFields[card.FieldSkill]
+	return ok
+}
+
+// ResetSkill resets all changes to the "skill" field.
+func (m *CardMutation) ResetSkill() {
+	m.skill = nil
+	delete(m.clearedFields, card.FieldSkill)
 }
 
 // SetStatus sets the "status" field.
@@ -547,12 +597,15 @@ func (m *CardMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *CardMutation) Fields() []string {
-	fields := make([]string, 0, 6)
+	fields := make([]string, 0, 7)
 	if m.password != nil {
 		fields = append(fields, card.FieldPassword)
 	}
 	if m.card != nil {
 		fields = append(fields, card.FieldCard)
+	}
+	if m.skill != nil {
+		fields = append(fields, card.FieldSkill)
 	}
 	if m.status != nil {
 		fields = append(fields, card.FieldStatus)
@@ -578,6 +631,8 @@ func (m *CardMutation) Field(name string) (ent.Value, bool) {
 		return m.Password()
 	case card.FieldCard:
 		return m.Card()
+	case card.FieldSkill:
+		return m.Skill()
 	case card.FieldStatus:
 		return m.Status()
 	case card.FieldCp:
@@ -599,6 +654,8 @@ func (m *CardMutation) OldField(ctx context.Context, name string) (ent.Value, er
 		return m.OldPassword(ctx)
 	case card.FieldCard:
 		return m.OldCard(ctx)
+	case card.FieldSkill:
+		return m.OldSkill(ctx)
 	case card.FieldStatus:
 		return m.OldStatus(ctx)
 	case card.FieldCp:
@@ -629,6 +686,13 @@ func (m *CardMutation) SetField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetCard(v)
+		return nil
+	case card.FieldSkill:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetSkill(v)
 		return nil
 	case card.FieldStatus:
 		v, ok := value.(string)
@@ -718,6 +782,9 @@ func (m *CardMutation) ClearedFields() []string {
 	if m.FieldCleared(card.FieldCard) {
 		fields = append(fields, card.FieldCard)
 	}
+	if m.FieldCleared(card.FieldSkill) {
+		fields = append(fields, card.FieldSkill)
+	}
 	if m.FieldCleared(card.FieldStatus) {
 		fields = append(fields, card.FieldStatus)
 	}
@@ -747,6 +814,9 @@ func (m *CardMutation) ClearField(name string) error {
 	case card.FieldCard:
 		m.ClearCard()
 		return nil
+	case card.FieldSkill:
+		m.ClearSkill()
+		return nil
 	case card.FieldStatus:
 		m.ClearStatus()
 		return nil
@@ -772,6 +842,9 @@ func (m *CardMutation) ResetField(name string) error {
 		return nil
 	case card.FieldCard:
 		m.ResetCard()
+		return nil
+	case card.FieldSkill:
+		m.ResetSkill()
 		return nil
 	case card.FieldStatus:
 		m.ResetStatus()

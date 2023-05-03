@@ -15,6 +15,8 @@ const (
 	FieldPassword = "password"
 	// FieldCard holds the string denoting the card field in the database.
 	FieldCard = "card"
+	// FieldSkill holds the string denoting the skill field in the database.
+	FieldSkill = "skill"
 	// FieldStatus holds the string denoting the status field in the database.
 	FieldStatus = "status"
 	// FieldCp holds the string denoting the cp field in the database.
@@ -41,6 +43,7 @@ var Columns = []string{
 	FieldID,
 	FieldPassword,
 	FieldCard,
+	FieldSkill,
 	FieldStatus,
 	FieldCp,
 	FieldURL,
@@ -73,6 +76,8 @@ var (
 	PasswordValidator func(string) error
 	// DefaultCard holds the default value on creation for the "card" field.
 	DefaultCard func() int
+	// DefaultSkill holds the default value on creation for the "skill" field.
+	DefaultSkill func() string
 	// DefaultStatus holds the default value on creation for the "status" field.
 	DefaultStatus func() string
 	// DefaultCp holds the default value on creation for the "cp" field.

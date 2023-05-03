@@ -12,6 +12,7 @@ import (
 type CardCreate struct {
 	ID        int         `json:"id"`
 	Card      OptInt      `json:"card"`
+	Skill     OptString   `json:"skill"`
 	Status    OptString   `json:"status"`
 	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
@@ -26,6 +27,11 @@ func (s *CardCreate) GetID() int {
 // GetCard returns the value of Card.
 func (s *CardCreate) GetCard() OptInt {
 	return s.Card
+}
+
+// GetSkill returns the value of Skill.
+func (s *CardCreate) GetSkill() OptString {
+	return s.Skill
 }
 
 // GetStatus returns the value of Status.
@@ -58,6 +64,11 @@ func (s *CardCreate) SetCard(val OptInt) {
 	s.Card = val
 }
 
+// SetSkill sets the value of Skill.
+func (s *CardCreate) SetSkill(val OptString) {
+	s.Skill = val
+}
+
 // SetStatus sets the value of Status.
 func (s *CardCreate) SetStatus(val OptString) {
 	s.Status = val
@@ -84,6 +95,7 @@ func (*CardCreate) createCardRes() {}
 type CardList struct {
 	ID        int         `json:"id"`
 	Card      OptInt      `json:"card"`
+	Skill     OptString   `json:"skill"`
 	Status    OptString   `json:"status"`
 	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
@@ -98,6 +110,11 @@ func (s *CardList) GetID() int {
 // GetCard returns the value of Card.
 func (s *CardList) GetCard() OptInt {
 	return s.Card
+}
+
+// GetSkill returns the value of Skill.
+func (s *CardList) GetSkill() OptString {
+	return s.Skill
 }
 
 // GetStatus returns the value of Status.
@@ -128,6 +145,11 @@ func (s *CardList) SetID(val int) {
 // SetCard sets the value of Card.
 func (s *CardList) SetCard(val OptInt) {
 	s.Card = val
+}
+
+// SetSkill sets the value of Skill.
+func (s *CardList) SetSkill(val OptString) {
+	s.Skill = val
 }
 
 // SetStatus sets the value of Status.
@@ -237,6 +259,7 @@ func (*CardOwnerRead) readCardOwnerRes() {}
 type CardRead struct {
 	ID        int         `json:"id"`
 	Card      OptInt      `json:"card"`
+	Skill     OptString   `json:"skill"`
 	Status    OptString   `json:"status"`
 	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
@@ -251,6 +274,11 @@ func (s *CardRead) GetID() int {
 // GetCard returns the value of Card.
 func (s *CardRead) GetCard() OptInt {
 	return s.Card
+}
+
+// GetSkill returns the value of Skill.
+func (s *CardRead) GetSkill() OptString {
+	return s.Skill
 }
 
 // GetStatus returns the value of Status.
@@ -283,6 +311,11 @@ func (s *CardRead) SetCard(val OptInt) {
 	s.Card = val
 }
 
+// SetSkill sets the value of Skill.
+func (s *CardRead) SetSkill(val OptString) {
+	s.Skill = val
+}
+
 // SetStatus sets the value of Status.
 func (s *CardRead) SetStatus(val OptString) {
 	s.Status = val
@@ -309,6 +342,7 @@ func (*CardRead) readCardRes() {}
 type CardUpdate struct {
 	ID        int         `json:"id"`
 	Card      OptInt      `json:"card"`
+	Skill     OptString   `json:"skill"`
 	Status    OptString   `json:"status"`
 	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
@@ -323,6 +357,11 @@ func (s *CardUpdate) GetID() int {
 // GetCard returns the value of Card.
 func (s *CardUpdate) GetCard() OptInt {
 	return s.Card
+}
+
+// GetSkill returns the value of Skill.
+func (s *CardUpdate) GetSkill() OptString {
+	return s.Skill
 }
 
 // GetStatus returns the value of Status.
@@ -355,6 +394,11 @@ func (s *CardUpdate) SetCard(val OptInt) {
 	s.Card = val
 }
 
+// SetSkill sets the value of Skill.
+func (s *CardUpdate) SetSkill(val OptString) {
+	s.Skill = val
+}
+
 // SetStatus sets the value of Status.
 func (s *CardUpdate) SetStatus(val OptString) {
 	s.Status = val
@@ -380,6 +424,7 @@ func (*CardUpdate) updateCardRes() {}
 type CreateCardReq struct {
 	Password  string      `json:"password"`
 	Card      OptInt      `json:"card"`
+	Skill     OptString   `json:"skill"`
 	Status    OptString   `json:"status"`
 	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
@@ -395,6 +440,11 @@ func (s *CreateCardReq) GetPassword() string {
 // GetCard returns the value of Card.
 func (s *CreateCardReq) GetCard() OptInt {
 	return s.Card
+}
+
+// GetSkill returns the value of Skill.
+func (s *CreateCardReq) GetSkill() OptString {
+	return s.Skill
 }
 
 // GetStatus returns the value of Status.
@@ -430,6 +480,11 @@ func (s *CreateCardReq) SetPassword(val string) {
 // SetCard sets the value of Card.
 func (s *CreateCardReq) SetCard(val OptInt) {
 	s.Card = val
+}
+
+// SetSkill sets the value of Skill.
+func (s *CreateCardReq) SetSkill(val OptString) {
+	s.Skill = val
 }
 
 // SetStatus sets the value of Status.
@@ -1229,12 +1284,23 @@ func (*R500) updateGroupRes()    {}
 func (*R500) updateUserRes()     {}
 
 type UpdateCardReq struct {
-	Owner OptInt `json:"owner"`
+	Skill OptString `json:"skill"`
+	Owner OptInt    `json:"owner"`
+}
+
+// GetSkill returns the value of Skill.
+func (s *UpdateCardReq) GetSkill() OptString {
+	return s.Skill
 }
 
 // GetOwner returns the value of Owner.
 func (s *UpdateCardReq) GetOwner() OptInt {
 	return s.Owner
+}
+
+// SetSkill sets the value of Skill.
+func (s *UpdateCardReq) SetSkill(val OptString) {
+	s.Skill = val
 }
 
 // SetOwner sets the value of Owner.
@@ -1340,6 +1406,7 @@ func (s *UpdateUserReq) SetCard(val []int) {
 type UserCardList struct {
 	ID        int         `json:"id"`
 	Card      OptInt      `json:"card"`
+	Skill     OptString   `json:"skill"`
 	Status    OptString   `json:"status"`
 	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
@@ -1354,6 +1421,11 @@ func (s *UserCardList) GetID() int {
 // GetCard returns the value of Card.
 func (s *UserCardList) GetCard() OptInt {
 	return s.Card
+}
+
+// GetSkill returns the value of Skill.
+func (s *UserCardList) GetSkill() OptString {
+	return s.Skill
 }
 
 // GetStatus returns the value of Status.
@@ -1384,6 +1456,11 @@ func (s *UserCardList) SetID(val int) {
 // SetCard sets the value of Card.
 func (s *UserCardList) SetCard(val OptInt) {
 	s.Card = val
+}
+
+// SetSkill sets the value of Skill.
+func (s *UserCardList) SetSkill(val OptString) {
+	s.Skill = val
 }
 
 // SetStatus sets the value of Status.

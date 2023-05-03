@@ -16,6 +16,7 @@ var url = "https://card.syui.ai"
 
 var card int
 var super string
+var skill string
 var cp int
 
 func (Card) Fields() []ent.Field {
@@ -59,6 +60,22 @@ func (Card) Fields() []ent.Field {
 			}			
 
 			return card
+		}).
+		Optional(),
+
+		field.String("skill").
+		DefaultFunc(func() string {
+			rand.Seed(time.Now().UnixNano())
+			var a = rand.Intn(12)
+			if a == 1 {
+				skill = "critical"
+			} else {
+				skill = "normal"
+			}
+			if card == 0 {
+				skill = "normal"
+			}
+			return skill
 		}).
 		Optional(),
 

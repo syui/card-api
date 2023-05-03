@@ -24,20 +24,24 @@ func init() {
 	cardDescCard := cardFields[1].Descriptor()
 	// card.DefaultCard holds the default value on creation for the card field.
 	card.DefaultCard = cardDescCard.Default.(func() int)
+	// cardDescSkill is the schema descriptor for skill field.
+	cardDescSkill := cardFields[2].Descriptor()
+	// card.DefaultSkill holds the default value on creation for the skill field.
+	card.DefaultSkill = cardDescSkill.Default.(func() string)
 	// cardDescStatus is the schema descriptor for status field.
-	cardDescStatus := cardFields[2].Descriptor()
+	cardDescStatus := cardFields[3].Descriptor()
 	// card.DefaultStatus holds the default value on creation for the status field.
 	card.DefaultStatus = cardDescStatus.Default.(func() string)
 	// cardDescCp is the schema descriptor for cp field.
-	cardDescCp := cardFields[3].Descriptor()
+	cardDescCp := cardFields[4].Descriptor()
 	// card.DefaultCp holds the default value on creation for the cp field.
 	card.DefaultCp = cardDescCp.Default.(func() int)
 	// cardDescURL is the schema descriptor for url field.
-	cardDescURL := cardFields[4].Descriptor()
+	cardDescURL := cardFields[5].Descriptor()
 	// card.DefaultURL holds the default value on creation for the url field.
 	card.DefaultURL = cardDescURL.Default.(string)
 	// cardDescCreatedAt is the schema descriptor for created_at field.
-	cardDescCreatedAt := cardFields[5].Descriptor()
+	cardDescCreatedAt := cardFields[6].Descriptor()
 	// card.DefaultCreatedAt holds the default value on creation for the created_at field.
 	card.DefaultCreatedAt = cardDescCreatedAt.Default.(func() time.Time)
 	groupFields := schema.Group{}.Fields()

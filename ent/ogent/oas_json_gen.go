@@ -35,6 +35,12 @@ func (s *CardCreate) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Skill.Set {
+			e.FieldStart("skill")
+			s.Skill.Encode(e)
+		}
+	}
+	{
 		if s.Status.Set {
 			e.FieldStart("status")
 			s.Status.Encode(e)
@@ -60,13 +66,14 @@ func (s *CardCreate) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCardCreate = [6]string{
+var jsonFieldsNameOfCardCreate = [7]string{
 	0: "id",
 	1: "card",
-	2: "status",
-	3: "cp",
-	4: "url",
-	5: "created_at",
+	2: "skill",
+	3: "status",
+	4: "cp",
+	5: "url",
+	6: "created_at",
 }
 
 // Decode decodes CardCreate from json.
@@ -99,6 +106,16 @@ func (s *CardCreate) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"card\"")
+			}
+		case "skill":
+			if err := func() error {
+				s.Skill.Reset()
+				if err := s.Skill.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"skill\"")
 			}
 		case "status":
 			if err := func() error {
@@ -217,6 +234,12 @@ func (s *CardList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Skill.Set {
+			e.FieldStart("skill")
+			s.Skill.Encode(e)
+		}
+	}
+	{
 		if s.Status.Set {
 			e.FieldStart("status")
 			s.Status.Encode(e)
@@ -242,13 +265,14 @@ func (s *CardList) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCardList = [6]string{
+var jsonFieldsNameOfCardList = [7]string{
 	0: "id",
 	1: "card",
-	2: "status",
-	3: "cp",
-	4: "url",
-	5: "created_at",
+	2: "skill",
+	3: "status",
+	4: "cp",
+	5: "url",
+	6: "created_at",
 }
 
 // Decode decodes CardList from json.
@@ -281,6 +305,16 @@ func (s *CardList) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"card\"")
+			}
+		case "skill":
+			if err := func() error {
+				s.Skill.Reset()
+				if err := s.Skill.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"skill\"")
 			}
 		case "status":
 			if err := func() error {
@@ -599,6 +633,12 @@ func (s *CardRead) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Skill.Set {
+			e.FieldStart("skill")
+			s.Skill.Encode(e)
+		}
+	}
+	{
 		if s.Status.Set {
 			e.FieldStart("status")
 			s.Status.Encode(e)
@@ -624,13 +664,14 @@ func (s *CardRead) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCardRead = [6]string{
+var jsonFieldsNameOfCardRead = [7]string{
 	0: "id",
 	1: "card",
-	2: "status",
-	3: "cp",
-	4: "url",
-	5: "created_at",
+	2: "skill",
+	3: "status",
+	4: "cp",
+	5: "url",
+	6: "created_at",
 }
 
 // Decode decodes CardRead from json.
@@ -663,6 +704,16 @@ func (s *CardRead) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"card\"")
+			}
+		case "skill":
+			if err := func() error {
+				s.Skill.Reset()
+				if err := s.Skill.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"skill\"")
 			}
 		case "status":
 			if err := func() error {
@@ -781,6 +832,12 @@ func (s *CardUpdate) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Skill.Set {
+			e.FieldStart("skill")
+			s.Skill.Encode(e)
+		}
+	}
+	{
 		if s.Status.Set {
 			e.FieldStart("status")
 			s.Status.Encode(e)
@@ -806,13 +863,14 @@ func (s *CardUpdate) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCardUpdate = [6]string{
+var jsonFieldsNameOfCardUpdate = [7]string{
 	0: "id",
 	1: "card",
-	2: "status",
-	3: "cp",
-	4: "url",
-	5: "created_at",
+	2: "skill",
+	3: "status",
+	4: "cp",
+	5: "url",
+	6: "created_at",
 }
 
 // Decode decodes CardUpdate from json.
@@ -845,6 +903,16 @@ func (s *CardUpdate) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"card\"")
+			}
+		case "skill":
+			if err := func() error {
+				s.Skill.Reset()
+				if err := s.Skill.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"skill\"")
 			}
 		case "status":
 			if err := func() error {
@@ -963,6 +1031,12 @@ func (s *CreateCardReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Skill.Set {
+			e.FieldStart("skill")
+			s.Skill.Encode(e)
+		}
+	}
+	{
 		if s.Status.Set {
 			e.FieldStart("status")
 			s.Status.Encode(e)
@@ -993,14 +1067,15 @@ func (s *CreateCardReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCreateCardReq = [7]string{
+var jsonFieldsNameOfCreateCardReq = [8]string{
 	0: "password",
 	1: "card",
-	2: "status",
-	3: "cp",
-	4: "url",
-	5: "created_at",
-	6: "owner",
+	2: "skill",
+	3: "status",
+	4: "cp",
+	5: "url",
+	6: "created_at",
+	7: "owner",
 }
 
 // Decode decodes CreateCardReq from json.
@@ -1033,6 +1108,16 @@ func (s *CreateCardReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"card\"")
+			}
+		case "skill":
+			if err := func() error {
+				s.Skill.Reset()
+				if err := s.Skill.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"skill\"")
 			}
 		case "status":
 			if err := func() error {
@@ -1075,7 +1160,7 @@ func (s *CreateCardReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"created_at\"")
 			}
 		case "owner":
-			requiredBitSet[0] |= 1 << 6
+			requiredBitSet[0] |= 1 << 7
 			if err := func() error {
 				v, err := d.Int()
 				s.Owner = int(v)
@@ -1096,7 +1181,7 @@ func (s *CreateCardReq) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b01000001,
+		0b10000001,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -3131,6 +3216,12 @@ func (s *UpdateCardReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UpdateCardReq) encodeFields(e *jx.Encoder) {
 	{
+		if s.Skill.Set {
+			e.FieldStart("skill")
+			s.Skill.Encode(e)
+		}
+	}
+	{
 		if s.Owner.Set {
 			e.FieldStart("owner")
 			s.Owner.Encode(e)
@@ -3138,8 +3229,9 @@ func (s *UpdateCardReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUpdateCardReq = [1]string{
-	0: "owner",
+var jsonFieldsNameOfUpdateCardReq = [2]string{
+	0: "skill",
+	1: "owner",
 }
 
 // Decode decodes UpdateCardReq from json.
@@ -3150,6 +3242,16 @@ func (s *UpdateCardReq) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "skill":
+			if err := func() error {
+				s.Skill.Reset()
+				if err := s.Skill.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"skill\"")
+			}
 		case "owner":
 			if err := func() error {
 				s.Owner.Reset()
@@ -3459,6 +3561,12 @@ func (s *UserCardList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Skill.Set {
+			e.FieldStart("skill")
+			s.Skill.Encode(e)
+		}
+	}
+	{
 		if s.Status.Set {
 			e.FieldStart("status")
 			s.Status.Encode(e)
@@ -3484,13 +3592,14 @@ func (s *UserCardList) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserCardList = [6]string{
+var jsonFieldsNameOfUserCardList = [7]string{
 	0: "id",
 	1: "card",
-	2: "status",
-	3: "cp",
-	4: "url",
-	5: "created_at",
+	2: "skill",
+	3: "status",
+	4: "cp",
+	5: "url",
+	6: "created_at",
 }
 
 // Decode decodes UserCardList from json.
@@ -3523,6 +3632,16 @@ func (s *UserCardList) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"card\"")
+			}
+		case "skill":
+			if err := func() error {
+				s.Skill.Reset()
+				if err := s.Skill.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"skill\"")
 			}
 		case "status":
 			if err := func() error {

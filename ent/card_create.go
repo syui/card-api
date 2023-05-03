@@ -41,6 +41,20 @@ func (cc *CardCreate) SetNillableCard(i *int) *CardCreate {
 	return cc
 }
 
+// SetSkill sets the "skill" field.
+func (cc *CardCreate) SetSkill(s string) *CardCreate {
+	cc.mutation.SetSkill(s)
+	return cc
+}
+
+// SetNillableSkill sets the "skill" field if the given value is not nil.
+func (cc *CardCreate) SetNillableSkill(s *string) *CardCreate {
+	if s != nil {
+		cc.SetSkill(*s)
+	}
+	return cc
+}
+
 // SetStatus sets the "status" field.
 func (cc *CardCreate) SetStatus(s string) *CardCreate {
 	cc.mutation.SetStatus(s)
@@ -147,6 +161,10 @@ func (cc *CardCreate) defaults() {
 		v := card.DefaultCard()
 		cc.mutation.SetCard(v)
 	}
+	if _, ok := cc.mutation.Skill(); !ok {
+		v := card.DefaultSkill()
+		cc.mutation.SetSkill(v)
+	}
 	if _, ok := cc.mutation.Status(); !ok {
 		v := card.DefaultStatus()
 		cc.mutation.SetStatus(v)
@@ -211,6 +229,10 @@ func (cc *CardCreate) createSpec() (*Card, *sqlgraph.CreateSpec) {
 	if value, ok := cc.mutation.Card(); ok {
 		_spec.SetField(card.FieldCard, field.TypeInt, value)
 		_node.Card = value
+	}
+	if value, ok := cc.mutation.Skill(); ok {
+		_spec.SetField(card.FieldSkill, field.TypeString, value)
+		_node.Skill = value
 	}
 	if value, ok := cc.mutation.Status(); ok {
 		_spec.SetField(card.FieldStatus, field.TypeString, value)

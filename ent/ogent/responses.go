@@ -11,6 +11,7 @@ func NewCardCreate(e *ent.Card) *CardCreate {
 	var ret CardCreate
 	ret.ID = e.ID
 	ret.Card = NewOptInt(e.Card)
+	ret.Skill = NewOptString(e.Skill)
 	ret.Status = NewOptString(e.Status)
 	ret.Cp = NewOptInt(e.Cp)
 	ret.URL = NewOptString(e.URL)
@@ -43,6 +44,7 @@ func NewCardList(e *ent.Card) *CardList {
 	var ret CardList
 	ret.ID = e.ID
 	ret.Card = NewOptInt(e.Card)
+	ret.Skill = NewOptString(e.Skill)
 	ret.Status = NewOptString(e.Status)
 	ret.Cp = NewOptInt(e.Cp)
 	ret.URL = NewOptString(e.URL)
@@ -75,6 +77,7 @@ func NewCardRead(e *ent.Card) *CardRead {
 	var ret CardRead
 	ret.ID = e.ID
 	ret.Card = NewOptInt(e.Card)
+	ret.Skill = NewOptString(e.Skill)
 	ret.Status = NewOptString(e.Status)
 	ret.Cp = NewOptInt(e.Cp)
 	ret.URL = NewOptString(e.URL)
@@ -107,6 +110,7 @@ func NewCardUpdate(e *ent.Card) *CardUpdate {
 	var ret CardUpdate
 	ret.ID = e.ID
 	ret.Card = NewOptInt(e.Card)
+	ret.Skill = NewOptString(e.Skill)
 	ret.Status = NewOptString(e.Status)
 	ret.Cp = NewOptInt(e.Cp)
 	ret.URL = NewOptString(e.URL)
@@ -449,6 +453,7 @@ func NewUserCardList(e *ent.Card) *UserCardList {
 	var ret UserCardList
 	ret.ID = e.ID
 	ret.Card = NewOptInt(e.Card)
+	ret.Skill = NewOptString(e.Skill)
 	ret.Status = NewOptString(e.Status)
 	ret.Cp = NewOptInt(e.Cp)
 	ret.URL = NewOptString(e.URL)

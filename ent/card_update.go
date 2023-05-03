@@ -28,6 +28,26 @@ func (cu *CardUpdate) Where(ps ...predicate.Card) *CardUpdate {
 	return cu
 }
 
+// SetSkill sets the "skill" field.
+func (cu *CardUpdate) SetSkill(s string) *CardUpdate {
+	cu.mutation.SetSkill(s)
+	return cu
+}
+
+// SetNillableSkill sets the "skill" field if the given value is not nil.
+func (cu *CardUpdate) SetNillableSkill(s *string) *CardUpdate {
+	if s != nil {
+		cu.SetSkill(*s)
+	}
+	return cu
+}
+
+// ClearSkill clears the value of the "skill" field.
+func (cu *CardUpdate) ClearSkill() *CardUpdate {
+	cu.mutation.ClearSkill()
+	return cu
+}
+
 // SetOwnerID sets the "owner" edge to the User entity by ID.
 func (cu *CardUpdate) SetOwnerID(id int) *CardUpdate {
 	cu.mutation.SetOwnerID(id)
@@ -100,6 +120,12 @@ func (cu *CardUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	if cu.mutation.CardCleared() {
 		_spec.ClearField(card.FieldCard, field.TypeInt)
 	}
+	if value, ok := cu.mutation.Skill(); ok {
+		_spec.SetField(card.FieldSkill, field.TypeString, value)
+	}
+	if cu.mutation.SkillCleared() {
+		_spec.ClearField(card.FieldSkill, field.TypeString)
+	}
 	if cu.mutation.StatusCleared() {
 		_spec.ClearField(card.FieldStatus, field.TypeString)
 	}
@@ -159,6 +185,26 @@ type CardUpdateOne struct {
 	fields   []string
 	hooks    []Hook
 	mutation *CardMutation
+}
+
+// SetSkill sets the "skill" field.
+func (cuo *CardUpdateOne) SetSkill(s string) *CardUpdateOne {
+	cuo.mutation.SetSkill(s)
+	return cuo
+}
+
+// SetNillableSkill sets the "skill" field if the given value is not nil.
+func (cuo *CardUpdateOne) SetNillableSkill(s *string) *CardUpdateOne {
+	if s != nil {
+		cuo.SetSkill(*s)
+	}
+	return cuo
+}
+
+// ClearSkill clears the value of the "skill" field.
+func (cuo *CardUpdateOne) ClearSkill() *CardUpdateOne {
+	cuo.mutation.ClearSkill()
+	return cuo
 }
 
 // SetOwnerID sets the "owner" edge to the User entity by ID.
@@ -262,6 +308,12 @@ func (cuo *CardUpdateOne) sqlSave(ctx context.Context) (_node *Card, err error) 
 	}
 	if cuo.mutation.CardCleared() {
 		_spec.ClearField(card.FieldCard, field.TypeInt)
+	}
+	if value, ok := cuo.mutation.Skill(); ok {
+		_spec.SetField(card.FieldSkill, field.TypeString, value)
+	}
+	if cuo.mutation.SkillCleared() {
+		_spec.ClearField(card.FieldSkill, field.TypeString)
 	}
 	if cuo.mutation.StatusCleared() {
 		_spec.ClearField(card.FieldStatus, field.TypeString)

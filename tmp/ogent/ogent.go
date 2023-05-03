@@ -54,6 +54,9 @@ func (h *OgentHandler) CreateCard(ctx context.Context, req *CreateCardReq) (Crea
 	if v, ok := req.CreatedAt.Get(); ok {
 		b.SetCreatedAt(v)
 	}
+	if v, ok := req.Skill.Get(); ok {
+		b.SetSkill(v)
+	}
 	// Add all edges.
 
 	if req.Password == password {

@@ -83,6 +83,9 @@
                   "card": {
                     "type": "integer"
                   },
+                  "skill": {
+                    "type": "string"
+                  },
                   "status": {
                     "type": "string"
                   },
@@ -237,6 +240,9 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "skill": {
+                    "type": "string"
+                  },
                   "owner": {
                     "type": "integer"
                   }
@@ -1067,6 +1073,9 @@
           "card": {
             "type": "integer"
           },
+          "skill": {
+            "type": "string"
+          },
           "status": {
             "type": "string"
           },
@@ -1099,6 +1108,9 @@
           "card": {
             "type": "integer"
           },
+          "skill": {
+            "type": "string"
+          },
           "status": {
             "type": "string"
           },
@@ -1125,6 +1137,9 @@
           },
           "card": {
             "type": "integer"
+          },
+          "skill": {
+            "type": "string"
           },
           "status": {
             "type": "string"
@@ -1153,6 +1168,9 @@
           "card": {
             "type": "integer"
           },
+          "skill": {
+            "type": "string"
+          },
           "status": {
             "type": "string"
           },
@@ -1179,6 +1197,9 @@
           },
           "card": {
             "type": "integer"
+          },
+          "skill": {
+            "type": "string"
           },
           "status": {
             "type": "string"
@@ -1528,6 +1549,9 @@
           },
           "card": {
             "type": "integer"
+          },
+          "skill": {
+            "type": "string"
           },
           "status": {
             "type": "string"

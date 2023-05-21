@@ -111,6 +111,14 @@ func (Card) Fields() []ent.Field {
 				cp = 300 + cp + rand.Intn(500)
 			}
 
+			if skill == "critical" {
+				cp = 300 + cp + rand.Intn(500)
+			}
+
+			if card == 22 {
+				cp = 800 + cp + rand.Intn(1500)
+			}
+
 			return cp
 		}).
 		Optional(),

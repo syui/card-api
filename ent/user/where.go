@@ -90,6 +90,81 @@ func UpdatedAt(v time.Time) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldUpdatedAt, v))
 }
 
+// RaidAt applies equality check predicate on the "raid_at" field. It's identical to RaidAtEQ.
+func RaidAt(v time.Time) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldRaidAt, v))
+}
+
+// Luck applies equality check predicate on the "luck" field. It's identical to LuckEQ.
+func Luck(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldLuck, v))
+}
+
+// LuckAt applies equality check predicate on the "luck_at" field. It's identical to LuckAtEQ.
+func LuckAt(v time.Time) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldLuckAt, v))
+}
+
+// Like applies equality check predicate on the "like" field. It's identical to LikeEQ.
+func Like(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldLike, v))
+}
+
+// LikeRank applies equality check predicate on the "like_rank" field. It's identical to LikeRankEQ.
+func LikeRank(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldLikeRank, v))
+}
+
+// LikeAt applies equality check predicate on the "like_at" field. It's identical to LikeAtEQ.
+func LikeAt(v time.Time) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldLikeAt, v))
+}
+
+// Ten applies equality check predicate on the "ten" field. It's identical to TenEQ.
+func Ten(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldTen, v))
+}
+
+// TenSu applies equality check predicate on the "ten_su" field. It's identical to TenSuEQ.
+func TenSu(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldTenSu, v))
+}
+
+// TenKai applies equality check predicate on the "ten_kai" field. It's identical to TenKaiEQ.
+func TenKai(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldTenKai, v))
+}
+
+// Aiten applies equality check predicate on the "aiten" field. It's identical to AitenEQ.
+func Aiten(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldAiten, v))
+}
+
+// TenCard applies equality check predicate on the "ten_card" field. It's identical to TenCardEQ.
+func TenCard(v string) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldTenCard, v))
+}
+
+// TenDelete applies equality check predicate on the "ten_delete" field. It's identical to TenDeleteEQ.
+func TenDelete(v string) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldTenDelete, v))
+}
+
+// TenPost applies equality check predicate on the "ten_post" field. It's identical to TenPostEQ.
+func TenPost(v string) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldTenPost, v))
+}
+
+// TenGet applies equality check predicate on the "ten_get" field. It's identical to TenGetEQ.
+func TenGet(v string) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldTenGet, v))
+}
+
+// TenAt applies equality check predicate on the "ten_at" field. It's identical to TenAtEQ.
+func TenAt(v time.Time) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldTenAt, v))
+}
+
 // Next applies equality check predicate on the "next" field. It's identical to NextEQ.
 func Next(v string) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldNext, v))
@@ -493,6 +568,826 @@ func UpdatedAtIsNil() predicate.User {
 // UpdatedAtNotNil applies the NotNil predicate on the "updated_at" field.
 func UpdatedAtNotNil() predicate.User {
 	return predicate.User(sql.FieldNotNull(FieldUpdatedAt))
+}
+
+// RaidAtEQ applies the EQ predicate on the "raid_at" field.
+func RaidAtEQ(v time.Time) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldRaidAt, v))
+}
+
+// RaidAtNEQ applies the NEQ predicate on the "raid_at" field.
+func RaidAtNEQ(v time.Time) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldRaidAt, v))
+}
+
+// RaidAtIn applies the In predicate on the "raid_at" field.
+func RaidAtIn(vs ...time.Time) predicate.User {
+	return predicate.User(sql.FieldIn(FieldRaidAt, vs...))
+}
+
+// RaidAtNotIn applies the NotIn predicate on the "raid_at" field.
+func RaidAtNotIn(vs ...time.Time) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldRaidAt, vs...))
+}
+
+// RaidAtGT applies the GT predicate on the "raid_at" field.
+func RaidAtGT(v time.Time) predicate.User {
+	return predicate.User(sql.FieldGT(FieldRaidAt, v))
+}
+
+// RaidAtGTE applies the GTE predicate on the "raid_at" field.
+func RaidAtGTE(v time.Time) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldRaidAt, v))
+}
+
+// RaidAtLT applies the LT predicate on the "raid_at" field.
+func RaidAtLT(v time.Time) predicate.User {
+	return predicate.User(sql.FieldLT(FieldRaidAt, v))
+}
+
+// RaidAtLTE applies the LTE predicate on the "raid_at" field.
+func RaidAtLTE(v time.Time) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldRaidAt, v))
+}
+
+// RaidAtIsNil applies the IsNil predicate on the "raid_at" field.
+func RaidAtIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldRaidAt))
+}
+
+// RaidAtNotNil applies the NotNil predicate on the "raid_at" field.
+func RaidAtNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldRaidAt))
+}
+
+// LuckEQ applies the EQ predicate on the "luck" field.
+func LuckEQ(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldLuck, v))
+}
+
+// LuckNEQ applies the NEQ predicate on the "luck" field.
+func LuckNEQ(v int) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldLuck, v))
+}
+
+// LuckIn applies the In predicate on the "luck" field.
+func LuckIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldIn(FieldLuck, vs...))
+}
+
+// LuckNotIn applies the NotIn predicate on the "luck" field.
+func LuckNotIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldLuck, vs...))
+}
+
+// LuckGT applies the GT predicate on the "luck" field.
+func LuckGT(v int) predicate.User {
+	return predicate.User(sql.FieldGT(FieldLuck, v))
+}
+
+// LuckGTE applies the GTE predicate on the "luck" field.
+func LuckGTE(v int) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldLuck, v))
+}
+
+// LuckLT applies the LT predicate on the "luck" field.
+func LuckLT(v int) predicate.User {
+	return predicate.User(sql.FieldLT(FieldLuck, v))
+}
+
+// LuckLTE applies the LTE predicate on the "luck" field.
+func LuckLTE(v int) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldLuck, v))
+}
+
+// LuckIsNil applies the IsNil predicate on the "luck" field.
+func LuckIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldLuck))
+}
+
+// LuckNotNil applies the NotNil predicate on the "luck" field.
+func LuckNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldLuck))
+}
+
+// LuckAtEQ applies the EQ predicate on the "luck_at" field.
+func LuckAtEQ(v time.Time) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldLuckAt, v))
+}
+
+// LuckAtNEQ applies the NEQ predicate on the "luck_at" field.
+func LuckAtNEQ(v time.Time) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldLuckAt, v))
+}
+
+// LuckAtIn applies the In predicate on the "luck_at" field.
+func LuckAtIn(vs ...time.Time) predicate.User {
+	return predicate.User(sql.FieldIn(FieldLuckAt, vs...))
+}
+
+// LuckAtNotIn applies the NotIn predicate on the "luck_at" field.
+func LuckAtNotIn(vs ...time.Time) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldLuckAt, vs...))
+}
+
+// LuckAtGT applies the GT predicate on the "luck_at" field.
+func LuckAtGT(v time.Time) predicate.User {
+	return predicate.User(sql.FieldGT(FieldLuckAt, v))
+}
+
+// LuckAtGTE applies the GTE predicate on the "luck_at" field.
+func LuckAtGTE(v time.Time) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldLuckAt, v))
+}
+
+// LuckAtLT applies the LT predicate on the "luck_at" field.
+func LuckAtLT(v time.Time) predicate.User {
+	return predicate.User(sql.FieldLT(FieldLuckAt, v))
+}
+
+// LuckAtLTE applies the LTE predicate on the "luck_at" field.
+func LuckAtLTE(v time.Time) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldLuckAt, v))
+}
+
+// LuckAtIsNil applies the IsNil predicate on the "luck_at" field.
+func LuckAtIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldLuckAt))
+}
+
+// LuckAtNotNil applies the NotNil predicate on the "luck_at" field.
+func LuckAtNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldLuckAt))
+}
+
+// LikeEQ applies the EQ predicate on the "like" field.
+func LikeEQ(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldLike, v))
+}
+
+// LikeNEQ applies the NEQ predicate on the "like" field.
+func LikeNEQ(v int) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldLike, v))
+}
+
+// LikeIn applies the In predicate on the "like" field.
+func LikeIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldIn(FieldLike, vs...))
+}
+
+// LikeNotIn applies the NotIn predicate on the "like" field.
+func LikeNotIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldLike, vs...))
+}
+
+// LikeGT applies the GT predicate on the "like" field.
+func LikeGT(v int) predicate.User {
+	return predicate.User(sql.FieldGT(FieldLike, v))
+}
+
+// LikeGTE applies the GTE predicate on the "like" field.
+func LikeGTE(v int) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldLike, v))
+}
+
+// LikeLT applies the LT predicate on the "like" field.
+func LikeLT(v int) predicate.User {
+	return predicate.User(sql.FieldLT(FieldLike, v))
+}
+
+// LikeLTE applies the LTE predicate on the "like" field.
+func LikeLTE(v int) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldLike, v))
+}
+
+// LikeIsNil applies the IsNil predicate on the "like" field.
+func LikeIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldLike))
+}
+
+// LikeNotNil applies the NotNil predicate on the "like" field.
+func LikeNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldLike))
+}
+
+// LikeRankEQ applies the EQ predicate on the "like_rank" field.
+func LikeRankEQ(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldLikeRank, v))
+}
+
+// LikeRankNEQ applies the NEQ predicate on the "like_rank" field.
+func LikeRankNEQ(v int) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldLikeRank, v))
+}
+
+// LikeRankIn applies the In predicate on the "like_rank" field.
+func LikeRankIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldIn(FieldLikeRank, vs...))
+}
+
+// LikeRankNotIn applies the NotIn predicate on the "like_rank" field.
+func LikeRankNotIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldLikeRank, vs...))
+}
+
+// LikeRankGT applies the GT predicate on the "like_rank" field.
+func LikeRankGT(v int) predicate.User {
+	return predicate.User(sql.FieldGT(FieldLikeRank, v))
+}
+
+// LikeRankGTE applies the GTE predicate on the "like_rank" field.
+func LikeRankGTE(v int) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldLikeRank, v))
+}
+
+// LikeRankLT applies the LT predicate on the "like_rank" field.
+func LikeRankLT(v int) predicate.User {
+	return predicate.User(sql.FieldLT(FieldLikeRank, v))
+}
+
+// LikeRankLTE applies the LTE predicate on the "like_rank" field.
+func LikeRankLTE(v int) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldLikeRank, v))
+}
+
+// LikeRankIsNil applies the IsNil predicate on the "like_rank" field.
+func LikeRankIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldLikeRank))
+}
+
+// LikeRankNotNil applies the NotNil predicate on the "like_rank" field.
+func LikeRankNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldLikeRank))
+}
+
+// LikeAtEQ applies the EQ predicate on the "like_at" field.
+func LikeAtEQ(v time.Time) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldLikeAt, v))
+}
+
+// LikeAtNEQ applies the NEQ predicate on the "like_at" field.
+func LikeAtNEQ(v time.Time) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldLikeAt, v))
+}
+
+// LikeAtIn applies the In predicate on the "like_at" field.
+func LikeAtIn(vs ...time.Time) predicate.User {
+	return predicate.User(sql.FieldIn(FieldLikeAt, vs...))
+}
+
+// LikeAtNotIn applies the NotIn predicate on the "like_at" field.
+func LikeAtNotIn(vs ...time.Time) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldLikeAt, vs...))
+}
+
+// LikeAtGT applies the GT predicate on the "like_at" field.
+func LikeAtGT(v time.Time) predicate.User {
+	return predicate.User(sql.FieldGT(FieldLikeAt, v))
+}
+
+// LikeAtGTE applies the GTE predicate on the "like_at" field.
+func LikeAtGTE(v time.Time) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldLikeAt, v))
+}
+
+// LikeAtLT applies the LT predicate on the "like_at" field.
+func LikeAtLT(v time.Time) predicate.User {
+	return predicate.User(sql.FieldLT(FieldLikeAt, v))
+}
+
+// LikeAtLTE applies the LTE predicate on the "like_at" field.
+func LikeAtLTE(v time.Time) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldLikeAt, v))
+}
+
+// LikeAtIsNil applies the IsNil predicate on the "like_at" field.
+func LikeAtIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldLikeAt))
+}
+
+// LikeAtNotNil applies the NotNil predicate on the "like_at" field.
+func LikeAtNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldLikeAt))
+}
+
+// TenEQ applies the EQ predicate on the "ten" field.
+func TenEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldTen, v))
+}
+
+// TenNEQ applies the NEQ predicate on the "ten" field.
+func TenNEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldTen, v))
+}
+
+// TenIsNil applies the IsNil predicate on the "ten" field.
+func TenIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldTen))
+}
+
+// TenNotNil applies the NotNil predicate on the "ten" field.
+func TenNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldTen))
+}
+
+// TenSuEQ applies the EQ predicate on the "ten_su" field.
+func TenSuEQ(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldTenSu, v))
+}
+
+// TenSuNEQ applies the NEQ predicate on the "ten_su" field.
+func TenSuNEQ(v int) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldTenSu, v))
+}
+
+// TenSuIn applies the In predicate on the "ten_su" field.
+func TenSuIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldIn(FieldTenSu, vs...))
+}
+
+// TenSuNotIn applies the NotIn predicate on the "ten_su" field.
+func TenSuNotIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldTenSu, vs...))
+}
+
+// TenSuGT applies the GT predicate on the "ten_su" field.
+func TenSuGT(v int) predicate.User {
+	return predicate.User(sql.FieldGT(FieldTenSu, v))
+}
+
+// TenSuGTE applies the GTE predicate on the "ten_su" field.
+func TenSuGTE(v int) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldTenSu, v))
+}
+
+// TenSuLT applies the LT predicate on the "ten_su" field.
+func TenSuLT(v int) predicate.User {
+	return predicate.User(sql.FieldLT(FieldTenSu, v))
+}
+
+// TenSuLTE applies the LTE predicate on the "ten_su" field.
+func TenSuLTE(v int) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldTenSu, v))
+}
+
+// TenSuIsNil applies the IsNil predicate on the "ten_su" field.
+func TenSuIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldTenSu))
+}
+
+// TenSuNotNil applies the NotNil predicate on the "ten_su" field.
+func TenSuNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldTenSu))
+}
+
+// TenKaiEQ applies the EQ predicate on the "ten_kai" field.
+func TenKaiEQ(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldTenKai, v))
+}
+
+// TenKaiNEQ applies the NEQ predicate on the "ten_kai" field.
+func TenKaiNEQ(v int) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldTenKai, v))
+}
+
+// TenKaiIn applies the In predicate on the "ten_kai" field.
+func TenKaiIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldIn(FieldTenKai, vs...))
+}
+
+// TenKaiNotIn applies the NotIn predicate on the "ten_kai" field.
+func TenKaiNotIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldTenKai, vs...))
+}
+
+// TenKaiGT applies the GT predicate on the "ten_kai" field.
+func TenKaiGT(v int) predicate.User {
+	return predicate.User(sql.FieldGT(FieldTenKai, v))
+}
+
+// TenKaiGTE applies the GTE predicate on the "ten_kai" field.
+func TenKaiGTE(v int) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldTenKai, v))
+}
+
+// TenKaiLT applies the LT predicate on the "ten_kai" field.
+func TenKaiLT(v int) predicate.User {
+	return predicate.User(sql.FieldLT(FieldTenKai, v))
+}
+
+// TenKaiLTE applies the LTE predicate on the "ten_kai" field.
+func TenKaiLTE(v int) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldTenKai, v))
+}
+
+// TenKaiIsNil applies the IsNil predicate on the "ten_kai" field.
+func TenKaiIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldTenKai))
+}
+
+// TenKaiNotNil applies the NotNil predicate on the "ten_kai" field.
+func TenKaiNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldTenKai))
+}
+
+// AitenEQ applies the EQ predicate on the "aiten" field.
+func AitenEQ(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldAiten, v))
+}
+
+// AitenNEQ applies the NEQ predicate on the "aiten" field.
+func AitenNEQ(v int) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldAiten, v))
+}
+
+// AitenIn applies the In predicate on the "aiten" field.
+func AitenIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldIn(FieldAiten, vs...))
+}
+
+// AitenNotIn applies the NotIn predicate on the "aiten" field.
+func AitenNotIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldAiten, vs...))
+}
+
+// AitenGT applies the GT predicate on the "aiten" field.
+func AitenGT(v int) predicate.User {
+	return predicate.User(sql.FieldGT(FieldAiten, v))
+}
+
+// AitenGTE applies the GTE predicate on the "aiten" field.
+func AitenGTE(v int) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldAiten, v))
+}
+
+// AitenLT applies the LT predicate on the "aiten" field.
+func AitenLT(v int) predicate.User {
+	return predicate.User(sql.FieldLT(FieldAiten, v))
+}
+
+// AitenLTE applies the LTE predicate on the "aiten" field.
+func AitenLTE(v int) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldAiten, v))
+}
+
+// AitenIsNil applies the IsNil predicate on the "aiten" field.
+func AitenIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldAiten))
+}
+
+// AitenNotNil applies the NotNil predicate on the "aiten" field.
+func AitenNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldAiten))
+}
+
+// TenCardEQ applies the EQ predicate on the "ten_card" field.
+func TenCardEQ(v string) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldTenCard, v))
+}
+
+// TenCardNEQ applies the NEQ predicate on the "ten_card" field.
+func TenCardNEQ(v string) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldTenCard, v))
+}
+
+// TenCardIn applies the In predicate on the "ten_card" field.
+func TenCardIn(vs ...string) predicate.User {
+	return predicate.User(sql.FieldIn(FieldTenCard, vs...))
+}
+
+// TenCardNotIn applies the NotIn predicate on the "ten_card" field.
+func TenCardNotIn(vs ...string) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldTenCard, vs...))
+}
+
+// TenCardGT applies the GT predicate on the "ten_card" field.
+func TenCardGT(v string) predicate.User {
+	return predicate.User(sql.FieldGT(FieldTenCard, v))
+}
+
+// TenCardGTE applies the GTE predicate on the "ten_card" field.
+func TenCardGTE(v string) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldTenCard, v))
+}
+
+// TenCardLT applies the LT predicate on the "ten_card" field.
+func TenCardLT(v string) predicate.User {
+	return predicate.User(sql.FieldLT(FieldTenCard, v))
+}
+
+// TenCardLTE applies the LTE predicate on the "ten_card" field.
+func TenCardLTE(v string) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldTenCard, v))
+}
+
+// TenCardContains applies the Contains predicate on the "ten_card" field.
+func TenCardContains(v string) predicate.User {
+	return predicate.User(sql.FieldContains(FieldTenCard, v))
+}
+
+// TenCardHasPrefix applies the HasPrefix predicate on the "ten_card" field.
+func TenCardHasPrefix(v string) predicate.User {
+	return predicate.User(sql.FieldHasPrefix(FieldTenCard, v))
+}
+
+// TenCardHasSuffix applies the HasSuffix predicate on the "ten_card" field.
+func TenCardHasSuffix(v string) predicate.User {
+	return predicate.User(sql.FieldHasSuffix(FieldTenCard, v))
+}
+
+// TenCardIsNil applies the IsNil predicate on the "ten_card" field.
+func TenCardIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldTenCard))
+}
+
+// TenCardNotNil applies the NotNil predicate on the "ten_card" field.
+func TenCardNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldTenCard))
+}
+
+// TenCardEqualFold applies the EqualFold predicate on the "ten_card" field.
+func TenCardEqualFold(v string) predicate.User {
+	return predicate.User(sql.FieldEqualFold(FieldTenCard, v))
+}
+
+// TenCardContainsFold applies the ContainsFold predicate on the "ten_card" field.
+func TenCardContainsFold(v string) predicate.User {
+	return predicate.User(sql.FieldContainsFold(FieldTenCard, v))
+}
+
+// TenDeleteEQ applies the EQ predicate on the "ten_delete" field.
+func TenDeleteEQ(v string) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldTenDelete, v))
+}
+
+// TenDeleteNEQ applies the NEQ predicate on the "ten_delete" field.
+func TenDeleteNEQ(v string) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldTenDelete, v))
+}
+
+// TenDeleteIn applies the In predicate on the "ten_delete" field.
+func TenDeleteIn(vs ...string) predicate.User {
+	return predicate.User(sql.FieldIn(FieldTenDelete, vs...))
+}
+
+// TenDeleteNotIn applies the NotIn predicate on the "ten_delete" field.
+func TenDeleteNotIn(vs ...string) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldTenDelete, vs...))
+}
+
+// TenDeleteGT applies the GT predicate on the "ten_delete" field.
+func TenDeleteGT(v string) predicate.User {
+	return predicate.User(sql.FieldGT(FieldTenDelete, v))
+}
+
+// TenDeleteGTE applies the GTE predicate on the "ten_delete" field.
+func TenDeleteGTE(v string) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldTenDelete, v))
+}
+
+// TenDeleteLT applies the LT predicate on the "ten_delete" field.
+func TenDeleteLT(v string) predicate.User {
+	return predicate.User(sql.FieldLT(FieldTenDelete, v))
+}
+
+// TenDeleteLTE applies the LTE predicate on the "ten_delete" field.
+func TenDeleteLTE(v string) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldTenDelete, v))
+}
+
+// TenDeleteContains applies the Contains predicate on the "ten_delete" field.
+func TenDeleteContains(v string) predicate.User {
+	return predicate.User(sql.FieldContains(FieldTenDelete, v))
+}
+
+// TenDeleteHasPrefix applies the HasPrefix predicate on the "ten_delete" field.
+func TenDeleteHasPrefix(v string) predicate.User {
+	return predicate.User(sql.FieldHasPrefix(FieldTenDelete, v))
+}
+
+// TenDeleteHasSuffix applies the HasSuffix predicate on the "ten_delete" field.
+func TenDeleteHasSuffix(v string) predicate.User {
+	return predicate.User(sql.FieldHasSuffix(FieldTenDelete, v))
+}
+
+// TenDeleteIsNil applies the IsNil predicate on the "ten_delete" field.
+func TenDeleteIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldTenDelete))
+}
+
+// TenDeleteNotNil applies the NotNil predicate on the "ten_delete" field.
+func TenDeleteNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldTenDelete))
+}
+
+// TenDeleteEqualFold applies the EqualFold predicate on the "ten_delete" field.
+func TenDeleteEqualFold(v string) predicate.User {
+	return predicate.User(sql.FieldEqualFold(FieldTenDelete, v))
+}
+
+// TenDeleteContainsFold applies the ContainsFold predicate on the "ten_delete" field.
+func TenDeleteContainsFold(v string) predicate.User {
+	return predicate.User(sql.FieldContainsFold(FieldTenDelete, v))
+}
+
+// TenPostEQ applies the EQ predicate on the "ten_post" field.
+func TenPostEQ(v string) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldTenPost, v))
+}
+
+// TenPostNEQ applies the NEQ predicate on the "ten_post" field.
+func TenPostNEQ(v string) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldTenPost, v))
+}
+
+// TenPostIn applies the In predicate on the "ten_post" field.
+func TenPostIn(vs ...string) predicate.User {
+	return predicate.User(sql.FieldIn(FieldTenPost, vs...))
+}
+
+// TenPostNotIn applies the NotIn predicate on the "ten_post" field.
+func TenPostNotIn(vs ...string) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldTenPost, vs...))
+}
+
+// TenPostGT applies the GT predicate on the "ten_post" field.
+func TenPostGT(v string) predicate.User {
+	return predicate.User(sql.FieldGT(FieldTenPost, v))
+}
+
+// TenPostGTE applies the GTE predicate on the "ten_post" field.
+func TenPostGTE(v string) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldTenPost, v))
+}
+
+// TenPostLT applies the LT predicate on the "ten_post" field.
+func TenPostLT(v string) predicate.User {
+	return predicate.User(sql.FieldLT(FieldTenPost, v))
+}
+
+// TenPostLTE applies the LTE predicate on the "ten_post" field.
+func TenPostLTE(v string) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldTenPost, v))
+}
+
+// TenPostContains applies the Contains predicate on the "ten_post" field.
+func TenPostContains(v string) predicate.User {
+	return predicate.User(sql.FieldContains(FieldTenPost, v))
+}
+
+// TenPostHasPrefix applies the HasPrefix predicate on the "ten_post" field.
+func TenPostHasPrefix(v string) predicate.User {
+	return predicate.User(sql.FieldHasPrefix(FieldTenPost, v))
+}
+
+// TenPostHasSuffix applies the HasSuffix predicate on the "ten_post" field.
+func TenPostHasSuffix(v string) predicate.User {
+	return predicate.User(sql.FieldHasSuffix(FieldTenPost, v))
+}
+
+// TenPostIsNil applies the IsNil predicate on the "ten_post" field.
+func TenPostIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldTenPost))
+}
+
+// TenPostNotNil applies the NotNil predicate on the "ten_post" field.
+func TenPostNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldTenPost))
+}
+
+// TenPostEqualFold applies the EqualFold predicate on the "ten_post" field.
+func TenPostEqualFold(v string) predicate.User {
+	return predicate.User(sql.FieldEqualFold(FieldTenPost, v))
+}
+
+// TenPostContainsFold applies the ContainsFold predicate on the "ten_post" field.
+func TenPostContainsFold(v string) predicate.User {
+	return predicate.User(sql.FieldContainsFold(FieldTenPost, v))
+}
+
+// TenGetEQ applies the EQ predicate on the "ten_get" field.
+func TenGetEQ(v string) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldTenGet, v))
+}
+
+// TenGetNEQ applies the NEQ predicate on the "ten_get" field.
+func TenGetNEQ(v string) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldTenGet, v))
+}
+
+// TenGetIn applies the In predicate on the "ten_get" field.
+func TenGetIn(vs ...string) predicate.User {
+	return predicate.User(sql.FieldIn(FieldTenGet, vs...))
+}
+
+// TenGetNotIn applies the NotIn predicate on the "ten_get" field.
+func TenGetNotIn(vs ...string) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldTenGet, vs...))
+}
+
+// TenGetGT applies the GT predicate on the "ten_get" field.
+func TenGetGT(v string) predicate.User {
+	return predicate.User(sql.FieldGT(FieldTenGet, v))
+}
+
+// TenGetGTE applies the GTE predicate on the "ten_get" field.
+func TenGetGTE(v string) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldTenGet, v))
+}
+
+// TenGetLT applies the LT predicate on the "ten_get" field.
+func TenGetLT(v string) predicate.User {
+	return predicate.User(sql.FieldLT(FieldTenGet, v))
+}
+
+// TenGetLTE applies the LTE predicate on the "ten_get" field.
+func TenGetLTE(v string) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldTenGet, v))
+}
+
+// TenGetContains applies the Contains predicate on the "ten_get" field.
+func TenGetContains(v string) predicate.User {
+	return predicate.User(sql.FieldContains(FieldTenGet, v))
+}
+
+// TenGetHasPrefix applies the HasPrefix predicate on the "ten_get" field.
+func TenGetHasPrefix(v string) predicate.User {
+	return predicate.User(sql.FieldHasPrefix(FieldTenGet, v))
+}
+
+// TenGetHasSuffix applies the HasSuffix predicate on the "ten_get" field.
+func TenGetHasSuffix(v string) predicate.User {
+	return predicate.User(sql.FieldHasSuffix(FieldTenGet, v))
+}
+
+// TenGetIsNil applies the IsNil predicate on the "ten_get" field.
+func TenGetIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldTenGet))
+}
+
+// TenGetNotNil applies the NotNil predicate on the "ten_get" field.
+func TenGetNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldTenGet))
+}
+
+// TenGetEqualFold applies the EqualFold predicate on the "ten_get" field.
+func TenGetEqualFold(v string) predicate.User {
+	return predicate.User(sql.FieldEqualFold(FieldTenGet, v))
+}
+
+// TenGetContainsFold applies the ContainsFold predicate on the "ten_get" field.
+func TenGetContainsFold(v string) predicate.User {
+	return predicate.User(sql.FieldContainsFold(FieldTenGet, v))
+}
+
+// TenAtEQ applies the EQ predicate on the "ten_at" field.
+func TenAtEQ(v time.Time) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldTenAt, v))
+}
+
+// TenAtNEQ applies the NEQ predicate on the "ten_at" field.
+func TenAtNEQ(v time.Time) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldTenAt, v))
+}
+
+// TenAtIn applies the In predicate on the "ten_at" field.
+func TenAtIn(vs ...time.Time) predicate.User {
+	return predicate.User(sql.FieldIn(FieldTenAt, vs...))
+}
+
+// TenAtNotIn applies the NotIn predicate on the "ten_at" field.
+func TenAtNotIn(vs ...time.Time) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldTenAt, vs...))
+}
+
+// TenAtGT applies the GT predicate on the "ten_at" field.
+func TenAtGT(v time.Time) predicate.User {
+	return predicate.User(sql.FieldGT(FieldTenAt, v))
+}
+
+// TenAtGTE applies the GTE predicate on the "ten_at" field.
+func TenAtGTE(v time.Time) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldTenAt, v))
+}
+
+// TenAtLT applies the LT predicate on the "ten_at" field.
+func TenAtLT(v time.Time) predicate.User {
+	return predicate.User(sql.FieldLT(FieldTenAt, v))
+}
+
+// TenAtLTE applies the LTE predicate on the "ten_at" field.
+func TenAtLTE(v time.Time) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldTenAt, v))
+}
+
+// TenAtIsNil applies the IsNil predicate on the "ten_at" field.
+func TenAtIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldTenAt))
+}
+
+// TenAtNotNil applies the NotNil predicate on the "ten_at" field.
+func TenAtNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldTenAt))
 }
 
 // NextEQ applies the EQ predicate on the "next" field.

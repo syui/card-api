@@ -119,6 +119,10 @@ func (Card) Fields() []ent.Field {
 				cp = 800 + cp + rand.Intn(1500)
 			}
 
+			if card == 25 {
+				cp = 0
+			}
+
 			return cp
 		}).
 		Optional(),

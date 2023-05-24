@@ -456,6 +456,96 @@ func (s *CardOwnerRead) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.RaidAt.Set {
+			e.FieldStart("raid_at")
+			s.RaidAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Luck.Set {
+			e.FieldStart("luck")
+			s.Luck.Encode(e)
+		}
+	}
+	{
+		if s.LuckAt.Set {
+			e.FieldStart("luck_at")
+			s.LuckAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Like.Set {
+			e.FieldStart("like")
+			s.Like.Encode(e)
+		}
+	}
+	{
+		if s.LikeRank.Set {
+			e.FieldStart("like_rank")
+			s.LikeRank.Encode(e)
+		}
+	}
+	{
+		if s.LikeAt.Set {
+			e.FieldStart("like_at")
+			s.LikeAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Ten.Set {
+			e.FieldStart("ten")
+			s.Ten.Encode(e)
+		}
+	}
+	{
+		if s.TenSu.Set {
+			e.FieldStart("ten_su")
+			s.TenSu.Encode(e)
+		}
+	}
+	{
+		if s.TenKai.Set {
+			e.FieldStart("ten_kai")
+			s.TenKai.Encode(e)
+		}
+	}
+	{
+		if s.Aiten.Set {
+			e.FieldStart("aiten")
+			s.Aiten.Encode(e)
+		}
+	}
+	{
+		if s.TenCard.Set {
+			e.FieldStart("ten_card")
+			s.TenCard.Encode(e)
+		}
+	}
+	{
+		if s.TenDelete.Set {
+			e.FieldStart("ten_delete")
+			s.TenDelete.Encode(e)
+		}
+	}
+	{
+		if s.TenPost.Set {
+			e.FieldStart("ten_post")
+			s.TenPost.Encode(e)
+		}
+	}
+	{
+		if s.TenGet.Set {
+			e.FieldStart("ten_get")
+			s.TenGet.Encode(e)
+		}
+	}
+	{
+		if s.TenAt.Set {
+			e.FieldStart("ten_at")
+			s.TenAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Next.Set {
 			e.FieldStart("next")
 			s.Next.Encode(e)
@@ -463,14 +553,29 @@ func (s *CardOwnerRead) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCardOwnerRead = [7]string{
-	0: "id",
-	1: "username",
-	2: "did",
-	3: "delete",
-	4: "created_at",
-	5: "updated_at",
-	6: "next",
+var jsonFieldsNameOfCardOwnerRead = [22]string{
+	0:  "id",
+	1:  "username",
+	2:  "did",
+	3:  "delete",
+	4:  "created_at",
+	5:  "updated_at",
+	6:  "raid_at",
+	7:  "luck",
+	8:  "luck_at",
+	9:  "like",
+	10: "like_rank",
+	11: "like_at",
+	12: "ten",
+	13: "ten_su",
+	14: "ten_kai",
+	15: "aiten",
+	16: "ten_card",
+	17: "ten_delete",
+	18: "ten_post",
+	19: "ten_get",
+	20: "ten_at",
+	21: "next",
 }
 
 // Decode decodes CardOwnerRead from json.
@@ -478,7 +583,7 @@ func (s *CardOwnerRead) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CardOwnerRead to nil")
 	}
-	var requiredBitSet [1]uint8
+	var requiredBitSet [3]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -546,6 +651,156 @@ func (s *CardOwnerRead) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"updated_at\"")
 			}
+		case "raid_at":
+			if err := func() error {
+				s.RaidAt.Reset()
+				if err := s.RaidAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"raid_at\"")
+			}
+		case "luck":
+			if err := func() error {
+				s.Luck.Reset()
+				if err := s.Luck.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck\"")
+			}
+		case "luck_at":
+			if err := func() error {
+				s.LuckAt.Reset()
+				if err := s.LuckAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck_at\"")
+			}
+		case "like":
+			if err := func() error {
+				s.Like.Reset()
+				if err := s.Like.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like\"")
+			}
+		case "like_rank":
+			if err := func() error {
+				s.LikeRank.Reset()
+				if err := s.LikeRank.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_rank\"")
+			}
+		case "like_at":
+			if err := func() error {
+				s.LikeAt.Reset()
+				if err := s.LikeAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_at\"")
+			}
+		case "ten":
+			if err := func() error {
+				s.Ten.Reset()
+				if err := s.Ten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten\"")
+			}
+		case "ten_su":
+			if err := func() error {
+				s.TenSu.Reset()
+				if err := s.TenSu.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_su\"")
+			}
+		case "ten_kai":
+			if err := func() error {
+				s.TenKai.Reset()
+				if err := s.TenKai.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_kai\"")
+			}
+		case "aiten":
+			if err := func() error {
+				s.Aiten.Reset()
+				if err := s.Aiten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"aiten\"")
+			}
+		case "ten_card":
+			if err := func() error {
+				s.TenCard.Reset()
+				if err := s.TenCard.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_card\"")
+			}
+		case "ten_delete":
+			if err := func() error {
+				s.TenDelete.Reset()
+				if err := s.TenDelete.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_delete\"")
+			}
+		case "ten_post":
+			if err := func() error {
+				s.TenPost.Reset()
+				if err := s.TenPost.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_post\"")
+			}
+		case "ten_get":
+			if err := func() error {
+				s.TenGet.Reset()
+				if err := s.TenGet.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_get\"")
+			}
+		case "ten_at":
+			if err := func() error {
+				s.TenAt.Reset()
+				if err := s.TenAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_at\"")
+			}
 		case "next":
 			if err := func() error {
 				s.Next.Reset()
@@ -565,8 +820,10 @@ func (s *CardOwnerRead) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
+	for i, mask := range [3]uint8{
 		0b00000011,
+		0b00000000,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -1422,6 +1679,96 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.RaidAt.Set {
+			e.FieldStart("raid_at")
+			s.RaidAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Luck.Set {
+			e.FieldStart("luck")
+			s.Luck.Encode(e)
+		}
+	}
+	{
+		if s.LuckAt.Set {
+			e.FieldStart("luck_at")
+			s.LuckAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Like.Set {
+			e.FieldStart("like")
+			s.Like.Encode(e)
+		}
+	}
+	{
+		if s.LikeRank.Set {
+			e.FieldStart("like_rank")
+			s.LikeRank.Encode(e)
+		}
+	}
+	{
+		if s.LikeAt.Set {
+			e.FieldStart("like_at")
+			s.LikeAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Ten.Set {
+			e.FieldStart("ten")
+			s.Ten.Encode(e)
+		}
+	}
+	{
+		if s.TenSu.Set {
+			e.FieldStart("ten_su")
+			s.TenSu.Encode(e)
+		}
+	}
+	{
+		if s.TenKai.Set {
+			e.FieldStart("ten_kai")
+			s.TenKai.Encode(e)
+		}
+	}
+	{
+		if s.Aiten.Set {
+			e.FieldStart("aiten")
+			s.Aiten.Encode(e)
+		}
+	}
+	{
+		if s.TenCard.Set {
+			e.FieldStart("ten_card")
+			s.TenCard.Encode(e)
+		}
+	}
+	{
+		if s.TenDelete.Set {
+			e.FieldStart("ten_delete")
+			s.TenDelete.Encode(e)
+		}
+	}
+	{
+		if s.TenPost.Set {
+			e.FieldStart("ten_post")
+			s.TenPost.Encode(e)
+		}
+	}
+	{
+		if s.TenGet.Set {
+			e.FieldStart("ten_get")
+			s.TenGet.Encode(e)
+		}
+	}
+	{
+		if s.TenAt.Set {
+			e.FieldStart("ten_at")
+			s.TenAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Next.Set {
 			e.FieldStart("next")
 			s.Next.Encode(e)
@@ -1439,16 +1786,31 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCreateUserReq = [9]string{
-	0: "username",
-	1: "did",
-	2: "delete",
-	3: "token",
-	4: "password",
-	5: "created_at",
-	6: "updated_at",
-	7: "next",
-	8: "card",
+var jsonFieldsNameOfCreateUserReq = [24]string{
+	0:  "username",
+	1:  "did",
+	2:  "delete",
+	3:  "token",
+	4:  "password",
+	5:  "created_at",
+	6:  "updated_at",
+	7:  "raid_at",
+	8:  "luck",
+	9:  "luck_at",
+	10: "like",
+	11: "like_rank",
+	12: "like_at",
+	13: "ten",
+	14: "ten_su",
+	15: "ten_kai",
+	16: "aiten",
+	17: "ten_card",
+	18: "ten_delete",
+	19: "ten_post",
+	20: "ten_get",
+	21: "ten_at",
+	22: "next",
+	23: "card",
 }
 
 // Decode decodes CreateUserReq from json.
@@ -1456,7 +1818,7 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CreateUserReq to nil")
 	}
-	var requiredBitSet [2]uint8
+	var requiredBitSet [3]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -1534,6 +1896,156 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"updated_at\"")
 			}
+		case "raid_at":
+			if err := func() error {
+				s.RaidAt.Reset()
+				if err := s.RaidAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"raid_at\"")
+			}
+		case "luck":
+			if err := func() error {
+				s.Luck.Reset()
+				if err := s.Luck.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck\"")
+			}
+		case "luck_at":
+			if err := func() error {
+				s.LuckAt.Reset()
+				if err := s.LuckAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck_at\"")
+			}
+		case "like":
+			if err := func() error {
+				s.Like.Reset()
+				if err := s.Like.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like\"")
+			}
+		case "like_rank":
+			if err := func() error {
+				s.LikeRank.Reset()
+				if err := s.LikeRank.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_rank\"")
+			}
+		case "like_at":
+			if err := func() error {
+				s.LikeAt.Reset()
+				if err := s.LikeAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_at\"")
+			}
+		case "ten":
+			if err := func() error {
+				s.Ten.Reset()
+				if err := s.Ten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten\"")
+			}
+		case "ten_su":
+			if err := func() error {
+				s.TenSu.Reset()
+				if err := s.TenSu.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_su\"")
+			}
+		case "ten_kai":
+			if err := func() error {
+				s.TenKai.Reset()
+				if err := s.TenKai.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_kai\"")
+			}
+		case "aiten":
+			if err := func() error {
+				s.Aiten.Reset()
+				if err := s.Aiten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"aiten\"")
+			}
+		case "ten_card":
+			if err := func() error {
+				s.TenCard.Reset()
+				if err := s.TenCard.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_card\"")
+			}
+		case "ten_delete":
+			if err := func() error {
+				s.TenDelete.Reset()
+				if err := s.TenDelete.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_delete\"")
+			}
+		case "ten_post":
+			if err := func() error {
+				s.TenPost.Reset()
+				if err := s.TenPost.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_post\"")
+			}
+		case "ten_get":
+			if err := func() error {
+				s.TenGet.Reset()
+				if err := s.TenGet.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_get\"")
+			}
+		case "ten_at":
+			if err := func() error {
+				s.TenAt.Reset()
+				if err := s.TenAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_at\"")
+			}
 		case "next":
 			if err := func() error {
 				s.Next.Reset()
@@ -1572,8 +2084,9 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [2]uint8{
+	for i, mask := range [3]uint8{
 		0b00010001,
+		0b00000000,
 		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
@@ -2124,6 +2637,96 @@ func (s *GroupUsersList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.RaidAt.Set {
+			e.FieldStart("raid_at")
+			s.RaidAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Luck.Set {
+			e.FieldStart("luck")
+			s.Luck.Encode(e)
+		}
+	}
+	{
+		if s.LuckAt.Set {
+			e.FieldStart("luck_at")
+			s.LuckAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Like.Set {
+			e.FieldStart("like")
+			s.Like.Encode(e)
+		}
+	}
+	{
+		if s.LikeRank.Set {
+			e.FieldStart("like_rank")
+			s.LikeRank.Encode(e)
+		}
+	}
+	{
+		if s.LikeAt.Set {
+			e.FieldStart("like_at")
+			s.LikeAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Ten.Set {
+			e.FieldStart("ten")
+			s.Ten.Encode(e)
+		}
+	}
+	{
+		if s.TenSu.Set {
+			e.FieldStart("ten_su")
+			s.TenSu.Encode(e)
+		}
+	}
+	{
+		if s.TenKai.Set {
+			e.FieldStart("ten_kai")
+			s.TenKai.Encode(e)
+		}
+	}
+	{
+		if s.Aiten.Set {
+			e.FieldStart("aiten")
+			s.Aiten.Encode(e)
+		}
+	}
+	{
+		if s.TenCard.Set {
+			e.FieldStart("ten_card")
+			s.TenCard.Encode(e)
+		}
+	}
+	{
+		if s.TenDelete.Set {
+			e.FieldStart("ten_delete")
+			s.TenDelete.Encode(e)
+		}
+	}
+	{
+		if s.TenPost.Set {
+			e.FieldStart("ten_post")
+			s.TenPost.Encode(e)
+		}
+	}
+	{
+		if s.TenGet.Set {
+			e.FieldStart("ten_get")
+			s.TenGet.Encode(e)
+		}
+	}
+	{
+		if s.TenAt.Set {
+			e.FieldStart("ten_at")
+			s.TenAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Next.Set {
 			e.FieldStart("next")
 			s.Next.Encode(e)
@@ -2131,14 +2734,29 @@ func (s *GroupUsersList) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfGroupUsersList = [7]string{
-	0: "id",
-	1: "username",
-	2: "did",
-	3: "delete",
-	4: "created_at",
-	5: "updated_at",
-	6: "next",
+var jsonFieldsNameOfGroupUsersList = [22]string{
+	0:  "id",
+	1:  "username",
+	2:  "did",
+	3:  "delete",
+	4:  "created_at",
+	5:  "updated_at",
+	6:  "raid_at",
+	7:  "luck",
+	8:  "luck_at",
+	9:  "like",
+	10: "like_rank",
+	11: "like_at",
+	12: "ten",
+	13: "ten_su",
+	14: "ten_kai",
+	15: "aiten",
+	16: "ten_card",
+	17: "ten_delete",
+	18: "ten_post",
+	19: "ten_get",
+	20: "ten_at",
+	21: "next",
 }
 
 // Decode decodes GroupUsersList from json.
@@ -2146,7 +2764,7 @@ func (s *GroupUsersList) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode GroupUsersList to nil")
 	}
-	var requiredBitSet [1]uint8
+	var requiredBitSet [3]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -2214,6 +2832,156 @@ func (s *GroupUsersList) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"updated_at\"")
 			}
+		case "raid_at":
+			if err := func() error {
+				s.RaidAt.Reset()
+				if err := s.RaidAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"raid_at\"")
+			}
+		case "luck":
+			if err := func() error {
+				s.Luck.Reset()
+				if err := s.Luck.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck\"")
+			}
+		case "luck_at":
+			if err := func() error {
+				s.LuckAt.Reset()
+				if err := s.LuckAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck_at\"")
+			}
+		case "like":
+			if err := func() error {
+				s.Like.Reset()
+				if err := s.Like.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like\"")
+			}
+		case "like_rank":
+			if err := func() error {
+				s.LikeRank.Reset()
+				if err := s.LikeRank.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_rank\"")
+			}
+		case "like_at":
+			if err := func() error {
+				s.LikeAt.Reset()
+				if err := s.LikeAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_at\"")
+			}
+		case "ten":
+			if err := func() error {
+				s.Ten.Reset()
+				if err := s.Ten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten\"")
+			}
+		case "ten_su":
+			if err := func() error {
+				s.TenSu.Reset()
+				if err := s.TenSu.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_su\"")
+			}
+		case "ten_kai":
+			if err := func() error {
+				s.TenKai.Reset()
+				if err := s.TenKai.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_kai\"")
+			}
+		case "aiten":
+			if err := func() error {
+				s.Aiten.Reset()
+				if err := s.Aiten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"aiten\"")
+			}
+		case "ten_card":
+			if err := func() error {
+				s.TenCard.Reset()
+				if err := s.TenCard.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_card\"")
+			}
+		case "ten_delete":
+			if err := func() error {
+				s.TenDelete.Reset()
+				if err := s.TenDelete.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_delete\"")
+			}
+		case "ten_post":
+			if err := func() error {
+				s.TenPost.Reset()
+				if err := s.TenPost.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_post\"")
+			}
+		case "ten_get":
+			if err := func() error {
+				s.TenGet.Reset()
+				if err := s.TenGet.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_get\"")
+			}
+		case "ten_at":
+			if err := func() error {
+				s.TenAt.Reset()
+				if err := s.TenAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_at\"")
+			}
 		case "next":
 			if err := func() error {
 				s.Next.Reset()
@@ -2233,8 +3001,10 @@ func (s *GroupUsersList) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
+	for i, mask := range [3]uint8{
 		0b00000011,
+		0b00000000,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -3413,6 +4183,96 @@ func (s *UpdateUserReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.RaidAt.Set {
+			e.FieldStart("raid_at")
+			s.RaidAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Luck.Set {
+			e.FieldStart("luck")
+			s.Luck.Encode(e)
+		}
+	}
+	{
+		if s.LuckAt.Set {
+			e.FieldStart("luck_at")
+			s.LuckAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Like.Set {
+			e.FieldStart("like")
+			s.Like.Encode(e)
+		}
+	}
+	{
+		if s.LikeRank.Set {
+			e.FieldStart("like_rank")
+			s.LikeRank.Encode(e)
+		}
+	}
+	{
+		if s.LikeAt.Set {
+			e.FieldStart("like_at")
+			s.LikeAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Ten.Set {
+			e.FieldStart("ten")
+			s.Ten.Encode(e)
+		}
+	}
+	{
+		if s.TenSu.Set {
+			e.FieldStart("ten_su")
+			s.TenSu.Encode(e)
+		}
+	}
+	{
+		if s.TenKai.Set {
+			e.FieldStart("ten_kai")
+			s.TenKai.Encode(e)
+		}
+	}
+	{
+		if s.Aiten.Set {
+			e.FieldStart("aiten")
+			s.Aiten.Encode(e)
+		}
+	}
+	{
+		if s.TenCard.Set {
+			e.FieldStart("ten_card")
+			s.TenCard.Encode(e)
+		}
+	}
+	{
+		if s.TenDelete.Set {
+			e.FieldStart("ten_delete")
+			s.TenDelete.Encode(e)
+		}
+	}
+	{
+		if s.TenPost.Set {
+			e.FieldStart("ten_post")
+			s.TenPost.Encode(e)
+		}
+	}
+	{
+		if s.TenGet.Set {
+			e.FieldStart("ten_get")
+			s.TenGet.Encode(e)
+		}
+	}
+	{
+		if s.TenAt.Set {
+			e.FieldStart("ten_at")
+			s.TenAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Next.Set {
 			e.FieldStart("next")
 			s.Next.Encode(e)
@@ -3430,13 +4290,28 @@ func (s *UpdateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUpdateUserReq = [6]string{
-	0: "did",
-	1: "delete",
-	2: "token",
-	3: "updated_at",
-	4: "next",
-	5: "card",
+var jsonFieldsNameOfUpdateUserReq = [21]string{
+	0:  "did",
+	1:  "delete",
+	2:  "token",
+	3:  "updated_at",
+	4:  "raid_at",
+	5:  "luck",
+	6:  "luck_at",
+	7:  "like",
+	8:  "like_rank",
+	9:  "like_at",
+	10: "ten",
+	11: "ten_su",
+	12: "ten_kai",
+	13: "aiten",
+	14: "ten_card",
+	15: "ten_delete",
+	16: "ten_post",
+	17: "ten_get",
+	18: "ten_at",
+	19: "next",
+	20: "card",
 }
 
 // Decode decodes UpdateUserReq from json.
@@ -3486,6 +4361,156 @@ func (s *UpdateUserReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"updated_at\"")
+			}
+		case "raid_at":
+			if err := func() error {
+				s.RaidAt.Reset()
+				if err := s.RaidAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"raid_at\"")
+			}
+		case "luck":
+			if err := func() error {
+				s.Luck.Reset()
+				if err := s.Luck.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck\"")
+			}
+		case "luck_at":
+			if err := func() error {
+				s.LuckAt.Reset()
+				if err := s.LuckAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck_at\"")
+			}
+		case "like":
+			if err := func() error {
+				s.Like.Reset()
+				if err := s.Like.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like\"")
+			}
+		case "like_rank":
+			if err := func() error {
+				s.LikeRank.Reset()
+				if err := s.LikeRank.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_rank\"")
+			}
+		case "like_at":
+			if err := func() error {
+				s.LikeAt.Reset()
+				if err := s.LikeAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_at\"")
+			}
+		case "ten":
+			if err := func() error {
+				s.Ten.Reset()
+				if err := s.Ten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten\"")
+			}
+		case "ten_su":
+			if err := func() error {
+				s.TenSu.Reset()
+				if err := s.TenSu.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_su\"")
+			}
+		case "ten_kai":
+			if err := func() error {
+				s.TenKai.Reset()
+				if err := s.TenKai.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_kai\"")
+			}
+		case "aiten":
+			if err := func() error {
+				s.Aiten.Reset()
+				if err := s.Aiten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"aiten\"")
+			}
+		case "ten_card":
+			if err := func() error {
+				s.TenCard.Reset()
+				if err := s.TenCard.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_card\"")
+			}
+		case "ten_delete":
+			if err := func() error {
+				s.TenDelete.Reset()
+				if err := s.TenDelete.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_delete\"")
+			}
+		case "ten_post":
+			if err := func() error {
+				s.TenPost.Reset()
+				if err := s.TenPost.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_post\"")
+			}
+		case "ten_get":
+			if err := func() error {
+				s.TenGet.Reset()
+				if err := s.TenGet.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_get\"")
+			}
+		case "ten_at":
+			if err := func() error {
+				s.TenAt.Reset()
+				if err := s.TenAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_at\"")
 			}
 		case "next":
 			if err := func() error {
@@ -3783,6 +4808,96 @@ func (s *UserCreate) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.RaidAt.Set {
+			e.FieldStart("raid_at")
+			s.RaidAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Luck.Set {
+			e.FieldStart("luck")
+			s.Luck.Encode(e)
+		}
+	}
+	{
+		if s.LuckAt.Set {
+			e.FieldStart("luck_at")
+			s.LuckAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Like.Set {
+			e.FieldStart("like")
+			s.Like.Encode(e)
+		}
+	}
+	{
+		if s.LikeRank.Set {
+			e.FieldStart("like_rank")
+			s.LikeRank.Encode(e)
+		}
+	}
+	{
+		if s.LikeAt.Set {
+			e.FieldStart("like_at")
+			s.LikeAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Ten.Set {
+			e.FieldStart("ten")
+			s.Ten.Encode(e)
+		}
+	}
+	{
+		if s.TenSu.Set {
+			e.FieldStart("ten_su")
+			s.TenSu.Encode(e)
+		}
+	}
+	{
+		if s.TenKai.Set {
+			e.FieldStart("ten_kai")
+			s.TenKai.Encode(e)
+		}
+	}
+	{
+		if s.Aiten.Set {
+			e.FieldStart("aiten")
+			s.Aiten.Encode(e)
+		}
+	}
+	{
+		if s.TenCard.Set {
+			e.FieldStart("ten_card")
+			s.TenCard.Encode(e)
+		}
+	}
+	{
+		if s.TenDelete.Set {
+			e.FieldStart("ten_delete")
+			s.TenDelete.Encode(e)
+		}
+	}
+	{
+		if s.TenPost.Set {
+			e.FieldStart("ten_post")
+			s.TenPost.Encode(e)
+		}
+	}
+	{
+		if s.TenGet.Set {
+			e.FieldStart("ten_get")
+			s.TenGet.Encode(e)
+		}
+	}
+	{
+		if s.TenAt.Set {
+			e.FieldStart("ten_at")
+			s.TenAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Next.Set {
 			e.FieldStart("next")
 			s.Next.Encode(e)
@@ -3790,14 +4905,29 @@ func (s *UserCreate) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserCreate = [7]string{
-	0: "id",
-	1: "username",
-	2: "did",
-	3: "delete",
-	4: "created_at",
-	5: "updated_at",
-	6: "next",
+var jsonFieldsNameOfUserCreate = [22]string{
+	0:  "id",
+	1:  "username",
+	2:  "did",
+	3:  "delete",
+	4:  "created_at",
+	5:  "updated_at",
+	6:  "raid_at",
+	7:  "luck",
+	8:  "luck_at",
+	9:  "like",
+	10: "like_rank",
+	11: "like_at",
+	12: "ten",
+	13: "ten_su",
+	14: "ten_kai",
+	15: "aiten",
+	16: "ten_card",
+	17: "ten_delete",
+	18: "ten_post",
+	19: "ten_get",
+	20: "ten_at",
+	21: "next",
 }
 
 // Decode decodes UserCreate from json.
@@ -3805,7 +4935,7 @@ func (s *UserCreate) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UserCreate to nil")
 	}
-	var requiredBitSet [1]uint8
+	var requiredBitSet [3]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -3873,6 +5003,156 @@ func (s *UserCreate) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"updated_at\"")
 			}
+		case "raid_at":
+			if err := func() error {
+				s.RaidAt.Reset()
+				if err := s.RaidAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"raid_at\"")
+			}
+		case "luck":
+			if err := func() error {
+				s.Luck.Reset()
+				if err := s.Luck.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck\"")
+			}
+		case "luck_at":
+			if err := func() error {
+				s.LuckAt.Reset()
+				if err := s.LuckAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck_at\"")
+			}
+		case "like":
+			if err := func() error {
+				s.Like.Reset()
+				if err := s.Like.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like\"")
+			}
+		case "like_rank":
+			if err := func() error {
+				s.LikeRank.Reset()
+				if err := s.LikeRank.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_rank\"")
+			}
+		case "like_at":
+			if err := func() error {
+				s.LikeAt.Reset()
+				if err := s.LikeAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_at\"")
+			}
+		case "ten":
+			if err := func() error {
+				s.Ten.Reset()
+				if err := s.Ten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten\"")
+			}
+		case "ten_su":
+			if err := func() error {
+				s.TenSu.Reset()
+				if err := s.TenSu.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_su\"")
+			}
+		case "ten_kai":
+			if err := func() error {
+				s.TenKai.Reset()
+				if err := s.TenKai.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_kai\"")
+			}
+		case "aiten":
+			if err := func() error {
+				s.Aiten.Reset()
+				if err := s.Aiten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"aiten\"")
+			}
+		case "ten_card":
+			if err := func() error {
+				s.TenCard.Reset()
+				if err := s.TenCard.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_card\"")
+			}
+		case "ten_delete":
+			if err := func() error {
+				s.TenDelete.Reset()
+				if err := s.TenDelete.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_delete\"")
+			}
+		case "ten_post":
+			if err := func() error {
+				s.TenPost.Reset()
+				if err := s.TenPost.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_post\"")
+			}
+		case "ten_get":
+			if err := func() error {
+				s.TenGet.Reset()
+				if err := s.TenGet.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_get\"")
+			}
+		case "ten_at":
+			if err := func() error {
+				s.TenAt.Reset()
+				if err := s.TenAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_at\"")
+			}
 		case "next":
 			if err := func() error {
 				s.Next.Reset()
@@ -3892,8 +5172,10 @@ func (s *UserCreate) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
+	for i, mask := range [3]uint8{
 		0b00000011,
+		0b00000000,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -3983,6 +5265,96 @@ func (s *UserList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.RaidAt.Set {
+			e.FieldStart("raid_at")
+			s.RaidAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Luck.Set {
+			e.FieldStart("luck")
+			s.Luck.Encode(e)
+		}
+	}
+	{
+		if s.LuckAt.Set {
+			e.FieldStart("luck_at")
+			s.LuckAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Like.Set {
+			e.FieldStart("like")
+			s.Like.Encode(e)
+		}
+	}
+	{
+		if s.LikeRank.Set {
+			e.FieldStart("like_rank")
+			s.LikeRank.Encode(e)
+		}
+	}
+	{
+		if s.LikeAt.Set {
+			e.FieldStart("like_at")
+			s.LikeAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Ten.Set {
+			e.FieldStart("ten")
+			s.Ten.Encode(e)
+		}
+	}
+	{
+		if s.TenSu.Set {
+			e.FieldStart("ten_su")
+			s.TenSu.Encode(e)
+		}
+	}
+	{
+		if s.TenKai.Set {
+			e.FieldStart("ten_kai")
+			s.TenKai.Encode(e)
+		}
+	}
+	{
+		if s.Aiten.Set {
+			e.FieldStart("aiten")
+			s.Aiten.Encode(e)
+		}
+	}
+	{
+		if s.TenCard.Set {
+			e.FieldStart("ten_card")
+			s.TenCard.Encode(e)
+		}
+	}
+	{
+		if s.TenDelete.Set {
+			e.FieldStart("ten_delete")
+			s.TenDelete.Encode(e)
+		}
+	}
+	{
+		if s.TenPost.Set {
+			e.FieldStart("ten_post")
+			s.TenPost.Encode(e)
+		}
+	}
+	{
+		if s.TenGet.Set {
+			e.FieldStart("ten_get")
+			s.TenGet.Encode(e)
+		}
+	}
+	{
+		if s.TenAt.Set {
+			e.FieldStart("ten_at")
+			s.TenAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Next.Set {
 			e.FieldStart("next")
 			s.Next.Encode(e)
@@ -3990,14 +5362,29 @@ func (s *UserList) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserList = [7]string{
-	0: "id",
-	1: "username",
-	2: "did",
-	3: "delete",
-	4: "created_at",
-	5: "updated_at",
-	6: "next",
+var jsonFieldsNameOfUserList = [22]string{
+	0:  "id",
+	1:  "username",
+	2:  "did",
+	3:  "delete",
+	4:  "created_at",
+	5:  "updated_at",
+	6:  "raid_at",
+	7:  "luck",
+	8:  "luck_at",
+	9:  "like",
+	10: "like_rank",
+	11: "like_at",
+	12: "ten",
+	13: "ten_su",
+	14: "ten_kai",
+	15: "aiten",
+	16: "ten_card",
+	17: "ten_delete",
+	18: "ten_post",
+	19: "ten_get",
+	20: "ten_at",
+	21: "next",
 }
 
 // Decode decodes UserList from json.
@@ -4005,7 +5392,7 @@ func (s *UserList) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UserList to nil")
 	}
-	var requiredBitSet [1]uint8
+	var requiredBitSet [3]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -4073,6 +5460,156 @@ func (s *UserList) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"updated_at\"")
 			}
+		case "raid_at":
+			if err := func() error {
+				s.RaidAt.Reset()
+				if err := s.RaidAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"raid_at\"")
+			}
+		case "luck":
+			if err := func() error {
+				s.Luck.Reset()
+				if err := s.Luck.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck\"")
+			}
+		case "luck_at":
+			if err := func() error {
+				s.LuckAt.Reset()
+				if err := s.LuckAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck_at\"")
+			}
+		case "like":
+			if err := func() error {
+				s.Like.Reset()
+				if err := s.Like.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like\"")
+			}
+		case "like_rank":
+			if err := func() error {
+				s.LikeRank.Reset()
+				if err := s.LikeRank.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_rank\"")
+			}
+		case "like_at":
+			if err := func() error {
+				s.LikeAt.Reset()
+				if err := s.LikeAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_at\"")
+			}
+		case "ten":
+			if err := func() error {
+				s.Ten.Reset()
+				if err := s.Ten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten\"")
+			}
+		case "ten_su":
+			if err := func() error {
+				s.TenSu.Reset()
+				if err := s.TenSu.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_su\"")
+			}
+		case "ten_kai":
+			if err := func() error {
+				s.TenKai.Reset()
+				if err := s.TenKai.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_kai\"")
+			}
+		case "aiten":
+			if err := func() error {
+				s.Aiten.Reset()
+				if err := s.Aiten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"aiten\"")
+			}
+		case "ten_card":
+			if err := func() error {
+				s.TenCard.Reset()
+				if err := s.TenCard.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_card\"")
+			}
+		case "ten_delete":
+			if err := func() error {
+				s.TenDelete.Reset()
+				if err := s.TenDelete.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_delete\"")
+			}
+		case "ten_post":
+			if err := func() error {
+				s.TenPost.Reset()
+				if err := s.TenPost.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_post\"")
+			}
+		case "ten_get":
+			if err := func() error {
+				s.TenGet.Reset()
+				if err := s.TenGet.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_get\"")
+			}
+		case "ten_at":
+			if err := func() error {
+				s.TenAt.Reset()
+				if err := s.TenAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_at\"")
+			}
 		case "next":
 			if err := func() error {
 				s.Next.Reset()
@@ -4092,8 +5629,10 @@ func (s *UserList) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
+	for i, mask := range [3]uint8{
 		0b00000011,
+		0b00000000,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -4183,6 +5722,96 @@ func (s *UserRead) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.RaidAt.Set {
+			e.FieldStart("raid_at")
+			s.RaidAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Luck.Set {
+			e.FieldStart("luck")
+			s.Luck.Encode(e)
+		}
+	}
+	{
+		if s.LuckAt.Set {
+			e.FieldStart("luck_at")
+			s.LuckAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Like.Set {
+			e.FieldStart("like")
+			s.Like.Encode(e)
+		}
+	}
+	{
+		if s.LikeRank.Set {
+			e.FieldStart("like_rank")
+			s.LikeRank.Encode(e)
+		}
+	}
+	{
+		if s.LikeAt.Set {
+			e.FieldStart("like_at")
+			s.LikeAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Ten.Set {
+			e.FieldStart("ten")
+			s.Ten.Encode(e)
+		}
+	}
+	{
+		if s.TenSu.Set {
+			e.FieldStart("ten_su")
+			s.TenSu.Encode(e)
+		}
+	}
+	{
+		if s.TenKai.Set {
+			e.FieldStart("ten_kai")
+			s.TenKai.Encode(e)
+		}
+	}
+	{
+		if s.Aiten.Set {
+			e.FieldStart("aiten")
+			s.Aiten.Encode(e)
+		}
+	}
+	{
+		if s.TenCard.Set {
+			e.FieldStart("ten_card")
+			s.TenCard.Encode(e)
+		}
+	}
+	{
+		if s.TenDelete.Set {
+			e.FieldStart("ten_delete")
+			s.TenDelete.Encode(e)
+		}
+	}
+	{
+		if s.TenPost.Set {
+			e.FieldStart("ten_post")
+			s.TenPost.Encode(e)
+		}
+	}
+	{
+		if s.TenGet.Set {
+			e.FieldStart("ten_get")
+			s.TenGet.Encode(e)
+		}
+	}
+	{
+		if s.TenAt.Set {
+			e.FieldStart("ten_at")
+			s.TenAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Next.Set {
 			e.FieldStart("next")
 			s.Next.Encode(e)
@@ -4190,14 +5819,29 @@ func (s *UserRead) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserRead = [7]string{
-	0: "id",
-	1: "username",
-	2: "did",
-	3: "delete",
-	4: "created_at",
-	5: "updated_at",
-	6: "next",
+var jsonFieldsNameOfUserRead = [22]string{
+	0:  "id",
+	1:  "username",
+	2:  "did",
+	3:  "delete",
+	4:  "created_at",
+	5:  "updated_at",
+	6:  "raid_at",
+	7:  "luck",
+	8:  "luck_at",
+	9:  "like",
+	10: "like_rank",
+	11: "like_at",
+	12: "ten",
+	13: "ten_su",
+	14: "ten_kai",
+	15: "aiten",
+	16: "ten_card",
+	17: "ten_delete",
+	18: "ten_post",
+	19: "ten_get",
+	20: "ten_at",
+	21: "next",
 }
 
 // Decode decodes UserRead from json.
@@ -4205,7 +5849,7 @@ func (s *UserRead) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UserRead to nil")
 	}
-	var requiredBitSet [1]uint8
+	var requiredBitSet [3]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -4273,6 +5917,156 @@ func (s *UserRead) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"updated_at\"")
 			}
+		case "raid_at":
+			if err := func() error {
+				s.RaidAt.Reset()
+				if err := s.RaidAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"raid_at\"")
+			}
+		case "luck":
+			if err := func() error {
+				s.Luck.Reset()
+				if err := s.Luck.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck\"")
+			}
+		case "luck_at":
+			if err := func() error {
+				s.LuckAt.Reset()
+				if err := s.LuckAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck_at\"")
+			}
+		case "like":
+			if err := func() error {
+				s.Like.Reset()
+				if err := s.Like.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like\"")
+			}
+		case "like_rank":
+			if err := func() error {
+				s.LikeRank.Reset()
+				if err := s.LikeRank.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_rank\"")
+			}
+		case "like_at":
+			if err := func() error {
+				s.LikeAt.Reset()
+				if err := s.LikeAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_at\"")
+			}
+		case "ten":
+			if err := func() error {
+				s.Ten.Reset()
+				if err := s.Ten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten\"")
+			}
+		case "ten_su":
+			if err := func() error {
+				s.TenSu.Reset()
+				if err := s.TenSu.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_su\"")
+			}
+		case "ten_kai":
+			if err := func() error {
+				s.TenKai.Reset()
+				if err := s.TenKai.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_kai\"")
+			}
+		case "aiten":
+			if err := func() error {
+				s.Aiten.Reset()
+				if err := s.Aiten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"aiten\"")
+			}
+		case "ten_card":
+			if err := func() error {
+				s.TenCard.Reset()
+				if err := s.TenCard.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_card\"")
+			}
+		case "ten_delete":
+			if err := func() error {
+				s.TenDelete.Reset()
+				if err := s.TenDelete.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_delete\"")
+			}
+		case "ten_post":
+			if err := func() error {
+				s.TenPost.Reset()
+				if err := s.TenPost.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_post\"")
+			}
+		case "ten_get":
+			if err := func() error {
+				s.TenGet.Reset()
+				if err := s.TenGet.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_get\"")
+			}
+		case "ten_at":
+			if err := func() error {
+				s.TenAt.Reset()
+				if err := s.TenAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_at\"")
+			}
 		case "next":
 			if err := func() error {
 				s.Next.Reset()
@@ -4292,8 +6086,10 @@ func (s *UserRead) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
+	for i, mask := range [3]uint8{
 		0b00000011,
+		0b00000000,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -4383,6 +6179,96 @@ func (s *UserUpdate) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.RaidAt.Set {
+			e.FieldStart("raid_at")
+			s.RaidAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Luck.Set {
+			e.FieldStart("luck")
+			s.Luck.Encode(e)
+		}
+	}
+	{
+		if s.LuckAt.Set {
+			e.FieldStart("luck_at")
+			s.LuckAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Like.Set {
+			e.FieldStart("like")
+			s.Like.Encode(e)
+		}
+	}
+	{
+		if s.LikeRank.Set {
+			e.FieldStart("like_rank")
+			s.LikeRank.Encode(e)
+		}
+	}
+	{
+		if s.LikeAt.Set {
+			e.FieldStart("like_at")
+			s.LikeAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Ten.Set {
+			e.FieldStart("ten")
+			s.Ten.Encode(e)
+		}
+	}
+	{
+		if s.TenSu.Set {
+			e.FieldStart("ten_su")
+			s.TenSu.Encode(e)
+		}
+	}
+	{
+		if s.TenKai.Set {
+			e.FieldStart("ten_kai")
+			s.TenKai.Encode(e)
+		}
+	}
+	{
+		if s.Aiten.Set {
+			e.FieldStart("aiten")
+			s.Aiten.Encode(e)
+		}
+	}
+	{
+		if s.TenCard.Set {
+			e.FieldStart("ten_card")
+			s.TenCard.Encode(e)
+		}
+	}
+	{
+		if s.TenDelete.Set {
+			e.FieldStart("ten_delete")
+			s.TenDelete.Encode(e)
+		}
+	}
+	{
+		if s.TenPost.Set {
+			e.FieldStart("ten_post")
+			s.TenPost.Encode(e)
+		}
+	}
+	{
+		if s.TenGet.Set {
+			e.FieldStart("ten_get")
+			s.TenGet.Encode(e)
+		}
+	}
+	{
+		if s.TenAt.Set {
+			e.FieldStart("ten_at")
+			s.TenAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Next.Set {
 			e.FieldStart("next")
 			s.Next.Encode(e)
@@ -4390,14 +6276,29 @@ func (s *UserUpdate) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserUpdate = [7]string{
-	0: "id",
-	1: "username",
-	2: "did",
-	3: "delete",
-	4: "created_at",
-	5: "updated_at",
-	6: "next",
+var jsonFieldsNameOfUserUpdate = [22]string{
+	0:  "id",
+	1:  "username",
+	2:  "did",
+	3:  "delete",
+	4:  "created_at",
+	5:  "updated_at",
+	6:  "raid_at",
+	7:  "luck",
+	8:  "luck_at",
+	9:  "like",
+	10: "like_rank",
+	11: "like_at",
+	12: "ten",
+	13: "ten_su",
+	14: "ten_kai",
+	15: "aiten",
+	16: "ten_card",
+	17: "ten_delete",
+	18: "ten_post",
+	19: "ten_get",
+	20: "ten_at",
+	21: "next",
 }
 
 // Decode decodes UserUpdate from json.
@@ -4405,7 +6306,7 @@ func (s *UserUpdate) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UserUpdate to nil")
 	}
-	var requiredBitSet [1]uint8
+	var requiredBitSet [3]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -4473,6 +6374,156 @@ func (s *UserUpdate) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"updated_at\"")
 			}
+		case "raid_at":
+			if err := func() error {
+				s.RaidAt.Reset()
+				if err := s.RaidAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"raid_at\"")
+			}
+		case "luck":
+			if err := func() error {
+				s.Luck.Reset()
+				if err := s.Luck.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck\"")
+			}
+		case "luck_at":
+			if err := func() error {
+				s.LuckAt.Reset()
+				if err := s.LuckAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck_at\"")
+			}
+		case "like":
+			if err := func() error {
+				s.Like.Reset()
+				if err := s.Like.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like\"")
+			}
+		case "like_rank":
+			if err := func() error {
+				s.LikeRank.Reset()
+				if err := s.LikeRank.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_rank\"")
+			}
+		case "like_at":
+			if err := func() error {
+				s.LikeAt.Reset()
+				if err := s.LikeAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_at\"")
+			}
+		case "ten":
+			if err := func() error {
+				s.Ten.Reset()
+				if err := s.Ten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten\"")
+			}
+		case "ten_su":
+			if err := func() error {
+				s.TenSu.Reset()
+				if err := s.TenSu.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_su\"")
+			}
+		case "ten_kai":
+			if err := func() error {
+				s.TenKai.Reset()
+				if err := s.TenKai.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_kai\"")
+			}
+		case "aiten":
+			if err := func() error {
+				s.Aiten.Reset()
+				if err := s.Aiten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"aiten\"")
+			}
+		case "ten_card":
+			if err := func() error {
+				s.TenCard.Reset()
+				if err := s.TenCard.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_card\"")
+			}
+		case "ten_delete":
+			if err := func() error {
+				s.TenDelete.Reset()
+				if err := s.TenDelete.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_delete\"")
+			}
+		case "ten_post":
+			if err := func() error {
+				s.TenPost.Reset()
+				if err := s.TenPost.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_post\"")
+			}
+		case "ten_get":
+			if err := func() error {
+				s.TenGet.Reset()
+				if err := s.TenGet.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_get\"")
+			}
+		case "ten_at":
+			if err := func() error {
+				s.TenAt.Reset()
+				if err := s.TenAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_at\"")
+			}
 		case "next":
 			if err := func() error {
 				s.Next.Reset()
@@ -4492,8 +6543,10 @@ func (s *UserUpdate) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
+	for i, mask := range [3]uint8{
 		0b00000011,
+		0b00000000,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.

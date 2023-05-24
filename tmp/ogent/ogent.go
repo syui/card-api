@@ -15,10 +15,10 @@ import (
 	"os"
 )
 
+// origin-config
 var password = os.Getenv("PASS")
 var token = os.Getenv("TOKEN")
 
-var zero = "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
 // OgentHandler implements the ogen generated Handler interface and uses Ent as data layer.
 type OgentHandler struct {
 	client *ent.Client
@@ -42,6 +42,9 @@ func (h *OgentHandler) CreateCard(ctx context.Context, req *CreateCardReq) (Crea
 	if v, ok := req.Card.Get(); ok {
 		b.SetCard(v)
 	}
+	if v, ok := req.Skill.Get(); ok {
+		b.SetSkill(v)
+	}
 	if v, ok := req.Status.Get(); ok {
 		b.SetStatus(v)
 	}
@@ -54,11 +57,9 @@ func (h *OgentHandler) CreateCard(ctx context.Context, req *CreateCardReq) (Crea
 	if v, ok := req.CreatedAt.Get(); ok {
 		b.SetCreatedAt(v)
 	}
-	if v, ok := req.Skill.Get(); ok {
-		b.SetSkill(v)
-	}
 	// Add all edges.
-
+	//b.SetOwnerID(req.Owner)
+	// origin-config
 	if req.Password == password {
 		b.SetOwnerID(req.Owner)
 	} else {
@@ -123,12 +124,19 @@ func (h *OgentHandler) ReadCard(ctx context.Context, params ReadCardParams) (Rea
 
 // UpdateCard handles PATCH /cards/{id} requests.
 func (h *OgentHandler) UpdateCard(ctx context.Context, req *UpdateCardReq, params UpdateCardParams) (UpdateCardRes, error) {
-	b := h.client.Card.UpdateOneID(0)
-	// Add all fields.
-	// Add all edges.
-	if v, ok := req.Owner.Get(); ok {
-		b.SetOwnerID(v)
-	}
+	b := h.client.Card.UpdateOneID(params.ID)
+
+
+			// Add all fields.
+			if v, ok := req.Skill.Get(); ok {
+				b.SetSkill(v)
+			}
+			// Add all edges.
+			if v, ok := req.Owner.Get(); ok {
+				b.SetOwnerID(v)
+			}
+
+
 	// Persist to storage.
 	e, err := b.Save(ctx)
 	if err != nil {
@@ -163,7 +171,6 @@ func (h *OgentHandler) UpdateCard(ctx context.Context, req *UpdateCardReq, param
 // DeleteCard handles DELETE /cards/{id} requests.
 func (h *OgentHandler) DeleteCard(ctx context.Context, params DeleteCardParams) (DeleteCardRes, error) {
 	err := h.client.Card.DeleteOneID(0).Exec(ctx)
-	//err := h.client.Card.DeleteOneID(params.ID).Exec(ctx)
 	if err != nil {
 		switch {
 		case ent.IsNotFound(err):
@@ -254,7 +261,7 @@ func (h *OgentHandler) ReadCardOwner(ctx context.Context, params ReadCardOwnerPa
 func (h *OgentHandler) CreateGroup(ctx context.Context, req *CreateGroupReq) (CreateGroupRes, error) {
 	b := h.client.Group.Create()
 	// Add all fields.
-	b.SetName(req.Name)
+	b.SetName("")
 	b.SetPassword(req.Password)
 	// Add all edges.
 	b.AddUserIDs(req.Users...)
@@ -359,7 +366,7 @@ func (h *OgentHandler) UpdateGroup(ctx context.Context, req *UpdateGroupReq, par
 
 // DeleteGroup handles DELETE /groups/{id} requests.
 func (h *OgentHandler) DeleteGroup(ctx context.Context, params DeleteGroupParams) (DeleteGroupRes, error) {
-	err := h.client.Group.DeleteOneID(params.ID).Exec(ctx)
+	err := h.client.Group.DeleteOneID(0).Exec(ctx)
 	if err != nil {
 		switch {
 		case ent.IsNotFound(err):
@@ -459,7 +466,10 @@ func (h *OgentHandler) ListGroupUsers(ctx context.Context, params ListGroupUsers
 // CreateUser handles POST /users requests.
 func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (CreateUserRes, error) {
 	b := h.client.User.Create()
+
 	// Add all fields.
+	//b.SetUsername(req.Username)
+	//origin-config
 	if req.Password == password {
 		b.SetUsername(req.Username)
 	} else {
@@ -467,14 +477,66 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	}
 
 	b.SetPassword(req.Password)
+
 	if v, ok := req.Did.Get(); ok {
 		b.SetDid(v)
+	}
+	if v, ok := req.Delete.Get(); ok {
+		b.SetDelete(v)
+	}
+	if v, ok := req.Token.Get(); ok {
+		b.SetToken(v)
 	}
 	if v, ok := req.CreatedAt.Get(); ok {
 		b.SetCreatedAt(v)
 	}
 	if v, ok := req.UpdatedAt.Get(); ok {
 		b.SetUpdatedAt(v)
+	}
+	if v, ok := req.RaidAt.Get(); ok {
+		b.SetRaidAt(v)
+	}
+	if v, ok := req.Luck.Get(); ok {
+		b.SetLuck(v)
+	}
+	if v, ok := req.Aiten.Get(); ok {
+		b.SetAiten(v)
+	}
+	if v, ok := req.LuckAt.Get(); ok {
+		b.SetLuckAt(v)
+	}
+	if v, ok := req.Like.Get(); ok {
+		b.SetLike(v)
+	}
+	if v, ok := req.LikeRank.Get(); ok {
+		b.SetLikeRank(v)
+	}
+	if v, ok := req.LikeAt.Get(); ok {
+		b.SetLikeAt(v)
+	}
+	if v, ok := req.Ten.Get(); ok {
+		b.SetTen(v)
+	}
+	if v, ok := req.TenSu.Get(); ok {
+		b.SetTenSu(v)
+	}
+	if v, ok := req.TenKai.Get(); ok {
+		b.SetTenKai(v)
+	}
+	if v, ok := req.TenCard.Get(); ok {
+		b.SetTenCard(v)
+	}
+	if v, ok := req.TenDelete.Get(); ok {
+		b.SetTenDelete(v)
+	}
+	if v, ok := req.TenPost.Get(); ok {
+		b.SetTenPost(v)
+	}
+	if v, ok := req.TenGet.Get(); ok {
+		b.SetTenGet(v)
+	}
+	if v, ok := req.TenAt.Get(); ok {
+		b.SetTenAt(v)
 	}
 	if v, ok := req.Next.Get(); ok {
 		b.SetNext(v)
@@ -483,7 +545,6 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	b.AddCardIDs(req.Card...)
 	// Persist to storage.
 	e, err := b.Save(ctx)
-
 	if err != nil {
 		switch {
 		case ent.IsNotSingular(err):
@@ -546,15 +607,61 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 	if v, ok := req.Token.Get(); ok {
 		if v == token {
 			b.SetToken(v)
-			// Add all fields.
+
 			if v, ok := req.Did.Get(); ok {
 				b.SetDid(v)
 			}
 			if v, ok := req.Delete.Get(); ok {
 				b.SetDelete(v)
 			}
+
 			if v, ok := req.UpdatedAt.Get(); ok {
 				b.SetUpdatedAt(v)
+			}
+			if v, ok := req.RaidAt.Get(); ok {
+				b.SetRaidAt(v)
+			}
+			if v, ok := req.Aiten.Get(); ok {
+				b.SetAiten(v)
+			}
+			if v, ok := req.Luck.Get(); ok {
+				b.SetLuck(v)
+			}
+			if v, ok := req.LuckAt.Get(); ok {
+				b.SetLuckAt(v)
+			}
+			if v, ok := req.Like.Get(); ok {
+				b.SetLike(v)
+			}
+			if v, ok := req.LikeRank.Get(); ok {
+				b.SetLikeRank(v)
+			}
+			if v, ok := req.LikeAt.Get(); ok {
+				b.SetLikeAt(v)
+			}
+			if v, ok := req.Ten.Get(); ok {
+				b.SetTen(v)
+			}
+			if v, ok := req.TenSu.Get(); ok {
+				b.SetTenSu(v)
+			}
+			if v, ok := req.TenKai.Get(); ok {
+				b.SetTenKai(v)
+			}
+			if v, ok := req.TenCard.Get(); ok {
+				b.SetTenCard(v)
+			}
+			if v, ok := req.TenDelete.Get(); ok {
+				b.SetTenDelete(v)
+			}
+			if v, ok := req.TenPost.Get(); ok {
+				b.SetTenPost(v)
+			}
+			if v, ok := req.TenGet.Get(); ok {
+				b.SetTenGet(v)
+			}
+			if v, ok := req.TenAt.Get(); ok {
+				b.SetTenAt(v)
 			}
 			if v, ok := req.Next.Get(); ok {
 				b.SetNext(v)
@@ -563,11 +670,11 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 			if req.Card != nil {
 				b.ClearCard().AddCardIDs(req.Card...)
 			}
-			// Persist to storage.
 		}
 	}
-	e, err := b.Save(ctx)
 
+	// Persist to storage.
+	e, err := b.Save(ctx)
 	if err != nil {
 		switch {
 		case ent.IsNotFound(err):

@@ -64,6 +64,63 @@ func (User) Fields() []ent.Field {
 			return time.Now().In(jst)
 		}),
 
+		field.Time("raid_at").
+		Optional().
+		Default(func() time.Time {
+			return time.Now().In(jst)
+		}),
+
+		field.Int("luck").
+		Optional(),
+
+		field.Time("luck_at").
+		Optional().
+		Default(func() time.Time {
+			return time.Now().In(jst)
+		}),
+
+		field.Int("like").
+		Optional(),
+
+		field.Int("like_rank").
+		Optional(),
+
+		field.Time("like_at").
+		Optional().
+		Default(func() time.Time {
+			return time.Now().In(jst)
+		}),
+
+		field.Bool("ten").
+		Optional(),
+
+		field.Int("ten_su").
+		Optional(),
+
+		field.Int("ten_kai").
+		Optional(),
+
+		field.Int("aiten").
+		Optional(),
+
+		field.String("ten_card").
+		Optional(),
+
+		field.String("ten_delete").
+		Optional(),
+
+		field.String("ten_post").
+		Optional(),
+
+		field.String("ten_get").
+		Optional(),
+
+		field.Time("ten_at").
+		Optional().
+		Default(func() time.Time {
+			return time.Now().In(jst)
+		}),
+
 		field.String("next").
 		Default(Nextime()).
 		Optional(),

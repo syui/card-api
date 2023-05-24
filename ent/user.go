@@ -30,6 +30,36 @@ type User struct {
 	CreatedAt time.Time `json:"created_at,omitempty"`
 	// UpdatedAt holds the value of the "updated_at" field.
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
+	// RaidAt holds the value of the "raid_at" field.
+	RaidAt time.Time `json:"raid_at,omitempty"`
+	// Luck holds the value of the "luck" field.
+	Luck int `json:"luck,omitempty"`
+	// LuckAt holds the value of the "luck_at" field.
+	LuckAt time.Time `json:"luck_at,omitempty"`
+	// Like holds the value of the "like" field.
+	Like int `json:"like,omitempty"`
+	// LikeRank holds the value of the "like_rank" field.
+	LikeRank int `json:"like_rank,omitempty"`
+	// LikeAt holds the value of the "like_at" field.
+	LikeAt time.Time `json:"like_at,omitempty"`
+	// Ten holds the value of the "ten" field.
+	Ten bool `json:"ten,omitempty"`
+	// TenSu holds the value of the "ten_su" field.
+	TenSu int `json:"ten_su,omitempty"`
+	// TenKai holds the value of the "ten_kai" field.
+	TenKai int `json:"ten_kai,omitempty"`
+	// Aiten holds the value of the "aiten" field.
+	Aiten int `json:"aiten,omitempty"`
+	// TenCard holds the value of the "ten_card" field.
+	TenCard string `json:"ten_card,omitempty"`
+	// TenDelete holds the value of the "ten_delete" field.
+	TenDelete string `json:"ten_delete,omitempty"`
+	// TenPost holds the value of the "ten_post" field.
+	TenPost string `json:"ten_post,omitempty"`
+	// TenGet holds the value of the "ten_get" field.
+	TenGet string `json:"ten_get,omitempty"`
+	// TenAt holds the value of the "ten_at" field.
+	TenAt time.Time `json:"ten_at,omitempty"`
 	// Next holds the value of the "next" field.
 	Next string `json:"next,omitempty"`
 	// Edges holds the relations/edges for other nodes in the graph.
@@ -61,13 +91,13 @@ func (*User) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case user.FieldDelete:
+		case user.FieldDelete, user.FieldTen:
 			values[i] = new(sql.NullBool)
-		case user.FieldID:
+		case user.FieldID, user.FieldLuck, user.FieldLike, user.FieldLikeRank, user.FieldTenSu, user.FieldTenKai, user.FieldAiten:
 			values[i] = new(sql.NullInt64)
-		case user.FieldUsername, user.FieldDid, user.FieldToken, user.FieldPassword, user.FieldNext:
+		case user.FieldUsername, user.FieldDid, user.FieldToken, user.FieldPassword, user.FieldTenCard, user.FieldTenDelete, user.FieldTenPost, user.FieldTenGet, user.FieldNext:
 			values[i] = new(sql.NullString)
-		case user.FieldCreatedAt, user.FieldUpdatedAt:
+		case user.FieldCreatedAt, user.FieldUpdatedAt, user.FieldRaidAt, user.FieldLuckAt, user.FieldLikeAt, user.FieldTenAt:
 			values[i] = new(sql.NullTime)
 		case user.ForeignKeys[0]: // group_users
 			values[i] = new(sql.NullInt64)
@@ -134,6 +164,96 @@ func (u *User) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				u.UpdatedAt = value.Time
 			}
+		case user.FieldRaidAt:
+			if value, ok := values[i].(*sql.NullTime); !ok {
+				return fmt.Errorf("unexpected type %T for field raid_at", values[i])
+			} else if value.Valid {
+				u.RaidAt = value.Time
+			}
+		case user.FieldLuck:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field luck", values[i])
+			} else if value.Valid {
+				u.Luck = int(value.Int64)
+			}
+		case user.FieldLuckAt:
+			if value, ok := values[i].(*sql.NullTime); !ok {
+				return fmt.Errorf("unexpected type %T for field luck_at", values[i])
+			} else if value.Valid {
+				u.LuckAt = value.Time
+			}
+		case user.FieldLike:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field like", values[i])
+			} else if value.Valid {
+				u.Like = int(value.Int64)
+			}
+		case user.FieldLikeRank:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field like_rank", values[i])
+			} else if value.Valid {
+				u.LikeRank = int(value.Int64)
+			}
+		case user.FieldLikeAt:
+			if value, ok := values[i].(*sql.NullTime); !ok {
+				return fmt.Errorf("unexpected type %T for field like_at", values[i])
+			} else if value.Valid {
+				u.LikeAt = value.Time
+			}
+		case user.FieldTen:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field ten", values[i])
+			} else if value.Valid {
+				u.Ten = value.Bool
+			}
+		case user.FieldTenSu:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field ten_su", values[i])
+			} else if value.Valid {
+				u.TenSu = int(value.Int64)
+			}
+		case user.FieldTenKai:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field ten_kai", values[i])
+			} else if value.Valid {
+				u.TenKai = int(value.Int64)
+			}
+		case user.FieldAiten:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field aiten", values[i])
+			} else if value.Valid {
+				u.Aiten = int(value.Int64)
+			}
+		case user.FieldTenCard:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field ten_card", values[i])
+			} else if value.Valid {
+				u.TenCard = value.String
+			}
+		case user.FieldTenDelete:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field ten_delete", values[i])
+			} else if value.Valid {
+				u.TenDelete = value.String
+			}
+		case user.FieldTenPost:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field ten_post", values[i])
+			} else if value.Valid {
+				u.TenPost = value.String
+			}
+		case user.FieldTenGet:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field ten_get", values[i])
+			} else if value.Valid {
+				u.TenGet = value.String
+			}
+		case user.FieldTenAt:
+			if value, ok := values[i].(*sql.NullTime); !ok {
+				return fmt.Errorf("unexpected type %T for field ten_at", values[i])
+			} else if value.Valid {
+				u.TenAt = value.Time
+			}
 		case user.FieldNext:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field next", values[i])
@@ -198,6 +318,51 @@ func (u *User) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
 	builder.WriteString(u.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(", ")
+	builder.WriteString("raid_at=")
+	builder.WriteString(u.RaidAt.Format(time.ANSIC))
+	builder.WriteString(", ")
+	builder.WriteString("luck=")
+	builder.WriteString(fmt.Sprintf("%v", u.Luck))
+	builder.WriteString(", ")
+	builder.WriteString("luck_at=")
+	builder.WriteString(u.LuckAt.Format(time.ANSIC))
+	builder.WriteString(", ")
+	builder.WriteString("like=")
+	builder.WriteString(fmt.Sprintf("%v", u.Like))
+	builder.WriteString(", ")
+	builder.WriteString("like_rank=")
+	builder.WriteString(fmt.Sprintf("%v", u.LikeRank))
+	builder.WriteString(", ")
+	builder.WriteString("like_at=")
+	builder.WriteString(u.LikeAt.Format(time.ANSIC))
+	builder.WriteString(", ")
+	builder.WriteString("ten=")
+	builder.WriteString(fmt.Sprintf("%v", u.Ten))
+	builder.WriteString(", ")
+	builder.WriteString("ten_su=")
+	builder.WriteString(fmt.Sprintf("%v", u.TenSu))
+	builder.WriteString(", ")
+	builder.WriteString("ten_kai=")
+	builder.WriteString(fmt.Sprintf("%v", u.TenKai))
+	builder.WriteString(", ")
+	builder.WriteString("aiten=")
+	builder.WriteString(fmt.Sprintf("%v", u.Aiten))
+	builder.WriteString(", ")
+	builder.WriteString("ten_card=")
+	builder.WriteString(u.TenCard)
+	builder.WriteString(", ")
+	builder.WriteString("ten_delete=")
+	builder.WriteString(u.TenDelete)
+	builder.WriteString(", ")
+	builder.WriteString("ten_post=")
+	builder.WriteString(u.TenPost)
+	builder.WriteString(", ")
+	builder.WriteString("ten_get=")
+	builder.WriteString(u.TenGet)
+	builder.WriteString(", ")
+	builder.WriteString("ten_at=")
+	builder.WriteString(u.TenAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("next=")
 	builder.WriteString(u.Next)

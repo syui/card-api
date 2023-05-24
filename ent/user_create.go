@@ -103,6 +103,216 @@ func (uc *UserCreate) SetNillableUpdatedAt(t *time.Time) *UserCreate {
 	return uc
 }
 
+// SetRaidAt sets the "raid_at" field.
+func (uc *UserCreate) SetRaidAt(t time.Time) *UserCreate {
+	uc.mutation.SetRaidAt(t)
+	return uc
+}
+
+// SetNillableRaidAt sets the "raid_at" field if the given value is not nil.
+func (uc *UserCreate) SetNillableRaidAt(t *time.Time) *UserCreate {
+	if t != nil {
+		uc.SetRaidAt(*t)
+	}
+	return uc
+}
+
+// SetLuck sets the "luck" field.
+func (uc *UserCreate) SetLuck(i int) *UserCreate {
+	uc.mutation.SetLuck(i)
+	return uc
+}
+
+// SetNillableLuck sets the "luck" field if the given value is not nil.
+func (uc *UserCreate) SetNillableLuck(i *int) *UserCreate {
+	if i != nil {
+		uc.SetLuck(*i)
+	}
+	return uc
+}
+
+// SetLuckAt sets the "luck_at" field.
+func (uc *UserCreate) SetLuckAt(t time.Time) *UserCreate {
+	uc.mutation.SetLuckAt(t)
+	return uc
+}
+
+// SetNillableLuckAt sets the "luck_at" field if the given value is not nil.
+func (uc *UserCreate) SetNillableLuckAt(t *time.Time) *UserCreate {
+	if t != nil {
+		uc.SetLuckAt(*t)
+	}
+	return uc
+}
+
+// SetLike sets the "like" field.
+func (uc *UserCreate) SetLike(i int) *UserCreate {
+	uc.mutation.SetLike(i)
+	return uc
+}
+
+// SetNillableLike sets the "like" field if the given value is not nil.
+func (uc *UserCreate) SetNillableLike(i *int) *UserCreate {
+	if i != nil {
+		uc.SetLike(*i)
+	}
+	return uc
+}
+
+// SetLikeRank sets the "like_rank" field.
+func (uc *UserCreate) SetLikeRank(i int) *UserCreate {
+	uc.mutation.SetLikeRank(i)
+	return uc
+}
+
+// SetNillableLikeRank sets the "like_rank" field if the given value is not nil.
+func (uc *UserCreate) SetNillableLikeRank(i *int) *UserCreate {
+	if i != nil {
+		uc.SetLikeRank(*i)
+	}
+	return uc
+}
+
+// SetLikeAt sets the "like_at" field.
+func (uc *UserCreate) SetLikeAt(t time.Time) *UserCreate {
+	uc.mutation.SetLikeAt(t)
+	return uc
+}
+
+// SetNillableLikeAt sets the "like_at" field if the given value is not nil.
+func (uc *UserCreate) SetNillableLikeAt(t *time.Time) *UserCreate {
+	if t != nil {
+		uc.SetLikeAt(*t)
+	}
+	return uc
+}
+
+// SetTen sets the "ten" field.
+func (uc *UserCreate) SetTen(b bool) *UserCreate {
+	uc.mutation.SetTen(b)
+	return uc
+}
+
+// SetNillableTen sets the "ten" field if the given value is not nil.
+func (uc *UserCreate) SetNillableTen(b *bool) *UserCreate {
+	if b != nil {
+		uc.SetTen(*b)
+	}
+	return uc
+}
+
+// SetTenSu sets the "ten_su" field.
+func (uc *UserCreate) SetTenSu(i int) *UserCreate {
+	uc.mutation.SetTenSu(i)
+	return uc
+}
+
+// SetNillableTenSu sets the "ten_su" field if the given value is not nil.
+func (uc *UserCreate) SetNillableTenSu(i *int) *UserCreate {
+	if i != nil {
+		uc.SetTenSu(*i)
+	}
+	return uc
+}
+
+// SetTenKai sets the "ten_kai" field.
+func (uc *UserCreate) SetTenKai(i int) *UserCreate {
+	uc.mutation.SetTenKai(i)
+	return uc
+}
+
+// SetNillableTenKai sets the "ten_kai" field if the given value is not nil.
+func (uc *UserCreate) SetNillableTenKai(i *int) *UserCreate {
+	if i != nil {
+		uc.SetTenKai(*i)
+	}
+	return uc
+}
+
+// SetAiten sets the "aiten" field.
+func (uc *UserCreate) SetAiten(i int) *UserCreate {
+	uc.mutation.SetAiten(i)
+	return uc
+}
+
+// SetNillableAiten sets the "aiten" field if the given value is not nil.
+func (uc *UserCreate) SetNillableAiten(i *int) *UserCreate {
+	if i != nil {
+		uc.SetAiten(*i)
+	}
+	return uc
+}
+
+// SetTenCard sets the "ten_card" field.
+func (uc *UserCreate) SetTenCard(s string) *UserCreate {
+	uc.mutation.SetTenCard(s)
+	return uc
+}
+
+// SetNillableTenCard sets the "ten_card" field if the given value is not nil.
+func (uc *UserCreate) SetNillableTenCard(s *string) *UserCreate {
+	if s != nil {
+		uc.SetTenCard(*s)
+	}
+	return uc
+}
+
+// SetTenDelete sets the "ten_delete" field.
+func (uc *UserCreate) SetTenDelete(s string) *UserCreate {
+	uc.mutation.SetTenDelete(s)
+	return uc
+}
+
+// SetNillableTenDelete sets the "ten_delete" field if the given value is not nil.
+func (uc *UserCreate) SetNillableTenDelete(s *string) *UserCreate {
+	if s != nil {
+		uc.SetTenDelete(*s)
+	}
+	return uc
+}
+
+// SetTenPost sets the "ten_post" field.
+func (uc *UserCreate) SetTenPost(s string) *UserCreate {
+	uc.mutation.SetTenPost(s)
+	return uc
+}
+
+// SetNillableTenPost sets the "ten_post" field if the given value is not nil.
+func (uc *UserCreate) SetNillableTenPost(s *string) *UserCreate {
+	if s != nil {
+		uc.SetTenPost(*s)
+	}
+	return uc
+}
+
+// SetTenGet sets the "ten_get" field.
+func (uc *UserCreate) SetTenGet(s string) *UserCreate {
+	uc.mutation.SetTenGet(s)
+	return uc
+}
+
+// SetNillableTenGet sets the "ten_get" field if the given value is not nil.
+func (uc *UserCreate) SetNillableTenGet(s *string) *UserCreate {
+	if s != nil {
+		uc.SetTenGet(*s)
+	}
+	return uc
+}
+
+// SetTenAt sets the "ten_at" field.
+func (uc *UserCreate) SetTenAt(t time.Time) *UserCreate {
+	uc.mutation.SetTenAt(t)
+	return uc
+}
+
+// SetNillableTenAt sets the "ten_at" field if the given value is not nil.
+func (uc *UserCreate) SetNillableTenAt(t *time.Time) *UserCreate {
+	if t != nil {
+		uc.SetTenAt(*t)
+	}
+	return uc
+}
+
 // SetNext sets the "next" field.
 func (uc *UserCreate) SetNext(s string) *UserCreate {
 	uc.mutation.SetNext(s)
@@ -178,6 +388,22 @@ func (uc *UserCreate) defaults() {
 	if _, ok := uc.mutation.UpdatedAt(); !ok {
 		v := user.DefaultUpdatedAt()
 		uc.mutation.SetUpdatedAt(v)
+	}
+	if _, ok := uc.mutation.RaidAt(); !ok {
+		v := user.DefaultRaidAt()
+		uc.mutation.SetRaidAt(v)
+	}
+	if _, ok := uc.mutation.LuckAt(); !ok {
+		v := user.DefaultLuckAt()
+		uc.mutation.SetLuckAt(v)
+	}
+	if _, ok := uc.mutation.LikeAt(); !ok {
+		v := user.DefaultLikeAt()
+		uc.mutation.SetLikeAt(v)
+	}
+	if _, ok := uc.mutation.TenAt(); !ok {
+		v := user.DefaultTenAt()
+		uc.mutation.SetTenAt(v)
 	}
 	if _, ok := uc.mutation.Next(); !ok {
 		v := user.DefaultNext
@@ -256,6 +482,66 @@ func (uc *UserCreate) createSpec() (*User, *sqlgraph.CreateSpec) {
 	if value, ok := uc.mutation.UpdatedAt(); ok {
 		_spec.SetField(user.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
+	}
+	if value, ok := uc.mutation.RaidAt(); ok {
+		_spec.SetField(user.FieldRaidAt, field.TypeTime, value)
+		_node.RaidAt = value
+	}
+	if value, ok := uc.mutation.Luck(); ok {
+		_spec.SetField(user.FieldLuck, field.TypeInt, value)
+		_node.Luck = value
+	}
+	if value, ok := uc.mutation.LuckAt(); ok {
+		_spec.SetField(user.FieldLuckAt, field.TypeTime, value)
+		_node.LuckAt = value
+	}
+	if value, ok := uc.mutation.Like(); ok {
+		_spec.SetField(user.FieldLike, field.TypeInt, value)
+		_node.Like = value
+	}
+	if value, ok := uc.mutation.LikeRank(); ok {
+		_spec.SetField(user.FieldLikeRank, field.TypeInt, value)
+		_node.LikeRank = value
+	}
+	if value, ok := uc.mutation.LikeAt(); ok {
+		_spec.SetField(user.FieldLikeAt, field.TypeTime, value)
+		_node.LikeAt = value
+	}
+	if value, ok := uc.mutation.Ten(); ok {
+		_spec.SetField(user.FieldTen, field.TypeBool, value)
+		_node.Ten = value
+	}
+	if value, ok := uc.mutation.TenSu(); ok {
+		_spec.SetField(user.FieldTenSu, field.TypeInt, value)
+		_node.TenSu = value
+	}
+	if value, ok := uc.mutation.TenKai(); ok {
+		_spec.SetField(user.FieldTenKai, field.TypeInt, value)
+		_node.TenKai = value
+	}
+	if value, ok := uc.mutation.Aiten(); ok {
+		_spec.SetField(user.FieldAiten, field.TypeInt, value)
+		_node.Aiten = value
+	}
+	if value, ok := uc.mutation.TenCard(); ok {
+		_spec.SetField(user.FieldTenCard, field.TypeString, value)
+		_node.TenCard = value
+	}
+	if value, ok := uc.mutation.TenDelete(); ok {
+		_spec.SetField(user.FieldTenDelete, field.TypeString, value)
+		_node.TenDelete = value
+	}
+	if value, ok := uc.mutation.TenPost(); ok {
+		_spec.SetField(user.FieldTenPost, field.TypeString, value)
+		_node.TenPost = value
+	}
+	if value, ok := uc.mutation.TenGet(); ok {
+		_spec.SetField(user.FieldTenGet, field.TypeString, value)
+		_node.TenGet = value
+	}
+	if value, ok := uc.mutation.TenAt(); ok {
+		_spec.SetField(user.FieldTenAt, field.TypeTime, value)
+		_node.TenAt = value
 	}
 	if value, ok := uc.mutation.Next(); ok {
 		_spec.SetField(user.FieldNext, field.TypeString, value)

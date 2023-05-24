@@ -63,7 +63,22 @@ var (
 		{Name: "password", Type: field.TypeString},
 		{Name: "created_at", Type: field.TypeTime, Nullable: true},
 		{Name: "updated_at", Type: field.TypeTime, Nullable: true},
-		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230521"},
+		{Name: "raid_at", Type: field.TypeTime, Nullable: true},
+		{Name: "luck", Type: field.TypeInt, Nullable: true},
+		{Name: "luck_at", Type: field.TypeTime, Nullable: true},
+		{Name: "like", Type: field.TypeInt, Nullable: true},
+		{Name: "like_rank", Type: field.TypeInt, Nullable: true},
+		{Name: "like_at", Type: field.TypeTime, Nullable: true},
+		{Name: "ten", Type: field.TypeBool, Nullable: true},
+		{Name: "ten_su", Type: field.TypeInt, Nullable: true},
+		{Name: "ten_kai", Type: field.TypeInt, Nullable: true},
+		{Name: "aiten", Type: field.TypeInt, Nullable: true},
+		{Name: "ten_card", Type: field.TypeString, Nullable: true},
+		{Name: "ten_delete", Type: field.TypeString, Nullable: true},
+		{Name: "ten_post", Type: field.TypeString, Nullable: true},
+		{Name: "ten_get", Type: field.TypeString, Nullable: true},
+		{Name: "ten_at", Type: field.TypeTime, Nullable: true},
+		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230613"},
 		{Name: "group_users", Type: field.TypeInt, Nullable: true},
 	}
 	// UsersTable holds the schema information for the "users" table.
@@ -74,7 +89,7 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "users_groups_users",
-				Columns:    []*schema.Column{UsersColumns[9]},
+				Columns:    []*schema.Column{UsersColumns[24]},
 				RefColumns: []*schema.Column{GroupsColumns[0]},
 				OnDelete:   schema.SetNull,
 			},

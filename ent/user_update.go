@@ -109,6 +109,348 @@ func (uu *UserUpdate) ClearUpdatedAt() *UserUpdate {
 	return uu
 }
 
+// SetRaidAt sets the "raid_at" field.
+func (uu *UserUpdate) SetRaidAt(t time.Time) *UserUpdate {
+	uu.mutation.SetRaidAt(t)
+	return uu
+}
+
+// SetNillableRaidAt sets the "raid_at" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableRaidAt(t *time.Time) *UserUpdate {
+	if t != nil {
+		uu.SetRaidAt(*t)
+	}
+	return uu
+}
+
+// ClearRaidAt clears the value of the "raid_at" field.
+func (uu *UserUpdate) ClearRaidAt() *UserUpdate {
+	uu.mutation.ClearRaidAt()
+	return uu
+}
+
+// SetLuck sets the "luck" field.
+func (uu *UserUpdate) SetLuck(i int) *UserUpdate {
+	uu.mutation.ResetLuck()
+	uu.mutation.SetLuck(i)
+	return uu
+}
+
+// SetNillableLuck sets the "luck" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableLuck(i *int) *UserUpdate {
+	if i != nil {
+		uu.SetLuck(*i)
+	}
+	return uu
+}
+
+// AddLuck adds i to the "luck" field.
+func (uu *UserUpdate) AddLuck(i int) *UserUpdate {
+	uu.mutation.AddLuck(i)
+	return uu
+}
+
+// ClearLuck clears the value of the "luck" field.
+func (uu *UserUpdate) ClearLuck() *UserUpdate {
+	uu.mutation.ClearLuck()
+	return uu
+}
+
+// SetLuckAt sets the "luck_at" field.
+func (uu *UserUpdate) SetLuckAt(t time.Time) *UserUpdate {
+	uu.mutation.SetLuckAt(t)
+	return uu
+}
+
+// SetNillableLuckAt sets the "luck_at" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableLuckAt(t *time.Time) *UserUpdate {
+	if t != nil {
+		uu.SetLuckAt(*t)
+	}
+	return uu
+}
+
+// ClearLuckAt clears the value of the "luck_at" field.
+func (uu *UserUpdate) ClearLuckAt() *UserUpdate {
+	uu.mutation.ClearLuckAt()
+	return uu
+}
+
+// SetLike sets the "like" field.
+func (uu *UserUpdate) SetLike(i int) *UserUpdate {
+	uu.mutation.ResetLike()
+	uu.mutation.SetLike(i)
+	return uu
+}
+
+// SetNillableLike sets the "like" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableLike(i *int) *UserUpdate {
+	if i != nil {
+		uu.SetLike(*i)
+	}
+	return uu
+}
+
+// AddLike adds i to the "like" field.
+func (uu *UserUpdate) AddLike(i int) *UserUpdate {
+	uu.mutation.AddLike(i)
+	return uu
+}
+
+// ClearLike clears the value of the "like" field.
+func (uu *UserUpdate) ClearLike() *UserUpdate {
+	uu.mutation.ClearLike()
+	return uu
+}
+
+// SetLikeRank sets the "like_rank" field.
+func (uu *UserUpdate) SetLikeRank(i int) *UserUpdate {
+	uu.mutation.ResetLikeRank()
+	uu.mutation.SetLikeRank(i)
+	return uu
+}
+
+// SetNillableLikeRank sets the "like_rank" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableLikeRank(i *int) *UserUpdate {
+	if i != nil {
+		uu.SetLikeRank(*i)
+	}
+	return uu
+}
+
+// AddLikeRank adds i to the "like_rank" field.
+func (uu *UserUpdate) AddLikeRank(i int) *UserUpdate {
+	uu.mutation.AddLikeRank(i)
+	return uu
+}
+
+// ClearLikeRank clears the value of the "like_rank" field.
+func (uu *UserUpdate) ClearLikeRank() *UserUpdate {
+	uu.mutation.ClearLikeRank()
+	return uu
+}
+
+// SetLikeAt sets the "like_at" field.
+func (uu *UserUpdate) SetLikeAt(t time.Time) *UserUpdate {
+	uu.mutation.SetLikeAt(t)
+	return uu
+}
+
+// SetNillableLikeAt sets the "like_at" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableLikeAt(t *time.Time) *UserUpdate {
+	if t != nil {
+		uu.SetLikeAt(*t)
+	}
+	return uu
+}
+
+// ClearLikeAt clears the value of the "like_at" field.
+func (uu *UserUpdate) ClearLikeAt() *UserUpdate {
+	uu.mutation.ClearLikeAt()
+	return uu
+}
+
+// SetTen sets the "ten" field.
+func (uu *UserUpdate) SetTen(b bool) *UserUpdate {
+	uu.mutation.SetTen(b)
+	return uu
+}
+
+// SetNillableTen sets the "ten" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableTen(b *bool) *UserUpdate {
+	if b != nil {
+		uu.SetTen(*b)
+	}
+	return uu
+}
+
+// ClearTen clears the value of the "ten" field.
+func (uu *UserUpdate) ClearTen() *UserUpdate {
+	uu.mutation.ClearTen()
+	return uu
+}
+
+// SetTenSu sets the "ten_su" field.
+func (uu *UserUpdate) SetTenSu(i int) *UserUpdate {
+	uu.mutation.ResetTenSu()
+	uu.mutation.SetTenSu(i)
+	return uu
+}
+
+// SetNillableTenSu sets the "ten_su" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableTenSu(i *int) *UserUpdate {
+	if i != nil {
+		uu.SetTenSu(*i)
+	}
+	return uu
+}
+
+// AddTenSu adds i to the "ten_su" field.
+func (uu *UserUpdate) AddTenSu(i int) *UserUpdate {
+	uu.mutation.AddTenSu(i)
+	return uu
+}
+
+// ClearTenSu clears the value of the "ten_su" field.
+func (uu *UserUpdate) ClearTenSu() *UserUpdate {
+	uu.mutation.ClearTenSu()
+	return uu
+}
+
+// SetTenKai sets the "ten_kai" field.
+func (uu *UserUpdate) SetTenKai(i int) *UserUpdate {
+	uu.mutation.ResetTenKai()
+	uu.mutation.SetTenKai(i)
+	return uu
+}
+
+// SetNillableTenKai sets the "ten_kai" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableTenKai(i *int) *UserUpdate {
+	if i != nil {
+		uu.SetTenKai(*i)
+	}
+	return uu
+}
+
+// AddTenKai adds i to the "ten_kai" field.
+func (uu *UserUpdate) AddTenKai(i int) *UserUpdate {
+	uu.mutation.AddTenKai(i)
+	return uu
+}
+
+// ClearTenKai clears the value of the "ten_kai" field.
+func (uu *UserUpdate) ClearTenKai() *UserUpdate {
+	uu.mutation.ClearTenKai()
+	return uu
+}
+
+// SetAiten sets the "aiten" field.
+func (uu *UserUpdate) SetAiten(i int) *UserUpdate {
+	uu.mutation.ResetAiten()
+	uu.mutation.SetAiten(i)
+	return uu
+}
+
+// SetNillableAiten sets the "aiten" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableAiten(i *int) *UserUpdate {
+	if i != nil {
+		uu.SetAiten(*i)
+	}
+	return uu
+}
+
+// AddAiten adds i to the "aiten" field.
+func (uu *UserUpdate) AddAiten(i int) *UserUpdate {
+	uu.mutation.AddAiten(i)
+	return uu
+}
+
+// ClearAiten clears the value of the "aiten" field.
+func (uu *UserUpdate) ClearAiten() *UserUpdate {
+	uu.mutation.ClearAiten()
+	return uu
+}
+
+// SetTenCard sets the "ten_card" field.
+func (uu *UserUpdate) SetTenCard(s string) *UserUpdate {
+	uu.mutation.SetTenCard(s)
+	return uu
+}
+
+// SetNillableTenCard sets the "ten_card" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableTenCard(s *string) *UserUpdate {
+	if s != nil {
+		uu.SetTenCard(*s)
+	}
+	return uu
+}
+
+// ClearTenCard clears the value of the "ten_card" field.
+func (uu *UserUpdate) ClearTenCard() *UserUpdate {
+	uu.mutation.ClearTenCard()
+	return uu
+}
+
+// SetTenDelete sets the "ten_delete" field.
+func (uu *UserUpdate) SetTenDelete(s string) *UserUpdate {
+	uu.mutation.SetTenDelete(s)
+	return uu
+}
+
+// SetNillableTenDelete sets the "ten_delete" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableTenDelete(s *string) *UserUpdate {
+	if s != nil {
+		uu.SetTenDelete(*s)
+	}
+	return uu
+}
+
+// ClearTenDelete clears the value of the "ten_delete" field.
+func (uu *UserUpdate) ClearTenDelete() *UserUpdate {
+	uu.mutation.ClearTenDelete()
+	return uu
+}
+
+// SetTenPost sets the "ten_post" field.
+func (uu *UserUpdate) SetTenPost(s string) *UserUpdate {
+	uu.mutation.SetTenPost(s)
+	return uu
+}
+
+// SetNillableTenPost sets the "ten_post" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableTenPost(s *string) *UserUpdate {
+	if s != nil {
+		uu.SetTenPost(*s)
+	}
+	return uu
+}
+
+// ClearTenPost clears the value of the "ten_post" field.
+func (uu *UserUpdate) ClearTenPost() *UserUpdate {
+	uu.mutation.ClearTenPost()
+	return uu
+}
+
+// SetTenGet sets the "ten_get" field.
+func (uu *UserUpdate) SetTenGet(s string) *UserUpdate {
+	uu.mutation.SetTenGet(s)
+	return uu
+}
+
+// SetNillableTenGet sets the "ten_get" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableTenGet(s *string) *UserUpdate {
+	if s != nil {
+		uu.SetTenGet(*s)
+	}
+	return uu
+}
+
+// ClearTenGet clears the value of the "ten_get" field.
+func (uu *UserUpdate) ClearTenGet() *UserUpdate {
+	uu.mutation.ClearTenGet()
+	return uu
+}
+
+// SetTenAt sets the "ten_at" field.
+func (uu *UserUpdate) SetTenAt(t time.Time) *UserUpdate {
+	uu.mutation.SetTenAt(t)
+	return uu
+}
+
+// SetNillableTenAt sets the "ten_at" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableTenAt(t *time.Time) *UserUpdate {
+	if t != nil {
+		uu.SetTenAt(*t)
+	}
+	return uu
+}
+
+// ClearTenAt clears the value of the "ten_at" field.
+func (uu *UserUpdate) ClearTenAt() *UserUpdate {
+	uu.mutation.ClearTenAt()
+	return uu
+}
+
 // SetNext sets the "next" field.
 func (uu *UserUpdate) SetNext(s string) *UserUpdate {
 	uu.mutation.SetNext(s)
@@ -232,6 +574,114 @@ func (uu *UserUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	}
 	if uu.mutation.UpdatedAtCleared() {
 		_spec.ClearField(user.FieldUpdatedAt, field.TypeTime)
+	}
+	if value, ok := uu.mutation.RaidAt(); ok {
+		_spec.SetField(user.FieldRaidAt, field.TypeTime, value)
+	}
+	if uu.mutation.RaidAtCleared() {
+		_spec.ClearField(user.FieldRaidAt, field.TypeTime)
+	}
+	if value, ok := uu.mutation.Luck(); ok {
+		_spec.SetField(user.FieldLuck, field.TypeInt, value)
+	}
+	if value, ok := uu.mutation.AddedLuck(); ok {
+		_spec.AddField(user.FieldLuck, field.TypeInt, value)
+	}
+	if uu.mutation.LuckCleared() {
+		_spec.ClearField(user.FieldLuck, field.TypeInt)
+	}
+	if value, ok := uu.mutation.LuckAt(); ok {
+		_spec.SetField(user.FieldLuckAt, field.TypeTime, value)
+	}
+	if uu.mutation.LuckAtCleared() {
+		_spec.ClearField(user.FieldLuckAt, field.TypeTime)
+	}
+	if value, ok := uu.mutation.Like(); ok {
+		_spec.SetField(user.FieldLike, field.TypeInt, value)
+	}
+	if value, ok := uu.mutation.AddedLike(); ok {
+		_spec.AddField(user.FieldLike, field.TypeInt, value)
+	}
+	if uu.mutation.LikeCleared() {
+		_spec.ClearField(user.FieldLike, field.TypeInt)
+	}
+	if value, ok := uu.mutation.LikeRank(); ok {
+		_spec.SetField(user.FieldLikeRank, field.TypeInt, value)
+	}
+	if value, ok := uu.mutation.AddedLikeRank(); ok {
+		_spec.AddField(user.FieldLikeRank, field.TypeInt, value)
+	}
+	if uu.mutation.LikeRankCleared() {
+		_spec.ClearField(user.FieldLikeRank, field.TypeInt)
+	}
+	if value, ok := uu.mutation.LikeAt(); ok {
+		_spec.SetField(user.FieldLikeAt, field.TypeTime, value)
+	}
+	if uu.mutation.LikeAtCleared() {
+		_spec.ClearField(user.FieldLikeAt, field.TypeTime)
+	}
+	if value, ok := uu.mutation.Ten(); ok {
+		_spec.SetField(user.FieldTen, field.TypeBool, value)
+	}
+	if uu.mutation.TenCleared() {
+		_spec.ClearField(user.FieldTen, field.TypeBool)
+	}
+	if value, ok := uu.mutation.TenSu(); ok {
+		_spec.SetField(user.FieldTenSu, field.TypeInt, value)
+	}
+	if value, ok := uu.mutation.AddedTenSu(); ok {
+		_spec.AddField(user.FieldTenSu, field.TypeInt, value)
+	}
+	if uu.mutation.TenSuCleared() {
+		_spec.ClearField(user.FieldTenSu, field.TypeInt)
+	}
+	if value, ok := uu.mutation.TenKai(); ok {
+		_spec.SetField(user.FieldTenKai, field.TypeInt, value)
+	}
+	if value, ok := uu.mutation.AddedTenKai(); ok {
+		_spec.AddField(user.FieldTenKai, field.TypeInt, value)
+	}
+	if uu.mutation.TenKaiCleared() {
+		_spec.ClearField(user.FieldTenKai, field.TypeInt)
+	}
+	if value, ok := uu.mutation.Aiten(); ok {
+		_spec.SetField(user.FieldAiten, field.TypeInt, value)
+	}
+	if value, ok := uu.mutation.AddedAiten(); ok {
+		_spec.AddField(user.FieldAiten, field.TypeInt, value)
+	}
+	if uu.mutation.AitenCleared() {
+		_spec.ClearField(user.FieldAiten, field.TypeInt)
+	}
+	if value, ok := uu.mutation.TenCard(); ok {
+		_spec.SetField(user.FieldTenCard, field.TypeString, value)
+	}
+	if uu.mutation.TenCardCleared() {
+		_spec.ClearField(user.FieldTenCard, field.TypeString)
+	}
+	if value, ok := uu.mutation.TenDelete(); ok {
+		_spec.SetField(user.FieldTenDelete, field.TypeString, value)
+	}
+	if uu.mutation.TenDeleteCleared() {
+		_spec.ClearField(user.FieldTenDelete, field.TypeString)
+	}
+	if value, ok := uu.mutation.TenPost(); ok {
+		_spec.SetField(user.FieldTenPost, field.TypeString, value)
+	}
+	if uu.mutation.TenPostCleared() {
+		_spec.ClearField(user.FieldTenPost, field.TypeString)
+	}
+	if value, ok := uu.mutation.TenGet(); ok {
+		_spec.SetField(user.FieldTenGet, field.TypeString, value)
+	}
+	if uu.mutation.TenGetCleared() {
+		_spec.ClearField(user.FieldTenGet, field.TypeString)
+	}
+	if value, ok := uu.mutation.TenAt(); ok {
+		_spec.SetField(user.FieldTenAt, field.TypeTime, value)
+	}
+	if uu.mutation.TenAtCleared() {
+		_spec.ClearField(user.FieldTenAt, field.TypeTime)
 	}
 	if value, ok := uu.mutation.Next(); ok {
 		_spec.SetField(user.FieldNext, field.TypeString, value)
@@ -381,6 +831,348 @@ func (uuo *UserUpdateOne) SetNillableUpdatedAt(t *time.Time) *UserUpdateOne {
 // ClearUpdatedAt clears the value of the "updated_at" field.
 func (uuo *UserUpdateOne) ClearUpdatedAt() *UserUpdateOne {
 	uuo.mutation.ClearUpdatedAt()
+	return uuo
+}
+
+// SetRaidAt sets the "raid_at" field.
+func (uuo *UserUpdateOne) SetRaidAt(t time.Time) *UserUpdateOne {
+	uuo.mutation.SetRaidAt(t)
+	return uuo
+}
+
+// SetNillableRaidAt sets the "raid_at" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableRaidAt(t *time.Time) *UserUpdateOne {
+	if t != nil {
+		uuo.SetRaidAt(*t)
+	}
+	return uuo
+}
+
+// ClearRaidAt clears the value of the "raid_at" field.
+func (uuo *UserUpdateOne) ClearRaidAt() *UserUpdateOne {
+	uuo.mutation.ClearRaidAt()
+	return uuo
+}
+
+// SetLuck sets the "luck" field.
+func (uuo *UserUpdateOne) SetLuck(i int) *UserUpdateOne {
+	uuo.mutation.ResetLuck()
+	uuo.mutation.SetLuck(i)
+	return uuo
+}
+
+// SetNillableLuck sets the "luck" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableLuck(i *int) *UserUpdateOne {
+	if i != nil {
+		uuo.SetLuck(*i)
+	}
+	return uuo
+}
+
+// AddLuck adds i to the "luck" field.
+func (uuo *UserUpdateOne) AddLuck(i int) *UserUpdateOne {
+	uuo.mutation.AddLuck(i)
+	return uuo
+}
+
+// ClearLuck clears the value of the "luck" field.
+func (uuo *UserUpdateOne) ClearLuck() *UserUpdateOne {
+	uuo.mutation.ClearLuck()
+	return uuo
+}
+
+// SetLuckAt sets the "luck_at" field.
+func (uuo *UserUpdateOne) SetLuckAt(t time.Time) *UserUpdateOne {
+	uuo.mutation.SetLuckAt(t)
+	return uuo
+}
+
+// SetNillableLuckAt sets the "luck_at" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableLuckAt(t *time.Time) *UserUpdateOne {
+	if t != nil {
+		uuo.SetLuckAt(*t)
+	}
+	return uuo
+}
+
+// ClearLuckAt clears the value of the "luck_at" field.
+func (uuo *UserUpdateOne) ClearLuckAt() *UserUpdateOne {
+	uuo.mutation.ClearLuckAt()
+	return uuo
+}
+
+// SetLike sets the "like" field.
+func (uuo *UserUpdateOne) SetLike(i int) *UserUpdateOne {
+	uuo.mutation.ResetLike()
+	uuo.mutation.SetLike(i)
+	return uuo
+}
+
+// SetNillableLike sets the "like" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableLike(i *int) *UserUpdateOne {
+	if i != nil {
+		uuo.SetLike(*i)
+	}
+	return uuo
+}
+
+// AddLike adds i to the "like" field.
+func (uuo *UserUpdateOne) AddLike(i int) *UserUpdateOne {
+	uuo.mutation.AddLike(i)
+	return uuo
+}
+
+// ClearLike clears the value of the "like" field.
+func (uuo *UserUpdateOne) ClearLike() *UserUpdateOne {
+	uuo.mutation.ClearLike()
+	return uuo
+}
+
+// SetLikeRank sets the "like_rank" field.
+func (uuo *UserUpdateOne) SetLikeRank(i int) *UserUpdateOne {
+	uuo.mutation.ResetLikeRank()
+	uuo.mutation.SetLikeRank(i)
+	return uuo
+}
+
+// SetNillableLikeRank sets the "like_rank" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableLikeRank(i *int) *UserUpdateOne {
+	if i != nil {
+		uuo.SetLikeRank(*i)
+	}
+	return uuo
+}
+
+// AddLikeRank adds i to the "like_rank" field.
+func (uuo *UserUpdateOne) AddLikeRank(i int) *UserUpdateOne {
+	uuo.mutation.AddLikeRank(i)
+	return uuo
+}
+
+// ClearLikeRank clears the value of the "like_rank" field.
+func (uuo *UserUpdateOne) ClearLikeRank() *UserUpdateOne {
+	uuo.mutation.ClearLikeRank()
+	return uuo
+}
+
+// SetLikeAt sets the "like_at" field.
+func (uuo *UserUpdateOne) SetLikeAt(t time.Time) *UserUpdateOne {
+	uuo.mutation.SetLikeAt(t)
+	return uuo
+}
+
+// SetNillableLikeAt sets the "like_at" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableLikeAt(t *time.Time) *UserUpdateOne {
+	if t != nil {
+		uuo.SetLikeAt(*t)
+	}
+	return uuo
+}
+
+// ClearLikeAt clears the value of the "like_at" field.
+func (uuo *UserUpdateOne) ClearLikeAt() *UserUpdateOne {
+	uuo.mutation.ClearLikeAt()
+	return uuo
+}
+
+// SetTen sets the "ten" field.
+func (uuo *UserUpdateOne) SetTen(b bool) *UserUpdateOne {
+	uuo.mutation.SetTen(b)
+	return uuo
+}
+
+// SetNillableTen sets the "ten" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableTen(b *bool) *UserUpdateOne {
+	if b != nil {
+		uuo.SetTen(*b)
+	}
+	return uuo
+}
+
+// ClearTen clears the value of the "ten" field.
+func (uuo *UserUpdateOne) ClearTen() *UserUpdateOne {
+	uuo.mutation.ClearTen()
+	return uuo
+}
+
+// SetTenSu sets the "ten_su" field.
+func (uuo *UserUpdateOne) SetTenSu(i int) *UserUpdateOne {
+	uuo.mutation.ResetTenSu()
+	uuo.mutation.SetTenSu(i)
+	return uuo
+}
+
+// SetNillableTenSu sets the "ten_su" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableTenSu(i *int) *UserUpdateOne {
+	if i != nil {
+		uuo.SetTenSu(*i)
+	}
+	return uuo
+}
+
+// AddTenSu adds i to the "ten_su" field.
+func (uuo *UserUpdateOne) AddTenSu(i int) *UserUpdateOne {
+	uuo.mutation.AddTenSu(i)
+	return uuo
+}
+
+// ClearTenSu clears the value of the "ten_su" field.
+func (uuo *UserUpdateOne) ClearTenSu() *UserUpdateOne {
+	uuo.mutation.ClearTenSu()
+	return uuo
+}
+
+// SetTenKai sets the "ten_kai" field.
+func (uuo *UserUpdateOne) SetTenKai(i int) *UserUpdateOne {
+	uuo.mutation.ResetTenKai()
+	uuo.mutation.SetTenKai(i)
+	return uuo
+}
+
+// SetNillableTenKai sets the "ten_kai" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableTenKai(i *int) *UserUpdateOne {
+	if i != nil {
+		uuo.SetTenKai(*i)
+	}
+	return uuo
+}
+
+// AddTenKai adds i to the "ten_kai" field.
+func (uuo *UserUpdateOne) AddTenKai(i int) *UserUpdateOne {
+	uuo.mutation.AddTenKai(i)
+	return uuo
+}
+
+// ClearTenKai clears the value of the "ten_kai" field.
+func (uuo *UserUpdateOne) ClearTenKai() *UserUpdateOne {
+	uuo.mutation.ClearTenKai()
+	return uuo
+}
+
+// SetAiten sets the "aiten" field.
+func (uuo *UserUpdateOne) SetAiten(i int) *UserUpdateOne {
+	uuo.mutation.ResetAiten()
+	uuo.mutation.SetAiten(i)
+	return uuo
+}
+
+// SetNillableAiten sets the "aiten" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableAiten(i *int) *UserUpdateOne {
+	if i != nil {
+		uuo.SetAiten(*i)
+	}
+	return uuo
+}
+
+// AddAiten adds i to the "aiten" field.
+func (uuo *UserUpdateOne) AddAiten(i int) *UserUpdateOne {
+	uuo.mutation.AddAiten(i)
+	return uuo
+}
+
+// ClearAiten clears the value of the "aiten" field.
+func (uuo *UserUpdateOne) ClearAiten() *UserUpdateOne {
+	uuo.mutation.ClearAiten()
+	return uuo
+}
+
+// SetTenCard sets the "ten_card" field.
+func (uuo *UserUpdateOne) SetTenCard(s string) *UserUpdateOne {
+	uuo.mutation.SetTenCard(s)
+	return uuo
+}
+
+// SetNillableTenCard sets the "ten_card" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableTenCard(s *string) *UserUpdateOne {
+	if s != nil {
+		uuo.SetTenCard(*s)
+	}
+	return uuo
+}
+
+// ClearTenCard clears the value of the "ten_card" field.
+func (uuo *UserUpdateOne) ClearTenCard() *UserUpdateOne {
+	uuo.mutation.ClearTenCard()
+	return uuo
+}
+
+// SetTenDelete sets the "ten_delete" field.
+func (uuo *UserUpdateOne) SetTenDelete(s string) *UserUpdateOne {
+	uuo.mutation.SetTenDelete(s)
+	return uuo
+}
+
+// SetNillableTenDelete sets the "ten_delete" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableTenDelete(s *string) *UserUpdateOne {
+	if s != nil {
+		uuo.SetTenDelete(*s)
+	}
+	return uuo
+}
+
+// ClearTenDelete clears the value of the "ten_delete" field.
+func (uuo *UserUpdateOne) ClearTenDelete() *UserUpdateOne {
+	uuo.mutation.ClearTenDelete()
+	return uuo
+}
+
+// SetTenPost sets the "ten_post" field.
+func (uuo *UserUpdateOne) SetTenPost(s string) *UserUpdateOne {
+	uuo.mutation.SetTenPost(s)
+	return uuo
+}
+
+// SetNillableTenPost sets the "ten_post" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableTenPost(s *string) *UserUpdateOne {
+	if s != nil {
+		uuo.SetTenPost(*s)
+	}
+	return uuo
+}
+
+// ClearTenPost clears the value of the "ten_post" field.
+func (uuo *UserUpdateOne) ClearTenPost() *UserUpdateOne {
+	uuo.mutation.ClearTenPost()
+	return uuo
+}
+
+// SetTenGet sets the "ten_get" field.
+func (uuo *UserUpdateOne) SetTenGet(s string) *UserUpdateOne {
+	uuo.mutation.SetTenGet(s)
+	return uuo
+}
+
+// SetNillableTenGet sets the "ten_get" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableTenGet(s *string) *UserUpdateOne {
+	if s != nil {
+		uuo.SetTenGet(*s)
+	}
+	return uuo
+}
+
+// ClearTenGet clears the value of the "ten_get" field.
+func (uuo *UserUpdateOne) ClearTenGet() *UserUpdateOne {
+	uuo.mutation.ClearTenGet()
+	return uuo
+}
+
+// SetTenAt sets the "ten_at" field.
+func (uuo *UserUpdateOne) SetTenAt(t time.Time) *UserUpdateOne {
+	uuo.mutation.SetTenAt(t)
+	return uuo
+}
+
+// SetNillableTenAt sets the "ten_at" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableTenAt(t *time.Time) *UserUpdateOne {
+	if t != nil {
+		uuo.SetTenAt(*t)
+	}
+	return uuo
+}
+
+// ClearTenAt clears the value of the "ten_at" field.
+func (uuo *UserUpdateOne) ClearTenAt() *UserUpdateOne {
+	uuo.mutation.ClearTenAt()
 	return uuo
 }
 
@@ -537,6 +1329,114 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 	}
 	if uuo.mutation.UpdatedAtCleared() {
 		_spec.ClearField(user.FieldUpdatedAt, field.TypeTime)
+	}
+	if value, ok := uuo.mutation.RaidAt(); ok {
+		_spec.SetField(user.FieldRaidAt, field.TypeTime, value)
+	}
+	if uuo.mutation.RaidAtCleared() {
+		_spec.ClearField(user.FieldRaidAt, field.TypeTime)
+	}
+	if value, ok := uuo.mutation.Luck(); ok {
+		_spec.SetField(user.FieldLuck, field.TypeInt, value)
+	}
+	if value, ok := uuo.mutation.AddedLuck(); ok {
+		_spec.AddField(user.FieldLuck, field.TypeInt, value)
+	}
+	if uuo.mutation.LuckCleared() {
+		_spec.ClearField(user.FieldLuck, field.TypeInt)
+	}
+	if value, ok := uuo.mutation.LuckAt(); ok {
+		_spec.SetField(user.FieldLuckAt, field.TypeTime, value)
+	}
+	if uuo.mutation.LuckAtCleared() {
+		_spec.ClearField(user.FieldLuckAt, field.TypeTime)
+	}
+	if value, ok := uuo.mutation.Like(); ok {
+		_spec.SetField(user.FieldLike, field.TypeInt, value)
+	}
+	if value, ok := uuo.mutation.AddedLike(); ok {
+		_spec.AddField(user.FieldLike, field.TypeInt, value)
+	}
+	if uuo.mutation.LikeCleared() {
+		_spec.ClearField(user.FieldLike, field.TypeInt)
+	}
+	if value, ok := uuo.mutation.LikeRank(); ok {
+		_spec.SetField(user.FieldLikeRank, field.TypeInt, value)
+	}
+	if value, ok := uuo.mutation.AddedLikeRank(); ok {
+		_spec.AddField(user.FieldLikeRank, field.TypeInt, value)
+	}
+	if uuo.mutation.LikeRankCleared() {
+		_spec.ClearField(user.FieldLikeRank, field.TypeInt)
+	}
+	if value, ok := uuo.mutation.LikeAt(); ok {
+		_spec.SetField(user.FieldLikeAt, field.TypeTime, value)
+	}
+	if uuo.mutation.LikeAtCleared() {
+		_spec.ClearField(user.FieldLikeAt, field.TypeTime)
+	}
+	if value, ok := uuo.mutation.Ten(); ok {
+		_spec.SetField(user.FieldTen, field.TypeBool, value)
+	}
+	if uuo.mutation.TenCleared() {
+		_spec.ClearField(user.FieldTen, field.TypeBool)
+	}
+	if value, ok := uuo.mutation.TenSu(); ok {
+		_spec.SetField(user.FieldTenSu, field.TypeInt, value)
+	}
+	if value, ok := uuo.mutation.AddedTenSu(); ok {
+		_spec.AddField(user.FieldTenSu, field.TypeInt, value)
+	}
+	if uuo.mutation.TenSuCleared() {
+		_spec.ClearField(user.FieldTenSu, field.TypeInt)
+	}
+	if value, ok := uuo.mutation.TenKai(); ok {
+		_spec.SetField(user.FieldTenKai, field.TypeInt, value)
+	}
+	if value, ok := uuo.mutation.AddedTenKai(); ok {
+		_spec.AddField(user.FieldTenKai, field.TypeInt, value)
+	}
+	if uuo.mutation.TenKaiCleared() {
+		_spec.ClearField(user.FieldTenKai, field.TypeInt)
+	}
+	if value, ok := uuo.mutation.Aiten(); ok {
+		_spec.SetField(user.FieldAiten, field.TypeInt, value)
+	}
+	if value, ok := uuo.mutation.AddedAiten(); ok {
+		_spec.AddField(user.FieldAiten, field.TypeInt, value)
+	}
+	if uuo.mutation.AitenCleared() {
+		_spec.ClearField(user.FieldAiten, field.TypeInt)
+	}
+	if value, ok := uuo.mutation.TenCard(); ok {
+		_spec.SetField(user.FieldTenCard, field.TypeString, value)
+	}
+	if uuo.mutation.TenCardCleared() {
+		_spec.ClearField(user.FieldTenCard, field.TypeString)
+	}
+	if value, ok := uuo.mutation.TenDelete(); ok {
+		_spec.SetField(user.FieldTenDelete, field.TypeString, value)
+	}
+	if uuo.mutation.TenDeleteCleared() {
+		_spec.ClearField(user.FieldTenDelete, field.TypeString)
+	}
+	if value, ok := uuo.mutation.TenPost(); ok {
+		_spec.SetField(user.FieldTenPost, field.TypeString, value)
+	}
+	if uuo.mutation.TenPostCleared() {
+		_spec.ClearField(user.FieldTenPost, field.TypeString)
+	}
+	if value, ok := uuo.mutation.TenGet(); ok {
+		_spec.SetField(user.FieldTenGet, field.TypeString, value)
+	}
+	if uuo.mutation.TenGetCleared() {
+		_spec.ClearField(user.FieldTenGet, field.TypeString)
+	}
+	if value, ok := uuo.mutation.TenAt(); ok {
+		_spec.SetField(user.FieldTenAt, field.TypeTime, value)
+	}
+	if uuo.mutation.TenAtCleared() {
+		_spec.ClearField(user.FieldTenAt, field.TypeTime)
 	}
 	if value, ok := uuo.mutation.Next(); ok {
 		_spec.SetField(user.FieldNext, field.TypeString, value)

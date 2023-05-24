@@ -25,6 +25,36 @@ const (
 	FieldCreatedAt = "created_at"
 	// FieldUpdatedAt holds the string denoting the updated_at field in the database.
 	FieldUpdatedAt = "updated_at"
+	// FieldRaidAt holds the string denoting the raid_at field in the database.
+	FieldRaidAt = "raid_at"
+	// FieldLuck holds the string denoting the luck field in the database.
+	FieldLuck = "luck"
+	// FieldLuckAt holds the string denoting the luck_at field in the database.
+	FieldLuckAt = "luck_at"
+	// FieldLike holds the string denoting the like field in the database.
+	FieldLike = "like"
+	// FieldLikeRank holds the string denoting the like_rank field in the database.
+	FieldLikeRank = "like_rank"
+	// FieldLikeAt holds the string denoting the like_at field in the database.
+	FieldLikeAt = "like_at"
+	// FieldTen holds the string denoting the ten field in the database.
+	FieldTen = "ten"
+	// FieldTenSu holds the string denoting the ten_su field in the database.
+	FieldTenSu = "ten_su"
+	// FieldTenKai holds the string denoting the ten_kai field in the database.
+	FieldTenKai = "ten_kai"
+	// FieldAiten holds the string denoting the aiten field in the database.
+	FieldAiten = "aiten"
+	// FieldTenCard holds the string denoting the ten_card field in the database.
+	FieldTenCard = "ten_card"
+	// FieldTenDelete holds the string denoting the ten_delete field in the database.
+	FieldTenDelete = "ten_delete"
+	// FieldTenPost holds the string denoting the ten_post field in the database.
+	FieldTenPost = "ten_post"
+	// FieldTenGet holds the string denoting the ten_get field in the database.
+	FieldTenGet = "ten_get"
+	// FieldTenAt holds the string denoting the ten_at field in the database.
+	FieldTenAt = "ten_at"
 	// FieldNext holds the string denoting the next field in the database.
 	FieldNext = "next"
 	// EdgeCard holds the string denoting the card edge name in mutations.
@@ -50,6 +80,21 @@ var Columns = []string{
 	FieldPassword,
 	FieldCreatedAt,
 	FieldUpdatedAt,
+	FieldRaidAt,
+	FieldLuck,
+	FieldLuckAt,
+	FieldLike,
+	FieldLikeRank,
+	FieldLikeAt,
+	FieldTen,
+	FieldTenSu,
+	FieldTenKai,
+	FieldAiten,
+	FieldTenCard,
+	FieldTenDelete,
+	FieldTenPost,
+	FieldTenGet,
+	FieldTenAt,
 	FieldNext,
 }
 
@@ -85,6 +130,14 @@ var (
 	DefaultCreatedAt func() time.Time
 	// DefaultUpdatedAt holds the default value on creation for the "updated_at" field.
 	DefaultUpdatedAt func() time.Time
+	// DefaultRaidAt holds the default value on creation for the "raid_at" field.
+	DefaultRaidAt func() time.Time
+	// DefaultLuckAt holds the default value on creation for the "luck_at" field.
+	DefaultLuckAt func() time.Time
+	// DefaultLikeAt holds the default value on creation for the "like_at" field.
+	DefaultLikeAt func() time.Time
+	// DefaultTenAt holds the default value on creation for the "ten_at" field.
+	DefaultTenAt func() time.Time
 	// DefaultNext holds the default value on creation for the "next" field.
 	DefaultNext string
 )

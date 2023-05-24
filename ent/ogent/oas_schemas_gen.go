@@ -180,6 +180,21 @@ type CardOwnerRead struct {
 	Delete    OptBool     `json:"delete"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
+	RaidAt    OptDateTime `json:"raid_at"`
+	Luck      OptInt      `json:"luck"`
+	LuckAt    OptDateTime `json:"luck_at"`
+	Like      OptInt      `json:"like"`
+	LikeRank  OptInt      `json:"like_rank"`
+	LikeAt    OptDateTime `json:"like_at"`
+	Ten       OptBool     `json:"ten"`
+	TenSu     OptInt      `json:"ten_su"`
+	TenKai    OptInt      `json:"ten_kai"`
+	Aiten     OptInt      `json:"aiten"`
+	TenCard   OptString   `json:"ten_card"`
+	TenDelete OptString   `json:"ten_delete"`
+	TenPost   OptString   `json:"ten_post"`
+	TenGet    OptString   `json:"ten_get"`
+	TenAt     OptDateTime `json:"ten_at"`
 	Next      OptString   `json:"next"`
 }
 
@@ -211,6 +226,81 @@ func (s *CardOwnerRead) GetCreatedAt() OptDateTime {
 // GetUpdatedAt returns the value of UpdatedAt.
 func (s *CardOwnerRead) GetUpdatedAt() OptDateTime {
 	return s.UpdatedAt
+}
+
+// GetRaidAt returns the value of RaidAt.
+func (s *CardOwnerRead) GetRaidAt() OptDateTime {
+	return s.RaidAt
+}
+
+// GetLuck returns the value of Luck.
+func (s *CardOwnerRead) GetLuck() OptInt {
+	return s.Luck
+}
+
+// GetLuckAt returns the value of LuckAt.
+func (s *CardOwnerRead) GetLuckAt() OptDateTime {
+	return s.LuckAt
+}
+
+// GetLike returns the value of Like.
+func (s *CardOwnerRead) GetLike() OptInt {
+	return s.Like
+}
+
+// GetLikeRank returns the value of LikeRank.
+func (s *CardOwnerRead) GetLikeRank() OptInt {
+	return s.LikeRank
+}
+
+// GetLikeAt returns the value of LikeAt.
+func (s *CardOwnerRead) GetLikeAt() OptDateTime {
+	return s.LikeAt
+}
+
+// GetTen returns the value of Ten.
+func (s *CardOwnerRead) GetTen() OptBool {
+	return s.Ten
+}
+
+// GetTenSu returns the value of TenSu.
+func (s *CardOwnerRead) GetTenSu() OptInt {
+	return s.TenSu
+}
+
+// GetTenKai returns the value of TenKai.
+func (s *CardOwnerRead) GetTenKai() OptInt {
+	return s.TenKai
+}
+
+// GetAiten returns the value of Aiten.
+func (s *CardOwnerRead) GetAiten() OptInt {
+	return s.Aiten
+}
+
+// GetTenCard returns the value of TenCard.
+func (s *CardOwnerRead) GetTenCard() OptString {
+	return s.TenCard
+}
+
+// GetTenDelete returns the value of TenDelete.
+func (s *CardOwnerRead) GetTenDelete() OptString {
+	return s.TenDelete
+}
+
+// GetTenPost returns the value of TenPost.
+func (s *CardOwnerRead) GetTenPost() OptString {
+	return s.TenPost
+}
+
+// GetTenGet returns the value of TenGet.
+func (s *CardOwnerRead) GetTenGet() OptString {
+	return s.TenGet
+}
+
+// GetTenAt returns the value of TenAt.
+func (s *CardOwnerRead) GetTenAt() OptDateTime {
+	return s.TenAt
 }
 
 // GetNext returns the value of Next.
@@ -246,6 +336,81 @@ func (s *CardOwnerRead) SetCreatedAt(val OptDateTime) {
 // SetUpdatedAt sets the value of UpdatedAt.
 func (s *CardOwnerRead) SetUpdatedAt(val OptDateTime) {
 	s.UpdatedAt = val
+}
+
+// SetRaidAt sets the value of RaidAt.
+func (s *CardOwnerRead) SetRaidAt(val OptDateTime) {
+	s.RaidAt = val
+}
+
+// SetLuck sets the value of Luck.
+func (s *CardOwnerRead) SetLuck(val OptInt) {
+	s.Luck = val
+}
+
+// SetLuckAt sets the value of LuckAt.
+func (s *CardOwnerRead) SetLuckAt(val OptDateTime) {
+	s.LuckAt = val
+}
+
+// SetLike sets the value of Like.
+func (s *CardOwnerRead) SetLike(val OptInt) {
+	s.Like = val
+}
+
+// SetLikeRank sets the value of LikeRank.
+func (s *CardOwnerRead) SetLikeRank(val OptInt) {
+	s.LikeRank = val
+}
+
+// SetLikeAt sets the value of LikeAt.
+func (s *CardOwnerRead) SetLikeAt(val OptDateTime) {
+	s.LikeAt = val
+}
+
+// SetTen sets the value of Ten.
+func (s *CardOwnerRead) SetTen(val OptBool) {
+	s.Ten = val
+}
+
+// SetTenSu sets the value of TenSu.
+func (s *CardOwnerRead) SetTenSu(val OptInt) {
+	s.TenSu = val
+}
+
+// SetTenKai sets the value of TenKai.
+func (s *CardOwnerRead) SetTenKai(val OptInt) {
+	s.TenKai = val
+}
+
+// SetAiten sets the value of Aiten.
+func (s *CardOwnerRead) SetAiten(val OptInt) {
+	s.Aiten = val
+}
+
+// SetTenCard sets the value of TenCard.
+func (s *CardOwnerRead) SetTenCard(val OptString) {
+	s.TenCard = val
+}
+
+// SetTenDelete sets the value of TenDelete.
+func (s *CardOwnerRead) SetTenDelete(val OptString) {
+	s.TenDelete = val
+}
+
+// SetTenPost sets the value of TenPost.
+func (s *CardOwnerRead) SetTenPost(val OptString) {
+	s.TenPost = val
+}
+
+// SetTenGet sets the value of TenGet.
+func (s *CardOwnerRead) SetTenGet(val OptString) {
+	s.TenGet = val
+}
+
+// SetTenAt sets the value of TenAt.
+func (s *CardOwnerRead) SetTenAt(val OptDateTime) {
+	s.TenAt = val
 }
 
 // SetNext sets the value of Next.
@@ -556,6 +721,21 @@ type CreateUserReq struct {
 	Password  string      `json:"password"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
+	RaidAt    OptDateTime `json:"raid_at"`
+	Luck      OptInt      `json:"luck"`
+	LuckAt    OptDateTime `json:"luck_at"`
+	Like      OptInt      `json:"like"`
+	LikeRank  OptInt      `json:"like_rank"`
+	LikeAt    OptDateTime `json:"like_at"`
+	Ten       OptBool     `json:"ten"`
+	TenSu     OptInt      `json:"ten_su"`
+	TenKai    OptInt      `json:"ten_kai"`
+	Aiten     OptInt      `json:"aiten"`
+	TenCard   OptString   `json:"ten_card"`
+	TenDelete OptString   `json:"ten_delete"`
+	TenPost   OptString   `json:"ten_post"`
+	TenGet    OptString   `json:"ten_get"`
+	TenAt     OptDateTime `json:"ten_at"`
 	Next      OptString   `json:"next"`
 	Card      []int       `json:"card"`
 }
@@ -593,6 +773,81 @@ func (s *CreateUserReq) GetCreatedAt() OptDateTime {
 // GetUpdatedAt returns the value of UpdatedAt.
 func (s *CreateUserReq) GetUpdatedAt() OptDateTime {
 	return s.UpdatedAt
+}
+
+// GetRaidAt returns the value of RaidAt.
+func (s *CreateUserReq) GetRaidAt() OptDateTime {
+	return s.RaidAt
+}
+
+// GetLuck returns the value of Luck.
+func (s *CreateUserReq) GetLuck() OptInt {
+	return s.Luck
+}
+
+// GetLuckAt returns the value of LuckAt.
+func (s *CreateUserReq) GetLuckAt() OptDateTime {
+	return s.LuckAt
+}
+
+// GetLike returns the value of Like.
+func (s *CreateUserReq) GetLike() OptInt {
+	return s.Like
+}
+
+// GetLikeRank returns the value of LikeRank.
+func (s *CreateUserReq) GetLikeRank() OptInt {
+	return s.LikeRank
+}
+
+// GetLikeAt returns the value of LikeAt.
+func (s *CreateUserReq) GetLikeAt() OptDateTime {
+	return s.LikeAt
+}
+
+// GetTen returns the value of Ten.
+func (s *CreateUserReq) GetTen() OptBool {
+	return s.Ten
+}
+
+// GetTenSu returns the value of TenSu.
+func (s *CreateUserReq) GetTenSu() OptInt {
+	return s.TenSu
+}
+
+// GetTenKai returns the value of TenKai.
+func (s *CreateUserReq) GetTenKai() OptInt {
+	return s.TenKai
+}
+
+// GetAiten returns the value of Aiten.
+func (s *CreateUserReq) GetAiten() OptInt {
+	return s.Aiten
+}
+
+// GetTenCard returns the value of TenCard.
+func (s *CreateUserReq) GetTenCard() OptString {
+	return s.TenCard
+}
+
+// GetTenDelete returns the value of TenDelete.
+func (s *CreateUserReq) GetTenDelete() OptString {
+	return s.TenDelete
+}
+
+// GetTenPost returns the value of TenPost.
+func (s *CreateUserReq) GetTenPost() OptString {
+	return s.TenPost
+}
+
+// GetTenGet returns the value of TenGet.
+func (s *CreateUserReq) GetTenGet() OptString {
+	return s.TenGet
+}
+
+// GetTenAt returns the value of TenAt.
+func (s *CreateUserReq) GetTenAt() OptDateTime {
+	return s.TenAt
 }
 
 // GetNext returns the value of Next.
@@ -638,6 +893,81 @@ func (s *CreateUserReq) SetCreatedAt(val OptDateTime) {
 // SetUpdatedAt sets the value of UpdatedAt.
 func (s *CreateUserReq) SetUpdatedAt(val OptDateTime) {
 	s.UpdatedAt = val
+}
+
+// SetRaidAt sets the value of RaidAt.
+func (s *CreateUserReq) SetRaidAt(val OptDateTime) {
+	s.RaidAt = val
+}
+
+// SetLuck sets the value of Luck.
+func (s *CreateUserReq) SetLuck(val OptInt) {
+	s.Luck = val
+}
+
+// SetLuckAt sets the value of LuckAt.
+func (s *CreateUserReq) SetLuckAt(val OptDateTime) {
+	s.LuckAt = val
+}
+
+// SetLike sets the value of Like.
+func (s *CreateUserReq) SetLike(val OptInt) {
+	s.Like = val
+}
+
+// SetLikeRank sets the value of LikeRank.
+func (s *CreateUserReq) SetLikeRank(val OptInt) {
+	s.LikeRank = val
+}
+
+// SetLikeAt sets the value of LikeAt.
+func (s *CreateUserReq) SetLikeAt(val OptDateTime) {
+	s.LikeAt = val
+}
+
+// SetTen sets the value of Ten.
+func (s *CreateUserReq) SetTen(val OptBool) {
+	s.Ten = val
+}
+
+// SetTenSu sets the value of TenSu.
+func (s *CreateUserReq) SetTenSu(val OptInt) {
+	s.TenSu = val
+}
+
+// SetTenKai sets the value of TenKai.
+func (s *CreateUserReq) SetTenKai(val OptInt) {
+	s.TenKai = val
+}
+
+// SetAiten sets the value of Aiten.
+func (s *CreateUserReq) SetAiten(val OptInt) {
+	s.Aiten = val
+}
+
+// SetTenCard sets the value of TenCard.
+func (s *CreateUserReq) SetTenCard(val OptString) {
+	s.TenCard = val
+}
+
+// SetTenDelete sets the value of TenDelete.
+func (s *CreateUserReq) SetTenDelete(val OptString) {
+	s.TenDelete = val
+}
+
+// SetTenPost sets the value of TenPost.
+func (s *CreateUserReq) SetTenPost(val OptString) {
+	s.TenPost = val
+}
+
+// SetTenGet sets the value of TenGet.
+func (s *CreateUserReq) SetTenGet(val OptString) {
+	s.TenGet = val
+}
+
+// SetTenAt sets the value of TenAt.
+func (s *CreateUserReq) SetTenAt(val OptDateTime) {
+	s.TenAt = val
 }
 
 // SetNext sets the value of Next.
@@ -789,6 +1119,21 @@ type GroupUsersList struct {
 	Delete    OptBool     `json:"delete"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
+	RaidAt    OptDateTime `json:"raid_at"`
+	Luck      OptInt      `json:"luck"`
+	LuckAt    OptDateTime `json:"luck_at"`
+	Like      OptInt      `json:"like"`
+	LikeRank  OptInt      `json:"like_rank"`
+	LikeAt    OptDateTime `json:"like_at"`
+	Ten       OptBool     `json:"ten"`
+	TenSu     OptInt      `json:"ten_su"`
+	TenKai    OptInt      `json:"ten_kai"`
+	Aiten     OptInt      `json:"aiten"`
+	TenCard   OptString   `json:"ten_card"`
+	TenDelete OptString   `json:"ten_delete"`
+	TenPost   OptString   `json:"ten_post"`
+	TenGet    OptString   `json:"ten_get"`
+	TenAt     OptDateTime `json:"ten_at"`
 	Next      OptString   `json:"next"`
 }
 
@@ -820,6 +1165,81 @@ func (s *GroupUsersList) GetCreatedAt() OptDateTime {
 // GetUpdatedAt returns the value of UpdatedAt.
 func (s *GroupUsersList) GetUpdatedAt() OptDateTime {
 	return s.UpdatedAt
+}
+
+// GetRaidAt returns the value of RaidAt.
+func (s *GroupUsersList) GetRaidAt() OptDateTime {
+	return s.RaidAt
+}
+
+// GetLuck returns the value of Luck.
+func (s *GroupUsersList) GetLuck() OptInt {
+	return s.Luck
+}
+
+// GetLuckAt returns the value of LuckAt.
+func (s *GroupUsersList) GetLuckAt() OptDateTime {
+	return s.LuckAt
+}
+
+// GetLike returns the value of Like.
+func (s *GroupUsersList) GetLike() OptInt {
+	return s.Like
+}
+
+// GetLikeRank returns the value of LikeRank.
+func (s *GroupUsersList) GetLikeRank() OptInt {
+	return s.LikeRank
+}
+
+// GetLikeAt returns the value of LikeAt.
+func (s *GroupUsersList) GetLikeAt() OptDateTime {
+	return s.LikeAt
+}
+
+// GetTen returns the value of Ten.
+func (s *GroupUsersList) GetTen() OptBool {
+	return s.Ten
+}
+
+// GetTenSu returns the value of TenSu.
+func (s *GroupUsersList) GetTenSu() OptInt {
+	return s.TenSu
+}
+
+// GetTenKai returns the value of TenKai.
+func (s *GroupUsersList) GetTenKai() OptInt {
+	return s.TenKai
+}
+
+// GetAiten returns the value of Aiten.
+func (s *GroupUsersList) GetAiten() OptInt {
+	return s.Aiten
+}
+
+// GetTenCard returns the value of TenCard.
+func (s *GroupUsersList) GetTenCard() OptString {
+	return s.TenCard
+}
+
+// GetTenDelete returns the value of TenDelete.
+func (s *GroupUsersList) GetTenDelete() OptString {
+	return s.TenDelete
+}
+
+// GetTenPost returns the value of TenPost.
+func (s *GroupUsersList) GetTenPost() OptString {
+	return s.TenPost
+}
+
+// GetTenGet returns the value of TenGet.
+func (s *GroupUsersList) GetTenGet() OptString {
+	return s.TenGet
+}
+
+// GetTenAt returns the value of TenAt.
+func (s *GroupUsersList) GetTenAt() OptDateTime {
+	return s.TenAt
 }
 
 // GetNext returns the value of Next.
@@ -855,6 +1275,81 @@ func (s *GroupUsersList) SetCreatedAt(val OptDateTime) {
 // SetUpdatedAt sets the value of UpdatedAt.
 func (s *GroupUsersList) SetUpdatedAt(val OptDateTime) {
 	s.UpdatedAt = val
+}
+
+// SetRaidAt sets the value of RaidAt.
+func (s *GroupUsersList) SetRaidAt(val OptDateTime) {
+	s.RaidAt = val
+}
+
+// SetLuck sets the value of Luck.
+func (s *GroupUsersList) SetLuck(val OptInt) {
+	s.Luck = val
+}
+
+// SetLuckAt sets the value of LuckAt.
+func (s *GroupUsersList) SetLuckAt(val OptDateTime) {
+	s.LuckAt = val
+}
+
+// SetLike sets the value of Like.
+func (s *GroupUsersList) SetLike(val OptInt) {
+	s.Like = val
+}
+
+// SetLikeRank sets the value of LikeRank.
+func (s *GroupUsersList) SetLikeRank(val OptInt) {
+	s.LikeRank = val
+}
+
+// SetLikeAt sets the value of LikeAt.
+func (s *GroupUsersList) SetLikeAt(val OptDateTime) {
+	s.LikeAt = val
+}
+
+// SetTen sets the value of Ten.
+func (s *GroupUsersList) SetTen(val OptBool) {
+	s.Ten = val
+}
+
+// SetTenSu sets the value of TenSu.
+func (s *GroupUsersList) SetTenSu(val OptInt) {
+	s.TenSu = val
+}
+
+// SetTenKai sets the value of TenKai.
+func (s *GroupUsersList) SetTenKai(val OptInt) {
+	s.TenKai = val
+}
+
+// SetAiten sets the value of Aiten.
+func (s *GroupUsersList) SetAiten(val OptInt) {
+	s.Aiten = val
+}
+
+// SetTenCard sets the value of TenCard.
+func (s *GroupUsersList) SetTenCard(val OptString) {
+	s.TenCard = val
+}
+
+// SetTenDelete sets the value of TenDelete.
+func (s *GroupUsersList) SetTenDelete(val OptString) {
+	s.TenDelete = val
+}
+
+// SetTenPost sets the value of TenPost.
+func (s *GroupUsersList) SetTenPost(val OptString) {
+	s.TenPost = val
+}
+
+// SetTenGet sets the value of TenGet.
+func (s *GroupUsersList) SetTenGet(val OptString) {
+	s.TenGet = val
+}
+
+// SetTenAt sets the value of TenAt.
+func (s *GroupUsersList) SetTenAt(val OptDateTime) {
+	s.TenAt = val
 }
 
 // SetNext sets the value of Next.
@@ -1338,6 +1833,21 @@ type UpdateUserReq struct {
 	Delete    OptBool     `json:"delete"`
 	Token     OptString   `json:"token"`
 	UpdatedAt OptDateTime `json:"updated_at"`
+	RaidAt    OptDateTime `json:"raid_at"`
+	Luck      OptInt      `json:"luck"`
+	LuckAt    OptDateTime `json:"luck_at"`
+	Like      OptInt      `json:"like"`
+	LikeRank  OptInt      `json:"like_rank"`
+	LikeAt    OptDateTime `json:"like_at"`
+	Ten       OptBool     `json:"ten"`
+	TenSu     OptInt      `json:"ten_su"`
+	TenKai    OptInt      `json:"ten_kai"`
+	Aiten     OptInt      `json:"aiten"`
+	TenCard   OptString   `json:"ten_card"`
+	TenDelete OptString   `json:"ten_delete"`
+	TenPost   OptString   `json:"ten_post"`
+	TenGet    OptString   `json:"ten_get"`
+	TenAt     OptDateTime `json:"ten_at"`
 	Next      OptString   `json:"next"`
 	Card      []int       `json:"card"`
 }
@@ -1360,6 +1870,81 @@ func (s *UpdateUserReq) GetToken() OptString {
 // GetUpdatedAt returns the value of UpdatedAt.
 func (s *UpdateUserReq) GetUpdatedAt() OptDateTime {
 	return s.UpdatedAt
+}
+
+// GetRaidAt returns the value of RaidAt.
+func (s *UpdateUserReq) GetRaidAt() OptDateTime {
+	return s.RaidAt
+}
+
+// GetLuck returns the value of Luck.
+func (s *UpdateUserReq) GetLuck() OptInt {
+	return s.Luck
+}
+
+// GetLuckAt returns the value of LuckAt.
+func (s *UpdateUserReq) GetLuckAt() OptDateTime {
+	return s.LuckAt
+}
+
+// GetLike returns the value of Like.
+func (s *UpdateUserReq) GetLike() OptInt {
+	return s.Like
+}
+
+// GetLikeRank returns the value of LikeRank.
+func (s *UpdateUserReq) GetLikeRank() OptInt {
+	return s.LikeRank
+}
+
+// GetLikeAt returns the value of LikeAt.
+func (s *UpdateUserReq) GetLikeAt() OptDateTime {
+	return s.LikeAt
+}
+
+// GetTen returns the value of Ten.
+func (s *UpdateUserReq) GetTen() OptBool {
+	return s.Ten
+}
+
+// GetTenSu returns the value of TenSu.
+func (s *UpdateUserReq) GetTenSu() OptInt {
+	return s.TenSu
+}
+
+// GetTenKai returns the value of TenKai.
+func (s *UpdateUserReq) GetTenKai() OptInt {
+	return s.TenKai
+}
+
+// GetAiten returns the value of Aiten.
+func (s *UpdateUserReq) GetAiten() OptInt {
+	return s.Aiten
+}
+
+// GetTenCard returns the value of TenCard.
+func (s *UpdateUserReq) GetTenCard() OptString {
+	return s.TenCard
+}
+
+// GetTenDelete returns the value of TenDelete.
+func (s *UpdateUserReq) GetTenDelete() OptString {
+	return s.TenDelete
+}
+
+// GetTenPost returns the value of TenPost.
+func (s *UpdateUserReq) GetTenPost() OptString {
+	return s.TenPost
+}
+
+// GetTenGet returns the value of TenGet.
+func (s *UpdateUserReq) GetTenGet() OptString {
+	return s.TenGet
+}
+
+// GetTenAt returns the value of TenAt.
+func (s *UpdateUserReq) GetTenAt() OptDateTime {
+	return s.TenAt
 }
 
 // GetNext returns the value of Next.
@@ -1390,6 +1975,81 @@ func (s *UpdateUserReq) SetToken(val OptString) {
 // SetUpdatedAt sets the value of UpdatedAt.
 func (s *UpdateUserReq) SetUpdatedAt(val OptDateTime) {
 	s.UpdatedAt = val
+}
+
+// SetRaidAt sets the value of RaidAt.
+func (s *UpdateUserReq) SetRaidAt(val OptDateTime) {
+	s.RaidAt = val
+}
+
+// SetLuck sets the value of Luck.
+func (s *UpdateUserReq) SetLuck(val OptInt) {
+	s.Luck = val
+}
+
+// SetLuckAt sets the value of LuckAt.
+func (s *UpdateUserReq) SetLuckAt(val OptDateTime) {
+	s.LuckAt = val
+}
+
+// SetLike sets the value of Like.
+func (s *UpdateUserReq) SetLike(val OptInt) {
+	s.Like = val
+}
+
+// SetLikeRank sets the value of LikeRank.
+func (s *UpdateUserReq) SetLikeRank(val OptInt) {
+	s.LikeRank = val
+}
+
+// SetLikeAt sets the value of LikeAt.
+func (s *UpdateUserReq) SetLikeAt(val OptDateTime) {
+	s.LikeAt = val
+}
+
+// SetTen sets the value of Ten.
+func (s *UpdateUserReq) SetTen(val OptBool) {
+	s.Ten = val
+}
+
+// SetTenSu sets the value of TenSu.
+func (s *UpdateUserReq) SetTenSu(val OptInt) {
+	s.TenSu = val
+}
+
+// SetTenKai sets the value of TenKai.
+func (s *UpdateUserReq) SetTenKai(val OptInt) {
+	s.TenKai = val
+}
+
+// SetAiten sets the value of Aiten.
+func (s *UpdateUserReq) SetAiten(val OptInt) {
+	s.Aiten = val
+}
+
+// SetTenCard sets the value of TenCard.
+func (s *UpdateUserReq) SetTenCard(val OptString) {
+	s.TenCard = val
+}
+
+// SetTenDelete sets the value of TenDelete.
+func (s *UpdateUserReq) SetTenDelete(val OptString) {
+	s.TenDelete = val
+}
+
+// SetTenPost sets the value of TenPost.
+func (s *UpdateUserReq) SetTenPost(val OptString) {
+	s.TenPost = val
+}
+
+// SetTenGet sets the value of TenGet.
+func (s *UpdateUserReq) SetTenGet(val OptString) {
+	s.TenGet = val
+}
+
+// SetTenAt sets the value of TenAt.
+func (s *UpdateUserReq) SetTenAt(val OptDateTime) {
+	s.TenAt = val
 }
 
 // SetNext sets the value of Next.
@@ -1491,6 +2151,21 @@ type UserCreate struct {
 	Delete    OptBool     `json:"delete"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
+	RaidAt    OptDateTime `json:"raid_at"`
+	Luck      OptInt      `json:"luck"`
+	LuckAt    OptDateTime `json:"luck_at"`
+	Like      OptInt      `json:"like"`
+	LikeRank  OptInt      `json:"like_rank"`
+	LikeAt    OptDateTime `json:"like_at"`
+	Ten       OptBool     `json:"ten"`
+	TenSu     OptInt      `json:"ten_su"`
+	TenKai    OptInt      `json:"ten_kai"`
+	Aiten     OptInt      `json:"aiten"`
+	TenCard   OptString   `json:"ten_card"`
+	TenDelete OptString   `json:"ten_delete"`
+	TenPost   OptString   `json:"ten_post"`
+	TenGet    OptString   `json:"ten_get"`
+	TenAt     OptDateTime `json:"ten_at"`
 	Next      OptString   `json:"next"`
 }
 
@@ -1522,6 +2197,81 @@ func (s *UserCreate) GetCreatedAt() OptDateTime {
 // GetUpdatedAt returns the value of UpdatedAt.
 func (s *UserCreate) GetUpdatedAt() OptDateTime {
 	return s.UpdatedAt
+}
+
+// GetRaidAt returns the value of RaidAt.
+func (s *UserCreate) GetRaidAt() OptDateTime {
+	return s.RaidAt
+}
+
+// GetLuck returns the value of Luck.
+func (s *UserCreate) GetLuck() OptInt {
+	return s.Luck
+}
+
+// GetLuckAt returns the value of LuckAt.
+func (s *UserCreate) GetLuckAt() OptDateTime {
+	return s.LuckAt
+}
+
+// GetLike returns the value of Like.
+func (s *UserCreate) GetLike() OptInt {
+	return s.Like
+}
+
+// GetLikeRank returns the value of LikeRank.
+func (s *UserCreate) GetLikeRank() OptInt {
+	return s.LikeRank
+}
+
+// GetLikeAt returns the value of LikeAt.
+func (s *UserCreate) GetLikeAt() OptDateTime {
+	return s.LikeAt
+}
+
+// GetTen returns the value of Ten.
+func (s *UserCreate) GetTen() OptBool {
+	return s.Ten
+}
+
+// GetTenSu returns the value of TenSu.
+func (s *UserCreate) GetTenSu() OptInt {
+	return s.TenSu
+}
+
+// GetTenKai returns the value of TenKai.
+func (s *UserCreate) GetTenKai() OptInt {
+	return s.TenKai
+}
+
+// GetAiten returns the value of Aiten.
+func (s *UserCreate) GetAiten() OptInt {
+	return s.Aiten
+}
+
+// GetTenCard returns the value of TenCard.
+func (s *UserCreate) GetTenCard() OptString {
+	return s.TenCard
+}
+
+// GetTenDelete returns the value of TenDelete.
+func (s *UserCreate) GetTenDelete() OptString {
+	return s.TenDelete
+}
+
+// GetTenPost returns the value of TenPost.
+func (s *UserCreate) GetTenPost() OptString {
+	return s.TenPost
+}
+
+// GetTenGet returns the value of TenGet.
+func (s *UserCreate) GetTenGet() OptString {
+	return s.TenGet
+}
+
+// GetTenAt returns the value of TenAt.
+func (s *UserCreate) GetTenAt() OptDateTime {
+	return s.TenAt
 }
 
 // GetNext returns the value of Next.
@@ -1559,6 +2309,81 @@ func (s *UserCreate) SetUpdatedAt(val OptDateTime) {
 	s.UpdatedAt = val
 }
 
+// SetRaidAt sets the value of RaidAt.
+func (s *UserCreate) SetRaidAt(val OptDateTime) {
+	s.RaidAt = val
+}
+
+// SetLuck sets the value of Luck.
+func (s *UserCreate) SetLuck(val OptInt) {
+	s.Luck = val
+}
+
+// SetLuckAt sets the value of LuckAt.
+func (s *UserCreate) SetLuckAt(val OptDateTime) {
+	s.LuckAt = val
+}
+
+// SetLike sets the value of Like.
+func (s *UserCreate) SetLike(val OptInt) {
+	s.Like = val
+}
+
+// SetLikeRank sets the value of LikeRank.
+func (s *UserCreate) SetLikeRank(val OptInt) {
+	s.LikeRank = val
+}
+
+// SetLikeAt sets the value of LikeAt.
+func (s *UserCreate) SetLikeAt(val OptDateTime) {
+	s.LikeAt = val
+}
+
+// SetTen sets the value of Ten.
+func (s *UserCreate) SetTen(val OptBool) {
+	s.Ten = val
+}
+
+// SetTenSu sets the value of TenSu.
+func (s *UserCreate) SetTenSu(val OptInt) {
+	s.TenSu = val
+}
+
+// SetTenKai sets the value of TenKai.
+func (s *UserCreate) SetTenKai(val OptInt) {
+	s.TenKai = val
+}
+
+// SetAiten sets the value of Aiten.
+func (s *UserCreate) SetAiten(val OptInt) {
+	s.Aiten = val
+}
+
+// SetTenCard sets the value of TenCard.
+func (s *UserCreate) SetTenCard(val OptString) {
+	s.TenCard = val
+}
+
+// SetTenDelete sets the value of TenDelete.
+func (s *UserCreate) SetTenDelete(val OptString) {
+	s.TenDelete = val
+}
+
+// SetTenPost sets the value of TenPost.
+func (s *UserCreate) SetTenPost(val OptString) {
+	s.TenPost = val
+}
+
+// SetTenGet sets the value of TenGet.
+func (s *UserCreate) SetTenGet(val OptString) {
+	s.TenGet = val
+}
+
+// SetTenAt sets the value of TenAt.
+func (s *UserCreate) SetTenAt(val OptDateTime) {
+	s.TenAt = val
+}
+
 // SetNext sets the value of Next.
 func (s *UserCreate) SetNext(val OptString) {
 	s.Next = val
@@ -1574,6 +2399,21 @@ type UserList struct {
 	Delete    OptBool     `json:"delete"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
+	RaidAt    OptDateTime `json:"raid_at"`
+	Luck      OptInt      `json:"luck"`
+	LuckAt    OptDateTime `json:"luck_at"`
+	Like      OptInt      `json:"like"`
+	LikeRank  OptInt      `json:"like_rank"`
+	LikeAt    OptDateTime `json:"like_at"`
+	Ten       OptBool     `json:"ten"`
+	TenSu     OptInt      `json:"ten_su"`
+	TenKai    OptInt      `json:"ten_kai"`
+	Aiten     OptInt      `json:"aiten"`
+	TenCard   OptString   `json:"ten_card"`
+	TenDelete OptString   `json:"ten_delete"`
+	TenPost   OptString   `json:"ten_post"`
+	TenGet    OptString   `json:"ten_get"`
+	TenAt     OptDateTime `json:"ten_at"`
 	Next      OptString   `json:"next"`
 }
 
@@ -1605,6 +2445,81 @@ func (s *UserList) GetCreatedAt() OptDateTime {
 // GetUpdatedAt returns the value of UpdatedAt.
 func (s *UserList) GetUpdatedAt() OptDateTime {
 	return s.UpdatedAt
+}
+
+// GetRaidAt returns the value of RaidAt.
+func (s *UserList) GetRaidAt() OptDateTime {
+	return s.RaidAt
+}
+
+// GetLuck returns the value of Luck.
+func (s *UserList) GetLuck() OptInt {
+	return s.Luck
+}
+
+// GetLuckAt returns the value of LuckAt.
+func (s *UserList) GetLuckAt() OptDateTime {
+	return s.LuckAt
+}
+
+// GetLike returns the value of Like.
+func (s *UserList) GetLike() OptInt {
+	return s.Like
+}
+
+// GetLikeRank returns the value of LikeRank.
+func (s *UserList) GetLikeRank() OptInt {
+	return s.LikeRank
+}
+
+// GetLikeAt returns the value of LikeAt.
+func (s *UserList) GetLikeAt() OptDateTime {
+	return s.LikeAt
+}
+
+// GetTen returns the value of Ten.
+func (s *UserList) GetTen() OptBool {
+	return s.Ten
+}
+
+// GetTenSu returns the value of TenSu.
+func (s *UserList) GetTenSu() OptInt {
+	return s.TenSu
+}
+
+// GetTenKai returns the value of TenKai.
+func (s *UserList) GetTenKai() OptInt {
+	return s.TenKai
+}
+
+// GetAiten returns the value of Aiten.
+func (s *UserList) GetAiten() OptInt {
+	return s.Aiten
+}
+
+// GetTenCard returns the value of TenCard.
+func (s *UserList) GetTenCard() OptString {
+	return s.TenCard
+}
+
+// GetTenDelete returns the value of TenDelete.
+func (s *UserList) GetTenDelete() OptString {
+	return s.TenDelete
+}
+
+// GetTenPost returns the value of TenPost.
+func (s *UserList) GetTenPost() OptString {
+	return s.TenPost
+}
+
+// GetTenGet returns the value of TenGet.
+func (s *UserList) GetTenGet() OptString {
+	return s.TenGet
+}
+
+// GetTenAt returns the value of TenAt.
+func (s *UserList) GetTenAt() OptDateTime {
+	return s.TenAt
 }
 
 // GetNext returns the value of Next.
@@ -1642,6 +2557,81 @@ func (s *UserList) SetUpdatedAt(val OptDateTime) {
 	s.UpdatedAt = val
 }
 
+// SetRaidAt sets the value of RaidAt.
+func (s *UserList) SetRaidAt(val OptDateTime) {
+	s.RaidAt = val
+}
+
+// SetLuck sets the value of Luck.
+func (s *UserList) SetLuck(val OptInt) {
+	s.Luck = val
+}
+
+// SetLuckAt sets the value of LuckAt.
+func (s *UserList) SetLuckAt(val OptDateTime) {
+	s.LuckAt = val
+}
+
+// SetLike sets the value of Like.
+func (s *UserList) SetLike(val OptInt) {
+	s.Like = val
+}
+
+// SetLikeRank sets the value of LikeRank.
+func (s *UserList) SetLikeRank(val OptInt) {
+	s.LikeRank = val
+}
+
+// SetLikeAt sets the value of LikeAt.
+func (s *UserList) SetLikeAt(val OptDateTime) {
+	s.LikeAt = val
+}
+
+// SetTen sets the value of Ten.
+func (s *UserList) SetTen(val OptBool) {
+	s.Ten = val
+}
+
+// SetTenSu sets the value of TenSu.
+func (s *UserList) SetTenSu(val OptInt) {
+	s.TenSu = val
+}
+
+// SetTenKai sets the value of TenKai.
+func (s *UserList) SetTenKai(val OptInt) {
+	s.TenKai = val
+}
+
+// SetAiten sets the value of Aiten.
+func (s *UserList) SetAiten(val OptInt) {
+	s.Aiten = val
+}
+
+// SetTenCard sets the value of TenCard.
+func (s *UserList) SetTenCard(val OptString) {
+	s.TenCard = val
+}
+
+// SetTenDelete sets the value of TenDelete.
+func (s *UserList) SetTenDelete(val OptString) {
+	s.TenDelete = val
+}
+
+// SetTenPost sets the value of TenPost.
+func (s *UserList) SetTenPost(val OptString) {
+	s.TenPost = val
+}
+
+// SetTenGet sets the value of TenGet.
+func (s *UserList) SetTenGet(val OptString) {
+	s.TenGet = val
+}
+
+// SetTenAt sets the value of TenAt.
+func (s *UserList) SetTenAt(val OptDateTime) {
+	s.TenAt = val
+}
+
 // SetNext sets the value of Next.
 func (s *UserList) SetNext(val OptString) {
 	s.Next = val
@@ -1655,6 +2645,21 @@ type UserRead struct {
 	Delete    OptBool     `json:"delete"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
+	RaidAt    OptDateTime `json:"raid_at"`
+	Luck      OptInt      `json:"luck"`
+	LuckAt    OptDateTime `json:"luck_at"`
+	Like      OptInt      `json:"like"`
+	LikeRank  OptInt      `json:"like_rank"`
+	LikeAt    OptDateTime `json:"like_at"`
+	Ten       OptBool     `json:"ten"`
+	TenSu     OptInt      `json:"ten_su"`
+	TenKai    OptInt      `json:"ten_kai"`
+	Aiten     OptInt      `json:"aiten"`
+	TenCard   OptString   `json:"ten_card"`
+	TenDelete OptString   `json:"ten_delete"`
+	TenPost   OptString   `json:"ten_post"`
+	TenGet    OptString   `json:"ten_get"`
+	TenAt     OptDateTime `json:"ten_at"`
 	Next      OptString   `json:"next"`
 }
 
@@ -1686,6 +2691,81 @@ func (s *UserRead) GetCreatedAt() OptDateTime {
 // GetUpdatedAt returns the value of UpdatedAt.
 func (s *UserRead) GetUpdatedAt() OptDateTime {
 	return s.UpdatedAt
+}
+
+// GetRaidAt returns the value of RaidAt.
+func (s *UserRead) GetRaidAt() OptDateTime {
+	return s.RaidAt
+}
+
+// GetLuck returns the value of Luck.
+func (s *UserRead) GetLuck() OptInt {
+	return s.Luck
+}
+
+// GetLuckAt returns the value of LuckAt.
+func (s *UserRead) GetLuckAt() OptDateTime {
+	return s.LuckAt
+}
+
+// GetLike returns the value of Like.
+func (s *UserRead) GetLike() OptInt {
+	return s.Like
+}
+
+// GetLikeRank returns the value of LikeRank.
+func (s *UserRead) GetLikeRank() OptInt {
+	return s.LikeRank
+}
+
+// GetLikeAt returns the value of LikeAt.
+func (s *UserRead) GetLikeAt() OptDateTime {
+	return s.LikeAt
+}
+
+// GetTen returns the value of Ten.
+func (s *UserRead) GetTen() OptBool {
+	return s.Ten
+}
+
+// GetTenSu returns the value of TenSu.
+func (s *UserRead) GetTenSu() OptInt {
+	return s.TenSu
+}
+
+// GetTenKai returns the value of TenKai.
+func (s *UserRead) GetTenKai() OptInt {
+	return s.TenKai
+}
+
+// GetAiten returns the value of Aiten.
+func (s *UserRead) GetAiten() OptInt {
+	return s.Aiten
+}
+
+// GetTenCard returns the value of TenCard.
+func (s *UserRead) GetTenCard() OptString {
+	return s.TenCard
+}
+
+// GetTenDelete returns the value of TenDelete.
+func (s *UserRead) GetTenDelete() OptString {
+	return s.TenDelete
+}
+
+// GetTenPost returns the value of TenPost.
+func (s *UserRead) GetTenPost() OptString {
+	return s.TenPost
+}
+
+// GetTenGet returns the value of TenGet.
+func (s *UserRead) GetTenGet() OptString {
+	return s.TenGet
+}
+
+// GetTenAt returns the value of TenAt.
+func (s *UserRead) GetTenAt() OptDateTime {
+	return s.TenAt
 }
 
 // GetNext returns the value of Next.
@@ -1723,6 +2803,81 @@ func (s *UserRead) SetUpdatedAt(val OptDateTime) {
 	s.UpdatedAt = val
 }
 
+// SetRaidAt sets the value of RaidAt.
+func (s *UserRead) SetRaidAt(val OptDateTime) {
+	s.RaidAt = val
+}
+
+// SetLuck sets the value of Luck.
+func (s *UserRead) SetLuck(val OptInt) {
+	s.Luck = val
+}
+
+// SetLuckAt sets the value of LuckAt.
+func (s *UserRead) SetLuckAt(val OptDateTime) {
+	s.LuckAt = val
+}
+
+// SetLike sets the value of Like.
+func (s *UserRead) SetLike(val OptInt) {
+	s.Like = val
+}
+
+// SetLikeRank sets the value of LikeRank.
+func (s *UserRead) SetLikeRank(val OptInt) {
+	s.LikeRank = val
+}
+
+// SetLikeAt sets the value of LikeAt.
+func (s *UserRead) SetLikeAt(val OptDateTime) {
+	s.LikeAt = val
+}
+
+// SetTen sets the value of Ten.
+func (s *UserRead) SetTen(val OptBool) {
+	s.Ten = val
+}
+
+// SetTenSu sets the value of TenSu.
+func (s *UserRead) SetTenSu(val OptInt) {
+	s.TenSu = val
+}
+
+// SetTenKai sets the value of TenKai.
+func (s *UserRead) SetTenKai(val OptInt) {
+	s.TenKai = val
+}
+
+// SetAiten sets the value of Aiten.
+func (s *UserRead) SetAiten(val OptInt) {
+	s.Aiten = val
+}
+
+// SetTenCard sets the value of TenCard.
+func (s *UserRead) SetTenCard(val OptString) {
+	s.TenCard = val
+}
+
+// SetTenDelete sets the value of TenDelete.
+func (s *UserRead) SetTenDelete(val OptString) {
+	s.TenDelete = val
+}
+
+// SetTenPost sets the value of TenPost.
+func (s *UserRead) SetTenPost(val OptString) {
+	s.TenPost = val
+}
+
+// SetTenGet sets the value of TenGet.
+func (s *UserRead) SetTenGet(val OptString) {
+	s.TenGet = val
+}
+
+// SetTenAt sets the value of TenAt.
+func (s *UserRead) SetTenAt(val OptDateTime) {
+	s.TenAt = val
+}
+
 // SetNext sets the value of Next.
 func (s *UserRead) SetNext(val OptString) {
 	s.Next = val
@@ -1738,6 +2893,21 @@ type UserUpdate struct {
 	Delete    OptBool     `json:"delete"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
+	RaidAt    OptDateTime `json:"raid_at"`
+	Luck      OptInt      `json:"luck"`
+	LuckAt    OptDateTime `json:"luck_at"`
+	Like      OptInt      `json:"like"`
+	LikeRank  OptInt      `json:"like_rank"`
+	LikeAt    OptDateTime `json:"like_at"`
+	Ten       OptBool     `json:"ten"`
+	TenSu     OptInt      `json:"ten_su"`
+	TenKai    OptInt      `json:"ten_kai"`
+	Aiten     OptInt      `json:"aiten"`
+	TenCard   OptString   `json:"ten_card"`
+	TenDelete OptString   `json:"ten_delete"`
+	TenPost   OptString   `json:"ten_post"`
+	TenGet    OptString   `json:"ten_get"`
+	TenAt     OptDateTime `json:"ten_at"`
 	Next      OptString   `json:"next"`
 }
 
@@ -1769,6 +2939,81 @@ func (s *UserUpdate) GetCreatedAt() OptDateTime {
 // GetUpdatedAt returns the value of UpdatedAt.
 func (s *UserUpdate) GetUpdatedAt() OptDateTime {
 	return s.UpdatedAt
+}
+
+// GetRaidAt returns the value of RaidAt.
+func (s *UserUpdate) GetRaidAt() OptDateTime {
+	return s.RaidAt
+}
+
+// GetLuck returns the value of Luck.
+func (s *UserUpdate) GetLuck() OptInt {
+	return s.Luck
+}
+
+// GetLuckAt returns the value of LuckAt.
+func (s *UserUpdate) GetLuckAt() OptDateTime {
+	return s.LuckAt
+}
+
+// GetLike returns the value of Like.
+func (s *UserUpdate) GetLike() OptInt {
+	return s.Like
+}
+
+// GetLikeRank returns the value of LikeRank.
+func (s *UserUpdate) GetLikeRank() OptInt {
+	return s.LikeRank
+}
+
+// GetLikeAt returns the value of LikeAt.
+func (s *UserUpdate) GetLikeAt() OptDateTime {
+	return s.LikeAt
+}
+
+// GetTen returns the value of Ten.
+func (s *UserUpdate) GetTen() OptBool {
+	return s.Ten
+}
+
+// GetTenSu returns the value of TenSu.
+func (s *UserUpdate) GetTenSu() OptInt {
+	return s.TenSu
+}
+
+// GetTenKai returns the value of TenKai.
+func (s *UserUpdate) GetTenKai() OptInt {
+	return s.TenKai
+}
+
+// GetAiten returns the value of Aiten.
+func (s *UserUpdate) GetAiten() OptInt {
+	return s.Aiten
+}
+
+// GetTenCard returns the value of TenCard.
+func (s *UserUpdate) GetTenCard() OptString {
+	return s.TenCard
+}
+
+// GetTenDelete returns the value of TenDelete.
+func (s *UserUpdate) GetTenDelete() OptString {
+	return s.TenDelete
+}
+
+// GetTenPost returns the value of TenPost.
+func (s *UserUpdate) GetTenPost() OptString {
+	return s.TenPost
+}
+
+// GetTenGet returns the value of TenGet.
+func (s *UserUpdate) GetTenGet() OptString {
+	return s.TenGet
+}
+
+// GetTenAt returns the value of TenAt.
+func (s *UserUpdate) GetTenAt() OptDateTime {
+	return s.TenAt
 }
 
 // GetNext returns the value of Next.
@@ -1804,6 +3049,81 @@ func (s *UserUpdate) SetCreatedAt(val OptDateTime) {
 // SetUpdatedAt sets the value of UpdatedAt.
 func (s *UserUpdate) SetUpdatedAt(val OptDateTime) {
 	s.UpdatedAt = val
+}
+
+// SetRaidAt sets the value of RaidAt.
+func (s *UserUpdate) SetRaidAt(val OptDateTime) {
+	s.RaidAt = val
+}
+
+// SetLuck sets the value of Luck.
+func (s *UserUpdate) SetLuck(val OptInt) {
+	s.Luck = val
+}
+
+// SetLuckAt sets the value of LuckAt.
+func (s *UserUpdate) SetLuckAt(val OptDateTime) {
+	s.LuckAt = val
+}
+
+// SetLike sets the value of Like.
+func (s *UserUpdate) SetLike(val OptInt) {
+	s.Like = val
+}
+
+// SetLikeRank sets the value of LikeRank.
+func (s *UserUpdate) SetLikeRank(val OptInt) {
+	s.LikeRank = val
+}
+
+// SetLikeAt sets the value of LikeAt.
+func (s *UserUpdate) SetLikeAt(val OptDateTime) {
+	s.LikeAt = val
+}
+
+// SetTen sets the value of Ten.
+func (s *UserUpdate) SetTen(val OptBool) {
+	s.Ten = val
+}
+
+// SetTenSu sets the value of TenSu.
+func (s *UserUpdate) SetTenSu(val OptInt) {
+	s.TenSu = val
+}
+
+// SetTenKai sets the value of TenKai.
+func (s *UserUpdate) SetTenKai(val OptInt) {
+	s.TenKai = val
+}
+
+// SetAiten sets the value of Aiten.
+func (s *UserUpdate) SetAiten(val OptInt) {
+	s.Aiten = val
+}
+
+// SetTenCard sets the value of TenCard.
+func (s *UserUpdate) SetTenCard(val OptString) {
+	s.TenCard = val
+}
+
+// SetTenDelete sets the value of TenDelete.
+func (s *UserUpdate) SetTenDelete(val OptString) {
+	s.TenDelete = val
+}
+
+// SetTenPost sets the value of TenPost.
+func (s *UserUpdate) SetTenPost(val OptString) {
+	s.TenPost = val
+}
+
+// SetTenGet sets the value of TenGet.
+func (s *UserUpdate) SetTenGet(val OptString) {
+	s.TenGet = val
+}
+
+// SetTenAt sets the value of TenAt.
+func (s *UserUpdate) SetTenAt(val OptDateTime) {
+	s.TenAt = val
 }
 
 // SetNext sets the value of Next.

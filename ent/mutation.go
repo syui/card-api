@@ -1422,6 +1422,27 @@ type UserMutation struct {
 	password      *string
 	created_at    *time.Time
 	updated_at    *time.Time
+	raid_at       *time.Time
+	luck          *int
+	addluck       *int
+	luck_at       *time.Time
+	like          *int
+	addlike       *int
+	like_rank     *int
+	addlike_rank  *int
+	like_at       *time.Time
+	ten           *bool
+	ten_su        *int
+	addten_su     *int
+	ten_kai       *int
+	addten_kai    *int
+	aiten         *int
+	addaiten      *int
+	ten_card      *string
+	ten_delete    *string
+	ten_post      *string
+	ten_get       *string
+	ten_at        *time.Time
 	next          *string
 	clearedFields map[string]struct{}
 	card          map[int]struct{}
@@ -1847,6 +1868,867 @@ func (m *UserMutation) ResetUpdatedAt() {
 	delete(m.clearedFields, user.FieldUpdatedAt)
 }
 
+// SetRaidAt sets the "raid_at" field.
+func (m *UserMutation) SetRaidAt(t time.Time) {
+	m.raid_at = &t
+}
+
+// RaidAt returns the value of the "raid_at" field in the mutation.
+func (m *UserMutation) RaidAt() (r time.Time, exists bool) {
+	v := m.raid_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldRaidAt returns the old "raid_at" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldRaidAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldRaidAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldRaidAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldRaidAt: %w", err)
+	}
+	return oldValue.RaidAt, nil
+}
+
+// ClearRaidAt clears the value of the "raid_at" field.
+func (m *UserMutation) ClearRaidAt() {
+	m.raid_at = nil
+	m.clearedFields[user.FieldRaidAt] = struct{}{}
+}
+
+// RaidAtCleared returns if the "raid_at" field was cleared in this mutation.
+func (m *UserMutation) RaidAtCleared() bool {
+	_, ok := m.clearedFields[user.FieldRaidAt]
+	return ok
+}
+
+// ResetRaidAt resets all changes to the "raid_at" field.
+func (m *UserMutation) ResetRaidAt() {
+	m.raid_at = nil
+	delete(m.clearedFields, user.FieldRaidAt)
+}
+
+// SetLuck sets the "luck" field.
+func (m *UserMutation) SetLuck(i int) {
+	m.luck = &i
+	m.addluck = nil
+}
+
+// Luck returns the value of the "luck" field in the mutation.
+func (m *UserMutation) Luck() (r int, exists bool) {
+	v := m.luck
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldLuck returns the old "luck" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldLuck(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldLuck is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldLuck requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldLuck: %w", err)
+	}
+	return oldValue.Luck, nil
+}
+
+// AddLuck adds i to the "luck" field.
+func (m *UserMutation) AddLuck(i int) {
+	if m.addluck != nil {
+		*m.addluck += i
+	} else {
+		m.addluck = &i
+	}
+}
+
+// AddedLuck returns the value that was added to the "luck" field in this mutation.
+func (m *UserMutation) AddedLuck() (r int, exists bool) {
+	v := m.addluck
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearLuck clears the value of the "luck" field.
+func (m *UserMutation) ClearLuck() {
+	m.luck = nil
+	m.addluck = nil
+	m.clearedFields[user.FieldLuck] = struct{}{}
+}
+
+// LuckCleared returns if the "luck" field was cleared in this mutation.
+func (m *UserMutation) LuckCleared() bool {
+	_, ok := m.clearedFields[user.FieldLuck]
+	return ok
+}
+
+// ResetLuck resets all changes to the "luck" field.
+func (m *UserMutation) ResetLuck() {
+	m.luck = nil
+	m.addluck = nil
+	delete(m.clearedFields, user.FieldLuck)
+}
+
+// SetLuckAt sets the "luck_at" field.
+func (m *UserMutation) SetLuckAt(t time.Time) {
+	m.luck_at = &t
+}
+
+// LuckAt returns the value of the "luck_at" field in the mutation.
+func (m *UserMutation) LuckAt() (r time.Time, exists bool) {
+	v := m.luck_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldLuckAt returns the old "luck_at" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldLuckAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldLuckAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldLuckAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldLuckAt: %w", err)
+	}
+	return oldValue.LuckAt, nil
+}
+
+// ClearLuckAt clears the value of the "luck_at" field.
+func (m *UserMutation) ClearLuckAt() {
+	m.luck_at = nil
+	m.clearedFields[user.FieldLuckAt] = struct{}{}
+}
+
+// LuckAtCleared returns if the "luck_at" field was cleared in this mutation.
+func (m *UserMutation) LuckAtCleared() bool {
+	_, ok := m.clearedFields[user.FieldLuckAt]
+	return ok
+}
+
+// ResetLuckAt resets all changes to the "luck_at" field.
+func (m *UserMutation) ResetLuckAt() {
+	m.luck_at = nil
+	delete(m.clearedFields, user.FieldLuckAt)
+}
+
+// SetLike sets the "like" field.
+func (m *UserMutation) SetLike(i int) {
+	m.like = &i
+	m.addlike = nil
+}
+
+// Like returns the value of the "like" field in the mutation.
+func (m *UserMutation) Like() (r int, exists bool) {
+	v := m.like
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldLike returns the old "like" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldLike(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldLike is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldLike requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldLike: %w", err)
+	}
+	return oldValue.Like, nil
+}
+
+// AddLike adds i to the "like" field.
+func (m *UserMutation) AddLike(i int) {
+	if m.addlike != nil {
+		*m.addlike += i
+	} else {
+		m.addlike = &i
+	}
+}
+
+// AddedLike returns the value that was added to the "like" field in this mutation.
+func (m *UserMutation) AddedLike() (r int, exists bool) {
+	v := m.addlike
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearLike clears the value of the "like" field.
+func (m *UserMutation) ClearLike() {
+	m.like = nil
+	m.addlike = nil
+	m.clearedFields[user.FieldLike] = struct{}{}
+}
+
+// LikeCleared returns if the "like" field was cleared in this mutation.
+func (m *UserMutation) LikeCleared() bool {
+	_, ok := m.clearedFields[user.FieldLike]
+	return ok
+}
+
+// ResetLike resets all changes to the "like" field.
+func (m *UserMutation) ResetLike() {
+	m.like = nil
+	m.addlike = nil
+	delete(m.clearedFields, user.FieldLike)
+}
+
+// SetLikeRank sets the "like_rank" field.
+func (m *UserMutation) SetLikeRank(i int) {
+	m.like_rank = &i
+	m.addlike_rank = nil
+}
+
+// LikeRank returns the value of the "like_rank" field in the mutation.
+func (m *UserMutation) LikeRank() (r int, exists bool) {
+	v := m.like_rank
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldLikeRank returns the old "like_rank" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldLikeRank(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldLikeRank is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldLikeRank requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldLikeRank: %w", err)
+	}
+	return oldValue.LikeRank, nil
+}
+
+// AddLikeRank adds i to the "like_rank" field.
+func (m *UserMutation) AddLikeRank(i int) {
+	if m.addlike_rank != nil {
+		*m.addlike_rank += i
+	} else {
+		m.addlike_rank = &i
+	}
+}
+
+// AddedLikeRank returns the value that was added to the "like_rank" field in this mutation.
+func (m *UserMutation) AddedLikeRank() (r int, exists bool) {
+	v := m.addlike_rank
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearLikeRank clears the value of the "like_rank" field.
+func (m *UserMutation) ClearLikeRank() {
+	m.like_rank = nil
+	m.addlike_rank = nil
+	m.clearedFields[user.FieldLikeRank] = struct{}{}
+}
+
+// LikeRankCleared returns if the "like_rank" field was cleared in this mutation.
+func (m *UserMutation) LikeRankCleared() bool {
+	_, ok := m.clearedFields[user.FieldLikeRank]
+	return ok
+}
+
+// ResetLikeRank resets all changes to the "like_rank" field.
+func (m *UserMutation) ResetLikeRank() {
+	m.like_rank = nil
+	m.addlike_rank = nil
+	delete(m.clearedFields, user.FieldLikeRank)
+}
+
+// SetLikeAt sets the "like_at" field.
+func (m *UserMutation) SetLikeAt(t time.Time) {
+	m.like_at = &t
+}
+
+// LikeAt returns the value of the "like_at" field in the mutation.
+func (m *UserMutation) LikeAt() (r time.Time, exists bool) {
+	v := m.like_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldLikeAt returns the old "like_at" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldLikeAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldLikeAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldLikeAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldLikeAt: %w", err)
+	}
+	return oldValue.LikeAt, nil
+}
+
+// ClearLikeAt clears the value of the "like_at" field.
+func (m *UserMutation) ClearLikeAt() {
+	m.like_at = nil
+	m.clearedFields[user.FieldLikeAt] = struct{}{}
+}
+
+// LikeAtCleared returns if the "like_at" field was cleared in this mutation.
+func (m *UserMutation) LikeAtCleared() bool {
+	_, ok := m.clearedFields[user.FieldLikeAt]
+	return ok
+}
+
+// ResetLikeAt resets all changes to the "like_at" field.
+func (m *UserMutation) ResetLikeAt() {
+	m.like_at = nil
+	delete(m.clearedFields, user.FieldLikeAt)
+}
+
+// SetTen sets the "ten" field.
+func (m *UserMutation) SetTen(b bool) {
+	m.ten = &b
+}
+
+// Ten returns the value of the "ten" field in the mutation.
+func (m *UserMutation) Ten() (r bool, exists bool) {
+	v := m.ten
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTen returns the old "ten" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldTen(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTen is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTen requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTen: %w", err)
+	}
+	return oldValue.Ten, nil
+}
+
+// ClearTen clears the value of the "ten" field.
+func (m *UserMutation) ClearTen() {
+	m.ten = nil
+	m.clearedFields[user.FieldTen] = struct{}{}
+}
+
+// TenCleared returns if the "ten" field was cleared in this mutation.
+func (m *UserMutation) TenCleared() bool {
+	_, ok := m.clearedFields[user.FieldTen]
+	return ok
+}
+
+// ResetTen resets all changes to the "ten" field.
+func (m *UserMutation) ResetTen() {
+	m.ten = nil
+	delete(m.clearedFields, user.FieldTen)
+}
+
+// SetTenSu sets the "ten_su" field.
+func (m *UserMutation) SetTenSu(i int) {
+	m.ten_su = &i
+	m.addten_su = nil
+}
+
+// TenSu returns the value of the "ten_su" field in the mutation.
+func (m *UserMutation) TenSu() (r int, exists bool) {
+	v := m.ten_su
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenSu returns the old "ten_su" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldTenSu(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenSu is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenSu requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenSu: %w", err)
+	}
+	return oldValue.TenSu, nil
+}
+
+// AddTenSu adds i to the "ten_su" field.
+func (m *UserMutation) AddTenSu(i int) {
+	if m.addten_su != nil {
+		*m.addten_su += i
+	} else {
+		m.addten_su = &i
+	}
+}
+
+// AddedTenSu returns the value that was added to the "ten_su" field in this mutation.
+func (m *UserMutation) AddedTenSu() (r int, exists bool) {
+	v := m.addten_su
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearTenSu clears the value of the "ten_su" field.
+func (m *UserMutation) ClearTenSu() {
+	m.ten_su = nil
+	m.addten_su = nil
+	m.clearedFields[user.FieldTenSu] = struct{}{}
+}
+
+// TenSuCleared returns if the "ten_su" field was cleared in this mutation.
+func (m *UserMutation) TenSuCleared() bool {
+	_, ok := m.clearedFields[user.FieldTenSu]
+	return ok
+}
+
+// ResetTenSu resets all changes to the "ten_su" field.
+func (m *UserMutation) ResetTenSu() {
+	m.ten_su = nil
+	m.addten_su = nil
+	delete(m.clearedFields, user.FieldTenSu)
+}
+
+// SetTenKai sets the "ten_kai" field.
+func (m *UserMutation) SetTenKai(i int) {
+	m.ten_kai = &i
+	m.addten_kai = nil
+}
+
+// TenKai returns the value of the "ten_kai" field in the mutation.
+func (m *UserMutation) TenKai() (r int, exists bool) {
+	v := m.ten_kai
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenKai returns the old "ten_kai" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldTenKai(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenKai is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenKai requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenKai: %w", err)
+	}
+	return oldValue.TenKai, nil
+}
+
+// AddTenKai adds i to the "ten_kai" field.
+func (m *UserMutation) AddTenKai(i int) {
+	if m.addten_kai != nil {
+		*m.addten_kai += i
+	} else {
+		m.addten_kai = &i
+	}
+}
+
+// AddedTenKai returns the value that was added to the "ten_kai" field in this mutation.
+func (m *UserMutation) AddedTenKai() (r int, exists bool) {
+	v := m.addten_kai
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearTenKai clears the value of the "ten_kai" field.
+func (m *UserMutation) ClearTenKai() {
+	m.ten_kai = nil
+	m.addten_kai = nil
+	m.clearedFields[user.FieldTenKai] = struct{}{}
+}
+
+// TenKaiCleared returns if the "ten_kai" field was cleared in this mutation.
+func (m *UserMutation) TenKaiCleared() bool {
+	_, ok := m.clearedFields[user.FieldTenKai]
+	return ok
+}
+
+// ResetTenKai resets all changes to the "ten_kai" field.
+func (m *UserMutation) ResetTenKai() {
+	m.ten_kai = nil
+	m.addten_kai = nil
+	delete(m.clearedFields, user.FieldTenKai)
+}
+
+// SetAiten sets the "aiten" field.
+func (m *UserMutation) SetAiten(i int) {
+	m.aiten = &i
+	m.addaiten = nil
+}
+
+// Aiten returns the value of the "aiten" field in the mutation.
+func (m *UserMutation) Aiten() (r int, exists bool) {
+	v := m.aiten
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldAiten returns the old "aiten" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldAiten(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldAiten is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldAiten requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldAiten: %w", err)
+	}
+	return oldValue.Aiten, nil
+}
+
+// AddAiten adds i to the "aiten" field.
+func (m *UserMutation) AddAiten(i int) {
+	if m.addaiten != nil {
+		*m.addaiten += i
+	} else {
+		m.addaiten = &i
+	}
+}
+
+// AddedAiten returns the value that was added to the "aiten" field in this mutation.
+func (m *UserMutation) AddedAiten() (r int, exists bool) {
+	v := m.addaiten
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearAiten clears the value of the "aiten" field.
+func (m *UserMutation) ClearAiten() {
+	m.aiten = nil
+	m.addaiten = nil
+	m.clearedFields[user.FieldAiten] = struct{}{}
+}
+
+// AitenCleared returns if the "aiten" field was cleared in this mutation.
+func (m *UserMutation) AitenCleared() bool {
+	_, ok := m.clearedFields[user.FieldAiten]
+	return ok
+}
+
+// ResetAiten resets all changes to the "aiten" field.
+func (m *UserMutation) ResetAiten() {
+	m.aiten = nil
+	m.addaiten = nil
+	delete(m.clearedFields, user.FieldAiten)
+}
+
+// SetTenCard sets the "ten_card" field.
+func (m *UserMutation) SetTenCard(s string) {
+	m.ten_card = &s
+}
+
+// TenCard returns the value of the "ten_card" field in the mutation.
+func (m *UserMutation) TenCard() (r string, exists bool) {
+	v := m.ten_card
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenCard returns the old "ten_card" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldTenCard(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenCard is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenCard requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenCard: %w", err)
+	}
+	return oldValue.TenCard, nil
+}
+
+// ClearTenCard clears the value of the "ten_card" field.
+func (m *UserMutation) ClearTenCard() {
+	m.ten_card = nil
+	m.clearedFields[user.FieldTenCard] = struct{}{}
+}
+
+// TenCardCleared returns if the "ten_card" field was cleared in this mutation.
+func (m *UserMutation) TenCardCleared() bool {
+	_, ok := m.clearedFields[user.FieldTenCard]
+	return ok
+}
+
+// ResetTenCard resets all changes to the "ten_card" field.
+func (m *UserMutation) ResetTenCard() {
+	m.ten_card = nil
+	delete(m.clearedFields, user.FieldTenCard)
+}
+
+// SetTenDelete sets the "ten_delete" field.
+func (m *UserMutation) SetTenDelete(s string) {
+	m.ten_delete = &s
+}
+
+// TenDelete returns the value of the "ten_delete" field in the mutation.
+func (m *UserMutation) TenDelete() (r string, exists bool) {
+	v := m.ten_delete
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenDelete returns the old "ten_delete" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldTenDelete(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenDelete is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenDelete requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenDelete: %w", err)
+	}
+	return oldValue.TenDelete, nil
+}
+
+// ClearTenDelete clears the value of the "ten_delete" field.
+func (m *UserMutation) ClearTenDelete() {
+	m.ten_delete = nil
+	m.clearedFields[user.FieldTenDelete] = struct{}{}
+}
+
+// TenDeleteCleared returns if the "ten_delete" field was cleared in this mutation.
+func (m *UserMutation) TenDeleteCleared() bool {
+	_, ok := m.clearedFields[user.FieldTenDelete]
+	return ok
+}
+
+// ResetTenDelete resets all changes to the "ten_delete" field.
+func (m *UserMutation) ResetTenDelete() {
+	m.ten_delete = nil
+	delete(m.clearedFields, user.FieldTenDelete)
+}
+
+// SetTenPost sets the "ten_post" field.
+func (m *UserMutation) SetTenPost(s string) {
+	m.ten_post = &s
+}
+
+// TenPost returns the value of the "ten_post" field in the mutation.
+func (m *UserMutation) TenPost() (r string, exists bool) {
+	v := m.ten_post
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenPost returns the old "ten_post" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldTenPost(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenPost is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenPost requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenPost: %w", err)
+	}
+	return oldValue.TenPost, nil
+}
+
+// ClearTenPost clears the value of the "ten_post" field.
+func (m *UserMutation) ClearTenPost() {
+	m.ten_post = nil
+	m.clearedFields[user.FieldTenPost] = struct{}{}
+}
+
+// TenPostCleared returns if the "ten_post" field was cleared in this mutation.
+func (m *UserMutation) TenPostCleared() bool {
+	_, ok := m.clearedFields[user.FieldTenPost]
+	return ok
+}
+
+// ResetTenPost resets all changes to the "ten_post" field.
+func (m *UserMutation) ResetTenPost() {
+	m.ten_post = nil
+	delete(m.clearedFields, user.FieldTenPost)
+}
+
+// SetTenGet sets the "ten_get" field.
+func (m *UserMutation) SetTenGet(s string) {
+	m.ten_get = &s
+}
+
+// TenGet returns the value of the "ten_get" field in the mutation.
+func (m *UserMutation) TenGet() (r string, exists bool) {
+	v := m.ten_get
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenGet returns the old "ten_get" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldTenGet(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenGet is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenGet requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenGet: %w", err)
+	}
+	return oldValue.TenGet, nil
+}
+
+// ClearTenGet clears the value of the "ten_get" field.
+func (m *UserMutation) ClearTenGet() {
+	m.ten_get = nil
+	m.clearedFields[user.FieldTenGet] = struct{}{}
+}
+
+// TenGetCleared returns if the "ten_get" field was cleared in this mutation.
+func (m *UserMutation) TenGetCleared() bool {
+	_, ok := m.clearedFields[user.FieldTenGet]
+	return ok
+}
+
+// ResetTenGet resets all changes to the "ten_get" field.
+func (m *UserMutation) ResetTenGet() {
+	m.ten_get = nil
+	delete(m.clearedFields, user.FieldTenGet)
+}
+
+// SetTenAt sets the "ten_at" field.
+func (m *UserMutation) SetTenAt(t time.Time) {
+	m.ten_at = &t
+}
+
+// TenAt returns the value of the "ten_at" field in the mutation.
+func (m *UserMutation) TenAt() (r time.Time, exists bool) {
+	v := m.ten_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenAt returns the old "ten_at" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldTenAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenAt: %w", err)
+	}
+	return oldValue.TenAt, nil
+}
+
+// ClearTenAt clears the value of the "ten_at" field.
+func (m *UserMutation) ClearTenAt() {
+	m.ten_at = nil
+	m.clearedFields[user.FieldTenAt] = struct{}{}
+}
+
+// TenAtCleared returns if the "ten_at" field was cleared in this mutation.
+func (m *UserMutation) TenAtCleared() bool {
+	_, ok := m.clearedFields[user.FieldTenAt]
+	return ok
+}
+
+// ResetTenAt resets all changes to the "ten_at" field.
+func (m *UserMutation) ResetTenAt() {
+	m.ten_at = nil
+	delete(m.clearedFields, user.FieldTenAt)
+}
+
 // SetNext sets the "next" field.
 func (m *UserMutation) SetNext(s string) {
 	m.next = &s
@@ -1984,7 +2866,7 @@ func (m *UserMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *UserMutation) Fields() []string {
-	fields := make([]string, 0, 8)
+	fields := make([]string, 0, 23)
 	if m.username != nil {
 		fields = append(fields, user.FieldUsername)
 	}
@@ -2005,6 +2887,51 @@ func (m *UserMutation) Fields() []string {
 	}
 	if m.updated_at != nil {
 		fields = append(fields, user.FieldUpdatedAt)
+	}
+	if m.raid_at != nil {
+		fields = append(fields, user.FieldRaidAt)
+	}
+	if m.luck != nil {
+		fields = append(fields, user.FieldLuck)
+	}
+	if m.luck_at != nil {
+		fields = append(fields, user.FieldLuckAt)
+	}
+	if m.like != nil {
+		fields = append(fields, user.FieldLike)
+	}
+	if m.like_rank != nil {
+		fields = append(fields, user.FieldLikeRank)
+	}
+	if m.like_at != nil {
+		fields = append(fields, user.FieldLikeAt)
+	}
+	if m.ten != nil {
+		fields = append(fields, user.FieldTen)
+	}
+	if m.ten_su != nil {
+		fields = append(fields, user.FieldTenSu)
+	}
+	if m.ten_kai != nil {
+		fields = append(fields, user.FieldTenKai)
+	}
+	if m.aiten != nil {
+		fields = append(fields, user.FieldAiten)
+	}
+	if m.ten_card != nil {
+		fields = append(fields, user.FieldTenCard)
+	}
+	if m.ten_delete != nil {
+		fields = append(fields, user.FieldTenDelete)
+	}
+	if m.ten_post != nil {
+		fields = append(fields, user.FieldTenPost)
+	}
+	if m.ten_get != nil {
+		fields = append(fields, user.FieldTenGet)
+	}
+	if m.ten_at != nil {
+		fields = append(fields, user.FieldTenAt)
 	}
 	if m.next != nil {
 		fields = append(fields, user.FieldNext)
@@ -2031,6 +2958,36 @@ func (m *UserMutation) Field(name string) (ent.Value, bool) {
 		return m.CreatedAt()
 	case user.FieldUpdatedAt:
 		return m.UpdatedAt()
+	case user.FieldRaidAt:
+		return m.RaidAt()
+	case user.FieldLuck:
+		return m.Luck()
+	case user.FieldLuckAt:
+		return m.LuckAt()
+	case user.FieldLike:
+		return m.Like()
+	case user.FieldLikeRank:
+		return m.LikeRank()
+	case user.FieldLikeAt:
+		return m.LikeAt()
+	case user.FieldTen:
+		return m.Ten()
+	case user.FieldTenSu:
+		return m.TenSu()
+	case user.FieldTenKai:
+		return m.TenKai()
+	case user.FieldAiten:
+		return m.Aiten()
+	case user.FieldTenCard:
+		return m.TenCard()
+	case user.FieldTenDelete:
+		return m.TenDelete()
+	case user.FieldTenPost:
+		return m.TenPost()
+	case user.FieldTenGet:
+		return m.TenGet()
+	case user.FieldTenAt:
+		return m.TenAt()
 	case user.FieldNext:
 		return m.Next()
 	}
@@ -2056,6 +3013,36 @@ func (m *UserMutation) OldField(ctx context.Context, name string) (ent.Value, er
 		return m.OldCreatedAt(ctx)
 	case user.FieldUpdatedAt:
 		return m.OldUpdatedAt(ctx)
+	case user.FieldRaidAt:
+		return m.OldRaidAt(ctx)
+	case user.FieldLuck:
+		return m.OldLuck(ctx)
+	case user.FieldLuckAt:
+		return m.OldLuckAt(ctx)
+	case user.FieldLike:
+		return m.OldLike(ctx)
+	case user.FieldLikeRank:
+		return m.OldLikeRank(ctx)
+	case user.FieldLikeAt:
+		return m.OldLikeAt(ctx)
+	case user.FieldTen:
+		return m.OldTen(ctx)
+	case user.FieldTenSu:
+		return m.OldTenSu(ctx)
+	case user.FieldTenKai:
+		return m.OldTenKai(ctx)
+	case user.FieldAiten:
+		return m.OldAiten(ctx)
+	case user.FieldTenCard:
+		return m.OldTenCard(ctx)
+	case user.FieldTenDelete:
+		return m.OldTenDelete(ctx)
+	case user.FieldTenPost:
+		return m.OldTenPost(ctx)
+	case user.FieldTenGet:
+		return m.OldTenGet(ctx)
+	case user.FieldTenAt:
+		return m.OldTenAt(ctx)
 	case user.FieldNext:
 		return m.OldNext(ctx)
 	}
@@ -2116,6 +3103,111 @@ func (m *UserMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetUpdatedAt(v)
 		return nil
+	case user.FieldRaidAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetRaidAt(v)
+		return nil
+	case user.FieldLuck:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetLuck(v)
+		return nil
+	case user.FieldLuckAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetLuckAt(v)
+		return nil
+	case user.FieldLike:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetLike(v)
+		return nil
+	case user.FieldLikeRank:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetLikeRank(v)
+		return nil
+	case user.FieldLikeAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetLikeAt(v)
+		return nil
+	case user.FieldTen:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTen(v)
+		return nil
+	case user.FieldTenSu:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenSu(v)
+		return nil
+	case user.FieldTenKai:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenKai(v)
+		return nil
+	case user.FieldAiten:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetAiten(v)
+		return nil
+	case user.FieldTenCard:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenCard(v)
+		return nil
+	case user.FieldTenDelete:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenDelete(v)
+		return nil
+	case user.FieldTenPost:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenPost(v)
+		return nil
+	case user.FieldTenGet:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenGet(v)
+		return nil
+	case user.FieldTenAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenAt(v)
+		return nil
 	case user.FieldNext:
 		v, ok := value.(string)
 		if !ok {
@@ -2130,13 +3222,46 @@ func (m *UserMutation) SetField(name string, value ent.Value) error {
 // AddedFields returns all numeric fields that were incremented/decremented during
 // this mutation.
 func (m *UserMutation) AddedFields() []string {
-	return nil
+	var fields []string
+	if m.addluck != nil {
+		fields = append(fields, user.FieldLuck)
+	}
+	if m.addlike != nil {
+		fields = append(fields, user.FieldLike)
+	}
+	if m.addlike_rank != nil {
+		fields = append(fields, user.FieldLikeRank)
+	}
+	if m.addten_su != nil {
+		fields = append(fields, user.FieldTenSu)
+	}
+	if m.addten_kai != nil {
+		fields = append(fields, user.FieldTenKai)
+	}
+	if m.addaiten != nil {
+		fields = append(fields, user.FieldAiten)
+	}
+	return fields
 }
 
 // AddedField returns the numeric value that was incremented/decremented on a field
 // with the given name. The second boolean return value indicates that this field
 // was not set, or was not defined in the schema.
 func (m *UserMutation) AddedField(name string) (ent.Value, bool) {
+	switch name {
+	case user.FieldLuck:
+		return m.AddedLuck()
+	case user.FieldLike:
+		return m.AddedLike()
+	case user.FieldLikeRank:
+		return m.AddedLikeRank()
+	case user.FieldTenSu:
+		return m.AddedTenSu()
+	case user.FieldTenKai:
+		return m.AddedTenKai()
+	case user.FieldAiten:
+		return m.AddedAiten()
+	}
 	return nil, false
 }
 
@@ -2145,6 +3270,48 @@ func (m *UserMutation) AddedField(name string) (ent.Value, bool) {
 // type.
 func (m *UserMutation) AddField(name string, value ent.Value) error {
 	switch name {
+	case user.FieldLuck:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddLuck(v)
+		return nil
+	case user.FieldLike:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddLike(v)
+		return nil
+	case user.FieldLikeRank:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddLikeRank(v)
+		return nil
+	case user.FieldTenSu:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddTenSu(v)
+		return nil
+	case user.FieldTenKai:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddTenKai(v)
+		return nil
+	case user.FieldAiten:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddAiten(v)
+		return nil
 	}
 	return fmt.Errorf("unknown User numeric field %s", name)
 }
@@ -2167,6 +3334,51 @@ func (m *UserMutation) ClearedFields() []string {
 	}
 	if m.FieldCleared(user.FieldUpdatedAt) {
 		fields = append(fields, user.FieldUpdatedAt)
+	}
+	if m.FieldCleared(user.FieldRaidAt) {
+		fields = append(fields, user.FieldRaidAt)
+	}
+	if m.FieldCleared(user.FieldLuck) {
+		fields = append(fields, user.FieldLuck)
+	}
+	if m.FieldCleared(user.FieldLuckAt) {
+		fields = append(fields, user.FieldLuckAt)
+	}
+	if m.FieldCleared(user.FieldLike) {
+		fields = append(fields, user.FieldLike)
+	}
+	if m.FieldCleared(user.FieldLikeRank) {
+		fields = append(fields, user.FieldLikeRank)
+	}
+	if m.FieldCleared(user.FieldLikeAt) {
+		fields = append(fields, user.FieldLikeAt)
+	}
+	if m.FieldCleared(user.FieldTen) {
+		fields = append(fields, user.FieldTen)
+	}
+	if m.FieldCleared(user.FieldTenSu) {
+		fields = append(fields, user.FieldTenSu)
+	}
+	if m.FieldCleared(user.FieldTenKai) {
+		fields = append(fields, user.FieldTenKai)
+	}
+	if m.FieldCleared(user.FieldAiten) {
+		fields = append(fields, user.FieldAiten)
+	}
+	if m.FieldCleared(user.FieldTenCard) {
+		fields = append(fields, user.FieldTenCard)
+	}
+	if m.FieldCleared(user.FieldTenDelete) {
+		fields = append(fields, user.FieldTenDelete)
+	}
+	if m.FieldCleared(user.FieldTenPost) {
+		fields = append(fields, user.FieldTenPost)
+	}
+	if m.FieldCleared(user.FieldTenGet) {
+		fields = append(fields, user.FieldTenGet)
+	}
+	if m.FieldCleared(user.FieldTenAt) {
+		fields = append(fields, user.FieldTenAt)
 	}
 	if m.FieldCleared(user.FieldNext) {
 		fields = append(fields, user.FieldNext)
@@ -2200,6 +3412,51 @@ func (m *UserMutation) ClearField(name string) error {
 	case user.FieldUpdatedAt:
 		m.ClearUpdatedAt()
 		return nil
+	case user.FieldRaidAt:
+		m.ClearRaidAt()
+		return nil
+	case user.FieldLuck:
+		m.ClearLuck()
+		return nil
+	case user.FieldLuckAt:
+		m.ClearLuckAt()
+		return nil
+	case user.FieldLike:
+		m.ClearLike()
+		return nil
+	case user.FieldLikeRank:
+		m.ClearLikeRank()
+		return nil
+	case user.FieldLikeAt:
+		m.ClearLikeAt()
+		return nil
+	case user.FieldTen:
+		m.ClearTen()
+		return nil
+	case user.FieldTenSu:
+		m.ClearTenSu()
+		return nil
+	case user.FieldTenKai:
+		m.ClearTenKai()
+		return nil
+	case user.FieldAiten:
+		m.ClearAiten()
+		return nil
+	case user.FieldTenCard:
+		m.ClearTenCard()
+		return nil
+	case user.FieldTenDelete:
+		m.ClearTenDelete()
+		return nil
+	case user.FieldTenPost:
+		m.ClearTenPost()
+		return nil
+	case user.FieldTenGet:
+		m.ClearTenGet()
+		return nil
+	case user.FieldTenAt:
+		m.ClearTenAt()
+		return nil
 	case user.FieldNext:
 		m.ClearNext()
 		return nil
@@ -2231,6 +3488,51 @@ func (m *UserMutation) ResetField(name string) error {
 		return nil
 	case user.FieldUpdatedAt:
 		m.ResetUpdatedAt()
+		return nil
+	case user.FieldRaidAt:
+		m.ResetRaidAt()
+		return nil
+	case user.FieldLuck:
+		m.ResetLuck()
+		return nil
+	case user.FieldLuckAt:
+		m.ResetLuckAt()
+		return nil
+	case user.FieldLike:
+		m.ResetLike()
+		return nil
+	case user.FieldLikeRank:
+		m.ResetLikeRank()
+		return nil
+	case user.FieldLikeAt:
+		m.ResetLikeAt()
+		return nil
+	case user.FieldTen:
+		m.ResetTen()
+		return nil
+	case user.FieldTenSu:
+		m.ResetTenSu()
+		return nil
+	case user.FieldTenKai:
+		m.ResetTenKai()
+		return nil
+	case user.FieldAiten:
+		m.ResetAiten()
+		return nil
+	case user.FieldTenCard:
+		m.ResetTenCard()
+		return nil
+	case user.FieldTenDelete:
+		m.ResetTenDelete()
+		return nil
+	case user.FieldTenPost:
+		m.ResetTenPost()
+		return nil
+	case user.FieldTenGet:
+		m.ResetTenGet()
+		return nil
+	case user.FieldTenAt:
+		m.ResetTenAt()
 		return nil
 	case user.FieldNext:
 		m.ResetNext()

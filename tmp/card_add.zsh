@@ -1,5 +1,5 @@
 #!/bin/zsh
-echo id card cp
+echo username card cp
 read
 host=https://api.syui.ai
 pass=`cat ~/.config/atr/api_card.json|jq -r .password`
@@ -13,7 +13,7 @@ if [ -z "$3" ];then
 	exit
 fi
 
-id=$1
+id=`curl -sL "$host/users?itemsPerPage=2000"|jq ".[]|select(.username == \"$1\")"|jq -r .id`
 card=$2
 cp=$3
 s="normal"

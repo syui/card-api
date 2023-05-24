@@ -30,7 +30,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 3500,
+              "maximum": 4000,
               "minimum": 1
             }
           }
@@ -372,7 +372,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 3500,
+              "maximum": 4000,
               "minimum": 1
             }
           }
@@ -698,7 +698,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 3500,
+              "maximum": 4000,
               "minimum": 1
             }
           }
@@ -765,6 +765,55 @@
                     "format": "date-time"
                   },
                   "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "raid_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "luck": {
+                    "type": "integer"
+                  },
+                  "luck_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "like": {
+                    "type": "integer"
+                  },
+                  "like_rank": {
+                    "type": "integer"
+                  },
+                  "like_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "ten": {
+                    "type": "boolean"
+                  },
+                  "ten_su": {
+                    "type": "integer"
+                  },
+                  "ten_kai": {
+                    "type": "integer"
+                  },
+                  "aiten": {
+                    "type": "integer"
+                  },
+                  "ten_card": {
+                    "type": "string"
+                  },
+                  "ten_delete": {
+                    "type": "string"
+                  },
+                  "ten_post": {
+                    "type": "string"
+                  },
+                  "ten_get": {
+                    "type": "string"
+                  },
+                  "ten_at": {
                     "type": "string",
                     "format": "date-time"
                   },
@@ -925,6 +974,55 @@
                     "type": "string"
                   },
                   "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "raid_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "luck": {
+                    "type": "integer"
+                  },
+                  "luck_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "like": {
+                    "type": "integer"
+                  },
+                  "like_rank": {
+                    "type": "integer"
+                  },
+                  "like_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "ten": {
+                    "type": "boolean"
+                  },
+                  "ten_su": {
+                    "type": "integer"
+                  },
+                  "ten_kai": {
+                    "type": "integer"
+                  },
+                  "aiten": {
+                    "type": "integer"
+                  },
+                  "ten_card": {
+                    "type": "string"
+                  },
+                  "ten_delete": {
+                    "type": "string"
+                  },
+                  "ten_post": {
+                    "type": "string"
+                  },
+                  "ten_get": {
+                    "type": "string"
+                  },
+                  "ten_at": {
                     "type": "string",
                     "format": "date-time"
                   },
@@ -1242,6 +1340,55 @@
             "type": "string",
             "format": "date-time"
           },
+          "raid_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "luck": {
+            "type": "integer"
+          },
+          "luck_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "like": {
+            "type": "integer"
+          },
+          "like_rank": {
+            "type": "integer"
+          },
+          "like_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ten": {
+            "type": "boolean"
+          },
+          "ten_su": {
+            "type": "integer"
+          },
+          "ten_kai": {
+            "type": "integer"
+          },
+          "aiten": {
+            "type": "integer"
+          },
+          "ten_card": {
+            "type": "string"
+          },
+          "ten_delete": {
+            "type": "string"
+          },
+          "ten_post": {
+            "type": "string"
+          },
+          "ten_get": {
+            "type": "string"
+          },
+          "ten_at": {
+            "type": "string",
+            "format": "date-time"
+          },
           "next": {
             "type": "string"
           }
@@ -1359,6 +1506,55 @@
             "type": "string",
             "format": "date-time"
           },
+          "raid_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "luck": {
+            "type": "integer"
+          },
+          "luck_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "like": {
+            "type": "integer"
+          },
+          "like_rank": {
+            "type": "integer"
+          },
+          "like_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ten": {
+            "type": "boolean"
+          },
+          "ten_su": {
+            "type": "integer"
+          },
+          "ten_kai": {
+            "type": "integer"
+          },
+          "aiten": {
+            "type": "integer"
+          },
+          "ten_card": {
+            "type": "string"
+          },
+          "ten_delete": {
+            "type": "string"
+          },
+          "ten_post": {
+            "type": "string"
+          },
+          "ten_get": {
+            "type": "string"
+          },
+          "ten_at": {
+            "type": "string",
+            "format": "date-time"
+          },
           "next": {
             "type": "string"
           }
@@ -1394,6 +1590,55 @@
             "format": "date-time"
           },
           "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "raid_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "luck": {
+            "type": "integer"
+          },
+          "luck_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "like": {
+            "type": "integer"
+          },
+          "like_rank": {
+            "type": "integer"
+          },
+          "like_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ten": {
+            "type": "boolean"
+          },
+          "ten_su": {
+            "type": "integer"
+          },
+          "ten_kai": {
+            "type": "integer"
+          },
+          "aiten": {
+            "type": "integer"
+          },
+          "ten_card": {
+            "type": "string"
+          },
+          "ten_delete": {
+            "type": "string"
+          },
+          "ten_post": {
+            "type": "string"
+          },
+          "ten_get": {
+            "type": "string"
+          },
+          "ten_at": {
             "type": "string",
             "format": "date-time"
           },
@@ -1436,6 +1681,55 @@
             "type": "string",
             "format": "date-time"
           },
+          "raid_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "luck": {
+            "type": "integer"
+          },
+          "luck_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "like": {
+            "type": "integer"
+          },
+          "like_rank": {
+            "type": "integer"
+          },
+          "like_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ten": {
+            "type": "boolean"
+          },
+          "ten_su": {
+            "type": "integer"
+          },
+          "ten_kai": {
+            "type": "integer"
+          },
+          "aiten": {
+            "type": "integer"
+          },
+          "ten_card": {
+            "type": "string"
+          },
+          "ten_delete": {
+            "type": "string"
+          },
+          "ten_post": {
+            "type": "string"
+          },
+          "ten_get": {
+            "type": "string"
+          },
+          "ten_at": {
+            "type": "string",
+            "format": "date-time"
+          },
           "next": {
             "type": "string"
           }
@@ -1465,6 +1759,55 @@
             "format": "date-time"
           },
           "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "raid_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "luck": {
+            "type": "integer"
+          },
+          "luck_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "like": {
+            "type": "integer"
+          },
+          "like_rank": {
+            "type": "integer"
+          },
+          "like_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ten": {
+            "type": "boolean"
+          },
+          "ten_su": {
+            "type": "integer"
+          },
+          "ten_kai": {
+            "type": "integer"
+          },
+          "aiten": {
+            "type": "integer"
+          },
+          "ten_card": {
+            "type": "string"
+          },
+          "ten_delete": {
+            "type": "string"
+          },
+          "ten_post": {
+            "type": "string"
+          },
+          "ten_get": {
+            "type": "string"
+          },
+          "ten_at": {
             "type": "string",
             "format": "date-time"
           },
@@ -1500,6 +1843,55 @@
             "type": "string",
             "format": "date-time"
           },
+          "raid_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "luck": {
+            "type": "integer"
+          },
+          "luck_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "like": {
+            "type": "integer"
+          },
+          "like_rank": {
+            "type": "integer"
+          },
+          "like_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ten": {
+            "type": "boolean"
+          },
+          "ten_su": {
+            "type": "integer"
+          },
+          "ten_kai": {
+            "type": "integer"
+          },
+          "aiten": {
+            "type": "integer"
+          },
+          "ten_card": {
+            "type": "string"
+          },
+          "ten_delete": {
+            "type": "string"
+          },
+          "ten_post": {
+            "type": "string"
+          },
+          "ten_get": {
+            "type": "string"
+          },
+          "ten_at": {
+            "type": "string",
+            "format": "date-time"
+          },
           "next": {
             "type": "string"
           }
@@ -1529,6 +1921,55 @@
             "format": "date-time"
           },
           "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "raid_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "luck": {
+            "type": "integer"
+          },
+          "luck_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "like": {
+            "type": "integer"
+          },
+          "like_rank": {
+            "type": "integer"
+          },
+          "like_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ten": {
+            "type": "boolean"
+          },
+          "ten_su": {
+            "type": "integer"
+          },
+          "ten_kai": {
+            "type": "integer"
+          },
+          "aiten": {
+            "type": "integer"
+          },
+          "ten_card": {
+            "type": "string"
+          },
+          "ten_delete": {
+            "type": "string"
+          },
+          "ten_post": {
+            "type": "string"
+          },
+          "ten_get": {
+            "type": "string"
+          },
+          "ten_at": {
             "type": "string",
             "format": "date-time"
           },

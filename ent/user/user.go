@@ -17,6 +17,8 @@ const (
 	FieldDid = "did"
 	// FieldDelete holds the string denoting the delete field in the database.
 	FieldDelete = "delete"
+	// FieldHandle holds the string denoting the handle field in the database.
+	FieldHandle = "handle"
 	// FieldToken holds the string denoting the token field in the database.
 	FieldToken = "token"
 	// FieldPassword holds the string denoting the password field in the database.
@@ -76,6 +78,7 @@ var Columns = []string{
 	FieldUsername,
 	FieldDid,
 	FieldDelete,
+	FieldHandle,
 	FieldToken,
 	FieldPassword,
 	FieldCreatedAt,
@@ -124,6 +127,8 @@ var (
 	UsernameValidator func(string) error
 	// DefaultDelete holds the default value on creation for the "delete" field.
 	DefaultDelete bool
+	// DefaultHandle holds the default value on creation for the "handle" field.
+	DefaultHandle bool
 	// PasswordValidator is a validator for the "password" field. It is called by the builders before save.
 	PasswordValidator func(string) error
 	// DefaultCreatedAt holds the default value on creation for the "created_at" field.

@@ -34,6 +34,7 @@ curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"$nd\"}" -s $ho
 echo "\ntest token (yes token)"
 curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"$nd\",\"token\":\"$token\"}" -s $host/users/$id
 
+read
 ## delete
 echo "\ntest delete"
 data=`curl -sL https://api.syui.ai/users/$id/card`

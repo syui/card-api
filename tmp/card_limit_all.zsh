@@ -20,9 +20,9 @@ n=$((n - 1))
 if [ -n "$1" ];then
 	id=`curl -sL "$host/users?itemsPerPage=2000"|jq ".[]|select(.username == \"$1\")"|jq -r .id`
 	if [ "ai" = "$1" ] || [ "yui" = "$1" ];then
-		curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"$nd\", \"updated_at\":\"$updated_at_n\", \"raid_at\":\"$raid_at_n\", \"token\":\"$token\", \"luck_at\": \"$now_at\", \"luck\": 7, \"like\":0}" -s $host/users/$id
+		curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"$nd\", \"updated_at\":\"$updated_at_n\", \"raid_at\":\"$raid_at_n\", \"token\":\"$token\", \"luck_at\": \"$now_at\", \"luck\": 7, \"like\":0,\"aiten\":1000}" -s $host/users/$id
 	else
-		curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"$nd\", \"updated_at\":\"$updated_at_n\", \"raid_at\":\"$raid_at_n\", \"ten_su\": 0, \"luck_at\": \"$now_at\", \"ten\":false,\"ten_at\": \"$updated_at_n\",\"token\": \"$token\",\"ten_kai\" : 0}" -s $host/users/$id
+		curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"$nd\", \"updated_at\":\"$updated_at_n\", \"raid_at\":\"$raid_at_n\", \"ten_su\": 0, \"luck_at\": \"$updated_at_n\", \"ten\":false, \"ten_at\": \"$updated_at_n\",\"token\": \"$token\",\"ten_kai\" : 0, \"aiten\":0}" -s $host/users/$id
 	fi
 	exit
 fi

@@ -55,6 +55,20 @@ func (uc *UserCreate) SetNillableDelete(b *bool) *UserCreate {
 	return uc
 }
 
+// SetHandle sets the "handle" field.
+func (uc *UserCreate) SetHandle(b bool) *UserCreate {
+	uc.mutation.SetHandle(b)
+	return uc
+}
+
+// SetNillableHandle sets the "handle" field if the given value is not nil.
+func (uc *UserCreate) SetNillableHandle(b *bool) *UserCreate {
+	if b != nil {
+		uc.SetHandle(*b)
+	}
+	return uc
+}
+
 // SetToken sets the "token" field.
 func (uc *UserCreate) SetToken(s string) *UserCreate {
 	uc.mutation.SetToken(s)
@@ -381,6 +395,10 @@ func (uc *UserCreate) defaults() {
 		v := user.DefaultDelete
 		uc.mutation.SetDelete(v)
 	}
+	if _, ok := uc.mutation.Handle(); !ok {
+		v := user.DefaultHandle
+		uc.mutation.SetHandle(v)
+	}
 	if _, ok := uc.mutation.CreatedAt(); !ok {
 		v := user.DefaultCreatedAt()
 		uc.mutation.SetCreatedAt(v)
@@ -466,6 +484,10 @@ func (uc *UserCreate) createSpec() (*User, *sqlgraph.CreateSpec) {
 	if value, ok := uc.mutation.Delete(); ok {
 		_spec.SetField(user.FieldDelete, field.TypeBool, value)
 		_node.Delete = value
+	}
+	if value, ok := uc.mutation.Handle(); ok {
+		_spec.SetField(user.FieldHandle, field.TypeBool, value)
+		_node.Handle = value
 	}
 	if value, ok := uc.mutation.Token(); ok {
 		_spec.SetField(user.FieldToken, field.TypeString, value)

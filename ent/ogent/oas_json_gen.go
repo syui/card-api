@@ -444,6 +444,12 @@ func (s *CardOwnerRead) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Handle.Set {
+			e.FieldStart("handle")
+			s.Handle.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -553,29 +559,30 @@ func (s *CardOwnerRead) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCardOwnerRead = [22]string{
+var jsonFieldsNameOfCardOwnerRead = [23]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
 	3:  "delete",
-	4:  "created_at",
-	5:  "updated_at",
-	6:  "raid_at",
-	7:  "luck",
-	8:  "luck_at",
-	9:  "like",
-	10: "like_rank",
-	11: "like_at",
-	12: "ten",
-	13: "ten_su",
-	14: "ten_kai",
-	15: "aiten",
-	16: "ten_card",
-	17: "ten_delete",
-	18: "ten_post",
-	19: "ten_get",
-	20: "ten_at",
-	21: "next",
+	4:  "handle",
+	5:  "created_at",
+	6:  "updated_at",
+	7:  "raid_at",
+	8:  "luck",
+	9:  "luck_at",
+	10: "like",
+	11: "like_rank",
+	12: "like_at",
+	13: "ten",
+	14: "ten_su",
+	15: "ten_kai",
+	16: "aiten",
+	17: "ten_card",
+	18: "ten_delete",
+	19: "ten_post",
+	20: "ten_get",
+	21: "ten_at",
+	22: "next",
 }
 
 // Decode decodes CardOwnerRead from json.
@@ -630,6 +637,16 @@ func (s *CardOwnerRead) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"delete\"")
+			}
+		case "handle":
+			if err := func() error {
+				s.Handle.Reset()
+				if err := s.Handle.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"handle\"")
 			}
 		case "created_at":
 			if err := func() error {
@@ -1656,6 +1673,12 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Handle.Set {
+			e.FieldStart("handle")
+			s.Handle.Encode(e)
+		}
+	}
+	{
 		if s.Token.Set {
 			e.FieldStart("token")
 			s.Token.Encode(e)
@@ -1786,31 +1809,32 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCreateUserReq = [24]string{
+var jsonFieldsNameOfCreateUserReq = [25]string{
 	0:  "username",
 	1:  "did",
 	2:  "delete",
-	3:  "token",
-	4:  "password",
-	5:  "created_at",
-	6:  "updated_at",
-	7:  "raid_at",
-	8:  "luck",
-	9:  "luck_at",
-	10: "like",
-	11: "like_rank",
-	12: "like_at",
-	13: "ten",
-	14: "ten_su",
-	15: "ten_kai",
-	16: "aiten",
-	17: "ten_card",
-	18: "ten_delete",
-	19: "ten_post",
-	20: "ten_get",
-	21: "ten_at",
-	22: "next",
-	23: "card",
+	3:  "handle",
+	4:  "token",
+	5:  "password",
+	6:  "created_at",
+	7:  "updated_at",
+	8:  "raid_at",
+	9:  "luck",
+	10: "luck_at",
+	11: "like",
+	12: "like_rank",
+	13: "like_at",
+	14: "ten",
+	15: "ten_su",
+	16: "ten_kai",
+	17: "aiten",
+	18: "ten_card",
+	19: "ten_delete",
+	20: "ten_post",
+	21: "ten_get",
+	22: "ten_at",
+	23: "next",
+	24: "card",
 }
 
 // Decode decodes CreateUserReq from json.
@@ -1818,7 +1842,7 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CreateUserReq to nil")
 	}
-	var requiredBitSet [3]uint8
+	var requiredBitSet [4]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -1854,6 +1878,16 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"delete\"")
 			}
+		case "handle":
+			if err := func() error {
+				s.Handle.Reset()
+				if err := s.Handle.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"handle\"")
+			}
 		case "token":
 			if err := func() error {
 				s.Token.Reset()
@@ -1865,7 +1899,7 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"token\"")
 			}
 		case "password":
-			requiredBitSet[0] |= 1 << 4
+			requiredBitSet[0] |= 1 << 5
 			if err := func() error {
 				v, err := d.Str()
 				s.Password = string(v)
@@ -2084,8 +2118,9 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [3]uint8{
-		0b00010001,
+	for i, mask := range [4]uint8{
+		0b00100001,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 	} {
@@ -2625,6 +2660,12 @@ func (s *GroupUsersList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Handle.Set {
+			e.FieldStart("handle")
+			s.Handle.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -2734,29 +2775,30 @@ func (s *GroupUsersList) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfGroupUsersList = [22]string{
+var jsonFieldsNameOfGroupUsersList = [23]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
 	3:  "delete",
-	4:  "created_at",
-	5:  "updated_at",
-	6:  "raid_at",
-	7:  "luck",
-	8:  "luck_at",
-	9:  "like",
-	10: "like_rank",
-	11: "like_at",
-	12: "ten",
-	13: "ten_su",
-	14: "ten_kai",
-	15: "aiten",
-	16: "ten_card",
-	17: "ten_delete",
-	18: "ten_post",
-	19: "ten_get",
-	20: "ten_at",
-	21: "next",
+	4:  "handle",
+	5:  "created_at",
+	6:  "updated_at",
+	7:  "raid_at",
+	8:  "luck",
+	9:  "luck_at",
+	10: "like",
+	11: "like_rank",
+	12: "like_at",
+	13: "ten",
+	14: "ten_su",
+	15: "ten_kai",
+	16: "aiten",
+	17: "ten_card",
+	18: "ten_delete",
+	19: "ten_post",
+	20: "ten_get",
+	21: "ten_at",
+	22: "next",
 }
 
 // Decode decodes GroupUsersList from json.
@@ -2811,6 +2853,16 @@ func (s *GroupUsersList) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"delete\"")
+			}
+		case "handle":
+			if err := func() error {
+				s.Handle.Reset()
+				if err := s.Handle.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"handle\"")
 			}
 		case "created_at":
 			if err := func() error {
@@ -4171,6 +4223,12 @@ func (s *UpdateUserReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Handle.Set {
+			e.FieldStart("handle")
+			s.Handle.Encode(e)
+		}
+	}
+	{
 		if s.Token.Set {
 			e.FieldStart("token")
 			s.Token.Encode(e)
@@ -4290,28 +4348,29 @@ func (s *UpdateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUpdateUserReq = [21]string{
+var jsonFieldsNameOfUpdateUserReq = [22]string{
 	0:  "did",
 	1:  "delete",
-	2:  "token",
-	3:  "updated_at",
-	4:  "raid_at",
-	5:  "luck",
-	6:  "luck_at",
-	7:  "like",
-	8:  "like_rank",
-	9:  "like_at",
-	10: "ten",
-	11: "ten_su",
-	12: "ten_kai",
-	13: "aiten",
-	14: "ten_card",
-	15: "ten_delete",
-	16: "ten_post",
-	17: "ten_get",
-	18: "ten_at",
-	19: "next",
-	20: "card",
+	2:  "handle",
+	3:  "token",
+	4:  "updated_at",
+	5:  "raid_at",
+	6:  "luck",
+	7:  "luck_at",
+	8:  "like",
+	9:  "like_rank",
+	10: "like_at",
+	11: "ten",
+	12: "ten_su",
+	13: "ten_kai",
+	14: "aiten",
+	15: "ten_card",
+	16: "ten_delete",
+	17: "ten_post",
+	18: "ten_get",
+	19: "ten_at",
+	20: "next",
+	21: "card",
 }
 
 // Decode decodes UpdateUserReq from json.
@@ -4341,6 +4400,16 @@ func (s *UpdateUserReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"delete\"")
+			}
+		case "handle":
+			if err := func() error {
+				s.Handle.Reset()
+				if err := s.Handle.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"handle\"")
 			}
 		case "token":
 			if err := func() error {
@@ -4796,6 +4865,12 @@ func (s *UserCreate) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Handle.Set {
+			e.FieldStart("handle")
+			s.Handle.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -4905,29 +4980,30 @@ func (s *UserCreate) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserCreate = [22]string{
+var jsonFieldsNameOfUserCreate = [23]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
 	3:  "delete",
-	4:  "created_at",
-	5:  "updated_at",
-	6:  "raid_at",
-	7:  "luck",
-	8:  "luck_at",
-	9:  "like",
-	10: "like_rank",
-	11: "like_at",
-	12: "ten",
-	13: "ten_su",
-	14: "ten_kai",
-	15: "aiten",
-	16: "ten_card",
-	17: "ten_delete",
-	18: "ten_post",
-	19: "ten_get",
-	20: "ten_at",
-	21: "next",
+	4:  "handle",
+	5:  "created_at",
+	6:  "updated_at",
+	7:  "raid_at",
+	8:  "luck",
+	9:  "luck_at",
+	10: "like",
+	11: "like_rank",
+	12: "like_at",
+	13: "ten",
+	14: "ten_su",
+	15: "ten_kai",
+	16: "aiten",
+	17: "ten_card",
+	18: "ten_delete",
+	19: "ten_post",
+	20: "ten_get",
+	21: "ten_at",
+	22: "next",
 }
 
 // Decode decodes UserCreate from json.
@@ -4982,6 +5058,16 @@ func (s *UserCreate) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"delete\"")
+			}
+		case "handle":
+			if err := func() error {
+				s.Handle.Reset()
+				if err := s.Handle.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"handle\"")
 			}
 		case "created_at":
 			if err := func() error {
@@ -5253,6 +5339,12 @@ func (s *UserList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Handle.Set {
+			e.FieldStart("handle")
+			s.Handle.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -5362,29 +5454,30 @@ func (s *UserList) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserList = [22]string{
+var jsonFieldsNameOfUserList = [23]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
 	3:  "delete",
-	4:  "created_at",
-	5:  "updated_at",
-	6:  "raid_at",
-	7:  "luck",
-	8:  "luck_at",
-	9:  "like",
-	10: "like_rank",
-	11: "like_at",
-	12: "ten",
-	13: "ten_su",
-	14: "ten_kai",
-	15: "aiten",
-	16: "ten_card",
-	17: "ten_delete",
-	18: "ten_post",
-	19: "ten_get",
-	20: "ten_at",
-	21: "next",
+	4:  "handle",
+	5:  "created_at",
+	6:  "updated_at",
+	7:  "raid_at",
+	8:  "luck",
+	9:  "luck_at",
+	10: "like",
+	11: "like_rank",
+	12: "like_at",
+	13: "ten",
+	14: "ten_su",
+	15: "ten_kai",
+	16: "aiten",
+	17: "ten_card",
+	18: "ten_delete",
+	19: "ten_post",
+	20: "ten_get",
+	21: "ten_at",
+	22: "next",
 }
 
 // Decode decodes UserList from json.
@@ -5439,6 +5532,16 @@ func (s *UserList) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"delete\"")
+			}
+		case "handle":
+			if err := func() error {
+				s.Handle.Reset()
+				if err := s.Handle.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"handle\"")
 			}
 		case "created_at":
 			if err := func() error {
@@ -5710,6 +5813,12 @@ func (s *UserRead) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Handle.Set {
+			e.FieldStart("handle")
+			s.Handle.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -5819,29 +5928,30 @@ func (s *UserRead) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserRead = [22]string{
+var jsonFieldsNameOfUserRead = [23]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
 	3:  "delete",
-	4:  "created_at",
-	5:  "updated_at",
-	6:  "raid_at",
-	7:  "luck",
-	8:  "luck_at",
-	9:  "like",
-	10: "like_rank",
-	11: "like_at",
-	12: "ten",
-	13: "ten_su",
-	14: "ten_kai",
-	15: "aiten",
-	16: "ten_card",
-	17: "ten_delete",
-	18: "ten_post",
-	19: "ten_get",
-	20: "ten_at",
-	21: "next",
+	4:  "handle",
+	5:  "created_at",
+	6:  "updated_at",
+	7:  "raid_at",
+	8:  "luck",
+	9:  "luck_at",
+	10: "like",
+	11: "like_rank",
+	12: "like_at",
+	13: "ten",
+	14: "ten_su",
+	15: "ten_kai",
+	16: "aiten",
+	17: "ten_card",
+	18: "ten_delete",
+	19: "ten_post",
+	20: "ten_get",
+	21: "ten_at",
+	22: "next",
 }
 
 // Decode decodes UserRead from json.
@@ -5896,6 +6006,16 @@ func (s *UserRead) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"delete\"")
+			}
+		case "handle":
+			if err := func() error {
+				s.Handle.Reset()
+				if err := s.Handle.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"handle\"")
 			}
 		case "created_at":
 			if err := func() error {
@@ -6167,6 +6287,12 @@ func (s *UserUpdate) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Handle.Set {
+			e.FieldStart("handle")
+			s.Handle.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -6276,29 +6402,30 @@ func (s *UserUpdate) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserUpdate = [22]string{
+var jsonFieldsNameOfUserUpdate = [23]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
 	3:  "delete",
-	4:  "created_at",
-	5:  "updated_at",
-	6:  "raid_at",
-	7:  "luck",
-	8:  "luck_at",
-	9:  "like",
-	10: "like_rank",
-	11: "like_at",
-	12: "ten",
-	13: "ten_su",
-	14: "ten_kai",
-	15: "aiten",
-	16: "ten_card",
-	17: "ten_delete",
-	18: "ten_post",
-	19: "ten_get",
-	20: "ten_at",
-	21: "next",
+	4:  "handle",
+	5:  "created_at",
+	6:  "updated_at",
+	7:  "raid_at",
+	8:  "luck",
+	9:  "luck_at",
+	10: "like",
+	11: "like_rank",
+	12: "like_at",
+	13: "ten",
+	14: "ten_su",
+	15: "ten_kai",
+	16: "aiten",
+	17: "ten_card",
+	18: "ten_delete",
+	19: "ten_post",
+	20: "ten_get",
+	21: "ten_at",
+	22: "next",
 }
 
 // Decode decodes UserUpdate from json.
@@ -6353,6 +6480,16 @@ func (s *UserUpdate) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"delete\"")
+			}
+		case "handle":
+			if err := func() error {
+				s.Handle.Reset()
+				if err := s.Handle.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"handle\"")
 			}
 		case "created_at":
 			if err := func() error {

@@ -22,6 +22,8 @@ type User struct {
 	Did string `json:"did,omitempty"`
 	// Delete holds the value of the "delete" field.
 	Delete bool `json:"delete,omitempty"`
+	// Handle holds the value of the "handle" field.
+	Handle bool `json:"handle,omitempty"`
 	// Token holds the value of the "token" field.
 	Token string `json:"-"`
 	// Password holds the value of the "password" field.
@@ -91,7 +93,7 @@ func (*User) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case user.FieldDelete, user.FieldTen:
+		case user.FieldDelete, user.FieldHandle, user.FieldTen:
 			values[i] = new(sql.NullBool)
 		case user.FieldID, user.FieldLuck, user.FieldLike, user.FieldLikeRank, user.FieldTenSu, user.FieldTenKai, user.FieldAiten:
 			values[i] = new(sql.NullInt64)
@@ -139,6 +141,12 @@ func (u *User) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field delete", values[i])
 			} else if value.Valid {
 				u.Delete = value.Bool
+			}
+		case user.FieldHandle:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field handle", values[i])
+			} else if value.Valid {
+				u.Handle = value.Bool
 			}
 		case user.FieldToken:
 			if value, ok := values[i].(*sql.NullString); !ok {
@@ -308,6 +316,9 @@ func (u *User) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("delete=")
 	builder.WriteString(fmt.Sprintf("%v", u.Delete))
+	builder.WriteString(", ")
+	builder.WriteString("handle=")
+	builder.WriteString(fmt.Sprintf("%v", u.Handle))
 	builder.WriteString(", ")
 	builder.WriteString("token=<sensitive>")
 	builder.WriteString(", ")

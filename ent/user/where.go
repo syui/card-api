@@ -70,6 +70,11 @@ func Delete(v bool) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldDelete, v))
 }
 
+// Handle applies equality check predicate on the "handle" field. It's identical to HandleEQ.
+func Handle(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldHandle, v))
+}
+
 // Token applies equality check predicate on the "token" field. It's identical to TokenEQ.
 func Token(v string) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldToken, v))
@@ -328,6 +333,26 @@ func DeleteIsNil() predicate.User {
 // DeleteNotNil applies the NotNil predicate on the "delete" field.
 func DeleteNotNil() predicate.User {
 	return predicate.User(sql.FieldNotNull(FieldDelete))
+}
+
+// HandleEQ applies the EQ predicate on the "handle" field.
+func HandleEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldHandle, v))
+}
+
+// HandleNEQ applies the NEQ predicate on the "handle" field.
+func HandleNEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldHandle, v))
+}
+
+// HandleIsNil applies the IsNil predicate on the "handle" field.
+func HandleIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldHandle))
+}
+
+// HandleNotNil applies the NotNil predicate on the "handle" field.
+func HandleNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldHandle))
 }
 
 // TokenEQ applies the EQ predicate on the "token" field.

@@ -484,6 +484,9 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	if v, ok := req.Delete.Get(); ok {
 		b.SetDelete(v)
 	}
+	if v, ok := req.Handle.Get(); ok {
+		b.SetHandle(v)
+	}
 	if v, ok := req.Token.Get(); ok {
 		b.SetToken(v)
 	}
@@ -614,7 +617,9 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 			if v, ok := req.Delete.Get(); ok {
 				b.SetDelete(v)
 			}
-
+			if v, ok := req.Handle.Get(); ok {
+				b.SetHandle(v)
+			}
 			if v, ok := req.UpdatedAt.Get(); ok {
 				b.SetUpdatedAt(v)
 			}

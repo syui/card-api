@@ -74,36 +74,40 @@ func init() {
 	userDescDelete := userFields[2].Descriptor()
 	// user.DefaultDelete holds the default value on creation for the delete field.
 	user.DefaultDelete = userDescDelete.Default.(bool)
+	// userDescHandle is the schema descriptor for handle field.
+	userDescHandle := userFields[3].Descriptor()
+	// user.DefaultHandle holds the default value on creation for the handle field.
+	user.DefaultHandle = userDescHandle.Default.(bool)
 	// userDescPassword is the schema descriptor for password field.
-	userDescPassword := userFields[4].Descriptor()
+	userDescPassword := userFields[5].Descriptor()
 	// user.PasswordValidator is a validator for the "password" field. It is called by the builders before save.
 	user.PasswordValidator = userDescPassword.Validators[0].(func(string) error)
 	// userDescCreatedAt is the schema descriptor for created_at field.
-	userDescCreatedAt := userFields[5].Descriptor()
+	userDescCreatedAt := userFields[6].Descriptor()
 	// user.DefaultCreatedAt holds the default value on creation for the created_at field.
 	user.DefaultCreatedAt = userDescCreatedAt.Default.(func() time.Time)
 	// userDescUpdatedAt is the schema descriptor for updated_at field.
-	userDescUpdatedAt := userFields[6].Descriptor()
+	userDescUpdatedAt := userFields[7].Descriptor()
 	// user.DefaultUpdatedAt holds the default value on creation for the updated_at field.
 	user.DefaultUpdatedAt = userDescUpdatedAt.Default.(func() time.Time)
 	// userDescRaidAt is the schema descriptor for raid_at field.
-	userDescRaidAt := userFields[7].Descriptor()
+	userDescRaidAt := userFields[8].Descriptor()
 	// user.DefaultRaidAt holds the default value on creation for the raid_at field.
 	user.DefaultRaidAt = userDescRaidAt.Default.(func() time.Time)
 	// userDescLuckAt is the schema descriptor for luck_at field.
-	userDescLuckAt := userFields[9].Descriptor()
+	userDescLuckAt := userFields[10].Descriptor()
 	// user.DefaultLuckAt holds the default value on creation for the luck_at field.
 	user.DefaultLuckAt = userDescLuckAt.Default.(func() time.Time)
 	// userDescLikeAt is the schema descriptor for like_at field.
-	userDescLikeAt := userFields[12].Descriptor()
+	userDescLikeAt := userFields[13].Descriptor()
 	// user.DefaultLikeAt holds the default value on creation for the like_at field.
 	user.DefaultLikeAt = userDescLikeAt.Default.(func() time.Time)
 	// userDescTenAt is the schema descriptor for ten_at field.
-	userDescTenAt := userFields[21].Descriptor()
+	userDescTenAt := userFields[22].Descriptor()
 	// user.DefaultTenAt holds the default value on creation for the ten_at field.
 	user.DefaultTenAt = userDescTenAt.Default.(func() time.Time)
 	// userDescNext is the schema descriptor for next field.
-	userDescNext := userFields[22].Descriptor()
+	userDescNext := userFields[23].Descriptor()
 	// user.DefaultNext holds the default value on creation for the next field.
 	user.DefaultNext = userDescNext.Default.(string)
 }

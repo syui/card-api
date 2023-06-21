@@ -59,6 +59,7 @@ var (
 		{Name: "username", Type: field.TypeString, Unique: true, Size: 100},
 		{Name: "did", Type: field.TypeString, Nullable: true},
 		{Name: "delete", Type: field.TypeBool, Nullable: true, Default: false},
+		{Name: "handle", Type: field.TypeBool, Nullable: true, Default: false},
 		{Name: "token", Type: field.TypeString, Nullable: true},
 		{Name: "password", Type: field.TypeString},
 		{Name: "created_at", Type: field.TypeTime, Nullable: true},
@@ -78,7 +79,7 @@ var (
 		{Name: "ten_post", Type: field.TypeString, Nullable: true},
 		{Name: "ten_get", Type: field.TypeString, Nullable: true},
 		{Name: "ten_at", Type: field.TypeTime, Nullable: true},
-		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230613"},
+		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230621"},
 		{Name: "group_users", Type: field.TypeInt, Nullable: true},
 	}
 	// UsersTable holds the schema information for the "users" table.
@@ -89,7 +90,7 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "users_groups_users",
-				Columns:    []*schema.Column{UsersColumns[24]},
+				Columns:    []*schema.Column{UsersColumns[25]},
 				RefColumns: []*schema.Column{GroupsColumns[0]},
 				OnDelete:   schema.SetNull,
 			},

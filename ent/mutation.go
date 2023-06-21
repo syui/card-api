@@ -1418,6 +1418,7 @@ type UserMutation struct {
 	username      *string
 	did           *string
 	delete        *bool
+	handle        *bool
 	token         *string
 	password      *string
 	created_at    *time.Time
@@ -1683,6 +1684,55 @@ func (m *UserMutation) DeleteCleared() bool {
 func (m *UserMutation) ResetDelete() {
 	m.delete = nil
 	delete(m.clearedFields, user.FieldDelete)
+}
+
+// SetHandle sets the "handle" field.
+func (m *UserMutation) SetHandle(b bool) {
+	m.handle = &b
+}
+
+// Handle returns the value of the "handle" field in the mutation.
+func (m *UserMutation) Handle() (r bool, exists bool) {
+	v := m.handle
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldHandle returns the old "handle" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldHandle(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldHandle is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldHandle requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldHandle: %w", err)
+	}
+	return oldValue.Handle, nil
+}
+
+// ClearHandle clears the value of the "handle" field.
+func (m *UserMutation) ClearHandle() {
+	m.handle = nil
+	m.clearedFields[user.FieldHandle] = struct{}{}
+}
+
+// HandleCleared returns if the "handle" field was cleared in this mutation.
+func (m *UserMutation) HandleCleared() bool {
+	_, ok := m.clearedFields[user.FieldHandle]
+	return ok
+}
+
+// ResetHandle resets all changes to the "handle" field.
+func (m *UserMutation) ResetHandle() {
+	m.handle = nil
+	delete(m.clearedFields, user.FieldHandle)
 }
 
 // SetToken sets the "token" field.
@@ -2866,7 +2916,7 @@ func (m *UserMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *UserMutation) Fields() []string {
-	fields := make([]string, 0, 23)
+	fields := make([]string, 0, 24)
 	if m.username != nil {
 		fields = append(fields, user.FieldUsername)
 	}
@@ -2875,6 +2925,9 @@ func (m *UserMutation) Fields() []string {
 	}
 	if m.delete != nil {
 		fields = append(fields, user.FieldDelete)
+	}
+	if m.handle != nil {
+		fields = append(fields, user.FieldHandle)
 	}
 	if m.token != nil {
 		fields = append(fields, user.FieldToken)
@@ -2950,6 +3003,8 @@ func (m *UserMutation) Field(name string) (ent.Value, bool) {
 		return m.Did()
 	case user.FieldDelete:
 		return m.Delete()
+	case user.FieldHandle:
+		return m.Handle()
 	case user.FieldToken:
 		return m.Token()
 	case user.FieldPassword:
@@ -3005,6 +3060,8 @@ func (m *UserMutation) OldField(ctx context.Context, name string) (ent.Value, er
 		return m.OldDid(ctx)
 	case user.FieldDelete:
 		return m.OldDelete(ctx)
+	case user.FieldHandle:
+		return m.OldHandle(ctx)
 	case user.FieldToken:
 		return m.OldToken(ctx)
 	case user.FieldPassword:
@@ -3074,6 +3131,13 @@ func (m *UserMutation) SetField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetDelete(v)
+		return nil
+	case user.FieldHandle:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetHandle(v)
 		return nil
 	case user.FieldToken:
 		v, ok := value.(string)
@@ -3326,6 +3390,9 @@ func (m *UserMutation) ClearedFields() []string {
 	if m.FieldCleared(user.FieldDelete) {
 		fields = append(fields, user.FieldDelete)
 	}
+	if m.FieldCleared(user.FieldHandle) {
+		fields = append(fields, user.FieldHandle)
+	}
 	if m.FieldCleared(user.FieldToken) {
 		fields = append(fields, user.FieldToken)
 	}
@@ -3403,6 +3470,9 @@ func (m *UserMutation) ClearField(name string) error {
 	case user.FieldDelete:
 		m.ClearDelete()
 		return nil
+	case user.FieldHandle:
+		m.ClearHandle()
+		return nil
 	case user.FieldToken:
 		m.ClearToken()
 		return nil
@@ -3476,6 +3546,9 @@ func (m *UserMutation) ResetField(name string) error {
 		return nil
 	case user.FieldDelete:
 		m.ResetDelete()
+		return nil
+	case user.FieldHandle:
+		m.ResetHandle()
 		return nil
 	case user.FieldToken:
 		m.ResetToken()

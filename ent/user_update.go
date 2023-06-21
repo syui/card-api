@@ -69,6 +69,26 @@ func (uu *UserUpdate) ClearDelete() *UserUpdate {
 	return uu
 }
 
+// SetHandle sets the "handle" field.
+func (uu *UserUpdate) SetHandle(b bool) *UserUpdate {
+	uu.mutation.SetHandle(b)
+	return uu
+}
+
+// SetNillableHandle sets the "handle" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableHandle(b *bool) *UserUpdate {
+	if b != nil {
+		uu.SetHandle(*b)
+	}
+	return uu
+}
+
+// ClearHandle clears the value of the "handle" field.
+func (uu *UserUpdate) ClearHandle() *UserUpdate {
+	uu.mutation.ClearHandle()
+	return uu
+}
+
 // SetToken sets the "token" field.
 func (uu *UserUpdate) SetToken(s string) *UserUpdate {
 	uu.mutation.SetToken(s)
@@ -560,6 +580,12 @@ func (uu *UserUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	if uu.mutation.DeleteCleared() {
 		_spec.ClearField(user.FieldDelete, field.TypeBool)
 	}
+	if value, ok := uu.mutation.Handle(); ok {
+		_spec.SetField(user.FieldHandle, field.TypeBool, value)
+	}
+	if uu.mutation.HandleCleared() {
+		_spec.ClearField(user.FieldHandle, field.TypeBool)
+	}
 	if value, ok := uu.mutation.Token(); ok {
 		_spec.SetField(user.FieldToken, field.TypeString, value)
 	}
@@ -791,6 +817,26 @@ func (uuo *UserUpdateOne) SetNillableDelete(b *bool) *UserUpdateOne {
 // ClearDelete clears the value of the "delete" field.
 func (uuo *UserUpdateOne) ClearDelete() *UserUpdateOne {
 	uuo.mutation.ClearDelete()
+	return uuo
+}
+
+// SetHandle sets the "handle" field.
+func (uuo *UserUpdateOne) SetHandle(b bool) *UserUpdateOne {
+	uuo.mutation.SetHandle(b)
+	return uuo
+}
+
+// SetNillableHandle sets the "handle" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableHandle(b *bool) *UserUpdateOne {
+	if b != nil {
+		uuo.SetHandle(*b)
+	}
+	return uuo
+}
+
+// ClearHandle clears the value of the "handle" field.
+func (uuo *UserUpdateOne) ClearHandle() *UserUpdateOne {
+	uuo.mutation.ClearHandle()
 	return uuo
 }
 
@@ -1314,6 +1360,12 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 	}
 	if uuo.mutation.DeleteCleared() {
 		_spec.ClearField(user.FieldDelete, field.TypeBool)
+	}
+	if value, ok := uuo.mutation.Handle(); ok {
+		_spec.SetField(user.FieldHandle, field.TypeBool, value)
+	}
+	if uuo.mutation.HandleCleared() {
+		_spec.ClearField(user.FieldHandle, field.TypeBool)
 	}
 	if value, ok := uuo.mutation.Token(); ok {
 		_spec.SetField(user.FieldToken, field.TypeString, value)

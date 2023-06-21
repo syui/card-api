@@ -754,6 +754,9 @@
                   "delete": {
                     "type": "boolean"
                   },
+                  "handle": {
+                    "type": "boolean"
+                  },
                   "token": {
                     "type": "string"
                   },
@@ -968,6 +971,9 @@
                     "type": "string"
                   },
                   "delete": {
+                    "type": "boolean"
+                  },
+                  "handle": {
                     "type": "boolean"
                   },
                   "token": {
@@ -1332,6 +1338,9 @@
           "delete": {
             "type": "boolean"
           },
+          "handle": {
+            "type": "boolean"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1498,6 +1507,9 @@
           "delete": {
             "type": "boolean"
           },
+          "handle": {
+            "type": "boolean"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1577,6 +1589,9 @@
             "type": "string"
           },
           "delete": {
+            "type": "boolean"
+          },
+          "handle": {
             "type": "boolean"
           },
           "token": {
@@ -1673,6 +1688,9 @@
           "delete": {
             "type": "boolean"
           },
+          "handle": {
+            "type": "boolean"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1752,6 +1770,9 @@
             "type": "string"
           },
           "delete": {
+            "type": "boolean"
+          },
+          "handle": {
             "type": "boolean"
           },
           "created_at": {
@@ -1835,6 +1856,9 @@
           "delete": {
             "type": "boolean"
           },
+          "handle": {
+            "type": "boolean"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1914,6 +1938,9 @@
             "type": "string"
           },
           "delete": {
+            "type": "boolean"
+          },
+          "handle": {
             "type": "boolean"
           },
           "created_at": {

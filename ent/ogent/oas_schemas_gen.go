@@ -178,6 +178,7 @@ type CardOwnerRead struct {
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
 	Delete    OptBool     `json:"delete"`
+	Handle    OptBool     `json:"handle"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
@@ -216,6 +217,11 @@ func (s *CardOwnerRead) GetDid() OptString {
 // GetDelete returns the value of Delete.
 func (s *CardOwnerRead) GetDelete() OptBool {
 	return s.Delete
+}
+
+// GetHandle returns the value of Handle.
+func (s *CardOwnerRead) GetHandle() OptBool {
+	return s.Handle
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -326,6 +332,11 @@ func (s *CardOwnerRead) SetDid(val OptString) {
 // SetDelete sets the value of Delete.
 func (s *CardOwnerRead) SetDelete(val OptBool) {
 	s.Delete = val
+}
+
+// SetHandle sets the value of Handle.
+func (s *CardOwnerRead) SetHandle(val OptBool) {
+	s.Handle = val
 }
 
 // SetCreatedAt sets the value of CreatedAt.
@@ -717,6 +728,7 @@ type CreateUserReq struct {
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
 	Delete    OptBool     `json:"delete"`
+	Handle    OptBool     `json:"handle"`
 	Token     OptString   `json:"token"`
 	Password  string      `json:"password"`
 	CreatedAt OptDateTime `json:"created_at"`
@@ -753,6 +765,11 @@ func (s *CreateUserReq) GetDid() OptString {
 // GetDelete returns the value of Delete.
 func (s *CreateUserReq) GetDelete() OptBool {
 	return s.Delete
+}
+
+// GetHandle returns the value of Handle.
+func (s *CreateUserReq) GetHandle() OptBool {
+	return s.Handle
 }
 
 // GetToken returns the value of Token.
@@ -873,6 +890,11 @@ func (s *CreateUserReq) SetDid(val OptString) {
 // SetDelete sets the value of Delete.
 func (s *CreateUserReq) SetDelete(val OptBool) {
 	s.Delete = val
+}
+
+// SetHandle sets the value of Handle.
+func (s *CreateUserReq) SetHandle(val OptBool) {
+	s.Handle = val
 }
 
 // SetToken sets the value of Token.
@@ -1117,6 +1139,7 @@ type GroupUsersList struct {
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
 	Delete    OptBool     `json:"delete"`
+	Handle    OptBool     `json:"handle"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
@@ -1155,6 +1178,11 @@ func (s *GroupUsersList) GetDid() OptString {
 // GetDelete returns the value of Delete.
 func (s *GroupUsersList) GetDelete() OptBool {
 	return s.Delete
+}
+
+// GetHandle returns the value of Handle.
+func (s *GroupUsersList) GetHandle() OptBool {
+	return s.Handle
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -1265,6 +1293,11 @@ func (s *GroupUsersList) SetDid(val OptString) {
 // SetDelete sets the value of Delete.
 func (s *GroupUsersList) SetDelete(val OptBool) {
 	s.Delete = val
+}
+
+// SetHandle sets the value of Handle.
+func (s *GroupUsersList) SetHandle(val OptBool) {
+	s.Handle = val
 }
 
 // SetCreatedAt sets the value of CreatedAt.
@@ -1831,6 +1864,7 @@ func (s *UpdateGroupReq) SetUsers(val []int) {
 type UpdateUserReq struct {
 	Did       OptString   `json:"did"`
 	Delete    OptBool     `json:"delete"`
+	Handle    OptBool     `json:"handle"`
 	Token     OptString   `json:"token"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
@@ -1860,6 +1894,11 @@ func (s *UpdateUserReq) GetDid() OptString {
 // GetDelete returns the value of Delete.
 func (s *UpdateUserReq) GetDelete() OptBool {
 	return s.Delete
+}
+
+// GetHandle returns the value of Handle.
+func (s *UpdateUserReq) GetHandle() OptBool {
+	return s.Handle
 }
 
 // GetToken returns the value of Token.
@@ -1965,6 +2004,11 @@ func (s *UpdateUserReq) SetDid(val OptString) {
 // SetDelete sets the value of Delete.
 func (s *UpdateUserReq) SetDelete(val OptBool) {
 	s.Delete = val
+}
+
+// SetHandle sets the value of Handle.
+func (s *UpdateUserReq) SetHandle(val OptBool) {
+	s.Handle = val
 }
 
 // SetToken sets the value of Token.
@@ -2149,6 +2193,7 @@ type UserCreate struct {
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
 	Delete    OptBool     `json:"delete"`
+	Handle    OptBool     `json:"handle"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
@@ -2187,6 +2232,11 @@ func (s *UserCreate) GetDid() OptString {
 // GetDelete returns the value of Delete.
 func (s *UserCreate) GetDelete() OptBool {
 	return s.Delete
+}
+
+// GetHandle returns the value of Handle.
+func (s *UserCreate) GetHandle() OptBool {
+	return s.Handle
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -2299,6 +2349,11 @@ func (s *UserCreate) SetDelete(val OptBool) {
 	s.Delete = val
 }
 
+// SetHandle sets the value of Handle.
+func (s *UserCreate) SetHandle(val OptBool) {
+	s.Handle = val
+}
+
 // SetCreatedAt sets the value of CreatedAt.
 func (s *UserCreate) SetCreatedAt(val OptDateTime) {
 	s.CreatedAt = val
@@ -2397,6 +2452,7 @@ type UserList struct {
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
 	Delete    OptBool     `json:"delete"`
+	Handle    OptBool     `json:"handle"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
@@ -2435,6 +2491,11 @@ func (s *UserList) GetDid() OptString {
 // GetDelete returns the value of Delete.
 func (s *UserList) GetDelete() OptBool {
 	return s.Delete
+}
+
+// GetHandle returns the value of Handle.
+func (s *UserList) GetHandle() OptBool {
+	return s.Handle
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -2547,6 +2608,11 @@ func (s *UserList) SetDelete(val OptBool) {
 	s.Delete = val
 }
 
+// SetHandle sets the value of Handle.
+func (s *UserList) SetHandle(val OptBool) {
+	s.Handle = val
+}
+
 // SetCreatedAt sets the value of CreatedAt.
 func (s *UserList) SetCreatedAt(val OptDateTime) {
 	s.CreatedAt = val
@@ -2643,6 +2709,7 @@ type UserRead struct {
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
 	Delete    OptBool     `json:"delete"`
+	Handle    OptBool     `json:"handle"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
@@ -2681,6 +2748,11 @@ func (s *UserRead) GetDid() OptString {
 // GetDelete returns the value of Delete.
 func (s *UserRead) GetDelete() OptBool {
 	return s.Delete
+}
+
+// GetHandle returns the value of Handle.
+func (s *UserRead) GetHandle() OptBool {
+	return s.Handle
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -2793,6 +2865,11 @@ func (s *UserRead) SetDelete(val OptBool) {
 	s.Delete = val
 }
 
+// SetHandle sets the value of Handle.
+func (s *UserRead) SetHandle(val OptBool) {
+	s.Handle = val
+}
+
 // SetCreatedAt sets the value of CreatedAt.
 func (s *UserRead) SetCreatedAt(val OptDateTime) {
 	s.CreatedAt = val
@@ -2891,6 +2968,7 @@ type UserUpdate struct {
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
 	Delete    OptBool     `json:"delete"`
+	Handle    OptBool     `json:"handle"`
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
@@ -2929,6 +3007,11 @@ func (s *UserUpdate) GetDid() OptString {
 // GetDelete returns the value of Delete.
 func (s *UserUpdate) GetDelete() OptBool {
 	return s.Delete
+}
+
+// GetHandle returns the value of Handle.
+func (s *UserUpdate) GetHandle() OptBool {
+	return s.Handle
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -3039,6 +3122,11 @@ func (s *UserUpdate) SetDid(val OptString) {
 // SetDelete sets the value of Delete.
 func (s *UserUpdate) SetDelete(val OptBool) {
 	s.Delete = val
+}
+
+// SetHandle sets the value of Handle.
+func (s *UserUpdate) SetHandle(val OptBool) {
+	s.Handle = val
 }
 
 // SetCreatedAt sets the value of CreatedAt.

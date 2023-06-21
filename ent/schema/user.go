@@ -42,6 +42,10 @@ func (User) Fields() []ent.Field {
 		Default(false).
 		Optional(),
 
+		field.Bool("handle").
+		Default(false).
+		Optional(),
+
 		field.String("token").
 		Optional().
 		Sensitive(),

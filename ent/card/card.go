@@ -19,6 +19,8 @@ const (
 	FieldSkill = "skill"
 	// FieldStatus holds the string denoting the status field in the database.
 	FieldStatus = "status"
+	// FieldToken holds the string denoting the token field in the database.
+	FieldToken = "token"
 	// FieldCp holds the string denoting the cp field in the database.
 	FieldCp = "cp"
 	// FieldURL holds the string denoting the url field in the database.
@@ -45,6 +47,7 @@ var Columns = []string{
 	FieldCard,
 	FieldSkill,
 	FieldStatus,
+	FieldToken,
 	FieldCp,
 	FieldURL,
 	FieldCreatedAt,

@@ -95,6 +95,9 @@ func (User) Fields() []ent.Field {
 			return time.Now().In(jst)
 		}),
 
+		field.Int("fav").
+		Optional(),
+
 		field.Bool("ten").
 		Optional(),
 

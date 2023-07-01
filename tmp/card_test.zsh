@@ -1,13 +1,14 @@
 #!/bin/zsh
 
-username=yui
-id=381
-
 case $OSTYPE in
 	darwin*)
 		alias date="/opt/homebrew/bin/gdate"
 		;;
 esac
+
+username=syui
+id=1
+
 host=https://api.syui.ai
 token=`cat ~/.config/atr/api_card.json|jq -r .token`
 pass=`cat ~/.config/atr/api_card.json|jq -r .password`
@@ -15,6 +16,12 @@ host_users="$host/users?itemsPerPage=255"
 data=`curl -sL "$host_users"|jq .`
 nd=`date +"%Y%m%d"`
 nd=20230101
+
+title=card_patch
+echo $title
+card_id=1
+curl -X PATCH -H "Content-Type: application/json" -d "{\"cp\":1,\"token\":\"$token\"}" $host/cards/$card_id
+read
 
 ## users
 curl -sL "$host/users?itemsPerPage=2550"|jq .

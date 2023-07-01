@@ -201,6 +201,20 @@ func (uc *UserCreate) SetNillableLikeAt(t *time.Time) *UserCreate {
 	return uc
 }
 
+// SetFav sets the "fav" field.
+func (uc *UserCreate) SetFav(i int) *UserCreate {
+	uc.mutation.SetFav(i)
+	return uc
+}
+
+// SetNillableFav sets the "fav" field if the given value is not nil.
+func (uc *UserCreate) SetNillableFav(i *int) *UserCreate {
+	if i != nil {
+		uc.SetFav(*i)
+	}
+	return uc
+}
+
 // SetTen sets the "ten" field.
 func (uc *UserCreate) SetTen(b bool) *UserCreate {
 	uc.mutation.SetTen(b)
@@ -528,6 +542,10 @@ func (uc *UserCreate) createSpec() (*User, *sqlgraph.CreateSpec) {
 	if value, ok := uc.mutation.LikeAt(); ok {
 		_spec.SetField(user.FieldLikeAt, field.TypeTime, value)
 		_node.LikeAt = value
+	}
+	if value, ok := uc.mutation.Fav(); ok {
+		_spec.SetField(user.FieldFav, field.TypeInt, value)
+		_node.Fav = value
 	}
 	if value, ok := uc.mutation.Ten(); ok {
 		_spec.SetField(user.FieldTen, field.TypeBool, value)

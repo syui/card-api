@@ -125,6 +125,11 @@ func LikeAt(v time.Time) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldLikeAt, v))
 }
 
+// Fav applies equality check predicate on the "fav" field. It's identical to FavEQ.
+func Fav(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldFav, v))
+}
+
 // Ten applies equality check predicate on the "ten" field. It's identical to TenEQ.
 func Ten(v bool) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldTen, v))
@@ -893,6 +898,56 @@ func LikeAtIsNil() predicate.User {
 // LikeAtNotNil applies the NotNil predicate on the "like_at" field.
 func LikeAtNotNil() predicate.User {
 	return predicate.User(sql.FieldNotNull(FieldLikeAt))
+}
+
+// FavEQ applies the EQ predicate on the "fav" field.
+func FavEQ(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldFav, v))
+}
+
+// FavNEQ applies the NEQ predicate on the "fav" field.
+func FavNEQ(v int) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldFav, v))
+}
+
+// FavIn applies the In predicate on the "fav" field.
+func FavIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldIn(FieldFav, vs...))
+}
+
+// FavNotIn applies the NotIn predicate on the "fav" field.
+func FavNotIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldFav, vs...))
+}
+
+// FavGT applies the GT predicate on the "fav" field.
+func FavGT(v int) predicate.User {
+	return predicate.User(sql.FieldGT(FieldFav, v))
+}
+
+// FavGTE applies the GTE predicate on the "fav" field.
+func FavGTE(v int) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldFav, v))
+}
+
+// FavLT applies the LT predicate on the "fav" field.
+func FavLT(v int) predicate.User {
+	return predicate.User(sql.FieldLT(FieldFav, v))
+}
+
+// FavLTE applies the LTE predicate on the "fav" field.
+func FavLTE(v int) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldFav, v))
+}
+
+// FavIsNil applies the IsNil predicate on the "fav" field.
+func FavIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldFav))
+}
+
+// FavNotNil applies the NotNil predicate on the "fav" field.
+func FavNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldFav))
 }
 
 // TenEQ applies the EQ predicate on the "ten" field.

@@ -42,6 +42,7 @@ type CardMutation struct {
 	addcard       *int
 	skill         *string
 	status        *string
+	token         *string
 	cp            *int
 	addcp         *int
 	url           *string
@@ -356,6 +357,55 @@ func (m *CardMutation) ResetStatus() {
 	delete(m.clearedFields, card.FieldStatus)
 }
 
+// SetToken sets the "token" field.
+func (m *CardMutation) SetToken(s string) {
+	m.token = &s
+}
+
+// Token returns the value of the "token" field in the mutation.
+func (m *CardMutation) Token() (r string, exists bool) {
+	v := m.token
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldToken returns the old "token" field's value of the Card entity.
+// If the Card object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *CardMutation) OldToken(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldToken is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldToken requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldToken: %w", err)
+	}
+	return oldValue.Token, nil
+}
+
+// ClearToken clears the value of the "token" field.
+func (m *CardMutation) ClearToken() {
+	m.token = nil
+	m.clearedFields[card.FieldToken] = struct{}{}
+}
+
+// TokenCleared returns if the "token" field was cleared in this mutation.
+func (m *CardMutation) TokenCleared() bool {
+	_, ok := m.clearedFields[card.FieldToken]
+	return ok
+}
+
+// ResetToken resets all changes to the "token" field.
+func (m *CardMutation) ResetToken() {
+	m.token = nil
+	delete(m.clearedFields, card.FieldToken)
+}
+
 // SetCp sets the "cp" field.
 func (m *CardMutation) SetCp(i int) {
 	m.cp = &i
@@ -597,7 +647,7 @@ func (m *CardMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *CardMutation) Fields() []string {
-	fields := make([]string, 0, 7)
+	fields := make([]string, 0, 8)
 	if m.password != nil {
 		fields = append(fields, card.FieldPassword)
 	}
@@ -609,6 +659,9 @@ func (m *CardMutation) Fields() []string {
 	}
 	if m.status != nil {
 		fields = append(fields, card.FieldStatus)
+	}
+	if m.token != nil {
+		fields = append(fields, card.FieldToken)
 	}
 	if m.cp != nil {
 		fields = append(fields, card.FieldCp)
@@ -635,6 +688,8 @@ func (m *CardMutation) Field(name string) (ent.Value, bool) {
 		return m.Skill()
 	case card.FieldStatus:
 		return m.Status()
+	case card.FieldToken:
+		return m.Token()
 	case card.FieldCp:
 		return m.Cp()
 	case card.FieldURL:
@@ -658,6 +713,8 @@ func (m *CardMutation) OldField(ctx context.Context, name string) (ent.Value, er
 		return m.OldSkill(ctx)
 	case card.FieldStatus:
 		return m.OldStatus(ctx)
+	case card.FieldToken:
+		return m.OldToken(ctx)
 	case card.FieldCp:
 		return m.OldCp(ctx)
 	case card.FieldURL:
@@ -700,6 +757,13 @@ func (m *CardMutation) SetField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetStatus(v)
+		return nil
+	case card.FieldToken:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetToken(v)
 		return nil
 	case card.FieldCp:
 		v, ok := value.(int)
@@ -788,6 +852,9 @@ func (m *CardMutation) ClearedFields() []string {
 	if m.FieldCleared(card.FieldStatus) {
 		fields = append(fields, card.FieldStatus)
 	}
+	if m.FieldCleared(card.FieldToken) {
+		fields = append(fields, card.FieldToken)
+	}
 	if m.FieldCleared(card.FieldCp) {
 		fields = append(fields, card.FieldCp)
 	}
@@ -820,6 +887,9 @@ func (m *CardMutation) ClearField(name string) error {
 	case card.FieldStatus:
 		m.ClearStatus()
 		return nil
+	case card.FieldToken:
+		m.ClearToken()
+		return nil
 	case card.FieldCp:
 		m.ClearCp()
 		return nil
@@ -848,6 +918,9 @@ func (m *CardMutation) ResetField(name string) error {
 		return nil
 	case card.FieldStatus:
 		m.ResetStatus()
+		return nil
+	case card.FieldToken:
+		m.ResetToken()
 		return nil
 	case card.FieldCp:
 		m.ResetCp()
@@ -1432,6 +1505,8 @@ type UserMutation struct {
 	like_rank     *int
 	addlike_rank  *int
 	like_at       *time.Time
+	fav           *int
+	addfav        *int
 	ten           *bool
 	ten_su        *int
 	addten_su     *int
@@ -2275,6 +2350,76 @@ func (m *UserMutation) ResetLikeAt() {
 	delete(m.clearedFields, user.FieldLikeAt)
 }
 
+// SetFav sets the "fav" field.
+func (m *UserMutation) SetFav(i int) {
+	m.fav = &i
+	m.addfav = nil
+}
+
+// Fav returns the value of the "fav" field in the mutation.
+func (m *UserMutation) Fav() (r int, exists bool) {
+	v := m.fav
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldFav returns the old "fav" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldFav(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldFav is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldFav requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldFav: %w", err)
+	}
+	return oldValue.Fav, nil
+}
+
+// AddFav adds i to the "fav" field.
+func (m *UserMutation) AddFav(i int) {
+	if m.addfav != nil {
+		*m.addfav += i
+	} else {
+		m.addfav = &i
+	}
+}
+
+// AddedFav returns the value that was added to the "fav" field in this mutation.
+func (m *UserMutation) AddedFav() (r int, exists bool) {
+	v := m.addfav
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearFav clears the value of the "fav" field.
+func (m *UserMutation) ClearFav() {
+	m.fav = nil
+	m.addfav = nil
+	m.clearedFields[user.FieldFav] = struct{}{}
+}
+
+// FavCleared returns if the "fav" field was cleared in this mutation.
+func (m *UserMutation) FavCleared() bool {
+	_, ok := m.clearedFields[user.FieldFav]
+	return ok
+}
+
+// ResetFav resets all changes to the "fav" field.
+func (m *UserMutation) ResetFav() {
+	m.fav = nil
+	m.addfav = nil
+	delete(m.clearedFields, user.FieldFav)
+}
+
 // SetTen sets the "ten" field.
 func (m *UserMutation) SetTen(b bool) {
 	m.ten = &b
@@ -2916,7 +3061,7 @@ func (m *UserMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *UserMutation) Fields() []string {
-	fields := make([]string, 0, 24)
+	fields := make([]string, 0, 25)
 	if m.username != nil {
 		fields = append(fields, user.FieldUsername)
 	}
@@ -2958,6 +3103,9 @@ func (m *UserMutation) Fields() []string {
 	}
 	if m.like_at != nil {
 		fields = append(fields, user.FieldLikeAt)
+	}
+	if m.fav != nil {
+		fields = append(fields, user.FieldFav)
 	}
 	if m.ten != nil {
 		fields = append(fields, user.FieldTen)
@@ -3025,6 +3173,8 @@ func (m *UserMutation) Field(name string) (ent.Value, bool) {
 		return m.LikeRank()
 	case user.FieldLikeAt:
 		return m.LikeAt()
+	case user.FieldFav:
+		return m.Fav()
 	case user.FieldTen:
 		return m.Ten()
 	case user.FieldTenSu:
@@ -3082,6 +3232,8 @@ func (m *UserMutation) OldField(ctx context.Context, name string) (ent.Value, er
 		return m.OldLikeRank(ctx)
 	case user.FieldLikeAt:
 		return m.OldLikeAt(ctx)
+	case user.FieldFav:
+		return m.OldFav(ctx)
 	case user.FieldTen:
 		return m.OldTen(ctx)
 	case user.FieldTenSu:
@@ -3209,6 +3361,13 @@ func (m *UserMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetLikeAt(v)
 		return nil
+	case user.FieldFav:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetFav(v)
+		return nil
 	case user.FieldTen:
 		v, ok := value.(bool)
 		if !ok {
@@ -3296,6 +3455,9 @@ func (m *UserMutation) AddedFields() []string {
 	if m.addlike_rank != nil {
 		fields = append(fields, user.FieldLikeRank)
 	}
+	if m.addfav != nil {
+		fields = append(fields, user.FieldFav)
+	}
 	if m.addten_su != nil {
 		fields = append(fields, user.FieldTenSu)
 	}
@@ -3319,6 +3481,8 @@ func (m *UserMutation) AddedField(name string) (ent.Value, bool) {
 		return m.AddedLike()
 	case user.FieldLikeRank:
 		return m.AddedLikeRank()
+	case user.FieldFav:
+		return m.AddedFav()
 	case user.FieldTenSu:
 		return m.AddedTenSu()
 	case user.FieldTenKai:
@@ -3354,6 +3518,13 @@ func (m *UserMutation) AddField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddLikeRank(v)
+		return nil
+	case user.FieldFav:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddFav(v)
 		return nil
 	case user.FieldTenSu:
 		v, ok := value.(int)
@@ -3419,6 +3590,9 @@ func (m *UserMutation) ClearedFields() []string {
 	}
 	if m.FieldCleared(user.FieldLikeAt) {
 		fields = append(fields, user.FieldLikeAt)
+	}
+	if m.FieldCleared(user.FieldFav) {
+		fields = append(fields, user.FieldFav)
 	}
 	if m.FieldCleared(user.FieldTen) {
 		fields = append(fields, user.FieldTen)
@@ -3500,6 +3674,9 @@ func (m *UserMutation) ClearField(name string) error {
 	case user.FieldLikeAt:
 		m.ClearLikeAt()
 		return nil
+	case user.FieldFav:
+		m.ClearFav()
+		return nil
 	case user.FieldTen:
 		m.ClearTen()
 		return nil
@@ -3579,6 +3756,9 @@ func (m *UserMutation) ResetField(name string) error {
 		return nil
 	case user.FieldLikeAt:
 		m.ResetLikeAt()
+		return nil
+	case user.FieldFav:
+		m.ResetFav()
 		return nil
 	case user.FieldTen:
 		m.ResetTen()

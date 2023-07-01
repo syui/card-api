@@ -80,7 +80,7 @@ func (Card) Fields() []ent.Field {
 		Optional(),
 
 		field.String("status").
-		Immutable().
+		//Immutable().
 		DefaultFunc(func() string {
 			rand.Seed(time.Now().UnixNano())
 			var a = rand.Intn(10)
@@ -96,8 +96,12 @@ func (Card) Fields() []ent.Field {
 		}).
 		Optional(),
 
+		field.String("token").
+		Optional().
+		Sensitive(),
+
 		field.Int("cp").
-		Immutable().
+		//Immutable().
 		DefaultFunc(func() int {
 			rand.Seed(time.Now().UnixNano())
 			var cp = 1 + rand.Intn(100)

@@ -33,15 +33,15 @@ func init() {
 	// card.DefaultStatus holds the default value on creation for the status field.
 	card.DefaultStatus = cardDescStatus.Default.(func() string)
 	// cardDescCp is the schema descriptor for cp field.
-	cardDescCp := cardFields[4].Descriptor()
+	cardDescCp := cardFields[5].Descriptor()
 	// card.DefaultCp holds the default value on creation for the cp field.
 	card.DefaultCp = cardDescCp.Default.(func() int)
 	// cardDescURL is the schema descriptor for url field.
-	cardDescURL := cardFields[5].Descriptor()
+	cardDescURL := cardFields[6].Descriptor()
 	// card.DefaultURL holds the default value on creation for the url field.
 	card.DefaultURL = cardDescURL.Default.(string)
 	// cardDescCreatedAt is the schema descriptor for created_at field.
-	cardDescCreatedAt := cardFields[6].Descriptor()
+	cardDescCreatedAt := cardFields[7].Descriptor()
 	// card.DefaultCreatedAt holds the default value on creation for the created_at field.
 	card.DefaultCreatedAt = cardDescCreatedAt.Default.(func() time.Time)
 	groupFields := schema.Group{}.Fields()
@@ -103,11 +103,11 @@ func init() {
 	// user.DefaultLikeAt holds the default value on creation for the like_at field.
 	user.DefaultLikeAt = userDescLikeAt.Default.(func() time.Time)
 	// userDescTenAt is the schema descriptor for ten_at field.
-	userDescTenAt := userFields[22].Descriptor()
+	userDescTenAt := userFields[23].Descriptor()
 	// user.DefaultTenAt holds the default value on creation for the ten_at field.
 	user.DefaultTenAt = userDescTenAt.Default.(func() time.Time)
 	// userDescNext is the schema descriptor for next field.
-	userDescNext := userFields[23].Descriptor()
+	userDescNext := userFields[24].Descriptor()
 	// user.DefaultNext holds the default value on creation for the next field.
 	user.DefaultNext = userDescNext.Default.(string)
 }

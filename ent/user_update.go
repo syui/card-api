@@ -270,6 +270,33 @@ func (uu *UserUpdate) ClearLikeAt() *UserUpdate {
 	return uu
 }
 
+// SetFav sets the "fav" field.
+func (uu *UserUpdate) SetFav(i int) *UserUpdate {
+	uu.mutation.ResetFav()
+	uu.mutation.SetFav(i)
+	return uu
+}
+
+// SetNillableFav sets the "fav" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableFav(i *int) *UserUpdate {
+	if i != nil {
+		uu.SetFav(*i)
+	}
+	return uu
+}
+
+// AddFav adds i to the "fav" field.
+func (uu *UserUpdate) AddFav(i int) *UserUpdate {
+	uu.mutation.AddFav(i)
+	return uu
+}
+
+// ClearFav clears the value of the "fav" field.
+func (uu *UserUpdate) ClearFav() *UserUpdate {
+	uu.mutation.ClearFav()
+	return uu
+}
+
 // SetTen sets the "ten" field.
 func (uu *UserUpdate) SetTen(b bool) *UserUpdate {
 	uu.mutation.SetTen(b)
@@ -646,6 +673,15 @@ func (uu *UserUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	if uu.mutation.LikeAtCleared() {
 		_spec.ClearField(user.FieldLikeAt, field.TypeTime)
 	}
+	if value, ok := uu.mutation.Fav(); ok {
+		_spec.SetField(user.FieldFav, field.TypeInt, value)
+	}
+	if value, ok := uu.mutation.AddedFav(); ok {
+		_spec.AddField(user.FieldFav, field.TypeInt, value)
+	}
+	if uu.mutation.FavCleared() {
+		_spec.ClearField(user.FieldFav, field.TypeInt)
+	}
 	if value, ok := uu.mutation.Ten(); ok {
 		_spec.SetField(user.FieldTen, field.TypeBool, value)
 	}
@@ -1018,6 +1054,33 @@ func (uuo *UserUpdateOne) SetNillableLikeAt(t *time.Time) *UserUpdateOne {
 // ClearLikeAt clears the value of the "like_at" field.
 func (uuo *UserUpdateOne) ClearLikeAt() *UserUpdateOne {
 	uuo.mutation.ClearLikeAt()
+	return uuo
+}
+
+// SetFav sets the "fav" field.
+func (uuo *UserUpdateOne) SetFav(i int) *UserUpdateOne {
+	uuo.mutation.ResetFav()
+	uuo.mutation.SetFav(i)
+	return uuo
+}
+
+// SetNillableFav sets the "fav" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableFav(i *int) *UserUpdateOne {
+	if i != nil {
+		uuo.SetFav(*i)
+	}
+	return uuo
+}
+
+// AddFav adds i to the "fav" field.
+func (uuo *UserUpdateOne) AddFav(i int) *UserUpdateOne {
+	uuo.mutation.AddFav(i)
+	return uuo
+}
+
+// ClearFav clears the value of the "fav" field.
+func (uuo *UserUpdateOne) ClearFav() *UserUpdateOne {
+	uuo.mutation.ClearFav()
 	return uuo
 }
 
@@ -1426,6 +1489,15 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 	}
 	if uuo.mutation.LikeAtCleared() {
 		_spec.ClearField(user.FieldLikeAt, field.TypeTime)
+	}
+	if value, ok := uuo.mutation.Fav(); ok {
+		_spec.SetField(user.FieldFav, field.TypeInt, value)
+	}
+	if value, ok := uuo.mutation.AddedFav(); ok {
+		_spec.AddField(user.FieldFav, field.TypeInt, value)
+	}
+	if uuo.mutation.FavCleared() {
+		_spec.ClearField(user.FieldFav, field.TypeInt)
 	}
 	if value, ok := uuo.mutation.Ten(); ok {
 		_spec.SetField(user.FieldTen, field.TypeBool, value)

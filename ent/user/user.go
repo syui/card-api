@@ -39,6 +39,8 @@ const (
 	FieldLikeRank = "like_rank"
 	// FieldLikeAt holds the string denoting the like_at field in the database.
 	FieldLikeAt = "like_at"
+	// FieldFav holds the string denoting the fav field in the database.
+	FieldFav = "fav"
 	// FieldTen holds the string denoting the ten field in the database.
 	FieldTen = "ten"
 	// FieldTenSu holds the string denoting the ten_su field in the database.
@@ -89,6 +91,7 @@ var Columns = []string{
 	FieldLike,
 	FieldLikeRank,
 	FieldLikeAt,
+	FieldFav,
 	FieldTen,
 	FieldTenSu,
 	FieldTenKai,

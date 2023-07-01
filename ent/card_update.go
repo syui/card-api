@@ -48,6 +48,73 @@ func (cu *CardUpdate) ClearSkill() *CardUpdate {
 	return cu
 }
 
+// SetStatus sets the "status" field.
+func (cu *CardUpdate) SetStatus(s string) *CardUpdate {
+	cu.mutation.SetStatus(s)
+	return cu
+}
+
+// SetNillableStatus sets the "status" field if the given value is not nil.
+func (cu *CardUpdate) SetNillableStatus(s *string) *CardUpdate {
+	if s != nil {
+		cu.SetStatus(*s)
+	}
+	return cu
+}
+
+// ClearStatus clears the value of the "status" field.
+func (cu *CardUpdate) ClearStatus() *CardUpdate {
+	cu.mutation.ClearStatus()
+	return cu
+}
+
+// SetToken sets the "token" field.
+func (cu *CardUpdate) SetToken(s string) *CardUpdate {
+	cu.mutation.SetToken(s)
+	return cu
+}
+
+// SetNillableToken sets the "token" field if the given value is not nil.
+func (cu *CardUpdate) SetNillableToken(s *string) *CardUpdate {
+	if s != nil {
+		cu.SetToken(*s)
+	}
+	return cu
+}
+
+// ClearToken clears the value of the "token" field.
+func (cu *CardUpdate) ClearToken() *CardUpdate {
+	cu.mutation.ClearToken()
+	return cu
+}
+
+// SetCp sets the "cp" field.
+func (cu *CardUpdate) SetCp(i int) *CardUpdate {
+	cu.mutation.ResetCp()
+	cu.mutation.SetCp(i)
+	return cu
+}
+
+// SetNillableCp sets the "cp" field if the given value is not nil.
+func (cu *CardUpdate) SetNillableCp(i *int) *CardUpdate {
+	if i != nil {
+		cu.SetCp(*i)
+	}
+	return cu
+}
+
+// AddCp adds i to the "cp" field.
+func (cu *CardUpdate) AddCp(i int) *CardUpdate {
+	cu.mutation.AddCp(i)
+	return cu
+}
+
+// ClearCp clears the value of the "cp" field.
+func (cu *CardUpdate) ClearCp() *CardUpdate {
+	cu.mutation.ClearCp()
+	return cu
+}
+
 // SetOwnerID sets the "owner" edge to the User entity by ID.
 func (cu *CardUpdate) SetOwnerID(id int) *CardUpdate {
 	cu.mutation.SetOwnerID(id)
@@ -126,8 +193,23 @@ func (cu *CardUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	if cu.mutation.SkillCleared() {
 		_spec.ClearField(card.FieldSkill, field.TypeString)
 	}
+	if value, ok := cu.mutation.Status(); ok {
+		_spec.SetField(card.FieldStatus, field.TypeString, value)
+	}
 	if cu.mutation.StatusCleared() {
 		_spec.ClearField(card.FieldStatus, field.TypeString)
+	}
+	if value, ok := cu.mutation.Token(); ok {
+		_spec.SetField(card.FieldToken, field.TypeString, value)
+	}
+	if cu.mutation.TokenCleared() {
+		_spec.ClearField(card.FieldToken, field.TypeString)
+	}
+	if value, ok := cu.mutation.Cp(); ok {
+		_spec.SetField(card.FieldCp, field.TypeInt, value)
+	}
+	if value, ok := cu.mutation.AddedCp(); ok {
+		_spec.AddField(card.FieldCp, field.TypeInt, value)
 	}
 	if cu.mutation.CpCleared() {
 		_spec.ClearField(card.FieldCp, field.TypeInt)
@@ -204,6 +286,73 @@ func (cuo *CardUpdateOne) SetNillableSkill(s *string) *CardUpdateOne {
 // ClearSkill clears the value of the "skill" field.
 func (cuo *CardUpdateOne) ClearSkill() *CardUpdateOne {
 	cuo.mutation.ClearSkill()
+	return cuo
+}
+
+// SetStatus sets the "status" field.
+func (cuo *CardUpdateOne) SetStatus(s string) *CardUpdateOne {
+	cuo.mutation.SetStatus(s)
+	return cuo
+}
+
+// SetNillableStatus sets the "status" field if the given value is not nil.
+func (cuo *CardUpdateOne) SetNillableStatus(s *string) *CardUpdateOne {
+	if s != nil {
+		cuo.SetStatus(*s)
+	}
+	return cuo
+}
+
+// ClearStatus clears the value of the "status" field.
+func (cuo *CardUpdateOne) ClearStatus() *CardUpdateOne {
+	cuo.mutation.ClearStatus()
+	return cuo
+}
+
+// SetToken sets the "token" field.
+func (cuo *CardUpdateOne) SetToken(s string) *CardUpdateOne {
+	cuo.mutation.SetToken(s)
+	return cuo
+}
+
+// SetNillableToken sets the "token" field if the given value is not nil.
+func (cuo *CardUpdateOne) SetNillableToken(s *string) *CardUpdateOne {
+	if s != nil {
+		cuo.SetToken(*s)
+	}
+	return cuo
+}
+
+// ClearToken clears the value of the "token" field.
+func (cuo *CardUpdateOne) ClearToken() *CardUpdateOne {
+	cuo.mutation.ClearToken()
+	return cuo
+}
+
+// SetCp sets the "cp" field.
+func (cuo *CardUpdateOne) SetCp(i int) *CardUpdateOne {
+	cuo.mutation.ResetCp()
+	cuo.mutation.SetCp(i)
+	return cuo
+}
+
+// SetNillableCp sets the "cp" field if the given value is not nil.
+func (cuo *CardUpdateOne) SetNillableCp(i *int) *CardUpdateOne {
+	if i != nil {
+		cuo.SetCp(*i)
+	}
+	return cuo
+}
+
+// AddCp adds i to the "cp" field.
+func (cuo *CardUpdateOne) AddCp(i int) *CardUpdateOne {
+	cuo.mutation.AddCp(i)
+	return cuo
+}
+
+// ClearCp clears the value of the "cp" field.
+func (cuo *CardUpdateOne) ClearCp() *CardUpdateOne {
+	cuo.mutation.ClearCp()
 	return cuo
 }
 
@@ -315,8 +464,23 @@ func (cuo *CardUpdateOne) sqlSave(ctx context.Context) (_node *Card, err error) 
 	if cuo.mutation.SkillCleared() {
 		_spec.ClearField(card.FieldSkill, field.TypeString)
 	}
+	if value, ok := cuo.mutation.Status(); ok {
+		_spec.SetField(card.FieldStatus, field.TypeString, value)
+	}
 	if cuo.mutation.StatusCleared() {
 		_spec.ClearField(card.FieldStatus, field.TypeString)
+	}
+	if value, ok := cuo.mutation.Token(); ok {
+		_spec.SetField(card.FieldToken, field.TypeString, value)
+	}
+	if cuo.mutation.TokenCleared() {
+		_spec.ClearField(card.FieldToken, field.TypeString)
+	}
+	if value, ok := cuo.mutation.Cp(); ok {
+		_spec.SetField(card.FieldCp, field.TypeInt, value)
+	}
+	if value, ok := cuo.mutation.AddedCp(); ok {
+		_spec.AddField(card.FieldCp, field.TypeInt, value)
 	}
 	if cuo.mutation.CpCleared() {
 		_spec.ClearField(card.FieldCp, field.TypeInt)

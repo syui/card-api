@@ -30,7 +30,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 4000,
+              "maximum": 3000,
               "minimum": 1
             }
           }
@@ -372,7 +372,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 4000,
+              "maximum": 3000,
               "minimum": 1
             }
           }
@@ -698,7 +698,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 4000,
+              "maximum": 3000,
               "minimum": 1
             }
           }
@@ -754,9 +754,6 @@
                   "delete": {
                     "type": "boolean"
                   },
-                  "handle": {
-                    "type": "boolean"
-                  },
                   "token": {
                     "type": "string"
                   },
@@ -801,9 +798,6 @@
                   "ten_kai": {
                     "type": "integer"
                   },
-                  "aiten": {
-                    "type": "integer"
-                  },
                   "ten_card": {
                     "type": "string"
                   },
@@ -831,6 +825,7 @@
                   }
                 },
                 "required": [
+                  "username",
                   "password"
                 ]
               }
@@ -966,16 +961,10 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "username": {
-                    "type": "string"
-                  },
                   "did": {
                     "type": "string"
                   },
                   "delete": {
-                    "type": "boolean"
-                  },
-                  "handle": {
                     "type": "boolean"
                   },
                   "token": {
@@ -1013,9 +1002,6 @@
                     "type": "integer"
                   },
                   "ten_kai": {
-                    "type": "integer"
-                  },
-                  "aiten": {
                     "type": "integer"
                   },
                   "ten_card": {
@@ -1340,9 +1326,6 @@
           "delete": {
             "type": "boolean"
           },
-          "handle": {
-            "type": "boolean"
-          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1381,9 +1364,6 @@
           "ten_kai": {
             "type": "integer"
           },
-          "aiten": {
-            "type": "integer"
-          },
           "ten_card": {
             "type": "string"
           },
@@ -1405,7 +1385,8 @@
           }
         },
         "required": [
-          "id"
+          "id",
+          "username"
         ]
       },
       "Group": {
@@ -1508,9 +1489,6 @@
           "delete": {
             "type": "boolean"
           },
-          "handle": {
-            "type": "boolean"
-          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1549,9 +1527,6 @@
           "ten_kai": {
             "type": "integer"
           },
-          "aiten": {
-            "type": "integer"
-          },
           "ten_card": {
             "type": "string"
           },
@@ -1573,7 +1548,8 @@
           }
         },
         "required": [
-          "id"
+          "id",
+          "username"
         ]
       },
       "User": {
@@ -1589,9 +1565,6 @@
             "type": "string"
           },
           "delete": {
-            "type": "boolean"
-          },
-          "handle": {
             "type": "boolean"
           },
           "token": {
@@ -1638,9 +1611,6 @@
           "ten_kai": {
             "type": "integer"
           },
-          "aiten": {
-            "type": "integer"
-          },
           "ten_card": {
             "type": "string"
           },
@@ -1669,6 +1639,7 @@
         },
         "required": [
           "id",
+          "username",
           "password"
         ]
       },
@@ -1687,9 +1658,6 @@
           "delete": {
             "type": "boolean"
           },
-          "handle": {
-            "type": "boolean"
-          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1728,9 +1696,6 @@
           "ten_kai": {
             "type": "integer"
           },
-          "aiten": {
-            "type": "integer"
-          },
           "ten_card": {
             "type": "string"
           },
@@ -1752,7 +1717,8 @@
           }
         },
         "required": [
-          "id"
+          "id",
+          "username"
         ]
       },
       "UserList": {
@@ -1770,9 +1736,6 @@
           "delete": {
             "type": "boolean"
           },
-          "handle": {
-            "type": "boolean"
-          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1811,9 +1774,6 @@
           "ten_kai": {
             "type": "integer"
           },
-          "aiten": {
-            "type": "integer"
-          },
           "ten_card": {
             "type": "string"
           },
@@ -1835,7 +1795,8 @@
           }
         },
         "required": [
-          "id"
+          "id",
+          "username"
         ]
       },
       "UserRead": {
@@ -1853,9 +1814,6 @@
           "delete": {
             "type": "boolean"
           },
-          "handle": {
-            "type": "boolean"
-          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1894,9 +1852,6 @@
           "ten_kai": {
             "type": "integer"
           },
-          "aiten": {
-            "type": "integer"
-          },
           "ten_card": {
             "type": "string"
           },
@@ -1918,7 +1873,8 @@
           }
         },
         "required": [
-          "id"
+          "id",
+          "username"
         ]
       },
       "UserUpdate": {
@@ -1936,9 +1892,6 @@
           "delete": {
             "type": "boolean"
           },
-          "handle": {
-            "type": "boolean"
-          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1977,9 +1930,6 @@
           "ten_kai": {
             "type": "integer"
           },
-          "aiten": {
-            "type": "integer"
-          },
           "ten_card": {
             "type": "string"
           },
@@ -2001,7 +1951,8 @@
           }
         },
         "required": [
-          "id"
+          "id",
+          "username"
         ]
       },
       "User_CardList": {

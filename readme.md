@@ -77,3 +77,18 @@ func (h *OgentHandler) UpdateUsers(ctx context.Context, req UpdateUsersReq, para
 
 - https://github.com/go-kratos/beer-shop/tree/main/app/catalog/service/internal/data/ent
 
+
+### update
+
+```sh
+$ curl --dump-header - 'https://api.syui.ai/users' -H 'Origin: https://card.syui.ai'|less
+```
+
+> ent/ogent/oas_response_encoders_gen.go
+
+```go
+func encodeCreateGroupResponse(response CreateGroupRes, w http.ResponseWriter, span trace.Span) error {
+    w.Header().Set("Access-Control-Allow-Origin", "https://card.syui.ai")
+        switch response := response.(type) {
+            w.Header().Set("Access-Control-Allow-Origin", "https://card.syui.ai")
+```

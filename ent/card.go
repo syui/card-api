@@ -25,6 +25,8 @@ type Card struct {
 	Skill string `json:"skill,omitempty"`
 	// Status holds the value of the "status" field.
 	Status string `json:"status,omitempty"`
+	// Token holds the value of the "token" field.
+	Token string `json:"-"`
 	// Cp holds the value of the "cp" field.
 	Cp int `json:"cp,omitempty"`
 	// URL holds the value of the "url" field.
@@ -66,7 +68,7 @@ func (*Card) scanValues(columns []string) ([]any, error) {
 		switch columns[i] {
 		case card.FieldID, card.FieldCard, card.FieldCp:
 			values[i] = new(sql.NullInt64)
-		case card.FieldPassword, card.FieldSkill, card.FieldStatus, card.FieldURL:
+		case card.FieldPassword, card.FieldSkill, card.FieldStatus, card.FieldToken, card.FieldURL:
 			values[i] = new(sql.NullString)
 		case card.FieldCreatedAt:
 			values[i] = new(sql.NullTime)
@@ -116,6 +118,12 @@ func (c *Card) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field status", values[i])
 			} else if value.Valid {
 				c.Status = value.String
+			}
+		case card.FieldToken:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field token", values[i])
+			} else if value.Valid {
+				c.Token = value.String
 			}
 		case card.FieldCp:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
@@ -185,6 +193,8 @@ func (c *Card) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("status=")
 	builder.WriteString(c.Status)
+	builder.WriteString(", ")
+	builder.WriteString("token=<sensitive>")
 	builder.WriteString(", ")
 	builder.WriteString("cp=")
 	builder.WriteString(fmt.Sprintf("%v", c.Cp))

@@ -13,6 +13,8 @@ if [ -z "$3" ];then
 	exit
 fi
 
+echo username card cp
+read
 id=`curl -sL "$host/users?itemsPerPage=2000"|jq ".[]|select(.username == \"$1\")"|jq -r .id`
 card=$2
 cp=$3

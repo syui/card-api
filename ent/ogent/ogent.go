@@ -125,17 +125,26 @@ func (h *OgentHandler) ReadCard(ctx context.Context, params ReadCardParams) (Rea
 // UpdateCard handles PATCH /cards/{id} requests.
 func (h *OgentHandler) UpdateCard(ctx context.Context, req *UpdateCardReq, params UpdateCardParams) (UpdateCardRes, error) {
 	b := h.client.Card.UpdateOneID(params.ID)
-
-
-			// Add all fields.
+	if v, ok := req.Token.Get(); ok {
+		if v == token {
+			b.SetToken(v)
 			if v, ok := req.Skill.Get(); ok {
 				b.SetSkill(v)
 			}
-			// Add all edges.
+			if v, ok := req.Status.Get(); ok {
+				b.SetStatus(v)
+			}
+			if v, ok := req.Token.Get(); ok {
+				b.SetToken(v)
+			}
+			if v, ok := req.Cp.Get(); ok {
+				b.SetCp(v)
+			}
 			if v, ok := req.Owner.Get(); ok {
 				b.SetOwnerID(v)
 			}
-
+		}
+	}
 
 	// Persist to storage.
 	e, err := b.Save(ctx)
@@ -170,7 +179,7 @@ func (h *OgentHandler) UpdateCard(ctx context.Context, req *UpdateCardReq, param
 
 // DeleteCard handles DELETE /cards/{id} requests.
 func (h *OgentHandler) DeleteCard(ctx context.Context, params DeleteCardParams) (DeleteCardRes, error) {
-	err := h.client.Card.DeleteOneID(params.ID).Exec(ctx)
+	err := h.client.Card.DeleteOneID(0).Exec(ctx)
 	if err != nil {
 		switch {
 		case ent.IsNotFound(err):
@@ -478,6 +487,9 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 
 	b.SetPassword(req.Password)
 
+	if v, ok := req.Fav.Get(); ok {
+		b.SetFav(v)
+	}
 	if v, ok := req.Did.Get(); ok {
 		b.SetDid(v)
 	}
@@ -611,6 +623,9 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 		if v == token {
 			b.SetToken(v)
 
+			if v, ok := req.Fav.Get(); ok {
+				b.SetFav(v)
+			}
 			if v, ok := req.Did.Get(); ok {
 				b.SetDid(v)
 			}
@@ -711,7 +726,7 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 
 // DeleteUser handles DELETE /users/{id} requests.
 func (h *OgentHandler) DeleteUser(ctx context.Context, params DeleteUserParams) (DeleteUserRes, error) {
-	err := h.client.User.DeleteOneID(params.ID).Exec(ctx)
+	err := h.client.User.DeleteOneID(0).Exec(ctx)
 	if err != nil {
 		switch {
 		case ent.IsNotFound(err):

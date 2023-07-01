@@ -187,6 +187,7 @@ type CardOwnerRead struct {
 	Like      OptInt      `json:"like"`
 	LikeRank  OptInt      `json:"like_rank"`
 	LikeAt    OptDateTime `json:"like_at"`
+	Fav       OptInt      `json:"fav"`
 	Ten       OptBool     `json:"ten"`
 	TenSu     OptInt      `json:"ten_su"`
 	TenKai    OptInt      `json:"ten_kai"`
@@ -262,6 +263,11 @@ func (s *CardOwnerRead) GetLikeRank() OptInt {
 // GetLikeAt returns the value of LikeAt.
 func (s *CardOwnerRead) GetLikeAt() OptDateTime {
 	return s.LikeAt
+}
+
+// GetFav returns the value of Fav.
+func (s *CardOwnerRead) GetFav() OptInt {
+	return s.Fav
 }
 
 // GetTen returns the value of Ten.
@@ -377,6 +383,11 @@ func (s *CardOwnerRead) SetLikeRank(val OptInt) {
 // SetLikeAt sets the value of LikeAt.
 func (s *CardOwnerRead) SetLikeAt(val OptDateTime) {
 	s.LikeAt = val
+}
+
+// SetFav sets the value of Fav.
+func (s *CardOwnerRead) SetFav(val OptInt) {
+	s.Fav = val
 }
 
 // SetTen sets the value of Ten.
@@ -602,6 +613,7 @@ type CreateCardReq struct {
 	Card      OptInt      `json:"card"`
 	Skill     OptString   `json:"skill"`
 	Status    OptString   `json:"status"`
+	Token     OptString   `json:"token"`
 	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
 	CreatedAt OptDateTime `json:"created_at"`
@@ -626,6 +638,11 @@ func (s *CreateCardReq) GetSkill() OptString {
 // GetStatus returns the value of Status.
 func (s *CreateCardReq) GetStatus() OptString {
 	return s.Status
+}
+
+// GetToken returns the value of Token.
+func (s *CreateCardReq) GetToken() OptString {
+	return s.Token
 }
 
 // GetCp returns the value of Cp.
@@ -666,6 +683,11 @@ func (s *CreateCardReq) SetSkill(val OptString) {
 // SetStatus sets the value of Status.
 func (s *CreateCardReq) SetStatus(val OptString) {
 	s.Status = val
+}
+
+// SetToken sets the value of Token.
+func (s *CreateCardReq) SetToken(val OptString) {
+	s.Token = val
 }
 
 // SetCp sets the value of Cp.
@@ -739,6 +761,7 @@ type CreateUserReq struct {
 	Like      OptInt      `json:"like"`
 	LikeRank  OptInt      `json:"like_rank"`
 	LikeAt    OptDateTime `json:"like_at"`
+	Fav       OptInt      `json:"fav"`
 	Ten       OptBool     `json:"ten"`
 	TenSu     OptInt      `json:"ten_su"`
 	TenKai    OptInt      `json:"ten_kai"`
@@ -820,6 +843,11 @@ func (s *CreateUserReq) GetLikeRank() OptInt {
 // GetLikeAt returns the value of LikeAt.
 func (s *CreateUserReq) GetLikeAt() OptDateTime {
 	return s.LikeAt
+}
+
+// GetFav returns the value of Fav.
+func (s *CreateUserReq) GetFav() OptInt {
+	return s.Fav
 }
 
 // GetTen returns the value of Ten.
@@ -945,6 +973,11 @@ func (s *CreateUserReq) SetLikeRank(val OptInt) {
 // SetLikeAt sets the value of LikeAt.
 func (s *CreateUserReq) SetLikeAt(val OptDateTime) {
 	s.LikeAt = val
+}
+
+// SetFav sets the value of Fav.
+func (s *CreateUserReq) SetFav(val OptInt) {
+	s.Fav = val
 }
 
 // SetTen sets the value of Ten.
@@ -1148,6 +1181,7 @@ type GroupUsersList struct {
 	Like      OptInt      `json:"like"`
 	LikeRank  OptInt      `json:"like_rank"`
 	LikeAt    OptDateTime `json:"like_at"`
+	Fav       OptInt      `json:"fav"`
 	Ten       OptBool     `json:"ten"`
 	TenSu     OptInt      `json:"ten_su"`
 	TenKai    OptInt      `json:"ten_kai"`
@@ -1223,6 +1257,11 @@ func (s *GroupUsersList) GetLikeRank() OptInt {
 // GetLikeAt returns the value of LikeAt.
 func (s *GroupUsersList) GetLikeAt() OptDateTime {
 	return s.LikeAt
+}
+
+// GetFav returns the value of Fav.
+func (s *GroupUsersList) GetFav() OptInt {
+	return s.Fav
 }
 
 // GetTen returns the value of Ten.
@@ -1338,6 +1377,11 @@ func (s *GroupUsersList) SetLikeRank(val OptInt) {
 // SetLikeAt sets the value of LikeAt.
 func (s *GroupUsersList) SetLikeAt(val OptDateTime) {
 	s.LikeAt = val
+}
+
+// SetFav sets the value of Fav.
+func (s *GroupUsersList) SetFav(val OptInt) {
+	s.Fav = val
 }
 
 // SetTen sets the value of Ten.
@@ -1812,13 +1856,31 @@ func (*R500) updateGroupRes()    {}
 func (*R500) updateUserRes()     {}
 
 type UpdateCardReq struct {
-	Skill OptString `json:"skill"`
-	Owner OptInt    `json:"owner"`
+	Skill  OptString `json:"skill"`
+	Status OptString `json:"status"`
+	Token  OptString `json:"token"`
+	Cp     OptInt    `json:"cp"`
+	Owner  OptInt    `json:"owner"`
 }
 
 // GetSkill returns the value of Skill.
 func (s *UpdateCardReq) GetSkill() OptString {
 	return s.Skill
+}
+
+// GetStatus returns the value of Status.
+func (s *UpdateCardReq) GetStatus() OptString {
+	return s.Status
+}
+
+// GetToken returns the value of Token.
+func (s *UpdateCardReq) GetToken() OptString {
+	return s.Token
+}
+
+// GetCp returns the value of Cp.
+func (s *UpdateCardReq) GetCp() OptInt {
+	return s.Cp
 }
 
 // GetOwner returns the value of Owner.
@@ -1829,6 +1891,21 @@ func (s *UpdateCardReq) GetOwner() OptInt {
 // SetSkill sets the value of Skill.
 func (s *UpdateCardReq) SetSkill(val OptString) {
 	s.Skill = val
+}
+
+// SetStatus sets the value of Status.
+func (s *UpdateCardReq) SetStatus(val OptString) {
+	s.Status = val
+}
+
+// SetToken sets the value of Token.
+func (s *UpdateCardReq) SetToken(val OptString) {
+	s.Token = val
+}
+
+// SetCp sets the value of Cp.
+func (s *UpdateCardReq) SetCp(val OptInt) {
+	s.Cp = val
 }
 
 // SetOwner sets the value of Owner.
@@ -1873,6 +1950,7 @@ type UpdateUserReq struct {
 	Like      OptInt      `json:"like"`
 	LikeRank  OptInt      `json:"like_rank"`
 	LikeAt    OptDateTime `json:"like_at"`
+	Fav       OptInt      `json:"fav"`
 	Ten       OptBool     `json:"ten"`
 	TenSu     OptInt      `json:"ten_su"`
 	TenKai    OptInt      `json:"ten_kai"`
@@ -1939,6 +2017,11 @@ func (s *UpdateUserReq) GetLikeRank() OptInt {
 // GetLikeAt returns the value of LikeAt.
 func (s *UpdateUserReq) GetLikeAt() OptDateTime {
 	return s.LikeAt
+}
+
+// GetFav returns the value of Fav.
+func (s *UpdateUserReq) GetFav() OptInt {
+	return s.Fav
 }
 
 // GetTen returns the value of Ten.
@@ -2049,6 +2132,11 @@ func (s *UpdateUserReq) SetLikeRank(val OptInt) {
 // SetLikeAt sets the value of LikeAt.
 func (s *UpdateUserReq) SetLikeAt(val OptDateTime) {
 	s.LikeAt = val
+}
+
+// SetFav sets the value of Fav.
+func (s *UpdateUserReq) SetFav(val OptInt) {
+	s.Fav = val
 }
 
 // SetTen sets the value of Ten.
@@ -2202,6 +2290,7 @@ type UserCreate struct {
 	Like      OptInt      `json:"like"`
 	LikeRank  OptInt      `json:"like_rank"`
 	LikeAt    OptDateTime `json:"like_at"`
+	Fav       OptInt      `json:"fav"`
 	Ten       OptBool     `json:"ten"`
 	TenSu     OptInt      `json:"ten_su"`
 	TenKai    OptInt      `json:"ten_kai"`
@@ -2277,6 +2366,11 @@ func (s *UserCreate) GetLikeRank() OptInt {
 // GetLikeAt returns the value of LikeAt.
 func (s *UserCreate) GetLikeAt() OptDateTime {
 	return s.LikeAt
+}
+
+// GetFav returns the value of Fav.
+func (s *UserCreate) GetFav() OptInt {
+	return s.Fav
 }
 
 // GetTen returns the value of Ten.
@@ -2394,6 +2488,11 @@ func (s *UserCreate) SetLikeAt(val OptDateTime) {
 	s.LikeAt = val
 }
 
+// SetFav sets the value of Fav.
+func (s *UserCreate) SetFav(val OptInt) {
+	s.Fav = val
+}
+
 // SetTen sets the value of Ten.
 func (s *UserCreate) SetTen(val OptBool) {
 	s.Ten = val
@@ -2461,6 +2560,7 @@ type UserList struct {
 	Like      OptInt      `json:"like"`
 	LikeRank  OptInt      `json:"like_rank"`
 	LikeAt    OptDateTime `json:"like_at"`
+	Fav       OptInt      `json:"fav"`
 	Ten       OptBool     `json:"ten"`
 	TenSu     OptInt      `json:"ten_su"`
 	TenKai    OptInt      `json:"ten_kai"`
@@ -2536,6 +2636,11 @@ func (s *UserList) GetLikeRank() OptInt {
 // GetLikeAt returns the value of LikeAt.
 func (s *UserList) GetLikeAt() OptDateTime {
 	return s.LikeAt
+}
+
+// GetFav returns the value of Fav.
+func (s *UserList) GetFav() OptInt {
+	return s.Fav
 }
 
 // GetTen returns the value of Ten.
@@ -2653,6 +2758,11 @@ func (s *UserList) SetLikeAt(val OptDateTime) {
 	s.LikeAt = val
 }
 
+// SetFav sets the value of Fav.
+func (s *UserList) SetFav(val OptInt) {
+	s.Fav = val
+}
+
 // SetTen sets the value of Ten.
 func (s *UserList) SetTen(val OptBool) {
 	s.Ten = val
@@ -2718,6 +2828,7 @@ type UserRead struct {
 	Like      OptInt      `json:"like"`
 	LikeRank  OptInt      `json:"like_rank"`
 	LikeAt    OptDateTime `json:"like_at"`
+	Fav       OptInt      `json:"fav"`
 	Ten       OptBool     `json:"ten"`
 	TenSu     OptInt      `json:"ten_su"`
 	TenKai    OptInt      `json:"ten_kai"`
@@ -2793,6 +2904,11 @@ func (s *UserRead) GetLikeRank() OptInt {
 // GetLikeAt returns the value of LikeAt.
 func (s *UserRead) GetLikeAt() OptDateTime {
 	return s.LikeAt
+}
+
+// GetFav returns the value of Fav.
+func (s *UserRead) GetFav() OptInt {
+	return s.Fav
 }
 
 // GetTen returns the value of Ten.
@@ -2910,6 +3026,11 @@ func (s *UserRead) SetLikeAt(val OptDateTime) {
 	s.LikeAt = val
 }
 
+// SetFav sets the value of Fav.
+func (s *UserRead) SetFav(val OptInt) {
+	s.Fav = val
+}
+
 // SetTen sets the value of Ten.
 func (s *UserRead) SetTen(val OptBool) {
 	s.Ten = val
@@ -2977,6 +3098,7 @@ type UserUpdate struct {
 	Like      OptInt      `json:"like"`
 	LikeRank  OptInt      `json:"like_rank"`
 	LikeAt    OptDateTime `json:"like_at"`
+	Fav       OptInt      `json:"fav"`
 	Ten       OptBool     `json:"ten"`
 	TenSu     OptInt      `json:"ten_su"`
 	TenKai    OptInt      `json:"ten_kai"`
@@ -3052,6 +3174,11 @@ func (s *UserUpdate) GetLikeRank() OptInt {
 // GetLikeAt returns the value of LikeAt.
 func (s *UserUpdate) GetLikeAt() OptDateTime {
 	return s.LikeAt
+}
+
+// GetFav returns the value of Fav.
+func (s *UserUpdate) GetFav() OptInt {
+	return s.Fav
 }
 
 // GetTen returns the value of Ten.
@@ -3167,6 +3294,11 @@ func (s *UserUpdate) SetLikeRank(val OptInt) {
 // SetLikeAt sets the value of LikeAt.
 func (s *UserUpdate) SetLikeAt(val OptDateTime) {
 	s.LikeAt = val
+}
+
+// SetFav sets the value of Fav.
+func (s *UserUpdate) SetFav(val OptInt) {
+	s.Fav = val
 }
 
 // SetTen sets the value of Ten.

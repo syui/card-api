@@ -15,6 +15,7 @@ var (
 		{Name: "card", Type: field.TypeInt, Nullable: true},
 		{Name: "skill", Type: field.TypeString, Nullable: true},
 		{Name: "status", Type: field.TypeString, Nullable: true},
+		{Name: "token", Type: field.TypeString, Nullable: true},
 		{Name: "cp", Type: field.TypeInt, Nullable: true},
 		{Name: "url", Type: field.TypeString, Nullable: true, Default: "https://card.syui.ai"},
 		{Name: "created_at", Type: field.TypeTime, Nullable: true},
@@ -28,7 +29,7 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cards_users_card",
-				Columns:    []*schema.Column{CardsColumns[8]},
+				Columns:    []*schema.Column{CardsColumns[9]},
 				RefColumns: []*schema.Column{UsersColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -70,6 +71,7 @@ var (
 		{Name: "like", Type: field.TypeInt, Nullable: true},
 		{Name: "like_rank", Type: field.TypeInt, Nullable: true},
 		{Name: "like_at", Type: field.TypeTime, Nullable: true},
+		{Name: "fav", Type: field.TypeInt, Nullable: true},
 		{Name: "ten", Type: field.TypeBool, Nullable: true},
 		{Name: "ten_su", Type: field.TypeInt, Nullable: true},
 		{Name: "ten_kai", Type: field.TypeInt, Nullable: true},
@@ -79,7 +81,7 @@ var (
 		{Name: "ten_post", Type: field.TypeString, Nullable: true},
 		{Name: "ten_get", Type: field.TypeString, Nullable: true},
 		{Name: "ten_at", Type: field.TypeTime, Nullable: true},
-		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230701"},
+		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230708"},
 		{Name: "group_users", Type: field.TypeInt, Nullable: true},
 	}
 	// UsersTable holds the schema information for the "users" table.
@@ -90,7 +92,7 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "users_groups_users",
-				Columns:    []*schema.Column{UsersColumns[25]},
+				Columns:    []*schema.Column{UsersColumns[26]},
 				RefColumns: []*schema.Column{GroupsColumns[0]},
 				OnDelete:   schema.SetNull,
 			},

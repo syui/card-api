@@ -69,6 +69,20 @@ func (cc *CardCreate) SetNillableStatus(s *string) *CardCreate {
 	return cc
 }
 
+// SetToken sets the "token" field.
+func (cc *CardCreate) SetToken(s string) *CardCreate {
+	cc.mutation.SetToken(s)
+	return cc
+}
+
+// SetNillableToken sets the "token" field if the given value is not nil.
+func (cc *CardCreate) SetNillableToken(s *string) *CardCreate {
+	if s != nil {
+		cc.SetToken(*s)
+	}
+	return cc
+}
+
 // SetCp sets the "cp" field.
 func (cc *CardCreate) SetCp(i int) *CardCreate {
 	cc.mutation.SetCp(i)
@@ -237,6 +251,10 @@ func (cc *CardCreate) createSpec() (*Card, *sqlgraph.CreateSpec) {
 	if value, ok := cc.mutation.Status(); ok {
 		_spec.SetField(card.FieldStatus, field.TypeString, value)
 		_node.Status = value
+	}
+	if value, ok := cc.mutation.Token(); ok {
+		_spec.SetField(card.FieldToken, field.TypeString, value)
+		_node.Token = value
 	}
 	if value, ok := cc.mutation.Cp(); ok {
 		_spec.SetField(card.FieldCp, field.TypeInt, value)

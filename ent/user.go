@@ -44,6 +44,8 @@ type User struct {
 	LikeRank int `json:"like_rank,omitempty"`
 	// LikeAt holds the value of the "like_at" field.
 	LikeAt time.Time `json:"like_at,omitempty"`
+	// Fav holds the value of the "fav" field.
+	Fav int `json:"fav,omitempty"`
 	// Ten holds the value of the "ten" field.
 	Ten bool `json:"ten,omitempty"`
 	// TenSu holds the value of the "ten_su" field.
@@ -95,7 +97,7 @@ func (*User) scanValues(columns []string) ([]any, error) {
 		switch columns[i] {
 		case user.FieldDelete, user.FieldHandle, user.FieldTen:
 			values[i] = new(sql.NullBool)
-		case user.FieldID, user.FieldLuck, user.FieldLike, user.FieldLikeRank, user.FieldTenSu, user.FieldTenKai, user.FieldAiten:
+		case user.FieldID, user.FieldLuck, user.FieldLike, user.FieldLikeRank, user.FieldFav, user.FieldTenSu, user.FieldTenKai, user.FieldAiten:
 			values[i] = new(sql.NullInt64)
 		case user.FieldUsername, user.FieldDid, user.FieldToken, user.FieldPassword, user.FieldTenCard, user.FieldTenDelete, user.FieldTenPost, user.FieldTenGet, user.FieldNext:
 			values[i] = new(sql.NullString)
@@ -207,6 +209,12 @@ func (u *User) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field like_at", values[i])
 			} else if value.Valid {
 				u.LikeAt = value.Time
+			}
+		case user.FieldFav:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field fav", values[i])
+			} else if value.Valid {
+				u.Fav = int(value.Int64)
 			}
 		case user.FieldTen:
 			if value, ok := values[i].(*sql.NullBool); !ok {
@@ -347,6 +355,9 @@ func (u *User) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("like_at=")
 	builder.WriteString(u.LikeAt.Format(time.ANSIC))
+	builder.WriteString(", ")
+	builder.WriteString("fav=")
+	builder.WriteString(fmt.Sprintf("%v", u.Fav))
 	builder.WriteString(", ")
 	builder.WriteString("ten=")
 	builder.WriteString(fmt.Sprintf("%v", u.Ten))

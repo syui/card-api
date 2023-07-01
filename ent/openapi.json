@@ -831,7 +831,6 @@
                   }
                 },
                 "required": [
-                  "username",
                   "password"
                 ]
               }
@@ -967,6 +966,9 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "username": {
+                    "type": "string"
+                  },
                   "did": {
                     "type": "string"
                   },
@@ -1403,8 +1405,7 @@
           }
         },
         "required": [
-          "id",
-          "username"
+          "id"
         ]
       },
       "Group": {
@@ -1572,8 +1573,7 @@
           }
         },
         "required": [
-          "id",
-          "username"
+          "id"
         ]
       },
       "User": {
@@ -1669,7 +1669,6 @@
         },
         "required": [
           "id",
-          "username",
           "password"
         ]
       },
@@ -1753,8 +1752,7 @@
           }
         },
         "required": [
-          "id",
-          "username"
+          "id"
         ]
       },
       "UserList": {
@@ -1837,8 +1835,7 @@
           }
         },
         "required": [
-          "id",
-          "username"
+          "id"
         ]
       },
       "UserRead": {
@@ -1921,8 +1918,7 @@
           }
         },
         "required": [
-          "id",
-          "username"
+          "id"
         ]
       },
       "UserUpdate": {
@@ -2005,8 +2001,7 @@
           }
         },
         "required": [
-          "id",
-          "username"
+          "id"
         ]
       },
       "User_CardList": {

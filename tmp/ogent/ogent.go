@@ -170,7 +170,7 @@ func (h *OgentHandler) UpdateCard(ctx context.Context, req *UpdateCardReq, param
 
 // DeleteCard handles DELETE /cards/{id} requests.
 func (h *OgentHandler) DeleteCard(ctx context.Context, params DeleteCardParams) (DeleteCardRes, error) {
-	err := h.client.Card.DeleteOneID(0).Exec(ctx)
+	err := h.client.Card.DeleteOneID(params.ID).Exec(ctx)
 	if err != nil {
 		switch {
 		case ent.IsNotFound(err):
@@ -711,7 +711,7 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 
 // DeleteUser handles DELETE /users/{id} requests.
 func (h *OgentHandler) DeleteUser(ctx context.Context, params DeleteUserParams) (DeleteUserRes, error) {
-	err := h.client.User.DeleteOneID(0).Exec(ctx)
+	err := h.client.User.DeleteOneID(params.ID).Exec(ctx)
 	if err != nil {
 		switch {
 		case ent.IsNotFound(err):

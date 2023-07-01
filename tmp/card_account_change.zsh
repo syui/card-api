@@ -9,6 +9,8 @@ if [ -z "$2" ];then
 	exit
 fi
 
+echo old-id new-id
+
 id=$1
 data=`curl -sL "$host/users/$id/card?itemsPerPage=2550"`
 echo $data
@@ -24,5 +26,6 @@ do
 	card=`echo $data|jq -r ".[$i].card"`
 	s=`echo $data|jq -r ".[$i].status"`
 	cp=`echo $data|jq -r ".[$i].cp"`
-	curl -X POST -H "Content-Type: application/json" -d "{\"owner\":$id_n,\"card\":$card,\"status\":\"$s\",\"cp\":$cp,\"password\":\"$pass\"}" -sL $host/cards
+	skill=`echo $data|jq -r ".[$i].skill"`
+	curl -X POST -H "Content-Type: application/json" -d "{\"owner\":$id_n,\"card\":$card,\"status\":\"$s\",\"cp\":$cp,\"password\":\"$pass\",\"skill\":\"$skill\"}" -sL $host/cards
 done

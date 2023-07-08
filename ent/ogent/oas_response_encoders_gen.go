@@ -374,6 +374,7 @@ func encodeDrawStartResponse(response *DrawStartNoContent, w http.ResponseWriter
 }
 
 func encodeListCardResponse(response ListCardRes, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Access-Control-Allow-Origin", "https://card.syui.ai")
 	switch response := response.(type) {
 	case *ListCardOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
@@ -575,6 +576,7 @@ func encodeListGroupUsersResponse(response ListGroupUsersRes, w http.ResponseWri
 }
 
 func encodeListUserResponse(response ListUserRes, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Access-Control-Allow-Origin", "https://card.syui.ai")
 	switch response := response.(type) {
 	case *ListUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
@@ -642,6 +644,7 @@ func encodeListUserResponse(response ListUserRes, w http.ResponseWriter, span tr
 }
 
 func encodeListUserCardResponse(response ListUserCardRes, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Access-Control-Allow-Origin", "https://card.syui.ai")
 	switch response := response.(type) {
 	case *ListUserCardOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
@@ -709,6 +712,7 @@ func encodeListUserCardResponse(response ListUserCardRes, w http.ResponseWriter,
 }
 
 func encodeReadCardResponse(response ReadCardRes, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Access-Control-Allow-Origin", "https://card.syui.ai")
 	switch response := response.(type) {
 	case *CardRead:
 		w.Header().Set("Content-Type", "application/json")
@@ -776,6 +780,7 @@ func encodeReadCardResponse(response ReadCardRes, w http.ResponseWriter, span tr
 }
 
 func encodeReadCardOwnerResponse(response ReadCardOwnerRes, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Access-Control-Allow-Origin", "https://card.syui.ai")
 	switch response := response.(type) {
 	case *CardOwnerRead:
 		w.Header().Set("Content-Type", "application/json")
@@ -910,6 +915,7 @@ func encodeReadGroupResponse(response ReadGroupRes, w http.ResponseWriter, span 
 }
 
 func encodeReadUserResponse(response ReadUserRes, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Access-Control-Allow-Origin", "https://card.syui.ai")
 	switch response := response.(type) {
 	case *UserRead:
 		w.Header().Set("Content-Type", "application/json")

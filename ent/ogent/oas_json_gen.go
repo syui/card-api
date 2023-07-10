@@ -438,6 +438,18 @@ func (s *CardOwnerRead) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Bsky.Set {
+			e.FieldStart("bsky")
+			s.Bsky.Encode(e)
+		}
+	}
+	{
+		if s.Mastodon.Set {
+			e.FieldStart("mastodon")
+			s.Mastodon.Encode(e)
+		}
+	}
+	{
 		if s.Delete.Set {
 			e.FieldStart("delete")
 			s.Delete.Encode(e)
@@ -565,31 +577,33 @@ func (s *CardOwnerRead) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCardOwnerRead = [24]string{
+var jsonFieldsNameOfCardOwnerRead = [26]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
-	3:  "delete",
-	4:  "handle",
-	5:  "created_at",
-	6:  "updated_at",
-	7:  "raid_at",
-	8:  "luck",
-	9:  "luck_at",
-	10: "like",
-	11: "like_rank",
-	12: "like_at",
-	13: "fav",
-	14: "ten",
-	15: "ten_su",
-	16: "ten_kai",
-	17: "aiten",
-	18: "ten_card",
-	19: "ten_delete",
-	20: "ten_post",
-	21: "ten_get",
-	22: "ten_at",
-	23: "next",
+	3:  "bsky",
+	4:  "mastodon",
+	5:  "delete",
+	6:  "handle",
+	7:  "created_at",
+	8:  "updated_at",
+	9:  "raid_at",
+	10: "luck",
+	11: "luck_at",
+	12: "like",
+	13: "like_rank",
+	14: "like_at",
+	15: "fav",
+	16: "ten",
+	17: "ten_su",
+	18: "ten_kai",
+	19: "aiten",
+	20: "ten_card",
+	21: "ten_delete",
+	22: "ten_post",
+	23: "ten_get",
+	24: "ten_at",
+	25: "next",
 }
 
 // Decode decodes CardOwnerRead from json.
@@ -597,7 +611,7 @@ func (s *CardOwnerRead) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CardOwnerRead to nil")
 	}
-	var requiredBitSet [3]uint8
+	var requiredBitSet [4]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -634,6 +648,26 @@ func (s *CardOwnerRead) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"did\"")
+			}
+		case "bsky":
+			if err := func() error {
+				s.Bsky.Reset()
+				if err := s.Bsky.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"bsky\"")
+			}
+		case "mastodon":
+			if err := func() error {
+				s.Mastodon.Reset()
+				if err := s.Mastodon.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mastodon\"")
 			}
 		case "delete":
 			if err := func() error {
@@ -854,8 +888,9 @@ func (s *CardOwnerRead) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [3]uint8{
+	for i, mask := range [4]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 	} {
@@ -1702,6 +1737,18 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Bsky.Set {
+			e.FieldStart("bsky")
+			s.Bsky.Encode(e)
+		}
+	}
+	{
+		if s.Mastodon.Set {
+			e.FieldStart("mastodon")
+			s.Mastodon.Encode(e)
+		}
+	}
+	{
 		if s.Delete.Set {
 			e.FieldStart("delete")
 			s.Delete.Encode(e)
@@ -1850,33 +1897,35 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCreateUserReq = [26]string{
+var jsonFieldsNameOfCreateUserReq = [28]string{
 	0:  "username",
 	1:  "did",
-	2:  "delete",
-	3:  "handle",
-	4:  "token",
-	5:  "password",
-	6:  "created_at",
-	7:  "updated_at",
-	8:  "raid_at",
-	9:  "luck",
-	10: "luck_at",
-	11: "like",
-	12: "like_rank",
-	13: "like_at",
-	14: "fav",
-	15: "ten",
-	16: "ten_su",
-	17: "ten_kai",
-	18: "aiten",
-	19: "ten_card",
-	20: "ten_delete",
-	21: "ten_post",
-	22: "ten_get",
-	23: "ten_at",
-	24: "next",
-	25: "card",
+	2:  "bsky",
+	3:  "mastodon",
+	4:  "delete",
+	5:  "handle",
+	6:  "token",
+	7:  "password",
+	8:  "created_at",
+	9:  "updated_at",
+	10: "raid_at",
+	11: "luck",
+	12: "luck_at",
+	13: "like",
+	14: "like_rank",
+	15: "like_at",
+	16: "fav",
+	17: "ten",
+	18: "ten_su",
+	19: "ten_kai",
+	20: "aiten",
+	21: "ten_card",
+	22: "ten_delete",
+	23: "ten_post",
+	24: "ten_get",
+	25: "ten_at",
+	26: "next",
+	27: "card",
 }
 
 // Decode decodes CreateUserReq from json.
@@ -1910,6 +1959,26 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"did\"")
 			}
+		case "bsky":
+			if err := func() error {
+				s.Bsky.Reset()
+				if err := s.Bsky.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"bsky\"")
+			}
+		case "mastodon":
+			if err := func() error {
+				s.Mastodon.Reset()
+				if err := s.Mastodon.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mastodon\"")
+			}
 		case "delete":
 			if err := func() error {
 				s.Delete.Reset()
@@ -1941,7 +2010,7 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"token\"")
 			}
 		case "password":
-			requiredBitSet[0] |= 1 << 5
+			requiredBitSet[0] |= 1 << 7
 			if err := func() error {
 				v, err := d.Str()
 				s.Password = string(v)
@@ -2171,7 +2240,7 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [4]uint8{
-		0b00100001,
+		0b10000001,
 		0b00000000,
 		0b00000000,
 		0b00000000,
@@ -2706,6 +2775,18 @@ func (s *GroupUsersList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Bsky.Set {
+			e.FieldStart("bsky")
+			s.Bsky.Encode(e)
+		}
+	}
+	{
+		if s.Mastodon.Set {
+			e.FieldStart("mastodon")
+			s.Mastodon.Encode(e)
+		}
+	}
+	{
 		if s.Delete.Set {
 			e.FieldStart("delete")
 			s.Delete.Encode(e)
@@ -2833,31 +2914,33 @@ func (s *GroupUsersList) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfGroupUsersList = [24]string{
+var jsonFieldsNameOfGroupUsersList = [26]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
-	3:  "delete",
-	4:  "handle",
-	5:  "created_at",
-	6:  "updated_at",
-	7:  "raid_at",
-	8:  "luck",
-	9:  "luck_at",
-	10: "like",
-	11: "like_rank",
-	12: "like_at",
-	13: "fav",
-	14: "ten",
-	15: "ten_su",
-	16: "ten_kai",
-	17: "aiten",
-	18: "ten_card",
-	19: "ten_delete",
-	20: "ten_post",
-	21: "ten_get",
-	22: "ten_at",
-	23: "next",
+	3:  "bsky",
+	4:  "mastodon",
+	5:  "delete",
+	6:  "handle",
+	7:  "created_at",
+	8:  "updated_at",
+	9:  "raid_at",
+	10: "luck",
+	11: "luck_at",
+	12: "like",
+	13: "like_rank",
+	14: "like_at",
+	15: "fav",
+	16: "ten",
+	17: "ten_su",
+	18: "ten_kai",
+	19: "aiten",
+	20: "ten_card",
+	21: "ten_delete",
+	22: "ten_post",
+	23: "ten_get",
+	24: "ten_at",
+	25: "next",
 }
 
 // Decode decodes GroupUsersList from json.
@@ -2865,7 +2948,7 @@ func (s *GroupUsersList) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode GroupUsersList to nil")
 	}
-	var requiredBitSet [3]uint8
+	var requiredBitSet [4]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -2902,6 +2985,26 @@ func (s *GroupUsersList) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"did\"")
+			}
+		case "bsky":
+			if err := func() error {
+				s.Bsky.Reset()
+				if err := s.Bsky.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"bsky\"")
+			}
+		case "mastodon":
+			if err := func() error {
+				s.Mastodon.Reset()
+				if err := s.Mastodon.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mastodon\"")
 			}
 		case "delete":
 			if err := func() error {
@@ -3122,8 +3225,9 @@ func (s *GroupUsersList) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [3]uint8{
+	for i, mask := range [4]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 	} {
@@ -4337,6 +4441,18 @@ func (s *UpdateUserReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Bsky.Set {
+			e.FieldStart("bsky")
+			s.Bsky.Encode(e)
+		}
+	}
+	{
+		if s.Mastodon.Set {
+			e.FieldStart("mastodon")
+			s.Mastodon.Encode(e)
+		}
+	}
+	{
 		if s.Delete.Set {
 			e.FieldStart("delete")
 			s.Delete.Encode(e)
@@ -4474,30 +4590,32 @@ func (s *UpdateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUpdateUserReq = [23]string{
+var jsonFieldsNameOfUpdateUserReq = [25]string{
 	0:  "did",
-	1:  "delete",
-	2:  "handle",
-	3:  "token",
-	4:  "updated_at",
-	5:  "raid_at",
-	6:  "luck",
-	7:  "luck_at",
-	8:  "like",
-	9:  "like_rank",
-	10: "like_at",
-	11: "fav",
-	12: "ten",
-	13: "ten_su",
-	14: "ten_kai",
-	15: "aiten",
-	16: "ten_card",
-	17: "ten_delete",
-	18: "ten_post",
-	19: "ten_get",
-	20: "ten_at",
-	21: "next",
-	22: "card",
+	1:  "bsky",
+	2:  "mastodon",
+	3:  "delete",
+	4:  "handle",
+	5:  "token",
+	6:  "updated_at",
+	7:  "raid_at",
+	8:  "luck",
+	9:  "luck_at",
+	10: "like",
+	11: "like_rank",
+	12: "like_at",
+	13: "fav",
+	14: "ten",
+	15: "ten_su",
+	16: "ten_kai",
+	17: "aiten",
+	18: "ten_card",
+	19: "ten_delete",
+	20: "ten_post",
+	21: "ten_get",
+	22: "ten_at",
+	23: "next",
+	24: "card",
 }
 
 // Decode decodes UpdateUserReq from json.
@@ -4517,6 +4635,26 @@ func (s *UpdateUserReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"did\"")
+			}
+		case "bsky":
+			if err := func() error {
+				s.Bsky.Reset()
+				if err := s.Bsky.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"bsky\"")
+			}
+		case "mastodon":
+			if err := func() error {
+				s.Mastodon.Reset()
+				if err := s.Mastodon.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mastodon\"")
 			}
 		case "delete":
 			if err := func() error {
@@ -4996,6 +5134,18 @@ func (s *UserCreate) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Bsky.Set {
+			e.FieldStart("bsky")
+			s.Bsky.Encode(e)
+		}
+	}
+	{
+		if s.Mastodon.Set {
+			e.FieldStart("mastodon")
+			s.Mastodon.Encode(e)
+		}
+	}
+	{
 		if s.Delete.Set {
 			e.FieldStart("delete")
 			s.Delete.Encode(e)
@@ -5123,31 +5273,33 @@ func (s *UserCreate) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserCreate = [24]string{
+var jsonFieldsNameOfUserCreate = [26]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
-	3:  "delete",
-	4:  "handle",
-	5:  "created_at",
-	6:  "updated_at",
-	7:  "raid_at",
-	8:  "luck",
-	9:  "luck_at",
-	10: "like",
-	11: "like_rank",
-	12: "like_at",
-	13: "fav",
-	14: "ten",
-	15: "ten_su",
-	16: "ten_kai",
-	17: "aiten",
-	18: "ten_card",
-	19: "ten_delete",
-	20: "ten_post",
-	21: "ten_get",
-	22: "ten_at",
-	23: "next",
+	3:  "bsky",
+	4:  "mastodon",
+	5:  "delete",
+	6:  "handle",
+	7:  "created_at",
+	8:  "updated_at",
+	9:  "raid_at",
+	10: "luck",
+	11: "luck_at",
+	12: "like",
+	13: "like_rank",
+	14: "like_at",
+	15: "fav",
+	16: "ten",
+	17: "ten_su",
+	18: "ten_kai",
+	19: "aiten",
+	20: "ten_card",
+	21: "ten_delete",
+	22: "ten_post",
+	23: "ten_get",
+	24: "ten_at",
+	25: "next",
 }
 
 // Decode decodes UserCreate from json.
@@ -5155,7 +5307,7 @@ func (s *UserCreate) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UserCreate to nil")
 	}
-	var requiredBitSet [3]uint8
+	var requiredBitSet [4]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -5192,6 +5344,26 @@ func (s *UserCreate) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"did\"")
+			}
+		case "bsky":
+			if err := func() error {
+				s.Bsky.Reset()
+				if err := s.Bsky.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"bsky\"")
+			}
+		case "mastodon":
+			if err := func() error {
+				s.Mastodon.Reset()
+				if err := s.Mastodon.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mastodon\"")
 			}
 		case "delete":
 			if err := func() error {
@@ -5412,8 +5584,9 @@ func (s *UserCreate) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [3]uint8{
+	for i, mask := range [4]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 	} {
@@ -5484,6 +5657,18 @@ func (s *UserList) encodeFields(e *jx.Encoder) {
 		if s.Did.Set {
 			e.FieldStart("did")
 			s.Did.Encode(e)
+		}
+	}
+	{
+		if s.Bsky.Set {
+			e.FieldStart("bsky")
+			s.Bsky.Encode(e)
+		}
+	}
+	{
+		if s.Mastodon.Set {
+			e.FieldStart("mastodon")
+			s.Mastodon.Encode(e)
 		}
 	}
 	{
@@ -5614,31 +5799,33 @@ func (s *UserList) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserList = [24]string{
+var jsonFieldsNameOfUserList = [26]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
-	3:  "delete",
-	4:  "handle",
-	5:  "created_at",
-	6:  "updated_at",
-	7:  "raid_at",
-	8:  "luck",
-	9:  "luck_at",
-	10: "like",
-	11: "like_rank",
-	12: "like_at",
-	13: "fav",
-	14: "ten",
-	15: "ten_su",
-	16: "ten_kai",
-	17: "aiten",
-	18: "ten_card",
-	19: "ten_delete",
-	20: "ten_post",
-	21: "ten_get",
-	22: "ten_at",
-	23: "next",
+	3:  "bsky",
+	4:  "mastodon",
+	5:  "delete",
+	6:  "handle",
+	7:  "created_at",
+	8:  "updated_at",
+	9:  "raid_at",
+	10: "luck",
+	11: "luck_at",
+	12: "like",
+	13: "like_rank",
+	14: "like_at",
+	15: "fav",
+	16: "ten",
+	17: "ten_su",
+	18: "ten_kai",
+	19: "aiten",
+	20: "ten_card",
+	21: "ten_delete",
+	22: "ten_post",
+	23: "ten_get",
+	24: "ten_at",
+	25: "next",
 }
 
 // Decode decodes UserList from json.
@@ -5646,7 +5833,7 @@ func (s *UserList) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UserList to nil")
 	}
-	var requiredBitSet [3]uint8
+	var requiredBitSet [4]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -5683,6 +5870,26 @@ func (s *UserList) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"did\"")
+			}
+		case "bsky":
+			if err := func() error {
+				s.Bsky.Reset()
+				if err := s.Bsky.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"bsky\"")
+			}
+		case "mastodon":
+			if err := func() error {
+				s.Mastodon.Reset()
+				if err := s.Mastodon.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mastodon\"")
 			}
 		case "delete":
 			if err := func() error {
@@ -5903,8 +6110,9 @@ func (s *UserList) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [3]uint8{
+	for i, mask := range [4]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 	} {
@@ -5975,6 +6183,18 @@ func (s *UserRead) encodeFields(e *jx.Encoder) {
 		if s.Did.Set {
 			e.FieldStart("did")
 			s.Did.Encode(e)
+		}
+	}
+	{
+		if s.Bsky.Set {
+			e.FieldStart("bsky")
+			s.Bsky.Encode(e)
+		}
+	}
+	{
+		if s.Mastodon.Set {
+			e.FieldStart("mastodon")
+			s.Mastodon.Encode(e)
 		}
 	}
 	{
@@ -6105,31 +6325,33 @@ func (s *UserRead) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserRead = [24]string{
+var jsonFieldsNameOfUserRead = [26]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
-	3:  "delete",
-	4:  "handle",
-	5:  "created_at",
-	6:  "updated_at",
-	7:  "raid_at",
-	8:  "luck",
-	9:  "luck_at",
-	10: "like",
-	11: "like_rank",
-	12: "like_at",
-	13: "fav",
-	14: "ten",
-	15: "ten_su",
-	16: "ten_kai",
-	17: "aiten",
-	18: "ten_card",
-	19: "ten_delete",
-	20: "ten_post",
-	21: "ten_get",
-	22: "ten_at",
-	23: "next",
+	3:  "bsky",
+	4:  "mastodon",
+	5:  "delete",
+	6:  "handle",
+	7:  "created_at",
+	8:  "updated_at",
+	9:  "raid_at",
+	10: "luck",
+	11: "luck_at",
+	12: "like",
+	13: "like_rank",
+	14: "like_at",
+	15: "fav",
+	16: "ten",
+	17: "ten_su",
+	18: "ten_kai",
+	19: "aiten",
+	20: "ten_card",
+	21: "ten_delete",
+	22: "ten_post",
+	23: "ten_get",
+	24: "ten_at",
+	25: "next",
 }
 
 // Decode decodes UserRead from json.
@@ -6137,7 +6359,7 @@ func (s *UserRead) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UserRead to nil")
 	}
-	var requiredBitSet [3]uint8
+	var requiredBitSet [4]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -6174,6 +6396,26 @@ func (s *UserRead) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"did\"")
+			}
+		case "bsky":
+			if err := func() error {
+				s.Bsky.Reset()
+				if err := s.Bsky.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"bsky\"")
+			}
+		case "mastodon":
+			if err := func() error {
+				s.Mastodon.Reset()
+				if err := s.Mastodon.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mastodon\"")
 			}
 		case "delete":
 			if err := func() error {
@@ -6394,8 +6636,9 @@ func (s *UserRead) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [3]uint8{
+	for i, mask := range [4]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 	} {
@@ -6466,6 +6709,18 @@ func (s *UserUpdate) encodeFields(e *jx.Encoder) {
 		if s.Did.Set {
 			e.FieldStart("did")
 			s.Did.Encode(e)
+		}
+	}
+	{
+		if s.Bsky.Set {
+			e.FieldStart("bsky")
+			s.Bsky.Encode(e)
+		}
+	}
+	{
+		if s.Mastodon.Set {
+			e.FieldStart("mastodon")
+			s.Mastodon.Encode(e)
 		}
 	}
 	{
@@ -6596,31 +6851,33 @@ func (s *UserUpdate) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserUpdate = [24]string{
+var jsonFieldsNameOfUserUpdate = [26]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
-	3:  "delete",
-	4:  "handle",
-	5:  "created_at",
-	6:  "updated_at",
-	7:  "raid_at",
-	8:  "luck",
-	9:  "luck_at",
-	10: "like",
-	11: "like_rank",
-	12: "like_at",
-	13: "fav",
-	14: "ten",
-	15: "ten_su",
-	16: "ten_kai",
-	17: "aiten",
-	18: "ten_card",
-	19: "ten_delete",
-	20: "ten_post",
-	21: "ten_get",
-	22: "ten_at",
-	23: "next",
+	3:  "bsky",
+	4:  "mastodon",
+	5:  "delete",
+	6:  "handle",
+	7:  "created_at",
+	8:  "updated_at",
+	9:  "raid_at",
+	10: "luck",
+	11: "luck_at",
+	12: "like",
+	13: "like_rank",
+	14: "like_at",
+	15: "fav",
+	16: "ten",
+	17: "ten_su",
+	18: "ten_kai",
+	19: "aiten",
+	20: "ten_card",
+	21: "ten_delete",
+	22: "ten_post",
+	23: "ten_get",
+	24: "ten_at",
+	25: "next",
 }
 
 // Decode decodes UserUpdate from json.
@@ -6628,7 +6885,7 @@ func (s *UserUpdate) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UserUpdate to nil")
 	}
-	var requiredBitSet [3]uint8
+	var requiredBitSet [4]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -6665,6 +6922,26 @@ func (s *UserUpdate) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"did\"")
+			}
+		case "bsky":
+			if err := func() error {
+				s.Bsky.Reset()
+				if err := s.Bsky.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"bsky\"")
+			}
+		case "mastodon":
+			if err := func() error {
+				s.Mastodon.Reset()
+				if err := s.Mastodon.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mastodon\"")
 			}
 		case "delete":
 			if err := func() error {
@@ -6885,8 +7162,9 @@ func (s *UserUpdate) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [3]uint8{
+	for i, mask := range [4]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 	} {

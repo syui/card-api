@@ -30,7 +30,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 3000,
+              "maximum": 4000,
               "minimum": 1
             }
           }
@@ -87,6 +87,9 @@
                     "type": "string"
                   },
                   "status": {
+                    "type": "string"
+                  },
+                  "token": {
                     "type": "string"
                   },
                   "cp": {
@@ -243,6 +246,15 @@
                   "skill": {
                     "type": "string"
                   },
+                  "status": {
+                    "type": "string"
+                  },
+                  "token": {
+                    "type": "string"
+                  },
+                  "cp": {
+                    "type": "integer"
+                  },
                   "owner": {
                     "type": "integer"
                   }
@@ -372,7 +384,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 3000,
+              "maximum": 4000,
               "minimum": 1
             }
           }
@@ -698,7 +710,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 3000,
+              "maximum": 4000,
               "minimum": 1
             }
           }
@@ -751,7 +763,16 @@
                   "did": {
                     "type": "string"
                   },
+                  "bsky": {
+                    "type": "boolean"
+                  },
+                  "mastodon": {
+                    "type": "boolean"
+                  },
                   "delete": {
+                    "type": "boolean"
+                  },
+                  "handle": {
                     "type": "boolean"
                   },
                   "token": {
@@ -789,6 +810,9 @@
                     "type": "string",
                     "format": "date-time"
                   },
+                  "fav": {
+                    "type": "integer"
+                  },
                   "ten": {
                     "type": "boolean"
                   },
@@ -796,6 +820,9 @@
                     "type": "integer"
                   },
                   "ten_kai": {
+                    "type": "integer"
+                  },
+                  "aiten": {
                     "type": "integer"
                   },
                   "ten_card": {
@@ -964,7 +991,16 @@
                   "did": {
                     "type": "string"
                   },
+                  "bsky": {
+                    "type": "boolean"
+                  },
+                  "mastodon": {
+                    "type": "boolean"
+                  },
                   "delete": {
+                    "type": "boolean"
+                  },
+                  "handle": {
                     "type": "boolean"
                   },
                   "token": {
@@ -995,6 +1031,9 @@
                     "type": "string",
                     "format": "date-time"
                   },
+                  "fav": {
+                    "type": "integer"
+                  },
                   "ten": {
                     "type": "boolean"
                   },
@@ -1002,6 +1041,9 @@
                     "type": "integer"
                   },
                   "ten_kai": {
+                    "type": "integer"
+                  },
+                  "aiten": {
                     "type": "integer"
                   },
                   "ten_card": {
@@ -1171,6 +1213,9 @@
           "status": {
             "type": "string"
           },
+          "token": {
+            "type": "string"
+          },
           "cp": {
             "type": "integer"
           },
@@ -1323,7 +1368,16 @@
           "did": {
             "type": "string"
           },
+          "bsky": {
+            "type": "boolean"
+          },
+          "mastodon": {
+            "type": "boolean"
+          },
           "delete": {
+            "type": "boolean"
+          },
+          "handle": {
             "type": "boolean"
           },
           "created_at": {
@@ -1355,6 +1409,9 @@
             "type": "string",
             "format": "date-time"
           },
+          "fav": {
+            "type": "integer"
+          },
           "ten": {
             "type": "boolean"
           },
@@ -1362,6 +1419,9 @@
             "type": "integer"
           },
           "ten_kai": {
+            "type": "integer"
+          },
+          "aiten": {
             "type": "integer"
           },
           "ten_card": {
@@ -1486,7 +1546,16 @@
           "did": {
             "type": "string"
           },
+          "bsky": {
+            "type": "boolean"
+          },
+          "mastodon": {
+            "type": "boolean"
+          },
           "delete": {
+            "type": "boolean"
+          },
+          "handle": {
             "type": "boolean"
           },
           "created_at": {
@@ -1518,6 +1587,9 @@
             "type": "string",
             "format": "date-time"
           },
+          "fav": {
+            "type": "integer"
+          },
           "ten": {
             "type": "boolean"
           },
@@ -1525,6 +1597,9 @@
             "type": "integer"
           },
           "ten_kai": {
+            "type": "integer"
+          },
+          "aiten": {
             "type": "integer"
           },
           "ten_card": {
@@ -1564,7 +1639,16 @@
           "did": {
             "type": "string"
           },
+          "bsky": {
+            "type": "boolean"
+          },
+          "mastodon": {
+            "type": "boolean"
+          },
           "delete": {
+            "type": "boolean"
+          },
+          "handle": {
             "type": "boolean"
           },
           "token": {
@@ -1602,6 +1686,9 @@
             "type": "string",
             "format": "date-time"
           },
+          "fav": {
+            "type": "integer"
+          },
           "ten": {
             "type": "boolean"
           },
@@ -1609,6 +1696,9 @@
             "type": "integer"
           },
           "ten_kai": {
+            "type": "integer"
+          },
+          "aiten": {
             "type": "integer"
           },
           "ten_card": {
@@ -1655,7 +1745,16 @@
           "did": {
             "type": "string"
           },
+          "bsky": {
+            "type": "boolean"
+          },
+          "mastodon": {
+            "type": "boolean"
+          },
           "delete": {
+            "type": "boolean"
+          },
+          "handle": {
             "type": "boolean"
           },
           "created_at": {
@@ -1687,6 +1786,9 @@
             "type": "string",
             "format": "date-time"
           },
+          "fav": {
+            "type": "integer"
+          },
           "ten": {
             "type": "boolean"
           },
@@ -1694,6 +1796,9 @@
             "type": "integer"
           },
           "ten_kai": {
+            "type": "integer"
+          },
+          "aiten": {
             "type": "integer"
           },
           "ten_card": {
@@ -1733,7 +1838,16 @@
           "did": {
             "type": "string"
           },
+          "bsky": {
+            "type": "boolean"
+          },
+          "mastodon": {
+            "type": "boolean"
+          },
           "delete": {
+            "type": "boolean"
+          },
+          "handle": {
             "type": "boolean"
           },
           "created_at": {
@@ -1765,6 +1879,9 @@
             "type": "string",
             "format": "date-time"
           },
+          "fav": {
+            "type": "integer"
+          },
           "ten": {
             "type": "boolean"
           },
@@ -1772,6 +1889,9 @@
             "type": "integer"
           },
           "ten_kai": {
+            "type": "integer"
+          },
+          "aiten": {
             "type": "integer"
           },
           "ten_card": {
@@ -1811,7 +1931,16 @@
           "did": {
             "type": "string"
           },
+          "bsky": {
+            "type": "boolean"
+          },
+          "mastodon": {
+            "type": "boolean"
+          },
           "delete": {
+            "type": "boolean"
+          },
+          "handle": {
             "type": "boolean"
           },
           "created_at": {
@@ -1843,6 +1972,9 @@
             "type": "string",
             "format": "date-time"
           },
+          "fav": {
+            "type": "integer"
+          },
           "ten": {
             "type": "boolean"
           },
@@ -1850,6 +1982,9 @@
             "type": "integer"
           },
           "ten_kai": {
+            "type": "integer"
+          },
+          "aiten": {
             "type": "integer"
           },
           "ten_card": {
@@ -1889,7 +2024,16 @@
           "did": {
             "type": "string"
           },
+          "bsky": {
+            "type": "boolean"
+          },
+          "mastodon": {
+            "type": "boolean"
+          },
           "delete": {
+            "type": "boolean"
+          },
+          "handle": {
             "type": "boolean"
           },
           "created_at": {
@@ -1921,6 +2065,9 @@
             "type": "string",
             "format": "date-time"
           },
+          "fav": {
+            "type": "integer"
+          },
           "ten": {
             "type": "boolean"
           },
@@ -1928,6 +2075,9 @@
             "type": "integer"
           },
           "ten_kai": {
+            "type": "integer"
+          },
+          "aiten": {
             "type": "integer"
           },
           "ten_card": {

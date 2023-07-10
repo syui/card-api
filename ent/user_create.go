@@ -41,6 +41,34 @@ func (uc *UserCreate) SetNillableDid(s *string) *UserCreate {
 	return uc
 }
 
+// SetBsky sets the "bsky" field.
+func (uc *UserCreate) SetBsky(b bool) *UserCreate {
+	uc.mutation.SetBsky(b)
+	return uc
+}
+
+// SetNillableBsky sets the "bsky" field if the given value is not nil.
+func (uc *UserCreate) SetNillableBsky(b *bool) *UserCreate {
+	if b != nil {
+		uc.SetBsky(*b)
+	}
+	return uc
+}
+
+// SetMastodon sets the "mastodon" field.
+func (uc *UserCreate) SetMastodon(b bool) *UserCreate {
+	uc.mutation.SetMastodon(b)
+	return uc
+}
+
+// SetNillableMastodon sets the "mastodon" field if the given value is not nil.
+func (uc *UserCreate) SetNillableMastodon(b *bool) *UserCreate {
+	if b != nil {
+		uc.SetMastodon(*b)
+	}
+	return uc
+}
+
 // SetDelete sets the "delete" field.
 func (uc *UserCreate) SetDelete(b bool) *UserCreate {
 	uc.mutation.SetDelete(b)
@@ -405,6 +433,14 @@ func (uc *UserCreate) ExecX(ctx context.Context) {
 
 // defaults sets the default values of the builder before save.
 func (uc *UserCreate) defaults() {
+	if _, ok := uc.mutation.Bsky(); !ok {
+		v := user.DefaultBsky
+		uc.mutation.SetBsky(v)
+	}
+	if _, ok := uc.mutation.Mastodon(); !ok {
+		v := user.DefaultMastodon
+		uc.mutation.SetMastodon(v)
+	}
 	if _, ok := uc.mutation.Delete(); !ok {
 		v := user.DefaultDelete
 		uc.mutation.SetDelete(v)
@@ -494,6 +530,14 @@ func (uc *UserCreate) createSpec() (*User, *sqlgraph.CreateSpec) {
 	if value, ok := uc.mutation.Did(); ok {
 		_spec.SetField(user.FieldDid, field.TypeString, value)
 		_node.Did = value
+	}
+	if value, ok := uc.mutation.Bsky(); ok {
+		_spec.SetField(user.FieldBsky, field.TypeBool, value)
+		_node.Bsky = value
+	}
+	if value, ok := uc.mutation.Mastodon(); ok {
+		_spec.SetField(user.FieldMastodon, field.TypeBool, value)
+		_node.Mastodon = value
 	}
 	if value, ok := uc.mutation.Delete(); ok {
 		_spec.SetField(user.FieldDelete, field.TypeBool, value)

@@ -20,6 +20,10 @@ type User struct {
 	Username string `json:"username,omitempty"`
 	// Did holds the value of the "did" field.
 	Did string `json:"did,omitempty"`
+	// Bsky holds the value of the "bsky" field.
+	Bsky bool `json:"bsky,omitempty"`
+	// Mastodon holds the value of the "mastodon" field.
+	Mastodon bool `json:"mastodon,omitempty"`
 	// Delete holds the value of the "delete" field.
 	Delete bool `json:"delete,omitempty"`
 	// Handle holds the value of the "handle" field.
@@ -95,7 +99,7 @@ func (*User) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case user.FieldDelete, user.FieldHandle, user.FieldTen:
+		case user.FieldBsky, user.FieldMastodon, user.FieldDelete, user.FieldHandle, user.FieldTen:
 			values[i] = new(sql.NullBool)
 		case user.FieldID, user.FieldLuck, user.FieldLike, user.FieldLikeRank, user.FieldFav, user.FieldTenSu, user.FieldTenKai, user.FieldAiten:
 			values[i] = new(sql.NullInt64)
@@ -137,6 +141,18 @@ func (u *User) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field did", values[i])
 			} else if value.Valid {
 				u.Did = value.String
+			}
+		case user.FieldBsky:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field bsky", values[i])
+			} else if value.Valid {
+				u.Bsky = value.Bool
+			}
+		case user.FieldMastodon:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field mastodon", values[i])
+			} else if value.Valid {
+				u.Mastodon = value.Bool
 			}
 		case user.FieldDelete:
 			if value, ok := values[i].(*sql.NullBool); !ok {
@@ -321,6 +337,12 @@ func (u *User) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("did=")
 	builder.WriteString(u.Did)
+	builder.WriteString(", ")
+	builder.WriteString("bsky=")
+	builder.WriteString(fmt.Sprintf("%v", u.Bsky))
+	builder.WriteString(", ")
+	builder.WriteString("mastodon=")
+	builder.WriteString(fmt.Sprintf("%v", u.Mastodon))
 	builder.WriteString(", ")
 	builder.WriteString("delete=")
 	builder.WriteString(fmt.Sprintf("%v", u.Delete))

@@ -493,6 +493,13 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	if v, ok := req.Did.Get(); ok {
 		b.SetDid(v)
 	}
+	if v, ok := req.Bsky.Get(); ok {
+		b.SetBsky(v)
+	}
+	if v, ok := req.Mastodon.Get(); ok {
+		b.SetMastodon(v)
+	}
+
 	if v, ok := req.Delete.Get(); ok {
 		b.SetDelete(v)
 	}
@@ -628,6 +635,12 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 			}
 			if v, ok := req.Did.Get(); ok {
 				b.SetDid(v)
+			}
+			if v, ok := req.Bsky.Get(); ok {
+				b.SetBsky(v)
+			}
+			if v, ok := req.Mastodon.Get(); ok {
+				b.SetMastodon(v)
 			}
 			if v, ok := req.Delete.Get(); ok {
 				b.SetDelete(v)

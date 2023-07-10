@@ -1490,6 +1490,8 @@ type UserMutation struct {
 	id            *int
 	username      *string
 	did           *string
+	bsky          *bool
+	mastodon      *bool
 	delete        *bool
 	handle        *bool
 	token         *string
@@ -1710,6 +1712,104 @@ func (m *UserMutation) DidCleared() bool {
 func (m *UserMutation) ResetDid() {
 	m.did = nil
 	delete(m.clearedFields, user.FieldDid)
+}
+
+// SetBsky sets the "bsky" field.
+func (m *UserMutation) SetBsky(b bool) {
+	m.bsky = &b
+}
+
+// Bsky returns the value of the "bsky" field in the mutation.
+func (m *UserMutation) Bsky() (r bool, exists bool) {
+	v := m.bsky
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldBsky returns the old "bsky" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldBsky(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldBsky is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldBsky requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldBsky: %w", err)
+	}
+	return oldValue.Bsky, nil
+}
+
+// ClearBsky clears the value of the "bsky" field.
+func (m *UserMutation) ClearBsky() {
+	m.bsky = nil
+	m.clearedFields[user.FieldBsky] = struct{}{}
+}
+
+// BskyCleared returns if the "bsky" field was cleared in this mutation.
+func (m *UserMutation) BskyCleared() bool {
+	_, ok := m.clearedFields[user.FieldBsky]
+	return ok
+}
+
+// ResetBsky resets all changes to the "bsky" field.
+func (m *UserMutation) ResetBsky() {
+	m.bsky = nil
+	delete(m.clearedFields, user.FieldBsky)
+}
+
+// SetMastodon sets the "mastodon" field.
+func (m *UserMutation) SetMastodon(b bool) {
+	m.mastodon = &b
+}
+
+// Mastodon returns the value of the "mastodon" field in the mutation.
+func (m *UserMutation) Mastodon() (r bool, exists bool) {
+	v := m.mastodon
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldMastodon returns the old "mastodon" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldMastodon(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldMastodon is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldMastodon requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldMastodon: %w", err)
+	}
+	return oldValue.Mastodon, nil
+}
+
+// ClearMastodon clears the value of the "mastodon" field.
+func (m *UserMutation) ClearMastodon() {
+	m.mastodon = nil
+	m.clearedFields[user.FieldMastodon] = struct{}{}
+}
+
+// MastodonCleared returns if the "mastodon" field was cleared in this mutation.
+func (m *UserMutation) MastodonCleared() bool {
+	_, ok := m.clearedFields[user.FieldMastodon]
+	return ok
+}
+
+// ResetMastodon resets all changes to the "mastodon" field.
+func (m *UserMutation) ResetMastodon() {
+	m.mastodon = nil
+	delete(m.clearedFields, user.FieldMastodon)
 }
 
 // SetDelete sets the "delete" field.
@@ -3061,12 +3161,18 @@ func (m *UserMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *UserMutation) Fields() []string {
-	fields := make([]string, 0, 25)
+	fields := make([]string, 0, 27)
 	if m.username != nil {
 		fields = append(fields, user.FieldUsername)
 	}
 	if m.did != nil {
 		fields = append(fields, user.FieldDid)
+	}
+	if m.bsky != nil {
+		fields = append(fields, user.FieldBsky)
+	}
+	if m.mastodon != nil {
+		fields = append(fields, user.FieldMastodon)
 	}
 	if m.delete != nil {
 		fields = append(fields, user.FieldDelete)
@@ -3149,6 +3255,10 @@ func (m *UserMutation) Field(name string) (ent.Value, bool) {
 		return m.Username()
 	case user.FieldDid:
 		return m.Did()
+	case user.FieldBsky:
+		return m.Bsky()
+	case user.FieldMastodon:
+		return m.Mastodon()
 	case user.FieldDelete:
 		return m.Delete()
 	case user.FieldHandle:
@@ -3208,6 +3318,10 @@ func (m *UserMutation) OldField(ctx context.Context, name string) (ent.Value, er
 		return m.OldUsername(ctx)
 	case user.FieldDid:
 		return m.OldDid(ctx)
+	case user.FieldBsky:
+		return m.OldBsky(ctx)
+	case user.FieldMastodon:
+		return m.OldMastodon(ctx)
 	case user.FieldDelete:
 		return m.OldDelete(ctx)
 	case user.FieldHandle:
@@ -3276,6 +3390,20 @@ func (m *UserMutation) SetField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetDid(v)
+		return nil
+	case user.FieldBsky:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetBsky(v)
+		return nil
+	case user.FieldMastodon:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetMastodon(v)
 		return nil
 	case user.FieldDelete:
 		v, ok := value.(bool)
@@ -3558,6 +3686,12 @@ func (m *UserMutation) ClearedFields() []string {
 	if m.FieldCleared(user.FieldDid) {
 		fields = append(fields, user.FieldDid)
 	}
+	if m.FieldCleared(user.FieldBsky) {
+		fields = append(fields, user.FieldBsky)
+	}
+	if m.FieldCleared(user.FieldMastodon) {
+		fields = append(fields, user.FieldMastodon)
+	}
 	if m.FieldCleared(user.FieldDelete) {
 		fields = append(fields, user.FieldDelete)
 	}
@@ -3641,6 +3775,12 @@ func (m *UserMutation) ClearField(name string) error {
 	case user.FieldDid:
 		m.ClearDid()
 		return nil
+	case user.FieldBsky:
+		m.ClearBsky()
+		return nil
+	case user.FieldMastodon:
+		m.ClearMastodon()
+		return nil
 	case user.FieldDelete:
 		m.ClearDelete()
 		return nil
@@ -3720,6 +3860,12 @@ func (m *UserMutation) ResetField(name string) error {
 		return nil
 	case user.FieldDid:
 		m.ResetDid()
+		return nil
+	case user.FieldBsky:
+		m.ResetBsky()
+		return nil
+	case user.FieldMastodon:
+		m.ResetMastodon()
 		return nil
 	case user.FieldDelete:
 		m.ResetDelete()

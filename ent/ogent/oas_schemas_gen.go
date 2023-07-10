@@ -177,6 +177,8 @@ type CardOwnerRead struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
+	Bsky      OptBool     `json:"bsky"`
+	Mastodon  OptBool     `json:"mastodon"`
 	Delete    OptBool     `json:"delete"`
 	Handle    OptBool     `json:"handle"`
 	CreatedAt OptDateTime `json:"created_at"`
@@ -213,6 +215,16 @@ func (s *CardOwnerRead) GetUsername() string {
 // GetDid returns the value of Did.
 func (s *CardOwnerRead) GetDid() OptString {
 	return s.Did
+}
+
+// GetBsky returns the value of Bsky.
+func (s *CardOwnerRead) GetBsky() OptBool {
+	return s.Bsky
+}
+
+// GetMastodon returns the value of Mastodon.
+func (s *CardOwnerRead) GetMastodon() OptBool {
+	return s.Mastodon
 }
 
 // GetDelete returns the value of Delete.
@@ -333,6 +345,16 @@ func (s *CardOwnerRead) SetUsername(val string) {
 // SetDid sets the value of Did.
 func (s *CardOwnerRead) SetDid(val OptString) {
 	s.Did = val
+}
+
+// SetBsky sets the value of Bsky.
+func (s *CardOwnerRead) SetBsky(val OptBool) {
+	s.Bsky = val
+}
+
+// SetMastodon sets the value of Mastodon.
+func (s *CardOwnerRead) SetMastodon(val OptBool) {
+	s.Mastodon = val
 }
 
 // SetDelete sets the value of Delete.
@@ -749,6 +771,8 @@ func (s *CreateGroupReq) SetUsers(val []int) {
 type CreateUserReq struct {
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
+	Bsky      OptBool     `json:"bsky"`
+	Mastodon  OptBool     `json:"mastodon"`
 	Delete    OptBool     `json:"delete"`
 	Handle    OptBool     `json:"handle"`
 	Token     OptString   `json:"token"`
@@ -783,6 +807,16 @@ func (s *CreateUserReq) GetUsername() string {
 // GetDid returns the value of Did.
 func (s *CreateUserReq) GetDid() OptString {
 	return s.Did
+}
+
+// GetBsky returns the value of Bsky.
+func (s *CreateUserReq) GetBsky() OptBool {
+	return s.Bsky
+}
+
+// GetMastodon returns the value of Mastodon.
+func (s *CreateUserReq) GetMastodon() OptBool {
+	return s.Mastodon
 }
 
 // GetDelete returns the value of Delete.
@@ -913,6 +947,16 @@ func (s *CreateUserReq) SetUsername(val string) {
 // SetDid sets the value of Did.
 func (s *CreateUserReq) SetDid(val OptString) {
 	s.Did = val
+}
+
+// SetBsky sets the value of Bsky.
+func (s *CreateUserReq) SetBsky(val OptBool) {
+	s.Bsky = val
+}
+
+// SetMastodon sets the value of Mastodon.
+func (s *CreateUserReq) SetMastodon(val OptBool) {
+	s.Mastodon = val
 }
 
 // SetDelete sets the value of Delete.
@@ -1171,6 +1215,8 @@ type GroupUsersList struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
+	Bsky      OptBool     `json:"bsky"`
+	Mastodon  OptBool     `json:"mastodon"`
 	Delete    OptBool     `json:"delete"`
 	Handle    OptBool     `json:"handle"`
 	CreatedAt OptDateTime `json:"created_at"`
@@ -1207,6 +1253,16 @@ func (s *GroupUsersList) GetUsername() string {
 // GetDid returns the value of Did.
 func (s *GroupUsersList) GetDid() OptString {
 	return s.Did
+}
+
+// GetBsky returns the value of Bsky.
+func (s *GroupUsersList) GetBsky() OptBool {
+	return s.Bsky
+}
+
+// GetMastodon returns the value of Mastodon.
+func (s *GroupUsersList) GetMastodon() OptBool {
+	return s.Mastodon
 }
 
 // GetDelete returns the value of Delete.
@@ -1327,6 +1383,16 @@ func (s *GroupUsersList) SetUsername(val string) {
 // SetDid sets the value of Did.
 func (s *GroupUsersList) SetDid(val OptString) {
 	s.Did = val
+}
+
+// SetBsky sets the value of Bsky.
+func (s *GroupUsersList) SetBsky(val OptBool) {
+	s.Bsky = val
+}
+
+// SetMastodon sets the value of Mastodon.
+func (s *GroupUsersList) SetMastodon(val OptBool) {
+	s.Mastodon = val
 }
 
 // SetDelete sets the value of Delete.
@@ -1940,6 +2006,8 @@ func (s *UpdateGroupReq) SetUsers(val []int) {
 
 type UpdateUserReq struct {
 	Did       OptString   `json:"did"`
+	Bsky      OptBool     `json:"bsky"`
+	Mastodon  OptBool     `json:"mastodon"`
 	Delete    OptBool     `json:"delete"`
 	Handle    OptBool     `json:"handle"`
 	Token     OptString   `json:"token"`
@@ -1967,6 +2035,16 @@ type UpdateUserReq struct {
 // GetDid returns the value of Did.
 func (s *UpdateUserReq) GetDid() OptString {
 	return s.Did
+}
+
+// GetBsky returns the value of Bsky.
+func (s *UpdateUserReq) GetBsky() OptBool {
+	return s.Bsky
+}
+
+// GetMastodon returns the value of Mastodon.
+func (s *UpdateUserReq) GetMastodon() OptBool {
+	return s.Mastodon
 }
 
 // GetDelete returns the value of Delete.
@@ -2082,6 +2160,16 @@ func (s *UpdateUserReq) GetCard() []int {
 // SetDid sets the value of Did.
 func (s *UpdateUserReq) SetDid(val OptString) {
 	s.Did = val
+}
+
+// SetBsky sets the value of Bsky.
+func (s *UpdateUserReq) SetBsky(val OptBool) {
+	s.Bsky = val
+}
+
+// SetMastodon sets the value of Mastodon.
+func (s *UpdateUserReq) SetMastodon(val OptBool) {
+	s.Mastodon = val
 }
 
 // SetDelete sets the value of Delete.
@@ -2280,6 +2368,8 @@ type UserCreate struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
+	Bsky      OptBool     `json:"bsky"`
+	Mastodon  OptBool     `json:"mastodon"`
 	Delete    OptBool     `json:"delete"`
 	Handle    OptBool     `json:"handle"`
 	CreatedAt OptDateTime `json:"created_at"`
@@ -2316,6 +2406,16 @@ func (s *UserCreate) GetUsername() string {
 // GetDid returns the value of Did.
 func (s *UserCreate) GetDid() OptString {
 	return s.Did
+}
+
+// GetBsky returns the value of Bsky.
+func (s *UserCreate) GetBsky() OptBool {
+	return s.Bsky
+}
+
+// GetMastodon returns the value of Mastodon.
+func (s *UserCreate) GetMastodon() OptBool {
+	return s.Mastodon
 }
 
 // GetDelete returns the value of Delete.
@@ -2438,6 +2538,16 @@ func (s *UserCreate) SetDid(val OptString) {
 	s.Did = val
 }
 
+// SetBsky sets the value of Bsky.
+func (s *UserCreate) SetBsky(val OptBool) {
+	s.Bsky = val
+}
+
+// SetMastodon sets the value of Mastodon.
+func (s *UserCreate) SetMastodon(val OptBool) {
+	s.Mastodon = val
+}
+
 // SetDelete sets the value of Delete.
 func (s *UserCreate) SetDelete(val OptBool) {
 	s.Delete = val
@@ -2550,6 +2660,8 @@ type UserList struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
+	Bsky      OptBool     `json:"bsky"`
+	Mastodon  OptBool     `json:"mastodon"`
 	Delete    OptBool     `json:"delete"`
 	Handle    OptBool     `json:"handle"`
 	CreatedAt OptDateTime `json:"created_at"`
@@ -2586,6 +2698,16 @@ func (s *UserList) GetUsername() string {
 // GetDid returns the value of Did.
 func (s *UserList) GetDid() OptString {
 	return s.Did
+}
+
+// GetBsky returns the value of Bsky.
+func (s *UserList) GetBsky() OptBool {
+	return s.Bsky
+}
+
+// GetMastodon returns the value of Mastodon.
+func (s *UserList) GetMastodon() OptBool {
+	return s.Mastodon
 }
 
 // GetDelete returns the value of Delete.
@@ -2708,6 +2830,16 @@ func (s *UserList) SetDid(val OptString) {
 	s.Did = val
 }
 
+// SetBsky sets the value of Bsky.
+func (s *UserList) SetBsky(val OptBool) {
+	s.Bsky = val
+}
+
+// SetMastodon sets the value of Mastodon.
+func (s *UserList) SetMastodon(val OptBool) {
+	s.Mastodon = val
+}
+
 // SetDelete sets the value of Delete.
 func (s *UserList) SetDelete(val OptBool) {
 	s.Delete = val
@@ -2818,6 +2950,8 @@ type UserRead struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
+	Bsky      OptBool     `json:"bsky"`
+	Mastodon  OptBool     `json:"mastodon"`
 	Delete    OptBool     `json:"delete"`
 	Handle    OptBool     `json:"handle"`
 	CreatedAt OptDateTime `json:"created_at"`
@@ -2854,6 +2988,16 @@ func (s *UserRead) GetUsername() string {
 // GetDid returns the value of Did.
 func (s *UserRead) GetDid() OptString {
 	return s.Did
+}
+
+// GetBsky returns the value of Bsky.
+func (s *UserRead) GetBsky() OptBool {
+	return s.Bsky
+}
+
+// GetMastodon returns the value of Mastodon.
+func (s *UserRead) GetMastodon() OptBool {
+	return s.Mastodon
 }
 
 // GetDelete returns the value of Delete.
@@ -2976,6 +3120,16 @@ func (s *UserRead) SetDid(val OptString) {
 	s.Did = val
 }
 
+// SetBsky sets the value of Bsky.
+func (s *UserRead) SetBsky(val OptBool) {
+	s.Bsky = val
+}
+
+// SetMastodon sets the value of Mastodon.
+func (s *UserRead) SetMastodon(val OptBool) {
+	s.Mastodon = val
+}
+
 // SetDelete sets the value of Delete.
 func (s *UserRead) SetDelete(val OptBool) {
 	s.Delete = val
@@ -3088,6 +3242,8 @@ type UserUpdate struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
+	Bsky      OptBool     `json:"bsky"`
+	Mastodon  OptBool     `json:"mastodon"`
 	Delete    OptBool     `json:"delete"`
 	Handle    OptBool     `json:"handle"`
 	CreatedAt OptDateTime `json:"created_at"`
@@ -3124,6 +3280,16 @@ func (s *UserUpdate) GetUsername() string {
 // GetDid returns the value of Did.
 func (s *UserUpdate) GetDid() OptString {
 	return s.Did
+}
+
+// GetBsky returns the value of Bsky.
+func (s *UserUpdate) GetBsky() OptBool {
+	return s.Bsky
+}
+
+// GetMastodon returns the value of Mastodon.
+func (s *UserUpdate) GetMastodon() OptBool {
+	return s.Mastodon
 }
 
 // GetDelete returns the value of Delete.
@@ -3244,6 +3410,16 @@ func (s *UserUpdate) SetUsername(val string) {
 // SetDid sets the value of Did.
 func (s *UserUpdate) SetDid(val OptString) {
 	s.Did = val
+}
+
+// SetBsky sets the value of Bsky.
+func (s *UserUpdate) SetBsky(val OptBool) {
+	s.Bsky = val
+}
+
+// SetMastodon sets the value of Mastodon.
+func (s *UserUpdate) SetMastodon(val OptBool) {
+	s.Mastodon = val
 }
 
 // SetDelete sets the value of Delete.

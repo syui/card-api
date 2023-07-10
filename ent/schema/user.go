@@ -38,6 +38,14 @@ func (User) Fields() []ent.Field {
 		field.String("did").
 		Optional(),
 
+		field.Bool("bsky").
+		Default(false).
+		Optional(),
+
+		field.Bool("mastodon").
+		Default(true).
+		Optional(),
+
 		field.Bool("delete").
 		Default(false).
 		Optional(),

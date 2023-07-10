@@ -6,8 +6,8 @@ case $OSTYPE in
 		;;
 esac
 
-username=syui
-id=1
+username=ai
+id=2
 
 host=https://api.syui.ai
 token=`cat ~/.config/atr/api_card.json|jq -r .token`
@@ -17,10 +17,24 @@ data=`curl -sL "$host_users"|jq .`
 nd=`date +"%Y%m%d"`
 nd=20230101
 
-title=card_patch
-echo $title
-card_id=1
-curl -X PATCH -H "Content-Type: application/json" -d "{\"cp\":1,\"token\":\"$token\"}" $host/cards/$card_id
+#title=card_patch
+#echo $title
+#card_id=1
+#curl -X PATCH -H "Content-Type: application/json" -d "{\"cp\":1,\"token\":\"$token\"}" $host/cards/$card_id
+#read
+#
+## card pass
+echo "\ntest get card (no password)"
+curl -X POST -H "Content-Type: application/json" -d "{\"owner\":$id}" $host/cards
+echo "\ntest select card (no password)"
+curl -X POST -H "Content-Type: application/json" -d "{\"owner\":$id,\"card\":0,\"status\":\"normal\",\"cp\":1}" $host/cards
+
+## token
+echo "\ntest token (no token)"
+curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"1\"}" -s $host/users/$id
+echo "\ntest token (yes token)"
+curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"$nd\",\"token\":\"$token\"}" -s $host/users/$id
+
 read
 
 ## users
@@ -35,11 +49,7 @@ read
 curl -sL "$host/cards?itemsPerPage=2550"|jq .
 read
 
-## token
-echo "\ntest token (no token)"
-curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"$nd\"}" -s $host/users/$id
-echo "\ntest token (yes token)"
-curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"$nd\",\"token\":\"$token\"}" -s $host/users/$id
+
 
 read
 ## delete

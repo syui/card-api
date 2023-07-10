@@ -65,6 +65,16 @@ func Did(v string) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldDid, v))
 }
 
+// Bsky applies equality check predicate on the "bsky" field. It's identical to BskyEQ.
+func Bsky(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldBsky, v))
+}
+
+// Mastodon applies equality check predicate on the "mastodon" field. It's identical to MastodonEQ.
+func Mastodon(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldMastodon, v))
+}
+
 // Delete applies equality check predicate on the "delete" field. It's identical to DeleteEQ.
 func Delete(v bool) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldDelete, v))
@@ -318,6 +328,46 @@ func DidEqualFold(v string) predicate.User {
 // DidContainsFold applies the ContainsFold predicate on the "did" field.
 func DidContainsFold(v string) predicate.User {
 	return predicate.User(sql.FieldContainsFold(FieldDid, v))
+}
+
+// BskyEQ applies the EQ predicate on the "bsky" field.
+func BskyEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldBsky, v))
+}
+
+// BskyNEQ applies the NEQ predicate on the "bsky" field.
+func BskyNEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldBsky, v))
+}
+
+// BskyIsNil applies the IsNil predicate on the "bsky" field.
+func BskyIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldBsky))
+}
+
+// BskyNotNil applies the NotNil predicate on the "bsky" field.
+func BskyNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldBsky))
+}
+
+// MastodonEQ applies the EQ predicate on the "mastodon" field.
+func MastodonEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldMastodon, v))
+}
+
+// MastodonNEQ applies the NEQ predicate on the "mastodon" field.
+func MastodonNEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldMastodon, v))
+}
+
+// MastodonIsNil applies the IsNil predicate on the "mastodon" field.
+func MastodonIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldMastodon))
+}
+
+// MastodonNotNil applies the NotNil predicate on the "mastodon" field.
+func MastodonNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldMastodon))
 }
 
 // DeleteEQ applies the EQ predicate on the "delete" field.

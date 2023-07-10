@@ -144,6 +144,8 @@ func NewCardOwnerRead(e *ent.User) *CardOwnerRead {
 	ret.ID = e.ID
 	ret.Username = e.Username
 	ret.Did = NewOptString(e.Did)
+	ret.Bsky = NewOptBool(e.Bsky)
+	ret.Mastodon = NewOptBool(e.Mastodon)
 	ret.Delete = NewOptBool(e.Delete)
 	ret.Handle = NewOptBool(e.Handle)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
@@ -306,6 +308,8 @@ func NewGroupUsersList(e *ent.User) *GroupUsersList {
 	ret.ID = e.ID
 	ret.Username = e.Username
 	ret.Did = NewOptString(e.Did)
+	ret.Bsky = NewOptBool(e.Bsky)
+	ret.Mastodon = NewOptBool(e.Mastodon)
 	ret.Delete = NewOptBool(e.Delete)
 	ret.Handle = NewOptBool(e.Handle)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
@@ -356,6 +360,8 @@ func NewUserCreate(e *ent.User) *UserCreate {
 	ret.ID = e.ID
 	ret.Username = e.Username
 	ret.Did = NewOptString(e.Did)
+	ret.Bsky = NewOptBool(e.Bsky)
+	ret.Mastodon = NewOptBool(e.Mastodon)
 	ret.Delete = NewOptBool(e.Delete)
 	ret.Handle = NewOptBool(e.Handle)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
@@ -406,6 +412,8 @@ func NewUserList(e *ent.User) *UserList {
 	ret.ID = e.ID
 	ret.Username = e.Username
 	ret.Did = NewOptString(e.Did)
+	ret.Bsky = NewOptBool(e.Bsky)
+	ret.Mastodon = NewOptBool(e.Mastodon)
 	ret.Delete = NewOptBool(e.Delete)
 	ret.Handle = NewOptBool(e.Handle)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
@@ -456,6 +464,8 @@ func NewUserRead(e *ent.User) *UserRead {
 	ret.ID = e.ID
 	ret.Username = e.Username
 	ret.Did = NewOptString(e.Did)
+	ret.Bsky = NewOptBool(e.Bsky)
+	ret.Mastodon = NewOptBool(e.Mastodon)
 	ret.Delete = NewOptBool(e.Delete)
 	ret.Handle = NewOptBool(e.Handle)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
@@ -506,6 +516,8 @@ func NewUserUpdate(e *ent.User) *UserUpdate {
 	ret.ID = e.ID
 	ret.Username = e.Username
 	ret.Did = NewOptString(e.Did)
+	ret.Bsky = NewOptBool(e.Bsky)
+	ret.Mastodon = NewOptBool(e.Mastodon)
 	ret.Delete = NewOptBool(e.Delete)
 	ret.Handle = NewOptBool(e.Handle)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)

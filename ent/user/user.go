@@ -15,6 +15,10 @@ const (
 	FieldUsername = "username"
 	// FieldDid holds the string denoting the did field in the database.
 	FieldDid = "did"
+	// FieldBsky holds the string denoting the bsky field in the database.
+	FieldBsky = "bsky"
+	// FieldMastodon holds the string denoting the mastodon field in the database.
+	FieldMastodon = "mastodon"
 	// FieldDelete holds the string denoting the delete field in the database.
 	FieldDelete = "delete"
 	// FieldHandle holds the string denoting the handle field in the database.
@@ -79,6 +83,8 @@ var Columns = []string{
 	FieldID,
 	FieldUsername,
 	FieldDid,
+	FieldBsky,
+	FieldMastodon,
 	FieldDelete,
 	FieldHandle,
 	FieldToken,
@@ -128,6 +134,10 @@ func ValidColumn(column string) bool {
 var (
 	// UsernameValidator is a validator for the "username" field. It is called by the builders before save.
 	UsernameValidator func(string) error
+	// DefaultBsky holds the default value on creation for the "bsky" field.
+	DefaultBsky bool
+	// DefaultMastodon holds the default value on creation for the "mastodon" field.
+	DefaultMastodon bool
 	// DefaultDelete holds the default value on creation for the "delete" field.
 	DefaultDelete bool
 	// DefaultHandle holds the default value on creation for the "handle" field.

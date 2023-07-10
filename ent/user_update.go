@@ -49,6 +49,46 @@ func (uu *UserUpdate) ClearDid() *UserUpdate {
 	return uu
 }
 
+// SetBsky sets the "bsky" field.
+func (uu *UserUpdate) SetBsky(b bool) *UserUpdate {
+	uu.mutation.SetBsky(b)
+	return uu
+}
+
+// SetNillableBsky sets the "bsky" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableBsky(b *bool) *UserUpdate {
+	if b != nil {
+		uu.SetBsky(*b)
+	}
+	return uu
+}
+
+// ClearBsky clears the value of the "bsky" field.
+func (uu *UserUpdate) ClearBsky() *UserUpdate {
+	uu.mutation.ClearBsky()
+	return uu
+}
+
+// SetMastodon sets the "mastodon" field.
+func (uu *UserUpdate) SetMastodon(b bool) *UserUpdate {
+	uu.mutation.SetMastodon(b)
+	return uu
+}
+
+// SetNillableMastodon sets the "mastodon" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableMastodon(b *bool) *UserUpdate {
+	if b != nil {
+		uu.SetMastodon(*b)
+	}
+	return uu
+}
+
+// ClearMastodon clears the value of the "mastodon" field.
+func (uu *UserUpdate) ClearMastodon() *UserUpdate {
+	uu.mutation.ClearMastodon()
+	return uu
+}
+
 // SetDelete sets the "delete" field.
 func (uu *UserUpdate) SetDelete(b bool) *UserUpdate {
 	uu.mutation.SetDelete(b)
@@ -601,6 +641,18 @@ func (uu *UserUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	if uu.mutation.DidCleared() {
 		_spec.ClearField(user.FieldDid, field.TypeString)
 	}
+	if value, ok := uu.mutation.Bsky(); ok {
+		_spec.SetField(user.FieldBsky, field.TypeBool, value)
+	}
+	if uu.mutation.BskyCleared() {
+		_spec.ClearField(user.FieldBsky, field.TypeBool)
+	}
+	if value, ok := uu.mutation.Mastodon(); ok {
+		_spec.SetField(user.FieldMastodon, field.TypeBool, value)
+	}
+	if uu.mutation.MastodonCleared() {
+		_spec.ClearField(user.FieldMastodon, field.TypeBool)
+	}
 	if value, ok := uu.mutation.Delete(); ok {
 		_spec.SetField(user.FieldDelete, field.TypeBool, value)
 	}
@@ -833,6 +885,46 @@ func (uuo *UserUpdateOne) SetNillableDid(s *string) *UserUpdateOne {
 // ClearDid clears the value of the "did" field.
 func (uuo *UserUpdateOne) ClearDid() *UserUpdateOne {
 	uuo.mutation.ClearDid()
+	return uuo
+}
+
+// SetBsky sets the "bsky" field.
+func (uuo *UserUpdateOne) SetBsky(b bool) *UserUpdateOne {
+	uuo.mutation.SetBsky(b)
+	return uuo
+}
+
+// SetNillableBsky sets the "bsky" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableBsky(b *bool) *UserUpdateOne {
+	if b != nil {
+		uuo.SetBsky(*b)
+	}
+	return uuo
+}
+
+// ClearBsky clears the value of the "bsky" field.
+func (uuo *UserUpdateOne) ClearBsky() *UserUpdateOne {
+	uuo.mutation.ClearBsky()
+	return uuo
+}
+
+// SetMastodon sets the "mastodon" field.
+func (uuo *UserUpdateOne) SetMastodon(b bool) *UserUpdateOne {
+	uuo.mutation.SetMastodon(b)
+	return uuo
+}
+
+// SetNillableMastodon sets the "mastodon" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableMastodon(b *bool) *UserUpdateOne {
+	if b != nil {
+		uuo.SetMastodon(*b)
+	}
+	return uuo
+}
+
+// ClearMastodon clears the value of the "mastodon" field.
+func (uuo *UserUpdateOne) ClearMastodon() *UserUpdateOne {
+	uuo.mutation.ClearMastodon()
 	return uuo
 }
 
@@ -1417,6 +1509,18 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 	}
 	if uuo.mutation.DidCleared() {
 		_spec.ClearField(user.FieldDid, field.TypeString)
+	}
+	if value, ok := uuo.mutation.Bsky(); ok {
+		_spec.SetField(user.FieldBsky, field.TypeBool, value)
+	}
+	if uuo.mutation.BskyCleared() {
+		_spec.ClearField(user.FieldBsky, field.TypeBool)
+	}
+	if value, ok := uuo.mutation.Mastodon(); ok {
+		_spec.SetField(user.FieldMastodon, field.TypeBool, value)
+	}
+	if uuo.mutation.MastodonCleared() {
+		_spec.ClearField(user.FieldMastodon, field.TypeBool)
 	}
 	if value, ok := uuo.mutation.Delete(); ok {
 		_spec.SetField(user.FieldDelete, field.TypeBool, value)

@@ -49,6 +49,86 @@ func (uu *UserUpdate) ClearDid() *UserUpdate {
 	return uu
 }
 
+// SetMember sets the "member" field.
+func (uu *UserUpdate) SetMember(b bool) *UserUpdate {
+	uu.mutation.SetMember(b)
+	return uu
+}
+
+// SetNillableMember sets the "member" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableMember(b *bool) *UserUpdate {
+	if b != nil {
+		uu.SetMember(*b)
+	}
+	return uu
+}
+
+// ClearMember clears the value of the "member" field.
+func (uu *UserUpdate) ClearMember() *UserUpdate {
+	uu.mutation.ClearMember()
+	return uu
+}
+
+// SetBook sets the "book" field.
+func (uu *UserUpdate) SetBook(b bool) *UserUpdate {
+	uu.mutation.SetBook(b)
+	return uu
+}
+
+// SetNillableBook sets the "book" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableBook(b *bool) *UserUpdate {
+	if b != nil {
+		uu.SetBook(*b)
+	}
+	return uu
+}
+
+// ClearBook clears the value of the "book" field.
+func (uu *UserUpdate) ClearBook() *UserUpdate {
+	uu.mutation.ClearBook()
+	return uu
+}
+
+// SetManga sets the "manga" field.
+func (uu *UserUpdate) SetManga(b bool) *UserUpdate {
+	uu.mutation.SetManga(b)
+	return uu
+}
+
+// SetNillableManga sets the "manga" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableManga(b *bool) *UserUpdate {
+	if b != nil {
+		uu.SetManga(*b)
+	}
+	return uu
+}
+
+// ClearManga clears the value of the "manga" field.
+func (uu *UserUpdate) ClearManga() *UserUpdate {
+	uu.mutation.ClearManga()
+	return uu
+}
+
+// SetBadge sets the "badge" field.
+func (uu *UserUpdate) SetBadge(b bool) *UserUpdate {
+	uu.mutation.SetBadge(b)
+	return uu
+}
+
+// SetNillableBadge sets the "badge" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableBadge(b *bool) *UserUpdate {
+	if b != nil {
+		uu.SetBadge(*b)
+	}
+	return uu
+}
+
+// ClearBadge clears the value of the "badge" field.
+func (uu *UserUpdate) ClearBadge() *UserUpdate {
+	uu.mutation.ClearBadge()
+	return uu
+}
+
 // SetBsky sets the "bsky" field.
 func (uu *UserUpdate) SetBsky(b bool) *UserUpdate {
 	uu.mutation.SetBsky(b)
@@ -641,6 +721,30 @@ func (uu *UserUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	if uu.mutation.DidCleared() {
 		_spec.ClearField(user.FieldDid, field.TypeString)
 	}
+	if value, ok := uu.mutation.Member(); ok {
+		_spec.SetField(user.FieldMember, field.TypeBool, value)
+	}
+	if uu.mutation.MemberCleared() {
+		_spec.ClearField(user.FieldMember, field.TypeBool)
+	}
+	if value, ok := uu.mutation.Book(); ok {
+		_spec.SetField(user.FieldBook, field.TypeBool, value)
+	}
+	if uu.mutation.BookCleared() {
+		_spec.ClearField(user.FieldBook, field.TypeBool)
+	}
+	if value, ok := uu.mutation.Manga(); ok {
+		_spec.SetField(user.FieldManga, field.TypeBool, value)
+	}
+	if uu.mutation.MangaCleared() {
+		_spec.ClearField(user.FieldManga, field.TypeBool)
+	}
+	if value, ok := uu.mutation.Badge(); ok {
+		_spec.SetField(user.FieldBadge, field.TypeBool, value)
+	}
+	if uu.mutation.BadgeCleared() {
+		_spec.ClearField(user.FieldBadge, field.TypeBool)
+	}
 	if value, ok := uu.mutation.Bsky(); ok {
 		_spec.SetField(user.FieldBsky, field.TypeBool, value)
 	}
@@ -885,6 +989,86 @@ func (uuo *UserUpdateOne) SetNillableDid(s *string) *UserUpdateOne {
 // ClearDid clears the value of the "did" field.
 func (uuo *UserUpdateOne) ClearDid() *UserUpdateOne {
 	uuo.mutation.ClearDid()
+	return uuo
+}
+
+// SetMember sets the "member" field.
+func (uuo *UserUpdateOne) SetMember(b bool) *UserUpdateOne {
+	uuo.mutation.SetMember(b)
+	return uuo
+}
+
+// SetNillableMember sets the "member" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableMember(b *bool) *UserUpdateOne {
+	if b != nil {
+		uuo.SetMember(*b)
+	}
+	return uuo
+}
+
+// ClearMember clears the value of the "member" field.
+func (uuo *UserUpdateOne) ClearMember() *UserUpdateOne {
+	uuo.mutation.ClearMember()
+	return uuo
+}
+
+// SetBook sets the "book" field.
+func (uuo *UserUpdateOne) SetBook(b bool) *UserUpdateOne {
+	uuo.mutation.SetBook(b)
+	return uuo
+}
+
+// SetNillableBook sets the "book" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableBook(b *bool) *UserUpdateOne {
+	if b != nil {
+		uuo.SetBook(*b)
+	}
+	return uuo
+}
+
+// ClearBook clears the value of the "book" field.
+func (uuo *UserUpdateOne) ClearBook() *UserUpdateOne {
+	uuo.mutation.ClearBook()
+	return uuo
+}
+
+// SetManga sets the "manga" field.
+func (uuo *UserUpdateOne) SetManga(b bool) *UserUpdateOne {
+	uuo.mutation.SetManga(b)
+	return uuo
+}
+
+// SetNillableManga sets the "manga" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableManga(b *bool) *UserUpdateOne {
+	if b != nil {
+		uuo.SetManga(*b)
+	}
+	return uuo
+}
+
+// ClearManga clears the value of the "manga" field.
+func (uuo *UserUpdateOne) ClearManga() *UserUpdateOne {
+	uuo.mutation.ClearManga()
+	return uuo
+}
+
+// SetBadge sets the "badge" field.
+func (uuo *UserUpdateOne) SetBadge(b bool) *UserUpdateOne {
+	uuo.mutation.SetBadge(b)
+	return uuo
+}
+
+// SetNillableBadge sets the "badge" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableBadge(b *bool) *UserUpdateOne {
+	if b != nil {
+		uuo.SetBadge(*b)
+	}
+	return uuo
+}
+
+// ClearBadge clears the value of the "badge" field.
+func (uuo *UserUpdateOne) ClearBadge() *UserUpdateOne {
+	uuo.mutation.ClearBadge()
 	return uuo
 }
 
@@ -1509,6 +1693,30 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 	}
 	if uuo.mutation.DidCleared() {
 		_spec.ClearField(user.FieldDid, field.TypeString)
+	}
+	if value, ok := uuo.mutation.Member(); ok {
+		_spec.SetField(user.FieldMember, field.TypeBool, value)
+	}
+	if uuo.mutation.MemberCleared() {
+		_spec.ClearField(user.FieldMember, field.TypeBool)
+	}
+	if value, ok := uuo.mutation.Book(); ok {
+		_spec.SetField(user.FieldBook, field.TypeBool, value)
+	}
+	if uuo.mutation.BookCleared() {
+		_spec.ClearField(user.FieldBook, field.TypeBool)
+	}
+	if value, ok := uuo.mutation.Manga(); ok {
+		_spec.SetField(user.FieldManga, field.TypeBool, value)
+	}
+	if uuo.mutation.MangaCleared() {
+		_spec.ClearField(user.FieldManga, field.TypeBool)
+	}
+	if value, ok := uuo.mutation.Badge(); ok {
+		_spec.SetField(user.FieldBadge, field.TypeBool, value)
+	}
+	if uuo.mutation.BadgeCleared() {
+		_spec.ClearField(user.FieldBadge, field.TypeBool)
 	}
 	if value, ok := uuo.mutation.Bsky(); ok {
 		_spec.SetField(user.FieldBsky, field.TypeBool, value)

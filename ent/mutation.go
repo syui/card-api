@@ -1490,6 +1490,10 @@ type UserMutation struct {
 	id            *int
 	username      *string
 	did           *string
+	member        *bool
+	book          *bool
+	manga         *bool
+	badge         *bool
 	bsky          *bool
 	mastodon      *bool
 	delete        *bool
@@ -1712,6 +1716,202 @@ func (m *UserMutation) DidCleared() bool {
 func (m *UserMutation) ResetDid() {
 	m.did = nil
 	delete(m.clearedFields, user.FieldDid)
+}
+
+// SetMember sets the "member" field.
+func (m *UserMutation) SetMember(b bool) {
+	m.member = &b
+}
+
+// Member returns the value of the "member" field in the mutation.
+func (m *UserMutation) Member() (r bool, exists bool) {
+	v := m.member
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldMember returns the old "member" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldMember(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldMember is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldMember requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldMember: %w", err)
+	}
+	return oldValue.Member, nil
+}
+
+// ClearMember clears the value of the "member" field.
+func (m *UserMutation) ClearMember() {
+	m.member = nil
+	m.clearedFields[user.FieldMember] = struct{}{}
+}
+
+// MemberCleared returns if the "member" field was cleared in this mutation.
+func (m *UserMutation) MemberCleared() bool {
+	_, ok := m.clearedFields[user.FieldMember]
+	return ok
+}
+
+// ResetMember resets all changes to the "member" field.
+func (m *UserMutation) ResetMember() {
+	m.member = nil
+	delete(m.clearedFields, user.FieldMember)
+}
+
+// SetBook sets the "book" field.
+func (m *UserMutation) SetBook(b bool) {
+	m.book = &b
+}
+
+// Book returns the value of the "book" field in the mutation.
+func (m *UserMutation) Book() (r bool, exists bool) {
+	v := m.book
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldBook returns the old "book" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldBook(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldBook is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldBook requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldBook: %w", err)
+	}
+	return oldValue.Book, nil
+}
+
+// ClearBook clears the value of the "book" field.
+func (m *UserMutation) ClearBook() {
+	m.book = nil
+	m.clearedFields[user.FieldBook] = struct{}{}
+}
+
+// BookCleared returns if the "book" field was cleared in this mutation.
+func (m *UserMutation) BookCleared() bool {
+	_, ok := m.clearedFields[user.FieldBook]
+	return ok
+}
+
+// ResetBook resets all changes to the "book" field.
+func (m *UserMutation) ResetBook() {
+	m.book = nil
+	delete(m.clearedFields, user.FieldBook)
+}
+
+// SetManga sets the "manga" field.
+func (m *UserMutation) SetManga(b bool) {
+	m.manga = &b
+}
+
+// Manga returns the value of the "manga" field in the mutation.
+func (m *UserMutation) Manga() (r bool, exists bool) {
+	v := m.manga
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldManga returns the old "manga" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldManga(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldManga is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldManga requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldManga: %w", err)
+	}
+	return oldValue.Manga, nil
+}
+
+// ClearManga clears the value of the "manga" field.
+func (m *UserMutation) ClearManga() {
+	m.manga = nil
+	m.clearedFields[user.FieldManga] = struct{}{}
+}
+
+// MangaCleared returns if the "manga" field was cleared in this mutation.
+func (m *UserMutation) MangaCleared() bool {
+	_, ok := m.clearedFields[user.FieldManga]
+	return ok
+}
+
+// ResetManga resets all changes to the "manga" field.
+func (m *UserMutation) ResetManga() {
+	m.manga = nil
+	delete(m.clearedFields, user.FieldManga)
+}
+
+// SetBadge sets the "badge" field.
+func (m *UserMutation) SetBadge(b bool) {
+	m.badge = &b
+}
+
+// Badge returns the value of the "badge" field in the mutation.
+func (m *UserMutation) Badge() (r bool, exists bool) {
+	v := m.badge
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldBadge returns the old "badge" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldBadge(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldBadge is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldBadge requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldBadge: %w", err)
+	}
+	return oldValue.Badge, nil
+}
+
+// ClearBadge clears the value of the "badge" field.
+func (m *UserMutation) ClearBadge() {
+	m.badge = nil
+	m.clearedFields[user.FieldBadge] = struct{}{}
+}
+
+// BadgeCleared returns if the "badge" field was cleared in this mutation.
+func (m *UserMutation) BadgeCleared() bool {
+	_, ok := m.clearedFields[user.FieldBadge]
+	return ok
+}
+
+// ResetBadge resets all changes to the "badge" field.
+func (m *UserMutation) ResetBadge() {
+	m.badge = nil
+	delete(m.clearedFields, user.FieldBadge)
 }
 
 // SetBsky sets the "bsky" field.
@@ -3161,12 +3361,24 @@ func (m *UserMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *UserMutation) Fields() []string {
-	fields := make([]string, 0, 27)
+	fields := make([]string, 0, 31)
 	if m.username != nil {
 		fields = append(fields, user.FieldUsername)
 	}
 	if m.did != nil {
 		fields = append(fields, user.FieldDid)
+	}
+	if m.member != nil {
+		fields = append(fields, user.FieldMember)
+	}
+	if m.book != nil {
+		fields = append(fields, user.FieldBook)
+	}
+	if m.manga != nil {
+		fields = append(fields, user.FieldManga)
+	}
+	if m.badge != nil {
+		fields = append(fields, user.FieldBadge)
 	}
 	if m.bsky != nil {
 		fields = append(fields, user.FieldBsky)
@@ -3255,6 +3467,14 @@ func (m *UserMutation) Field(name string) (ent.Value, bool) {
 		return m.Username()
 	case user.FieldDid:
 		return m.Did()
+	case user.FieldMember:
+		return m.Member()
+	case user.FieldBook:
+		return m.Book()
+	case user.FieldManga:
+		return m.Manga()
+	case user.FieldBadge:
+		return m.Badge()
 	case user.FieldBsky:
 		return m.Bsky()
 	case user.FieldMastodon:
@@ -3318,6 +3538,14 @@ func (m *UserMutation) OldField(ctx context.Context, name string) (ent.Value, er
 		return m.OldUsername(ctx)
 	case user.FieldDid:
 		return m.OldDid(ctx)
+	case user.FieldMember:
+		return m.OldMember(ctx)
+	case user.FieldBook:
+		return m.OldBook(ctx)
+	case user.FieldManga:
+		return m.OldManga(ctx)
+	case user.FieldBadge:
+		return m.OldBadge(ctx)
 	case user.FieldBsky:
 		return m.OldBsky(ctx)
 	case user.FieldMastodon:
@@ -3390,6 +3618,34 @@ func (m *UserMutation) SetField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetDid(v)
+		return nil
+	case user.FieldMember:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetMember(v)
+		return nil
+	case user.FieldBook:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetBook(v)
+		return nil
+	case user.FieldManga:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetManga(v)
+		return nil
+	case user.FieldBadge:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetBadge(v)
 		return nil
 	case user.FieldBsky:
 		v, ok := value.(bool)
@@ -3686,6 +3942,18 @@ func (m *UserMutation) ClearedFields() []string {
 	if m.FieldCleared(user.FieldDid) {
 		fields = append(fields, user.FieldDid)
 	}
+	if m.FieldCleared(user.FieldMember) {
+		fields = append(fields, user.FieldMember)
+	}
+	if m.FieldCleared(user.FieldBook) {
+		fields = append(fields, user.FieldBook)
+	}
+	if m.FieldCleared(user.FieldManga) {
+		fields = append(fields, user.FieldManga)
+	}
+	if m.FieldCleared(user.FieldBadge) {
+		fields = append(fields, user.FieldBadge)
+	}
 	if m.FieldCleared(user.FieldBsky) {
 		fields = append(fields, user.FieldBsky)
 	}
@@ -3775,6 +4043,18 @@ func (m *UserMutation) ClearField(name string) error {
 	case user.FieldDid:
 		m.ClearDid()
 		return nil
+	case user.FieldMember:
+		m.ClearMember()
+		return nil
+	case user.FieldBook:
+		m.ClearBook()
+		return nil
+	case user.FieldManga:
+		m.ClearManga()
+		return nil
+	case user.FieldBadge:
+		m.ClearBadge()
+		return nil
 	case user.FieldBsky:
 		m.ClearBsky()
 		return nil
@@ -3860,6 +4140,18 @@ func (m *UserMutation) ResetField(name string) error {
 		return nil
 	case user.FieldDid:
 		m.ResetDid()
+		return nil
+	case user.FieldMember:
+		m.ResetMember()
+		return nil
+	case user.FieldBook:
+		m.ResetBook()
+		return nil
+	case user.FieldManga:
+		m.ResetManga()
+		return nil
+	case user.FieldBadge:
+		m.ResetBadge()
 		return nil
 	case user.FieldBsky:
 		m.ResetBsky()

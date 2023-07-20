@@ -140,6 +140,9 @@ func (h *OgentHandler) UpdateCard(ctx context.Context, req *UpdateCardReq, param
 			if v, ok := req.Cp.Get(); ok {
 				b.SetCp(v)
 			}
+			if v, ok := req.Card.Get(); ok {
+				b.SetCard(v)
+			}
 			if v, ok := req.Owner.Get(); ok {
 				b.SetOwnerID(v)
 			}
@@ -499,7 +502,18 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	if v, ok := req.Mastodon.Get(); ok {
 		b.SetMastodon(v)
 	}
-
+	if v, ok := req.Member.Get(); ok {
+		b.SetMember(v)
+	}
+	if v, ok := req.Book.Get(); ok {
+		b.SetBook(v)
+	}
+	if v, ok := req.Manga.Get(); ok {
+		b.SetManga(v)
+	}
+	if v, ok := req.Badge.Get(); ok {
+		b.SetBadge(v)
+	}
 	if v, ok := req.Delete.Get(); ok {
 		b.SetDelete(v)
 	}
@@ -635,6 +649,18 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 			}
 			if v, ok := req.Did.Get(); ok {
 				b.SetDid(v)
+			}
+			if v, ok := req.Member.Get(); ok {
+				b.SetMember(v)
+			}
+			if v, ok := req.Book.Get(); ok {
+				b.SetBook(v)
+			}
+			if v, ok := req.Manga.Get(); ok {
+				b.SetManga(v)
+			}
+			if v, ok := req.Badge.Get(); ok {
+				b.SetBadge(v)
 			}
 			if v, ok := req.Bsky.Get(); ok {
 				b.SetBsky(v)

@@ -38,6 +38,22 @@ func (User) Fields() []ent.Field {
 		field.String("did").
 		Optional(),
 
+		field.Bool("member").
+		Default(false).
+		Optional(),
+
+		field.Bool("book").
+		Default(false).
+		Optional(),
+
+		field.Bool("manga").
+		Default(false).
+		Optional(),
+
+		field.Bool("badge").
+		Default(false).
+		Optional(),
+
 		field.Bool("bsky").
 		Default(false).
 		Optional(),

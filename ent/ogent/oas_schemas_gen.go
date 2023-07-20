@@ -177,6 +177,10 @@ type CardOwnerRead struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
+	Member    OptBool     `json:"member"`
+	Book      OptBool     `json:"book"`
+	Manga     OptBool     `json:"manga"`
+	Badge     OptBool     `json:"badge"`
 	Bsky      OptBool     `json:"bsky"`
 	Mastodon  OptBool     `json:"mastodon"`
 	Delete    OptBool     `json:"delete"`
@@ -215,6 +219,26 @@ func (s *CardOwnerRead) GetUsername() string {
 // GetDid returns the value of Did.
 func (s *CardOwnerRead) GetDid() OptString {
 	return s.Did
+}
+
+// GetMember returns the value of Member.
+func (s *CardOwnerRead) GetMember() OptBool {
+	return s.Member
+}
+
+// GetBook returns the value of Book.
+func (s *CardOwnerRead) GetBook() OptBool {
+	return s.Book
+}
+
+// GetManga returns the value of Manga.
+func (s *CardOwnerRead) GetManga() OptBool {
+	return s.Manga
+}
+
+// GetBadge returns the value of Badge.
+func (s *CardOwnerRead) GetBadge() OptBool {
+	return s.Badge
 }
 
 // GetBsky returns the value of Bsky.
@@ -345,6 +369,26 @@ func (s *CardOwnerRead) SetUsername(val string) {
 // SetDid sets the value of Did.
 func (s *CardOwnerRead) SetDid(val OptString) {
 	s.Did = val
+}
+
+// SetMember sets the value of Member.
+func (s *CardOwnerRead) SetMember(val OptBool) {
+	s.Member = val
+}
+
+// SetBook sets the value of Book.
+func (s *CardOwnerRead) SetBook(val OptBool) {
+	s.Book = val
+}
+
+// SetManga sets the value of Manga.
+func (s *CardOwnerRead) SetManga(val OptBool) {
+	s.Manga = val
+}
+
+// SetBadge sets the value of Badge.
+func (s *CardOwnerRead) SetBadge(val OptBool) {
+	s.Badge = val
 }
 
 // SetBsky sets the value of Bsky.
@@ -771,6 +815,10 @@ func (s *CreateGroupReq) SetUsers(val []int) {
 type CreateUserReq struct {
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
+	Member    OptBool     `json:"member"`
+	Book      OptBool     `json:"book"`
+	Manga     OptBool     `json:"manga"`
+	Badge     OptBool     `json:"badge"`
 	Bsky      OptBool     `json:"bsky"`
 	Mastodon  OptBool     `json:"mastodon"`
 	Delete    OptBool     `json:"delete"`
@@ -807,6 +855,26 @@ func (s *CreateUserReq) GetUsername() string {
 // GetDid returns the value of Did.
 func (s *CreateUserReq) GetDid() OptString {
 	return s.Did
+}
+
+// GetMember returns the value of Member.
+func (s *CreateUserReq) GetMember() OptBool {
+	return s.Member
+}
+
+// GetBook returns the value of Book.
+func (s *CreateUserReq) GetBook() OptBool {
+	return s.Book
+}
+
+// GetManga returns the value of Manga.
+func (s *CreateUserReq) GetManga() OptBool {
+	return s.Manga
+}
+
+// GetBadge returns the value of Badge.
+func (s *CreateUserReq) GetBadge() OptBool {
+	return s.Badge
 }
 
 // GetBsky returns the value of Bsky.
@@ -947,6 +1015,26 @@ func (s *CreateUserReq) SetUsername(val string) {
 // SetDid sets the value of Did.
 func (s *CreateUserReq) SetDid(val OptString) {
 	s.Did = val
+}
+
+// SetMember sets the value of Member.
+func (s *CreateUserReq) SetMember(val OptBool) {
+	s.Member = val
+}
+
+// SetBook sets the value of Book.
+func (s *CreateUserReq) SetBook(val OptBool) {
+	s.Book = val
+}
+
+// SetManga sets the value of Manga.
+func (s *CreateUserReq) SetManga(val OptBool) {
+	s.Manga = val
+}
+
+// SetBadge sets the value of Badge.
+func (s *CreateUserReq) SetBadge(val OptBool) {
+	s.Badge = val
 }
 
 // SetBsky sets the value of Bsky.
@@ -1215,6 +1303,10 @@ type GroupUsersList struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
+	Member    OptBool     `json:"member"`
+	Book      OptBool     `json:"book"`
+	Manga     OptBool     `json:"manga"`
+	Badge     OptBool     `json:"badge"`
 	Bsky      OptBool     `json:"bsky"`
 	Mastodon  OptBool     `json:"mastodon"`
 	Delete    OptBool     `json:"delete"`
@@ -1253,6 +1345,26 @@ func (s *GroupUsersList) GetUsername() string {
 // GetDid returns the value of Did.
 func (s *GroupUsersList) GetDid() OptString {
 	return s.Did
+}
+
+// GetMember returns the value of Member.
+func (s *GroupUsersList) GetMember() OptBool {
+	return s.Member
+}
+
+// GetBook returns the value of Book.
+func (s *GroupUsersList) GetBook() OptBool {
+	return s.Book
+}
+
+// GetManga returns the value of Manga.
+func (s *GroupUsersList) GetManga() OptBool {
+	return s.Manga
+}
+
+// GetBadge returns the value of Badge.
+func (s *GroupUsersList) GetBadge() OptBool {
+	return s.Badge
 }
 
 // GetBsky returns the value of Bsky.
@@ -1383,6 +1495,26 @@ func (s *GroupUsersList) SetUsername(val string) {
 // SetDid sets the value of Did.
 func (s *GroupUsersList) SetDid(val OptString) {
 	s.Did = val
+}
+
+// SetMember sets the value of Member.
+func (s *GroupUsersList) SetMember(val OptBool) {
+	s.Member = val
+}
+
+// SetBook sets the value of Book.
+func (s *GroupUsersList) SetBook(val OptBool) {
+	s.Book = val
+}
+
+// SetManga sets the value of Manga.
+func (s *GroupUsersList) SetManga(val OptBool) {
+	s.Manga = val
+}
+
+// SetBadge sets the value of Badge.
+func (s *GroupUsersList) SetBadge(val OptBool) {
+	s.Badge = val
 }
 
 // SetBsky sets the value of Bsky.
@@ -1922,11 +2054,17 @@ func (*R500) updateGroupRes()    {}
 func (*R500) updateUserRes()     {}
 
 type UpdateCardReq struct {
+	Card   OptInt    `json:"card"`
 	Skill  OptString `json:"skill"`
 	Status OptString `json:"status"`
 	Token  OptString `json:"token"`
 	Cp     OptInt    `json:"cp"`
 	Owner  OptInt    `json:"owner"`
+}
+
+// GetCard returns the value of Card.
+func (s *UpdateCardReq) GetCard() OptInt {
+	return s.Card
 }
 
 // GetSkill returns the value of Skill.
@@ -1952,6 +2090,11 @@ func (s *UpdateCardReq) GetCp() OptInt {
 // GetOwner returns the value of Owner.
 func (s *UpdateCardReq) GetOwner() OptInt {
 	return s.Owner
+}
+
+// SetCard sets the value of Card.
+func (s *UpdateCardReq) SetCard(val OptInt) {
+	s.Card = val
 }
 
 // SetSkill sets the value of Skill.
@@ -2006,6 +2149,10 @@ func (s *UpdateGroupReq) SetUsers(val []int) {
 
 type UpdateUserReq struct {
 	Did       OptString   `json:"did"`
+	Member    OptBool     `json:"member"`
+	Book      OptBool     `json:"book"`
+	Manga     OptBool     `json:"manga"`
+	Badge     OptBool     `json:"badge"`
 	Bsky      OptBool     `json:"bsky"`
 	Mastodon  OptBool     `json:"mastodon"`
 	Delete    OptBool     `json:"delete"`
@@ -2035,6 +2182,26 @@ type UpdateUserReq struct {
 // GetDid returns the value of Did.
 func (s *UpdateUserReq) GetDid() OptString {
 	return s.Did
+}
+
+// GetMember returns the value of Member.
+func (s *UpdateUserReq) GetMember() OptBool {
+	return s.Member
+}
+
+// GetBook returns the value of Book.
+func (s *UpdateUserReq) GetBook() OptBool {
+	return s.Book
+}
+
+// GetManga returns the value of Manga.
+func (s *UpdateUserReq) GetManga() OptBool {
+	return s.Manga
+}
+
+// GetBadge returns the value of Badge.
+func (s *UpdateUserReq) GetBadge() OptBool {
+	return s.Badge
 }
 
 // GetBsky returns the value of Bsky.
@@ -2160,6 +2327,26 @@ func (s *UpdateUserReq) GetCard() []int {
 // SetDid sets the value of Did.
 func (s *UpdateUserReq) SetDid(val OptString) {
 	s.Did = val
+}
+
+// SetMember sets the value of Member.
+func (s *UpdateUserReq) SetMember(val OptBool) {
+	s.Member = val
+}
+
+// SetBook sets the value of Book.
+func (s *UpdateUserReq) SetBook(val OptBool) {
+	s.Book = val
+}
+
+// SetManga sets the value of Manga.
+func (s *UpdateUserReq) SetManga(val OptBool) {
+	s.Manga = val
+}
+
+// SetBadge sets the value of Badge.
+func (s *UpdateUserReq) SetBadge(val OptBool) {
+	s.Badge = val
 }
 
 // SetBsky sets the value of Bsky.
@@ -2368,6 +2555,10 @@ type UserCreate struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
+	Member    OptBool     `json:"member"`
+	Book      OptBool     `json:"book"`
+	Manga     OptBool     `json:"manga"`
+	Badge     OptBool     `json:"badge"`
 	Bsky      OptBool     `json:"bsky"`
 	Mastodon  OptBool     `json:"mastodon"`
 	Delete    OptBool     `json:"delete"`
@@ -2406,6 +2597,26 @@ func (s *UserCreate) GetUsername() string {
 // GetDid returns the value of Did.
 func (s *UserCreate) GetDid() OptString {
 	return s.Did
+}
+
+// GetMember returns the value of Member.
+func (s *UserCreate) GetMember() OptBool {
+	return s.Member
+}
+
+// GetBook returns the value of Book.
+func (s *UserCreate) GetBook() OptBool {
+	return s.Book
+}
+
+// GetManga returns the value of Manga.
+func (s *UserCreate) GetManga() OptBool {
+	return s.Manga
+}
+
+// GetBadge returns the value of Badge.
+func (s *UserCreate) GetBadge() OptBool {
+	return s.Badge
 }
 
 // GetBsky returns the value of Bsky.
@@ -2538,6 +2749,26 @@ func (s *UserCreate) SetDid(val OptString) {
 	s.Did = val
 }
 
+// SetMember sets the value of Member.
+func (s *UserCreate) SetMember(val OptBool) {
+	s.Member = val
+}
+
+// SetBook sets the value of Book.
+func (s *UserCreate) SetBook(val OptBool) {
+	s.Book = val
+}
+
+// SetManga sets the value of Manga.
+func (s *UserCreate) SetManga(val OptBool) {
+	s.Manga = val
+}
+
+// SetBadge sets the value of Badge.
+func (s *UserCreate) SetBadge(val OptBool) {
+	s.Badge = val
+}
+
 // SetBsky sets the value of Bsky.
 func (s *UserCreate) SetBsky(val OptBool) {
 	s.Bsky = val
@@ -2660,6 +2891,10 @@ type UserList struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
+	Member    OptBool     `json:"member"`
+	Book      OptBool     `json:"book"`
+	Manga     OptBool     `json:"manga"`
+	Badge     OptBool     `json:"badge"`
 	Bsky      OptBool     `json:"bsky"`
 	Mastodon  OptBool     `json:"mastodon"`
 	Delete    OptBool     `json:"delete"`
@@ -2698,6 +2933,26 @@ func (s *UserList) GetUsername() string {
 // GetDid returns the value of Did.
 func (s *UserList) GetDid() OptString {
 	return s.Did
+}
+
+// GetMember returns the value of Member.
+func (s *UserList) GetMember() OptBool {
+	return s.Member
+}
+
+// GetBook returns the value of Book.
+func (s *UserList) GetBook() OptBool {
+	return s.Book
+}
+
+// GetManga returns the value of Manga.
+func (s *UserList) GetManga() OptBool {
+	return s.Manga
+}
+
+// GetBadge returns the value of Badge.
+func (s *UserList) GetBadge() OptBool {
+	return s.Badge
 }
 
 // GetBsky returns the value of Bsky.
@@ -2830,6 +3085,26 @@ func (s *UserList) SetDid(val OptString) {
 	s.Did = val
 }
 
+// SetMember sets the value of Member.
+func (s *UserList) SetMember(val OptBool) {
+	s.Member = val
+}
+
+// SetBook sets the value of Book.
+func (s *UserList) SetBook(val OptBool) {
+	s.Book = val
+}
+
+// SetManga sets the value of Manga.
+func (s *UserList) SetManga(val OptBool) {
+	s.Manga = val
+}
+
+// SetBadge sets the value of Badge.
+func (s *UserList) SetBadge(val OptBool) {
+	s.Badge = val
+}
+
 // SetBsky sets the value of Bsky.
 func (s *UserList) SetBsky(val OptBool) {
 	s.Bsky = val
@@ -2950,6 +3225,10 @@ type UserRead struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
+	Member    OptBool     `json:"member"`
+	Book      OptBool     `json:"book"`
+	Manga     OptBool     `json:"manga"`
+	Badge     OptBool     `json:"badge"`
 	Bsky      OptBool     `json:"bsky"`
 	Mastodon  OptBool     `json:"mastodon"`
 	Delete    OptBool     `json:"delete"`
@@ -2988,6 +3267,26 @@ func (s *UserRead) GetUsername() string {
 // GetDid returns the value of Did.
 func (s *UserRead) GetDid() OptString {
 	return s.Did
+}
+
+// GetMember returns the value of Member.
+func (s *UserRead) GetMember() OptBool {
+	return s.Member
+}
+
+// GetBook returns the value of Book.
+func (s *UserRead) GetBook() OptBool {
+	return s.Book
+}
+
+// GetManga returns the value of Manga.
+func (s *UserRead) GetManga() OptBool {
+	return s.Manga
+}
+
+// GetBadge returns the value of Badge.
+func (s *UserRead) GetBadge() OptBool {
+	return s.Badge
 }
 
 // GetBsky returns the value of Bsky.
@@ -3120,6 +3419,26 @@ func (s *UserRead) SetDid(val OptString) {
 	s.Did = val
 }
 
+// SetMember sets the value of Member.
+func (s *UserRead) SetMember(val OptBool) {
+	s.Member = val
+}
+
+// SetBook sets the value of Book.
+func (s *UserRead) SetBook(val OptBool) {
+	s.Book = val
+}
+
+// SetManga sets the value of Manga.
+func (s *UserRead) SetManga(val OptBool) {
+	s.Manga = val
+}
+
+// SetBadge sets the value of Badge.
+func (s *UserRead) SetBadge(val OptBool) {
+	s.Badge = val
+}
+
 // SetBsky sets the value of Bsky.
 func (s *UserRead) SetBsky(val OptBool) {
 	s.Bsky = val
@@ -3242,6 +3561,10 @@ type UserUpdate struct {
 	ID        int         `json:"id"`
 	Username  string      `json:"username"`
 	Did       OptString   `json:"did"`
+	Member    OptBool     `json:"member"`
+	Book      OptBool     `json:"book"`
+	Manga     OptBool     `json:"manga"`
+	Badge     OptBool     `json:"badge"`
 	Bsky      OptBool     `json:"bsky"`
 	Mastodon  OptBool     `json:"mastodon"`
 	Delete    OptBool     `json:"delete"`
@@ -3280,6 +3603,26 @@ func (s *UserUpdate) GetUsername() string {
 // GetDid returns the value of Did.
 func (s *UserUpdate) GetDid() OptString {
 	return s.Did
+}
+
+// GetMember returns the value of Member.
+func (s *UserUpdate) GetMember() OptBool {
+	return s.Member
+}
+
+// GetBook returns the value of Book.
+func (s *UserUpdate) GetBook() OptBool {
+	return s.Book
+}
+
+// GetManga returns the value of Manga.
+func (s *UserUpdate) GetManga() OptBool {
+	return s.Manga
+}
+
+// GetBadge returns the value of Badge.
+func (s *UserUpdate) GetBadge() OptBool {
+	return s.Badge
 }
 
 // GetBsky returns the value of Bsky.
@@ -3410,6 +3753,26 @@ func (s *UserUpdate) SetUsername(val string) {
 // SetDid sets the value of Did.
 func (s *UserUpdate) SetDid(val OptString) {
 	s.Did = val
+}
+
+// SetMember sets the value of Member.
+func (s *UserUpdate) SetMember(val OptBool) {
+	s.Member = val
+}
+
+// SetBook sets the value of Book.
+func (s *UserUpdate) SetBook(val OptBool) {
+	s.Book = val
+}
+
+// SetManga sets the value of Manga.
+func (s *UserUpdate) SetManga(val OptBool) {
+	s.Manga = val
+}
+
+// SetBadge sets the value of Badge.
+func (s *UserUpdate) SetBadge(val OptBool) {
+	s.Badge = val
 }
 
 // SetBsky sets the value of Bsky.

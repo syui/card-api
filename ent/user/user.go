@@ -15,6 +15,14 @@ const (
 	FieldUsername = "username"
 	// FieldDid holds the string denoting the did field in the database.
 	FieldDid = "did"
+	// FieldMember holds the string denoting the member field in the database.
+	FieldMember = "member"
+	// FieldBook holds the string denoting the book field in the database.
+	FieldBook = "book"
+	// FieldManga holds the string denoting the manga field in the database.
+	FieldManga = "manga"
+	// FieldBadge holds the string denoting the badge field in the database.
+	FieldBadge = "badge"
 	// FieldBsky holds the string denoting the bsky field in the database.
 	FieldBsky = "bsky"
 	// FieldMastodon holds the string denoting the mastodon field in the database.
@@ -83,6 +91,10 @@ var Columns = []string{
 	FieldID,
 	FieldUsername,
 	FieldDid,
+	FieldMember,
+	FieldBook,
+	FieldManga,
+	FieldBadge,
 	FieldBsky,
 	FieldMastodon,
 	FieldDelete,
@@ -134,6 +146,14 @@ func ValidColumn(column string) bool {
 var (
 	// UsernameValidator is a validator for the "username" field. It is called by the builders before save.
 	UsernameValidator func(string) error
+	// DefaultMember holds the default value on creation for the "member" field.
+	DefaultMember bool
+	// DefaultBook holds the default value on creation for the "book" field.
+	DefaultBook bool
+	// DefaultManga holds the default value on creation for the "manga" field.
+	DefaultManga bool
+	// DefaultBadge holds the default value on creation for the "badge" field.
+	DefaultBadge bool
 	// DefaultBsky holds the default value on creation for the "bsky" field.
 	DefaultBsky bool
 	// DefaultMastodon holds the default value on creation for the "mastodon" field.

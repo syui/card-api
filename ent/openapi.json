@@ -243,6 +243,9 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "card": {
+                    "type": "integer"
+                  },
                   "skill": {
                     "type": "string"
                   },
@@ -763,6 +766,18 @@
                   "did": {
                     "type": "string"
                   },
+                  "member": {
+                    "type": "boolean"
+                  },
+                  "book": {
+                    "type": "boolean"
+                  },
+                  "manga": {
+                    "type": "boolean"
+                  },
+                  "badge": {
+                    "type": "boolean"
+                  },
                   "bsky": {
                     "type": "boolean"
                   },
@@ -990,6 +1005,18 @@
                 "properties": {
                   "did": {
                     "type": "string"
+                  },
+                  "member": {
+                    "type": "boolean"
+                  },
+                  "book": {
+                    "type": "boolean"
+                  },
+                  "manga": {
+                    "type": "boolean"
+                  },
+                  "badge": {
+                    "type": "boolean"
                   },
                   "bsky": {
                     "type": "boolean"
@@ -1368,6 +1395,18 @@
           "did": {
             "type": "string"
           },
+          "member": {
+            "type": "boolean"
+          },
+          "book": {
+            "type": "boolean"
+          },
+          "manga": {
+            "type": "boolean"
+          },
+          "badge": {
+            "type": "boolean"
+          },
           "bsky": {
             "type": "boolean"
           },
@@ -1546,6 +1585,18 @@
           "did": {
             "type": "string"
           },
+          "member": {
+            "type": "boolean"
+          },
+          "book": {
+            "type": "boolean"
+          },
+          "manga": {
+            "type": "boolean"
+          },
+          "badge": {
+            "type": "boolean"
+          },
           "bsky": {
             "type": "boolean"
           },
@@ -1638,6 +1689,18 @@
           },
           "did": {
             "type": "string"
+          },
+          "member": {
+            "type": "boolean"
+          },
+          "book": {
+            "type": "boolean"
+          },
+          "manga": {
+            "type": "boolean"
+          },
+          "badge": {
+            "type": "boolean"
           },
           "bsky": {
             "type": "boolean"
@@ -1745,6 +1808,18 @@
           "did": {
             "type": "string"
           },
+          "member": {
+            "type": "boolean"
+          },
+          "book": {
+            "type": "boolean"
+          },
+          "manga": {
+            "type": "boolean"
+          },
+          "badge": {
+            "type": "boolean"
+          },
           "bsky": {
             "type": "boolean"
           },
@@ -1837,6 +1912,18 @@
           },
           "did": {
             "type": "string"
+          },
+          "member": {
+            "type": "boolean"
+          },
+          "book": {
+            "type": "boolean"
+          },
+          "manga": {
+            "type": "boolean"
+          },
+          "badge": {
+            "type": "boolean"
           },
           "bsky": {
             "type": "boolean"
@@ -1931,6 +2018,18 @@
           "did": {
             "type": "string"
           },
+          "member": {
+            "type": "boolean"
+          },
+          "book": {
+            "type": "boolean"
+          },
+          "manga": {
+            "type": "boolean"
+          },
+          "badge": {
+            "type": "boolean"
+          },
           "bsky": {
             "type": "boolean"
           },
@@ -2023,6 +2122,18 @@
           },
           "did": {
             "type": "string"
+          },
+          "member": {
+            "type": "boolean"
+          },
+          "book": {
+            "type": "boolean"
+          },
+          "manga": {
+            "type": "boolean"
+          },
+          "badge": {
+            "type": "boolean"
           },
           "bsky": {
             "type": "boolean"

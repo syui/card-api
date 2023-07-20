@@ -59,6 +59,10 @@ var (
 		{Name: "id", Type: field.TypeInt, Increment: true},
 		{Name: "username", Type: field.TypeString, Unique: true, Size: 100},
 		{Name: "did", Type: field.TypeString, Nullable: true},
+		{Name: "member", Type: field.TypeBool, Nullable: true, Default: false},
+		{Name: "book", Type: field.TypeBool, Nullable: true, Default: false},
+		{Name: "manga", Type: field.TypeBool, Nullable: true, Default: false},
+		{Name: "badge", Type: field.TypeBool, Nullable: true, Default: false},
 		{Name: "bsky", Type: field.TypeBool, Nullable: true, Default: false},
 		{Name: "mastodon", Type: field.TypeBool, Nullable: true, Default: true},
 		{Name: "delete", Type: field.TypeBool, Nullable: true, Default: false},
@@ -83,7 +87,7 @@ var (
 		{Name: "ten_post", Type: field.TypeString, Nullable: true},
 		{Name: "ten_get", Type: field.TypeString, Nullable: true},
 		{Name: "ten_at", Type: field.TypeTime, Nullable: true},
-		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230710"},
+		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230720"},
 		{Name: "group_users", Type: field.TypeInt, Nullable: true},
 	}
 	// UsersTable holds the schema information for the "users" table.
@@ -94,7 +98,7 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "users_groups_users",
-				Columns:    []*schema.Column{UsersColumns[28]},
+				Columns:    []*schema.Column{UsersColumns[32]},
 				RefColumns: []*schema.Column{GroupsColumns[0]},
 				OnDelete:   schema.SetNull,
 			},

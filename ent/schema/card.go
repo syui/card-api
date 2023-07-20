@@ -28,7 +28,6 @@ func (Card) Fields() []ent.Field {
 		Sensitive(),
 
 		field.Int("card").
-		Immutable().
 		DefaultFunc(func() int {
 			rand.Seed(time.Now().UnixNano())
 			var a = rand.Intn(10)

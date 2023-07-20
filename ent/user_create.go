@@ -41,6 +41,62 @@ func (uc *UserCreate) SetNillableDid(s *string) *UserCreate {
 	return uc
 }
 
+// SetMember sets the "member" field.
+func (uc *UserCreate) SetMember(b bool) *UserCreate {
+	uc.mutation.SetMember(b)
+	return uc
+}
+
+// SetNillableMember sets the "member" field if the given value is not nil.
+func (uc *UserCreate) SetNillableMember(b *bool) *UserCreate {
+	if b != nil {
+		uc.SetMember(*b)
+	}
+	return uc
+}
+
+// SetBook sets the "book" field.
+func (uc *UserCreate) SetBook(b bool) *UserCreate {
+	uc.mutation.SetBook(b)
+	return uc
+}
+
+// SetNillableBook sets the "book" field if the given value is not nil.
+func (uc *UserCreate) SetNillableBook(b *bool) *UserCreate {
+	if b != nil {
+		uc.SetBook(*b)
+	}
+	return uc
+}
+
+// SetManga sets the "manga" field.
+func (uc *UserCreate) SetManga(b bool) *UserCreate {
+	uc.mutation.SetManga(b)
+	return uc
+}
+
+// SetNillableManga sets the "manga" field if the given value is not nil.
+func (uc *UserCreate) SetNillableManga(b *bool) *UserCreate {
+	if b != nil {
+		uc.SetManga(*b)
+	}
+	return uc
+}
+
+// SetBadge sets the "badge" field.
+func (uc *UserCreate) SetBadge(b bool) *UserCreate {
+	uc.mutation.SetBadge(b)
+	return uc
+}
+
+// SetNillableBadge sets the "badge" field if the given value is not nil.
+func (uc *UserCreate) SetNillableBadge(b *bool) *UserCreate {
+	if b != nil {
+		uc.SetBadge(*b)
+	}
+	return uc
+}
+
 // SetBsky sets the "bsky" field.
 func (uc *UserCreate) SetBsky(b bool) *UserCreate {
 	uc.mutation.SetBsky(b)
@@ -433,6 +489,22 @@ func (uc *UserCreate) ExecX(ctx context.Context) {
 
 // defaults sets the default values of the builder before save.
 func (uc *UserCreate) defaults() {
+	if _, ok := uc.mutation.Member(); !ok {
+		v := user.DefaultMember
+		uc.mutation.SetMember(v)
+	}
+	if _, ok := uc.mutation.Book(); !ok {
+		v := user.DefaultBook
+		uc.mutation.SetBook(v)
+	}
+	if _, ok := uc.mutation.Manga(); !ok {
+		v := user.DefaultManga
+		uc.mutation.SetManga(v)
+	}
+	if _, ok := uc.mutation.Badge(); !ok {
+		v := user.DefaultBadge
+		uc.mutation.SetBadge(v)
+	}
 	if _, ok := uc.mutation.Bsky(); !ok {
 		v := user.DefaultBsky
 		uc.mutation.SetBsky(v)
@@ -530,6 +602,22 @@ func (uc *UserCreate) createSpec() (*User, *sqlgraph.CreateSpec) {
 	if value, ok := uc.mutation.Did(); ok {
 		_spec.SetField(user.FieldDid, field.TypeString, value)
 		_node.Did = value
+	}
+	if value, ok := uc.mutation.Member(); ok {
+		_spec.SetField(user.FieldMember, field.TypeBool, value)
+		_node.Member = value
+	}
+	if value, ok := uc.mutation.Book(); ok {
+		_spec.SetField(user.FieldBook, field.TypeBool, value)
+		_node.Book = value
+	}
+	if value, ok := uc.mutation.Manga(); ok {
+		_spec.SetField(user.FieldManga, field.TypeBool, value)
+		_node.Manga = value
+	}
+	if value, ok := uc.mutation.Badge(); ok {
+		_spec.SetField(user.FieldBadge, field.TypeBool, value)
+		_node.Badge = value
 	}
 	if value, ok := uc.mutation.Bsky(); ok {
 		_spec.SetField(user.FieldBsky, field.TypeBool, value)

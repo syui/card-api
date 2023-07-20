@@ -28,6 +28,33 @@ func (cu *CardUpdate) Where(ps ...predicate.Card) *CardUpdate {
 	return cu
 }
 
+// SetCard sets the "card" field.
+func (cu *CardUpdate) SetCard(i int) *CardUpdate {
+	cu.mutation.ResetCard()
+	cu.mutation.SetCard(i)
+	return cu
+}
+
+// SetNillableCard sets the "card" field if the given value is not nil.
+func (cu *CardUpdate) SetNillableCard(i *int) *CardUpdate {
+	if i != nil {
+		cu.SetCard(*i)
+	}
+	return cu
+}
+
+// AddCard adds i to the "card" field.
+func (cu *CardUpdate) AddCard(i int) *CardUpdate {
+	cu.mutation.AddCard(i)
+	return cu
+}
+
+// ClearCard clears the value of the "card" field.
+func (cu *CardUpdate) ClearCard() *CardUpdate {
+	cu.mutation.ClearCard()
+	return cu
+}
+
 // SetSkill sets the "skill" field.
 func (cu *CardUpdate) SetSkill(s string) *CardUpdate {
 	cu.mutation.SetSkill(s)
@@ -184,6 +211,12 @@ func (cu *CardUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			}
 		}
 	}
+	if value, ok := cu.mutation.Card(); ok {
+		_spec.SetField(card.FieldCard, field.TypeInt, value)
+	}
+	if value, ok := cu.mutation.AddedCard(); ok {
+		_spec.AddField(card.FieldCard, field.TypeInt, value)
+	}
 	if cu.mutation.CardCleared() {
 		_spec.ClearField(card.FieldCard, field.TypeInt)
 	}
@@ -267,6 +300,33 @@ type CardUpdateOne struct {
 	fields   []string
 	hooks    []Hook
 	mutation *CardMutation
+}
+
+// SetCard sets the "card" field.
+func (cuo *CardUpdateOne) SetCard(i int) *CardUpdateOne {
+	cuo.mutation.ResetCard()
+	cuo.mutation.SetCard(i)
+	return cuo
+}
+
+// SetNillableCard sets the "card" field if the given value is not nil.
+func (cuo *CardUpdateOne) SetNillableCard(i *int) *CardUpdateOne {
+	if i != nil {
+		cuo.SetCard(*i)
+	}
+	return cuo
+}
+
+// AddCard adds i to the "card" field.
+func (cuo *CardUpdateOne) AddCard(i int) *CardUpdateOne {
+	cuo.mutation.AddCard(i)
+	return cuo
+}
+
+// ClearCard clears the value of the "card" field.
+func (cuo *CardUpdateOne) ClearCard() *CardUpdateOne {
+	cuo.mutation.ClearCard()
+	return cuo
 }
 
 // SetSkill sets the "skill" field.
@@ -454,6 +514,12 @@ func (cuo *CardUpdateOne) sqlSave(ctx context.Context) (_node *Card, err error) 
 				ps[i](selector)
 			}
 		}
+	}
+	if value, ok := cuo.mutation.Card(); ok {
+		_spec.SetField(card.FieldCard, field.TypeInt, value)
+	}
+	if value, ok := cuo.mutation.AddedCard(); ok {
+		_spec.AddField(card.FieldCard, field.TypeInt, value)
 	}
 	if cuo.mutation.CardCleared() {
 		_spec.ClearField(card.FieldCard, field.TypeInt)

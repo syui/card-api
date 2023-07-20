@@ -65,6 +65,26 @@ func Did(v string) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldDid, v))
 }
 
+// Member applies equality check predicate on the "member" field. It's identical to MemberEQ.
+func Member(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldMember, v))
+}
+
+// Book applies equality check predicate on the "book" field. It's identical to BookEQ.
+func Book(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldBook, v))
+}
+
+// Manga applies equality check predicate on the "manga" field. It's identical to MangaEQ.
+func Manga(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldManga, v))
+}
+
+// Badge applies equality check predicate on the "badge" field. It's identical to BadgeEQ.
+func Badge(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldBadge, v))
+}
+
 // Bsky applies equality check predicate on the "bsky" field. It's identical to BskyEQ.
 func Bsky(v bool) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldBsky, v))
@@ -328,6 +348,86 @@ func DidEqualFold(v string) predicate.User {
 // DidContainsFold applies the ContainsFold predicate on the "did" field.
 func DidContainsFold(v string) predicate.User {
 	return predicate.User(sql.FieldContainsFold(FieldDid, v))
+}
+
+// MemberEQ applies the EQ predicate on the "member" field.
+func MemberEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldMember, v))
+}
+
+// MemberNEQ applies the NEQ predicate on the "member" field.
+func MemberNEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldMember, v))
+}
+
+// MemberIsNil applies the IsNil predicate on the "member" field.
+func MemberIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldMember))
+}
+
+// MemberNotNil applies the NotNil predicate on the "member" field.
+func MemberNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldMember))
+}
+
+// BookEQ applies the EQ predicate on the "book" field.
+func BookEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldBook, v))
+}
+
+// BookNEQ applies the NEQ predicate on the "book" field.
+func BookNEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldBook, v))
+}
+
+// BookIsNil applies the IsNil predicate on the "book" field.
+func BookIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldBook))
+}
+
+// BookNotNil applies the NotNil predicate on the "book" field.
+func BookNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldBook))
+}
+
+// MangaEQ applies the EQ predicate on the "manga" field.
+func MangaEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldManga, v))
+}
+
+// MangaNEQ applies the NEQ predicate on the "manga" field.
+func MangaNEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldManga, v))
+}
+
+// MangaIsNil applies the IsNil predicate on the "manga" field.
+func MangaIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldManga))
+}
+
+// MangaNotNil applies the NotNil predicate on the "manga" field.
+func MangaNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldManga))
+}
+
+// BadgeEQ applies the EQ predicate on the "badge" field.
+func BadgeEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldBadge, v))
+}
+
+// BadgeNEQ applies the NEQ predicate on the "badge" field.
+func BadgeNEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldBadge, v))
+}
+
+// BadgeIsNil applies the IsNil predicate on the "badge" field.
+func BadgeIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldBadge))
+}
+
+// BadgeNotNil applies the NotNil predicate on the "badge" field.
+func BadgeNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldBadge))
 }
 
 // BskyEQ applies the EQ predicate on the "bsky" field.

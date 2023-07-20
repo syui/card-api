@@ -20,6 +20,14 @@ type User struct {
 	Username string `json:"username,omitempty"`
 	// Did holds the value of the "did" field.
 	Did string `json:"did,omitempty"`
+	// Member holds the value of the "member" field.
+	Member bool `json:"member,omitempty"`
+	// Book holds the value of the "book" field.
+	Book bool `json:"book,omitempty"`
+	// Manga holds the value of the "manga" field.
+	Manga bool `json:"manga,omitempty"`
+	// Badge holds the value of the "badge" field.
+	Badge bool `json:"badge,omitempty"`
 	// Bsky holds the value of the "bsky" field.
 	Bsky bool `json:"bsky,omitempty"`
 	// Mastodon holds the value of the "mastodon" field.
@@ -99,7 +107,7 @@ func (*User) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case user.FieldBsky, user.FieldMastodon, user.FieldDelete, user.FieldHandle, user.FieldTen:
+		case user.FieldMember, user.FieldBook, user.FieldManga, user.FieldBadge, user.FieldBsky, user.FieldMastodon, user.FieldDelete, user.FieldHandle, user.FieldTen:
 			values[i] = new(sql.NullBool)
 		case user.FieldID, user.FieldLuck, user.FieldLike, user.FieldLikeRank, user.FieldFav, user.FieldTenSu, user.FieldTenKai, user.FieldAiten:
 			values[i] = new(sql.NullInt64)
@@ -141,6 +149,30 @@ func (u *User) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field did", values[i])
 			} else if value.Valid {
 				u.Did = value.String
+			}
+		case user.FieldMember:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field member", values[i])
+			} else if value.Valid {
+				u.Member = value.Bool
+			}
+		case user.FieldBook:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field book", values[i])
+			} else if value.Valid {
+				u.Book = value.Bool
+			}
+		case user.FieldManga:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field manga", values[i])
+			} else if value.Valid {
+				u.Manga = value.Bool
+			}
+		case user.FieldBadge:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field badge", values[i])
+			} else if value.Valid {
+				u.Badge = value.Bool
 			}
 		case user.FieldBsky:
 			if value, ok := values[i].(*sql.NullBool); !ok {
@@ -337,6 +369,18 @@ func (u *User) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("did=")
 	builder.WriteString(u.Did)
+	builder.WriteString(", ")
+	builder.WriteString("member=")
+	builder.WriteString(fmt.Sprintf("%v", u.Member))
+	builder.WriteString(", ")
+	builder.WriteString("book=")
+	builder.WriteString(fmt.Sprintf("%v", u.Book))
+	builder.WriteString(", ")
+	builder.WriteString("manga=")
+	builder.WriteString(fmt.Sprintf("%v", u.Manga))
+	builder.WriteString(", ")
+	builder.WriteString("badge=")
+	builder.WriteString(fmt.Sprintf("%v", u.Badge))
 	builder.WriteString(", ")
 	builder.WriteString("bsky=")
 	builder.WriteString(fmt.Sprintf("%v", u.Bsky))

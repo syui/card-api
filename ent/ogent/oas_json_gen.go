@@ -438,6 +438,30 @@ func (s *CardOwnerRead) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Member.Set {
+			e.FieldStart("member")
+			s.Member.Encode(e)
+		}
+	}
+	{
+		if s.Book.Set {
+			e.FieldStart("book")
+			s.Book.Encode(e)
+		}
+	}
+	{
+		if s.Manga.Set {
+			e.FieldStart("manga")
+			s.Manga.Encode(e)
+		}
+	}
+	{
+		if s.Badge.Set {
+			e.FieldStart("badge")
+			s.Badge.Encode(e)
+		}
+	}
+	{
 		if s.Bsky.Set {
 			e.FieldStart("bsky")
 			s.Bsky.Encode(e)
@@ -577,33 +601,37 @@ func (s *CardOwnerRead) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCardOwnerRead = [26]string{
+var jsonFieldsNameOfCardOwnerRead = [30]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
-	3:  "bsky",
-	4:  "mastodon",
-	5:  "delete",
-	6:  "handle",
-	7:  "created_at",
-	8:  "updated_at",
-	9:  "raid_at",
-	10: "luck",
-	11: "luck_at",
-	12: "like",
-	13: "like_rank",
-	14: "like_at",
-	15: "fav",
-	16: "ten",
-	17: "ten_su",
-	18: "ten_kai",
-	19: "aiten",
-	20: "ten_card",
-	21: "ten_delete",
-	22: "ten_post",
-	23: "ten_get",
-	24: "ten_at",
-	25: "next",
+	3:  "member",
+	4:  "book",
+	5:  "manga",
+	6:  "badge",
+	7:  "bsky",
+	8:  "mastodon",
+	9:  "delete",
+	10: "handle",
+	11: "created_at",
+	12: "updated_at",
+	13: "raid_at",
+	14: "luck",
+	15: "luck_at",
+	16: "like",
+	17: "like_rank",
+	18: "like_at",
+	19: "fav",
+	20: "ten",
+	21: "ten_su",
+	22: "ten_kai",
+	23: "aiten",
+	24: "ten_card",
+	25: "ten_delete",
+	26: "ten_post",
+	27: "ten_get",
+	28: "ten_at",
+	29: "next",
 }
 
 // Decode decodes CardOwnerRead from json.
@@ -648,6 +676,46 @@ func (s *CardOwnerRead) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"did\"")
+			}
+		case "member":
+			if err := func() error {
+				s.Member.Reset()
+				if err := s.Member.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"member\"")
+			}
+		case "book":
+			if err := func() error {
+				s.Book.Reset()
+				if err := s.Book.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"book\"")
+			}
+		case "manga":
+			if err := func() error {
+				s.Manga.Reset()
+				if err := s.Manga.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"manga\"")
+			}
+		case "badge":
+			if err := func() error {
+				s.Badge.Reset()
+				if err := s.Badge.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"badge\"")
 			}
 		case "bsky":
 			if err := func() error {
@@ -1737,6 +1805,30 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Member.Set {
+			e.FieldStart("member")
+			s.Member.Encode(e)
+		}
+	}
+	{
+		if s.Book.Set {
+			e.FieldStart("book")
+			s.Book.Encode(e)
+		}
+	}
+	{
+		if s.Manga.Set {
+			e.FieldStart("manga")
+			s.Manga.Encode(e)
+		}
+	}
+	{
+		if s.Badge.Set {
+			e.FieldStart("badge")
+			s.Badge.Encode(e)
+		}
+	}
+	{
 		if s.Bsky.Set {
 			e.FieldStart("bsky")
 			s.Bsky.Encode(e)
@@ -1897,35 +1989,39 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCreateUserReq = [28]string{
+var jsonFieldsNameOfCreateUserReq = [32]string{
 	0:  "username",
 	1:  "did",
-	2:  "bsky",
-	3:  "mastodon",
-	4:  "delete",
-	5:  "handle",
-	6:  "token",
-	7:  "password",
-	8:  "created_at",
-	9:  "updated_at",
-	10: "raid_at",
-	11: "luck",
-	12: "luck_at",
-	13: "like",
-	14: "like_rank",
-	15: "like_at",
-	16: "fav",
-	17: "ten",
-	18: "ten_su",
-	19: "ten_kai",
-	20: "aiten",
-	21: "ten_card",
-	22: "ten_delete",
-	23: "ten_post",
-	24: "ten_get",
-	25: "ten_at",
-	26: "next",
-	27: "card",
+	2:  "member",
+	3:  "book",
+	4:  "manga",
+	5:  "badge",
+	6:  "bsky",
+	7:  "mastodon",
+	8:  "delete",
+	9:  "handle",
+	10: "token",
+	11: "password",
+	12: "created_at",
+	13: "updated_at",
+	14: "raid_at",
+	15: "luck",
+	16: "luck_at",
+	17: "like",
+	18: "like_rank",
+	19: "like_at",
+	20: "fav",
+	21: "ten",
+	22: "ten_su",
+	23: "ten_kai",
+	24: "aiten",
+	25: "ten_card",
+	26: "ten_delete",
+	27: "ten_post",
+	28: "ten_get",
+	29: "ten_at",
+	30: "next",
+	31: "card",
 }
 
 // Decode decodes CreateUserReq from json.
@@ -1958,6 +2054,46 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"did\"")
+			}
+		case "member":
+			if err := func() error {
+				s.Member.Reset()
+				if err := s.Member.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"member\"")
+			}
+		case "book":
+			if err := func() error {
+				s.Book.Reset()
+				if err := s.Book.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"book\"")
+			}
+		case "manga":
+			if err := func() error {
+				s.Manga.Reset()
+				if err := s.Manga.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"manga\"")
+			}
+		case "badge":
+			if err := func() error {
+				s.Badge.Reset()
+				if err := s.Badge.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"badge\"")
 			}
 		case "bsky":
 			if err := func() error {
@@ -2010,7 +2146,7 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"token\"")
 			}
 		case "password":
-			requiredBitSet[0] |= 1 << 7
+			requiredBitSet[1] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.Password = string(v)
@@ -2240,8 +2376,8 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [4]uint8{
-		0b10000001,
-		0b00000000,
+		0b00000001,
+		0b00001000,
 		0b00000000,
 		0b00000000,
 	} {
@@ -2775,6 +2911,30 @@ func (s *GroupUsersList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Member.Set {
+			e.FieldStart("member")
+			s.Member.Encode(e)
+		}
+	}
+	{
+		if s.Book.Set {
+			e.FieldStart("book")
+			s.Book.Encode(e)
+		}
+	}
+	{
+		if s.Manga.Set {
+			e.FieldStart("manga")
+			s.Manga.Encode(e)
+		}
+	}
+	{
+		if s.Badge.Set {
+			e.FieldStart("badge")
+			s.Badge.Encode(e)
+		}
+	}
+	{
 		if s.Bsky.Set {
 			e.FieldStart("bsky")
 			s.Bsky.Encode(e)
@@ -2914,33 +3074,37 @@ func (s *GroupUsersList) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfGroupUsersList = [26]string{
+var jsonFieldsNameOfGroupUsersList = [30]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
-	3:  "bsky",
-	4:  "mastodon",
-	5:  "delete",
-	6:  "handle",
-	7:  "created_at",
-	8:  "updated_at",
-	9:  "raid_at",
-	10: "luck",
-	11: "luck_at",
-	12: "like",
-	13: "like_rank",
-	14: "like_at",
-	15: "fav",
-	16: "ten",
-	17: "ten_su",
-	18: "ten_kai",
-	19: "aiten",
-	20: "ten_card",
-	21: "ten_delete",
-	22: "ten_post",
-	23: "ten_get",
-	24: "ten_at",
-	25: "next",
+	3:  "member",
+	4:  "book",
+	5:  "manga",
+	6:  "badge",
+	7:  "bsky",
+	8:  "mastodon",
+	9:  "delete",
+	10: "handle",
+	11: "created_at",
+	12: "updated_at",
+	13: "raid_at",
+	14: "luck",
+	15: "luck_at",
+	16: "like",
+	17: "like_rank",
+	18: "like_at",
+	19: "fav",
+	20: "ten",
+	21: "ten_su",
+	22: "ten_kai",
+	23: "aiten",
+	24: "ten_card",
+	25: "ten_delete",
+	26: "ten_post",
+	27: "ten_get",
+	28: "ten_at",
+	29: "next",
 }
 
 // Decode decodes GroupUsersList from json.
@@ -2985,6 +3149,46 @@ func (s *GroupUsersList) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"did\"")
+			}
+		case "member":
+			if err := func() error {
+				s.Member.Reset()
+				if err := s.Member.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"member\"")
+			}
+		case "book":
+			if err := func() error {
+				s.Book.Reset()
+				if err := s.Book.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"book\"")
+			}
+		case "manga":
+			if err := func() error {
+				s.Manga.Reset()
+				if err := s.Manga.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"manga\"")
+			}
+		case "badge":
+			if err := func() error {
+				s.Badge.Reset()
+				if err := s.Badge.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"badge\"")
 			}
 		case "bsky":
 			if err := func() error {
@@ -4211,6 +4415,12 @@ func (s *UpdateCardReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *UpdateCardReq) encodeFields(e *jx.Encoder) {
 	{
+		if s.Card.Set {
+			e.FieldStart("card")
+			s.Card.Encode(e)
+		}
+	}
+	{
 		if s.Skill.Set {
 			e.FieldStart("skill")
 			s.Skill.Encode(e)
@@ -4242,12 +4452,13 @@ func (s *UpdateCardReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUpdateCardReq = [5]string{
-	0: "skill",
-	1: "status",
-	2: "token",
-	3: "cp",
-	4: "owner",
+var jsonFieldsNameOfUpdateCardReq = [6]string{
+	0: "card",
+	1: "skill",
+	2: "status",
+	3: "token",
+	4: "cp",
+	5: "owner",
 }
 
 // Decode decodes UpdateCardReq from json.
@@ -4258,6 +4469,16 @@ func (s *UpdateCardReq) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "card":
+			if err := func() error {
+				s.Card.Reset()
+				if err := s.Card.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"card\"")
+			}
 		case "skill":
 			if err := func() error {
 				s.Skill.Reset()
@@ -4441,6 +4662,30 @@ func (s *UpdateUserReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Member.Set {
+			e.FieldStart("member")
+			s.Member.Encode(e)
+		}
+	}
+	{
+		if s.Book.Set {
+			e.FieldStart("book")
+			s.Book.Encode(e)
+		}
+	}
+	{
+		if s.Manga.Set {
+			e.FieldStart("manga")
+			s.Manga.Encode(e)
+		}
+	}
+	{
+		if s.Badge.Set {
+			e.FieldStart("badge")
+			s.Badge.Encode(e)
+		}
+	}
+	{
 		if s.Bsky.Set {
 			e.FieldStart("bsky")
 			s.Bsky.Encode(e)
@@ -4590,32 +4835,36 @@ func (s *UpdateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUpdateUserReq = [25]string{
+var jsonFieldsNameOfUpdateUserReq = [29]string{
 	0:  "did",
-	1:  "bsky",
-	2:  "mastodon",
-	3:  "delete",
-	4:  "handle",
-	5:  "token",
-	6:  "updated_at",
-	7:  "raid_at",
-	8:  "luck",
-	9:  "luck_at",
-	10: "like",
-	11: "like_rank",
-	12: "like_at",
-	13: "fav",
-	14: "ten",
-	15: "ten_su",
-	16: "ten_kai",
-	17: "aiten",
-	18: "ten_card",
-	19: "ten_delete",
-	20: "ten_post",
-	21: "ten_get",
-	22: "ten_at",
-	23: "next",
-	24: "card",
+	1:  "member",
+	2:  "book",
+	3:  "manga",
+	4:  "badge",
+	5:  "bsky",
+	6:  "mastodon",
+	7:  "delete",
+	8:  "handle",
+	9:  "token",
+	10: "updated_at",
+	11: "raid_at",
+	12: "luck",
+	13: "luck_at",
+	14: "like",
+	15: "like_rank",
+	16: "like_at",
+	17: "fav",
+	18: "ten",
+	19: "ten_su",
+	20: "ten_kai",
+	21: "aiten",
+	22: "ten_card",
+	23: "ten_delete",
+	24: "ten_post",
+	25: "ten_get",
+	26: "ten_at",
+	27: "next",
+	28: "card",
 }
 
 // Decode decodes UpdateUserReq from json.
@@ -4635,6 +4884,46 @@ func (s *UpdateUserReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"did\"")
+			}
+		case "member":
+			if err := func() error {
+				s.Member.Reset()
+				if err := s.Member.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"member\"")
+			}
+		case "book":
+			if err := func() error {
+				s.Book.Reset()
+				if err := s.Book.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"book\"")
+			}
+		case "manga":
+			if err := func() error {
+				s.Manga.Reset()
+				if err := s.Manga.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"manga\"")
+			}
+		case "badge":
+			if err := func() error {
+				s.Badge.Reset()
+				if err := s.Badge.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"badge\"")
 			}
 		case "bsky":
 			if err := func() error {
@@ -5134,6 +5423,30 @@ func (s *UserCreate) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Member.Set {
+			e.FieldStart("member")
+			s.Member.Encode(e)
+		}
+	}
+	{
+		if s.Book.Set {
+			e.FieldStart("book")
+			s.Book.Encode(e)
+		}
+	}
+	{
+		if s.Manga.Set {
+			e.FieldStart("manga")
+			s.Manga.Encode(e)
+		}
+	}
+	{
+		if s.Badge.Set {
+			e.FieldStart("badge")
+			s.Badge.Encode(e)
+		}
+	}
+	{
 		if s.Bsky.Set {
 			e.FieldStart("bsky")
 			s.Bsky.Encode(e)
@@ -5273,33 +5586,37 @@ func (s *UserCreate) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserCreate = [26]string{
+var jsonFieldsNameOfUserCreate = [30]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
-	3:  "bsky",
-	4:  "mastodon",
-	5:  "delete",
-	6:  "handle",
-	7:  "created_at",
-	8:  "updated_at",
-	9:  "raid_at",
-	10: "luck",
-	11: "luck_at",
-	12: "like",
-	13: "like_rank",
-	14: "like_at",
-	15: "fav",
-	16: "ten",
-	17: "ten_su",
-	18: "ten_kai",
-	19: "aiten",
-	20: "ten_card",
-	21: "ten_delete",
-	22: "ten_post",
-	23: "ten_get",
-	24: "ten_at",
-	25: "next",
+	3:  "member",
+	4:  "book",
+	5:  "manga",
+	6:  "badge",
+	7:  "bsky",
+	8:  "mastodon",
+	9:  "delete",
+	10: "handle",
+	11: "created_at",
+	12: "updated_at",
+	13: "raid_at",
+	14: "luck",
+	15: "luck_at",
+	16: "like",
+	17: "like_rank",
+	18: "like_at",
+	19: "fav",
+	20: "ten",
+	21: "ten_su",
+	22: "ten_kai",
+	23: "aiten",
+	24: "ten_card",
+	25: "ten_delete",
+	26: "ten_post",
+	27: "ten_get",
+	28: "ten_at",
+	29: "next",
 }
 
 // Decode decodes UserCreate from json.
@@ -5344,6 +5661,46 @@ func (s *UserCreate) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"did\"")
+			}
+		case "member":
+			if err := func() error {
+				s.Member.Reset()
+				if err := s.Member.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"member\"")
+			}
+		case "book":
+			if err := func() error {
+				s.Book.Reset()
+				if err := s.Book.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"book\"")
+			}
+		case "manga":
+			if err := func() error {
+				s.Manga.Reset()
+				if err := s.Manga.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"manga\"")
+			}
+		case "badge":
+			if err := func() error {
+				s.Badge.Reset()
+				if err := s.Badge.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"badge\"")
 			}
 		case "bsky":
 			if err := func() error {
@@ -5660,6 +6017,30 @@ func (s *UserList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Member.Set {
+			e.FieldStart("member")
+			s.Member.Encode(e)
+		}
+	}
+	{
+		if s.Book.Set {
+			e.FieldStart("book")
+			s.Book.Encode(e)
+		}
+	}
+	{
+		if s.Manga.Set {
+			e.FieldStart("manga")
+			s.Manga.Encode(e)
+		}
+	}
+	{
+		if s.Badge.Set {
+			e.FieldStart("badge")
+			s.Badge.Encode(e)
+		}
+	}
+	{
 		if s.Bsky.Set {
 			e.FieldStart("bsky")
 			s.Bsky.Encode(e)
@@ -5799,33 +6180,37 @@ func (s *UserList) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserList = [26]string{
+var jsonFieldsNameOfUserList = [30]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
-	3:  "bsky",
-	4:  "mastodon",
-	5:  "delete",
-	6:  "handle",
-	7:  "created_at",
-	8:  "updated_at",
-	9:  "raid_at",
-	10: "luck",
-	11: "luck_at",
-	12: "like",
-	13: "like_rank",
-	14: "like_at",
-	15: "fav",
-	16: "ten",
-	17: "ten_su",
-	18: "ten_kai",
-	19: "aiten",
-	20: "ten_card",
-	21: "ten_delete",
-	22: "ten_post",
-	23: "ten_get",
-	24: "ten_at",
-	25: "next",
+	3:  "member",
+	4:  "book",
+	5:  "manga",
+	6:  "badge",
+	7:  "bsky",
+	8:  "mastodon",
+	9:  "delete",
+	10: "handle",
+	11: "created_at",
+	12: "updated_at",
+	13: "raid_at",
+	14: "luck",
+	15: "luck_at",
+	16: "like",
+	17: "like_rank",
+	18: "like_at",
+	19: "fav",
+	20: "ten",
+	21: "ten_su",
+	22: "ten_kai",
+	23: "aiten",
+	24: "ten_card",
+	25: "ten_delete",
+	26: "ten_post",
+	27: "ten_get",
+	28: "ten_at",
+	29: "next",
 }
 
 // Decode decodes UserList from json.
@@ -5870,6 +6255,46 @@ func (s *UserList) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"did\"")
+			}
+		case "member":
+			if err := func() error {
+				s.Member.Reset()
+				if err := s.Member.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"member\"")
+			}
+		case "book":
+			if err := func() error {
+				s.Book.Reset()
+				if err := s.Book.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"book\"")
+			}
+		case "manga":
+			if err := func() error {
+				s.Manga.Reset()
+				if err := s.Manga.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"manga\"")
+			}
+		case "badge":
+			if err := func() error {
+				s.Badge.Reset()
+				if err := s.Badge.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"badge\"")
 			}
 		case "bsky":
 			if err := func() error {
@@ -6186,6 +6611,30 @@ func (s *UserRead) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Member.Set {
+			e.FieldStart("member")
+			s.Member.Encode(e)
+		}
+	}
+	{
+		if s.Book.Set {
+			e.FieldStart("book")
+			s.Book.Encode(e)
+		}
+	}
+	{
+		if s.Manga.Set {
+			e.FieldStart("manga")
+			s.Manga.Encode(e)
+		}
+	}
+	{
+		if s.Badge.Set {
+			e.FieldStart("badge")
+			s.Badge.Encode(e)
+		}
+	}
+	{
 		if s.Bsky.Set {
 			e.FieldStart("bsky")
 			s.Bsky.Encode(e)
@@ -6325,33 +6774,37 @@ func (s *UserRead) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserRead = [26]string{
+var jsonFieldsNameOfUserRead = [30]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
-	3:  "bsky",
-	4:  "mastodon",
-	5:  "delete",
-	6:  "handle",
-	7:  "created_at",
-	8:  "updated_at",
-	9:  "raid_at",
-	10: "luck",
-	11: "luck_at",
-	12: "like",
-	13: "like_rank",
-	14: "like_at",
-	15: "fav",
-	16: "ten",
-	17: "ten_su",
-	18: "ten_kai",
-	19: "aiten",
-	20: "ten_card",
-	21: "ten_delete",
-	22: "ten_post",
-	23: "ten_get",
-	24: "ten_at",
-	25: "next",
+	3:  "member",
+	4:  "book",
+	5:  "manga",
+	6:  "badge",
+	7:  "bsky",
+	8:  "mastodon",
+	9:  "delete",
+	10: "handle",
+	11: "created_at",
+	12: "updated_at",
+	13: "raid_at",
+	14: "luck",
+	15: "luck_at",
+	16: "like",
+	17: "like_rank",
+	18: "like_at",
+	19: "fav",
+	20: "ten",
+	21: "ten_su",
+	22: "ten_kai",
+	23: "aiten",
+	24: "ten_card",
+	25: "ten_delete",
+	26: "ten_post",
+	27: "ten_get",
+	28: "ten_at",
+	29: "next",
 }
 
 // Decode decodes UserRead from json.
@@ -6396,6 +6849,46 @@ func (s *UserRead) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"did\"")
+			}
+		case "member":
+			if err := func() error {
+				s.Member.Reset()
+				if err := s.Member.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"member\"")
+			}
+		case "book":
+			if err := func() error {
+				s.Book.Reset()
+				if err := s.Book.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"book\"")
+			}
+		case "manga":
+			if err := func() error {
+				s.Manga.Reset()
+				if err := s.Manga.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"manga\"")
+			}
+		case "badge":
+			if err := func() error {
+				s.Badge.Reset()
+				if err := s.Badge.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"badge\"")
 			}
 		case "bsky":
 			if err := func() error {
@@ -6712,6 +7205,30 @@ func (s *UserUpdate) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Member.Set {
+			e.FieldStart("member")
+			s.Member.Encode(e)
+		}
+	}
+	{
+		if s.Book.Set {
+			e.FieldStart("book")
+			s.Book.Encode(e)
+		}
+	}
+	{
+		if s.Manga.Set {
+			e.FieldStart("manga")
+			s.Manga.Encode(e)
+		}
+	}
+	{
+		if s.Badge.Set {
+			e.FieldStart("badge")
+			s.Badge.Encode(e)
+		}
+	}
+	{
 		if s.Bsky.Set {
 			e.FieldStart("bsky")
 			s.Bsky.Encode(e)
@@ -6851,33 +7368,37 @@ func (s *UserUpdate) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserUpdate = [26]string{
+var jsonFieldsNameOfUserUpdate = [30]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
-	3:  "bsky",
-	4:  "mastodon",
-	5:  "delete",
-	6:  "handle",
-	7:  "created_at",
-	8:  "updated_at",
-	9:  "raid_at",
-	10: "luck",
-	11: "luck_at",
-	12: "like",
-	13: "like_rank",
-	14: "like_at",
-	15: "fav",
-	16: "ten",
-	17: "ten_su",
-	18: "ten_kai",
-	19: "aiten",
-	20: "ten_card",
-	21: "ten_delete",
-	22: "ten_post",
-	23: "ten_get",
-	24: "ten_at",
-	25: "next",
+	3:  "member",
+	4:  "book",
+	5:  "manga",
+	6:  "badge",
+	7:  "bsky",
+	8:  "mastodon",
+	9:  "delete",
+	10: "handle",
+	11: "created_at",
+	12: "updated_at",
+	13: "raid_at",
+	14: "luck",
+	15: "luck_at",
+	16: "like",
+	17: "like_rank",
+	18: "like_at",
+	19: "fav",
+	20: "ten",
+	21: "ten_su",
+	22: "ten_kai",
+	23: "aiten",
+	24: "ten_card",
+	25: "ten_delete",
+	26: "ten_post",
+	27: "ten_get",
+	28: "ten_at",
+	29: "next",
 }
 
 // Decode decodes UserUpdate from json.
@@ -6922,6 +7443,46 @@ func (s *UserUpdate) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"did\"")
+			}
+		case "member":
+			if err := func() error {
+				s.Member.Reset()
+				if err := s.Member.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"member\"")
+			}
+		case "book":
+			if err := func() error {
+				s.Book.Reset()
+				if err := s.Book.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"book\"")
+			}
+		case "manga":
+			if err := func() error {
+				s.Manga.Reset()
+				if err := s.Manga.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"manga\"")
+			}
+		case "badge":
+			if err := func() error {
+				s.Badge.Reset()
+				if err := s.Badge.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"badge\"")
 			}
 		case "bsky":
 			if err := func() error {

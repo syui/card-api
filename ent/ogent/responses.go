@@ -144,6 +144,10 @@ func NewCardOwnerRead(e *ent.User) *CardOwnerRead {
 	ret.ID = e.ID
 	ret.Username = e.Username
 	ret.Did = NewOptString(e.Did)
+	ret.Member = NewOptBool(e.Member)
+	ret.Book = NewOptBool(e.Book)
+	ret.Manga = NewOptBool(e.Manga)
+	ret.Badge = NewOptBool(e.Badge)
 	ret.Bsky = NewOptBool(e.Bsky)
 	ret.Mastodon = NewOptBool(e.Mastodon)
 	ret.Delete = NewOptBool(e.Delete)
@@ -308,6 +312,10 @@ func NewGroupUsersList(e *ent.User) *GroupUsersList {
 	ret.ID = e.ID
 	ret.Username = e.Username
 	ret.Did = NewOptString(e.Did)
+	ret.Member = NewOptBool(e.Member)
+	ret.Book = NewOptBool(e.Book)
+	ret.Manga = NewOptBool(e.Manga)
+	ret.Badge = NewOptBool(e.Badge)
 	ret.Bsky = NewOptBool(e.Bsky)
 	ret.Mastodon = NewOptBool(e.Mastodon)
 	ret.Delete = NewOptBool(e.Delete)
@@ -360,6 +368,10 @@ func NewUserCreate(e *ent.User) *UserCreate {
 	ret.ID = e.ID
 	ret.Username = e.Username
 	ret.Did = NewOptString(e.Did)
+	ret.Member = NewOptBool(e.Member)
+	ret.Book = NewOptBool(e.Book)
+	ret.Manga = NewOptBool(e.Manga)
+	ret.Badge = NewOptBool(e.Badge)
 	ret.Bsky = NewOptBool(e.Bsky)
 	ret.Mastodon = NewOptBool(e.Mastodon)
 	ret.Delete = NewOptBool(e.Delete)
@@ -412,6 +424,10 @@ func NewUserList(e *ent.User) *UserList {
 	ret.ID = e.ID
 	ret.Username = e.Username
 	ret.Did = NewOptString(e.Did)
+	ret.Member = NewOptBool(e.Member)
+	ret.Book = NewOptBool(e.Book)
+	ret.Manga = NewOptBool(e.Manga)
+	ret.Badge = NewOptBool(e.Badge)
 	ret.Bsky = NewOptBool(e.Bsky)
 	ret.Mastodon = NewOptBool(e.Mastodon)
 	ret.Delete = NewOptBool(e.Delete)
@@ -464,6 +480,10 @@ func NewUserRead(e *ent.User) *UserRead {
 	ret.ID = e.ID
 	ret.Username = e.Username
 	ret.Did = NewOptString(e.Did)
+	ret.Member = NewOptBool(e.Member)
+	ret.Book = NewOptBool(e.Book)
+	ret.Manga = NewOptBool(e.Manga)
+	ret.Badge = NewOptBool(e.Badge)
 	ret.Bsky = NewOptBool(e.Bsky)
 	ret.Mastodon = NewOptBool(e.Mastodon)
 	ret.Delete = NewOptBool(e.Delete)
@@ -516,6 +536,10 @@ func NewUserUpdate(e *ent.User) *UserUpdate {
 	ret.ID = e.ID
 	ret.Username = e.Username
 	ret.Did = NewOptString(e.Did)
+	ret.Member = NewOptBool(e.Member)
+	ret.Book = NewOptBool(e.Book)
+	ret.Manga = NewOptBool(e.Manga)
+	ret.Badge = NewOptBool(e.Badge)
 	ret.Bsky = NewOptBool(e.Bsky)
 	ret.Mastodon = NewOptBool(e.Mastodon)
 	ret.Delete = NewOptBool(e.Delete)

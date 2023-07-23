@@ -98,6 +98,12 @@ func (User) Fields() []ent.Field {
 			return time.Now().In(jst)
 		}),
 
+		field.Time("egg_at").
+		Optional().
+		Default(func() time.Time {
+			return time.Now().In(jst)
+		}),
+
 		field.Int("luck").
 		Optional(),
 

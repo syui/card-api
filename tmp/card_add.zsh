@@ -18,5 +18,5 @@ id=`curl -sL "$host/users?itemsPerPage=2000"|jq ".[]|select(.username == \"$1\")
 card=$2
 cp=$3
 s=super
-skill=normal
+skill=dragon
 curl -X POST -H "Content-Type: application/json" -d "{\"owner\":$id,\"card\":$card,\"status\":\"$s\",\"cp\":$cp,\"password\":\"$pass\",\"skill\":\"$skill\"}" -sL $host/cards

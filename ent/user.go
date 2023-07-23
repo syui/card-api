@@ -46,6 +46,8 @@ type User struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	// RaidAt holds the value of the "raid_at" field.
 	RaidAt time.Time `json:"raid_at,omitempty"`
+	// EggAt holds the value of the "egg_at" field.
+	EggAt time.Time `json:"egg_at,omitempty"`
 	// Luck holds the value of the "luck" field.
 	Luck int `json:"luck,omitempty"`
 	// LuckAt holds the value of the "luck_at" field.
@@ -113,7 +115,7 @@ func (*User) scanValues(columns []string) ([]any, error) {
 			values[i] = new(sql.NullInt64)
 		case user.FieldUsername, user.FieldDid, user.FieldToken, user.FieldPassword, user.FieldTenCard, user.FieldTenDelete, user.FieldTenPost, user.FieldTenGet, user.FieldNext:
 			values[i] = new(sql.NullString)
-		case user.FieldCreatedAt, user.FieldUpdatedAt, user.FieldRaidAt, user.FieldLuckAt, user.FieldLikeAt, user.FieldTenAt:
+		case user.FieldCreatedAt, user.FieldUpdatedAt, user.FieldRaidAt, user.FieldEggAt, user.FieldLuckAt, user.FieldLikeAt, user.FieldTenAt:
 			values[i] = new(sql.NullTime)
 		case user.ForeignKeys[0]: // group_users
 			values[i] = new(sql.NullInt64)
@@ -227,6 +229,12 @@ func (u *User) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field raid_at", values[i])
 			} else if value.Valid {
 				u.RaidAt = value.Time
+			}
+		case user.FieldEggAt:
+			if value, ok := values[i].(*sql.NullTime); !ok {
+				return fmt.Errorf("unexpected type %T for field egg_at", values[i])
+			} else if value.Valid {
+				u.EggAt = value.Time
 			}
 		case user.FieldLuck:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
@@ -406,6 +414,9 @@ func (u *User) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("raid_at=")
 	builder.WriteString(u.RaidAt.Format(time.ANSIC))
+	builder.WriteString(", ")
+	builder.WriteString("egg_at=")
+	builder.WriteString(u.EggAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("luck=")
 	builder.WriteString(fmt.Sprintf("%v", u.Luck))

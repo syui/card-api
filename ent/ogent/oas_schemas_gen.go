@@ -188,6 +188,7 @@ type CardOwnerRead struct {
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
+	EggAt     OptDateTime `json:"egg_at"`
 	Luck      OptInt      `json:"luck"`
 	LuckAt    OptDateTime `json:"luck_at"`
 	Like      OptInt      `json:"like"`
@@ -274,6 +275,11 @@ func (s *CardOwnerRead) GetUpdatedAt() OptDateTime {
 // GetRaidAt returns the value of RaidAt.
 func (s *CardOwnerRead) GetRaidAt() OptDateTime {
 	return s.RaidAt
+}
+
+// GetEggAt returns the value of EggAt.
+func (s *CardOwnerRead) GetEggAt() OptDateTime {
+	return s.EggAt
 }
 
 // GetLuck returns the value of Luck.
@@ -424,6 +430,11 @@ func (s *CardOwnerRead) SetUpdatedAt(val OptDateTime) {
 // SetRaidAt sets the value of RaidAt.
 func (s *CardOwnerRead) SetRaidAt(val OptDateTime) {
 	s.RaidAt = val
+}
+
+// SetEggAt sets the value of EggAt.
+func (s *CardOwnerRead) SetEggAt(val OptDateTime) {
+	s.EggAt = val
 }
 
 // SetLuck sets the value of Luck.
@@ -828,6 +839,7 @@ type CreateUserReq struct {
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
+	EggAt     OptDateTime `json:"egg_at"`
 	Luck      OptInt      `json:"luck"`
 	LuckAt    OptDateTime `json:"luck_at"`
 	Like      OptInt      `json:"like"`
@@ -920,6 +932,11 @@ func (s *CreateUserReq) GetUpdatedAt() OptDateTime {
 // GetRaidAt returns the value of RaidAt.
 func (s *CreateUserReq) GetRaidAt() OptDateTime {
 	return s.RaidAt
+}
+
+// GetEggAt returns the value of EggAt.
+func (s *CreateUserReq) GetEggAt() OptDateTime {
+	return s.EggAt
 }
 
 // GetLuck returns the value of Luck.
@@ -1080,6 +1097,11 @@ func (s *CreateUserReq) SetUpdatedAt(val OptDateTime) {
 // SetRaidAt sets the value of RaidAt.
 func (s *CreateUserReq) SetRaidAt(val OptDateTime) {
 	s.RaidAt = val
+}
+
+// SetEggAt sets the value of EggAt.
+func (s *CreateUserReq) SetEggAt(val OptDateTime) {
+	s.EggAt = val
 }
 
 // SetLuck sets the value of Luck.
@@ -1314,6 +1336,7 @@ type GroupUsersList struct {
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
+	EggAt     OptDateTime `json:"egg_at"`
 	Luck      OptInt      `json:"luck"`
 	LuckAt    OptDateTime `json:"luck_at"`
 	Like      OptInt      `json:"like"`
@@ -1400,6 +1423,11 @@ func (s *GroupUsersList) GetUpdatedAt() OptDateTime {
 // GetRaidAt returns the value of RaidAt.
 func (s *GroupUsersList) GetRaidAt() OptDateTime {
 	return s.RaidAt
+}
+
+// GetEggAt returns the value of EggAt.
+func (s *GroupUsersList) GetEggAt() OptDateTime {
+	return s.EggAt
 }
 
 // GetLuck returns the value of Luck.
@@ -1550,6 +1578,11 @@ func (s *GroupUsersList) SetUpdatedAt(val OptDateTime) {
 // SetRaidAt sets the value of RaidAt.
 func (s *GroupUsersList) SetRaidAt(val OptDateTime) {
 	s.RaidAt = val
+}
+
+// SetEggAt sets the value of EggAt.
+func (s *GroupUsersList) SetEggAt(val OptDateTime) {
+	s.EggAt = val
 }
 
 // SetLuck sets the value of Luck.
@@ -2160,6 +2193,7 @@ type UpdateUserReq struct {
 	Token     OptString   `json:"token"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
+	EggAt     OptDateTime `json:"egg_at"`
 	Luck      OptInt      `json:"luck"`
 	LuckAt    OptDateTime `json:"luck_at"`
 	Like      OptInt      `json:"like"`
@@ -2237,6 +2271,11 @@ func (s *UpdateUserReq) GetUpdatedAt() OptDateTime {
 // GetRaidAt returns the value of RaidAt.
 func (s *UpdateUserReq) GetRaidAt() OptDateTime {
 	return s.RaidAt
+}
+
+// GetEggAt returns the value of EggAt.
+func (s *UpdateUserReq) GetEggAt() OptDateTime {
+	return s.EggAt
 }
 
 // GetLuck returns the value of Luck.
@@ -2382,6 +2421,11 @@ func (s *UpdateUserReq) SetUpdatedAt(val OptDateTime) {
 // SetRaidAt sets the value of RaidAt.
 func (s *UpdateUserReq) SetRaidAt(val OptDateTime) {
 	s.RaidAt = val
+}
+
+// SetEggAt sets the value of EggAt.
+func (s *UpdateUserReq) SetEggAt(val OptDateTime) {
+	s.EggAt = val
 }
 
 // SetLuck sets the value of Luck.
@@ -2566,6 +2610,7 @@ type UserCreate struct {
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
+	EggAt     OptDateTime `json:"egg_at"`
 	Luck      OptInt      `json:"luck"`
 	LuckAt    OptDateTime `json:"luck_at"`
 	Like      OptInt      `json:"like"`
@@ -2652,6 +2697,11 @@ func (s *UserCreate) GetUpdatedAt() OptDateTime {
 // GetRaidAt returns the value of RaidAt.
 func (s *UserCreate) GetRaidAt() OptDateTime {
 	return s.RaidAt
+}
+
+// GetEggAt returns the value of EggAt.
+func (s *UserCreate) GetEggAt() OptDateTime {
+	return s.EggAt
 }
 
 // GetLuck returns the value of Luck.
@@ -2804,6 +2854,11 @@ func (s *UserCreate) SetRaidAt(val OptDateTime) {
 	s.RaidAt = val
 }
 
+// SetEggAt sets the value of EggAt.
+func (s *UserCreate) SetEggAt(val OptDateTime) {
+	s.EggAt = val
+}
+
 // SetLuck sets the value of Luck.
 func (s *UserCreate) SetLuck(val OptInt) {
 	s.Luck = val
@@ -2902,6 +2957,7 @@ type UserList struct {
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
+	EggAt     OptDateTime `json:"egg_at"`
 	Luck      OptInt      `json:"luck"`
 	LuckAt    OptDateTime `json:"luck_at"`
 	Like      OptInt      `json:"like"`
@@ -2988,6 +3044,11 @@ func (s *UserList) GetUpdatedAt() OptDateTime {
 // GetRaidAt returns the value of RaidAt.
 func (s *UserList) GetRaidAt() OptDateTime {
 	return s.RaidAt
+}
+
+// GetEggAt returns the value of EggAt.
+func (s *UserList) GetEggAt() OptDateTime {
+	return s.EggAt
 }
 
 // GetLuck returns the value of Luck.
@@ -3140,6 +3201,11 @@ func (s *UserList) SetRaidAt(val OptDateTime) {
 	s.RaidAt = val
 }
 
+// SetEggAt sets the value of EggAt.
+func (s *UserList) SetEggAt(val OptDateTime) {
+	s.EggAt = val
+}
+
 // SetLuck sets the value of Luck.
 func (s *UserList) SetLuck(val OptInt) {
 	s.Luck = val
@@ -3236,6 +3302,7 @@ type UserRead struct {
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
+	EggAt     OptDateTime `json:"egg_at"`
 	Luck      OptInt      `json:"luck"`
 	LuckAt    OptDateTime `json:"luck_at"`
 	Like      OptInt      `json:"like"`
@@ -3322,6 +3389,11 @@ func (s *UserRead) GetUpdatedAt() OptDateTime {
 // GetRaidAt returns the value of RaidAt.
 func (s *UserRead) GetRaidAt() OptDateTime {
 	return s.RaidAt
+}
+
+// GetEggAt returns the value of EggAt.
+func (s *UserRead) GetEggAt() OptDateTime {
+	return s.EggAt
 }
 
 // GetLuck returns the value of Luck.
@@ -3474,6 +3546,11 @@ func (s *UserRead) SetRaidAt(val OptDateTime) {
 	s.RaidAt = val
 }
 
+// SetEggAt sets the value of EggAt.
+func (s *UserRead) SetEggAt(val OptDateTime) {
+	s.EggAt = val
+}
+
 // SetLuck sets the value of Luck.
 func (s *UserRead) SetLuck(val OptInt) {
 	s.Luck = val
@@ -3572,6 +3649,7 @@ type UserUpdate struct {
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
+	EggAt     OptDateTime `json:"egg_at"`
 	Luck      OptInt      `json:"luck"`
 	LuckAt    OptDateTime `json:"luck_at"`
 	Like      OptInt      `json:"like"`
@@ -3658,6 +3736,11 @@ func (s *UserUpdate) GetUpdatedAt() OptDateTime {
 // GetRaidAt returns the value of RaidAt.
 func (s *UserUpdate) GetRaidAt() OptDateTime {
 	return s.RaidAt
+}
+
+// GetEggAt returns the value of EggAt.
+func (s *UserUpdate) GetEggAt() OptDateTime {
+	return s.EggAt
 }
 
 // GetLuck returns the value of Luck.
@@ -3808,6 +3891,11 @@ func (s *UserUpdate) SetUpdatedAt(val OptDateTime) {
 // SetRaidAt sets the value of RaidAt.
 func (s *UserUpdate) SetRaidAt(val OptDateTime) {
 	s.RaidAt = val
+}
+
+// SetEggAt sets the value of EggAt.
+func (s *UserUpdate) SetEggAt(val OptDateTime) {
+	s.EggAt = val
 }
 
 // SetLuck sets the value of Luck.

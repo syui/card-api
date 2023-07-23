@@ -41,6 +41,8 @@ const (
 	FieldUpdatedAt = "updated_at"
 	// FieldRaidAt holds the string denoting the raid_at field in the database.
 	FieldRaidAt = "raid_at"
+	// FieldEggAt holds the string denoting the egg_at field in the database.
+	FieldEggAt = "egg_at"
 	// FieldLuck holds the string denoting the luck field in the database.
 	FieldLuck = "luck"
 	// FieldLuckAt holds the string denoting the luck_at field in the database.
@@ -104,6 +106,7 @@ var Columns = []string{
 	FieldCreatedAt,
 	FieldUpdatedAt,
 	FieldRaidAt,
+	FieldEggAt,
 	FieldLuck,
 	FieldLuckAt,
 	FieldLike,
@@ -170,6 +173,8 @@ var (
 	DefaultUpdatedAt func() time.Time
 	// DefaultRaidAt holds the default value on creation for the "raid_at" field.
 	DefaultRaidAt func() time.Time
+	// DefaultEggAt holds the default value on creation for the "egg_at" field.
+	DefaultEggAt func() time.Time
 	// DefaultLuckAt holds the default value on creation for the "luck_at" field.
 	DefaultLuckAt func() time.Time
 	// DefaultLikeAt holds the default value on creation for the "like_at" field.

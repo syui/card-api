@@ -504,6 +504,12 @@ func (s *CardOwnerRead) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.EggAt.Set {
+			e.FieldStart("egg_at")
+			s.EggAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Luck.Set {
 			e.FieldStart("luck")
 			s.Luck.Encode(e)
@@ -601,7 +607,7 @@ func (s *CardOwnerRead) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCardOwnerRead = [30]string{
+var jsonFieldsNameOfCardOwnerRead = [31]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -616,22 +622,23 @@ var jsonFieldsNameOfCardOwnerRead = [30]string{
 	11: "created_at",
 	12: "updated_at",
 	13: "raid_at",
-	14: "luck",
-	15: "luck_at",
-	16: "like",
-	17: "like_rank",
-	18: "like_at",
-	19: "fav",
-	20: "ten",
-	21: "ten_su",
-	22: "ten_kai",
-	23: "aiten",
-	24: "ten_card",
-	25: "ten_delete",
-	26: "ten_post",
-	27: "ten_get",
-	28: "ten_at",
-	29: "next",
+	14: "egg_at",
+	15: "luck",
+	16: "luck_at",
+	17: "like",
+	18: "like_rank",
+	19: "like_at",
+	20: "fav",
+	21: "ten",
+	22: "ten_su",
+	23: "ten_kai",
+	24: "aiten",
+	25: "ten_card",
+	26: "ten_delete",
+	27: "ten_post",
+	28: "ten_get",
+	29: "ten_at",
+	30: "next",
 }
 
 // Decode decodes CardOwnerRead from json.
@@ -786,6 +793,16 @@ func (s *CardOwnerRead) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"raid_at\"")
+			}
+		case "egg_at":
+			if err := func() error {
+				s.EggAt.Reset()
+				if err := s.EggAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"egg_at\"")
 			}
 		case "luck":
 			if err := func() error {
@@ -1882,6 +1899,12 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.EggAt.Set {
+			e.FieldStart("egg_at")
+			s.EggAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Luck.Set {
 			e.FieldStart("luck")
 			s.Luck.Encode(e)
@@ -1989,7 +2012,7 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCreateUserReq = [32]string{
+var jsonFieldsNameOfCreateUserReq = [33]string{
 	0:  "username",
 	1:  "did",
 	2:  "member",
@@ -2005,23 +2028,24 @@ var jsonFieldsNameOfCreateUserReq = [32]string{
 	12: "created_at",
 	13: "updated_at",
 	14: "raid_at",
-	15: "luck",
-	16: "luck_at",
-	17: "like",
-	18: "like_rank",
-	19: "like_at",
-	20: "fav",
-	21: "ten",
-	22: "ten_su",
-	23: "ten_kai",
-	24: "aiten",
-	25: "ten_card",
-	26: "ten_delete",
-	27: "ten_post",
-	28: "ten_get",
-	29: "ten_at",
-	30: "next",
-	31: "card",
+	15: "egg_at",
+	16: "luck",
+	17: "luck_at",
+	18: "like",
+	19: "like_rank",
+	20: "like_at",
+	21: "fav",
+	22: "ten",
+	23: "ten_su",
+	24: "ten_kai",
+	25: "aiten",
+	26: "ten_card",
+	27: "ten_delete",
+	28: "ten_post",
+	29: "ten_get",
+	30: "ten_at",
+	31: "next",
+	32: "card",
 }
 
 // Decode decodes CreateUserReq from json.
@@ -2029,7 +2053,7 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CreateUserReq to nil")
 	}
-	var requiredBitSet [4]uint8
+	var requiredBitSet [5]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -2186,6 +2210,16 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"raid_at\"")
+			}
+		case "egg_at":
+			if err := func() error {
+				s.EggAt.Reset()
+				if err := s.EggAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"egg_at\"")
 			}
 		case "luck":
 			if err := func() error {
@@ -2375,9 +2409,10 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [4]uint8{
+	for i, mask := range [5]uint8{
 		0b00000001,
 		0b00001000,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 	} {
@@ -2977,6 +3012,12 @@ func (s *GroupUsersList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.EggAt.Set {
+			e.FieldStart("egg_at")
+			s.EggAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Luck.Set {
 			e.FieldStart("luck")
 			s.Luck.Encode(e)
@@ -3074,7 +3115,7 @@ func (s *GroupUsersList) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfGroupUsersList = [30]string{
+var jsonFieldsNameOfGroupUsersList = [31]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -3089,22 +3130,23 @@ var jsonFieldsNameOfGroupUsersList = [30]string{
 	11: "created_at",
 	12: "updated_at",
 	13: "raid_at",
-	14: "luck",
-	15: "luck_at",
-	16: "like",
-	17: "like_rank",
-	18: "like_at",
-	19: "fav",
-	20: "ten",
-	21: "ten_su",
-	22: "ten_kai",
-	23: "aiten",
-	24: "ten_card",
-	25: "ten_delete",
-	26: "ten_post",
-	27: "ten_get",
-	28: "ten_at",
-	29: "next",
+	14: "egg_at",
+	15: "luck",
+	16: "luck_at",
+	17: "like",
+	18: "like_rank",
+	19: "like_at",
+	20: "fav",
+	21: "ten",
+	22: "ten_su",
+	23: "ten_kai",
+	24: "aiten",
+	25: "ten_card",
+	26: "ten_delete",
+	27: "ten_post",
+	28: "ten_get",
+	29: "ten_at",
+	30: "next",
 }
 
 // Decode decodes GroupUsersList from json.
@@ -3259,6 +3301,16 @@ func (s *GroupUsersList) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"raid_at\"")
+			}
+		case "egg_at":
+			if err := func() error {
+				s.EggAt.Reset()
+				if err := s.EggAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"egg_at\"")
 			}
 		case "luck":
 			if err := func() error {
@@ -4728,6 +4780,12 @@ func (s *UpdateUserReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.EggAt.Set {
+			e.FieldStart("egg_at")
+			s.EggAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Luck.Set {
 			e.FieldStart("luck")
 			s.Luck.Encode(e)
@@ -4835,7 +4893,7 @@ func (s *UpdateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUpdateUserReq = [29]string{
+var jsonFieldsNameOfUpdateUserReq = [30]string{
 	0:  "did",
 	1:  "member",
 	2:  "book",
@@ -4848,23 +4906,24 @@ var jsonFieldsNameOfUpdateUserReq = [29]string{
 	9:  "token",
 	10: "updated_at",
 	11: "raid_at",
-	12: "luck",
-	13: "luck_at",
-	14: "like",
-	15: "like_rank",
-	16: "like_at",
-	17: "fav",
-	18: "ten",
-	19: "ten_su",
-	20: "ten_kai",
-	21: "aiten",
-	22: "ten_card",
-	23: "ten_delete",
-	24: "ten_post",
-	25: "ten_get",
-	26: "ten_at",
-	27: "next",
-	28: "card",
+	12: "egg_at",
+	13: "luck",
+	14: "luck_at",
+	15: "like",
+	16: "like_rank",
+	17: "like_at",
+	18: "fav",
+	19: "ten",
+	20: "ten_su",
+	21: "ten_kai",
+	22: "aiten",
+	23: "ten_card",
+	24: "ten_delete",
+	25: "ten_post",
+	26: "ten_get",
+	27: "ten_at",
+	28: "next",
+	29: "card",
 }
 
 // Decode decodes UpdateUserReq from json.
@@ -4994,6 +5053,16 @@ func (s *UpdateUserReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"raid_at\"")
+			}
+		case "egg_at":
+			if err := func() error {
+				s.EggAt.Reset()
+				if err := s.EggAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"egg_at\"")
 			}
 		case "luck":
 			if err := func() error {
@@ -5489,6 +5558,12 @@ func (s *UserCreate) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.EggAt.Set {
+			e.FieldStart("egg_at")
+			s.EggAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Luck.Set {
 			e.FieldStart("luck")
 			s.Luck.Encode(e)
@@ -5586,7 +5661,7 @@ func (s *UserCreate) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserCreate = [30]string{
+var jsonFieldsNameOfUserCreate = [31]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -5601,22 +5676,23 @@ var jsonFieldsNameOfUserCreate = [30]string{
 	11: "created_at",
 	12: "updated_at",
 	13: "raid_at",
-	14: "luck",
-	15: "luck_at",
-	16: "like",
-	17: "like_rank",
-	18: "like_at",
-	19: "fav",
-	20: "ten",
-	21: "ten_su",
-	22: "ten_kai",
-	23: "aiten",
-	24: "ten_card",
-	25: "ten_delete",
-	26: "ten_post",
-	27: "ten_get",
-	28: "ten_at",
-	29: "next",
+	14: "egg_at",
+	15: "luck",
+	16: "luck_at",
+	17: "like",
+	18: "like_rank",
+	19: "like_at",
+	20: "fav",
+	21: "ten",
+	22: "ten_su",
+	23: "ten_kai",
+	24: "aiten",
+	25: "ten_card",
+	26: "ten_delete",
+	27: "ten_post",
+	28: "ten_get",
+	29: "ten_at",
+	30: "next",
 }
 
 // Decode decodes UserCreate from json.
@@ -5771,6 +5847,16 @@ func (s *UserCreate) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"raid_at\"")
+			}
+		case "egg_at":
+			if err := func() error {
+				s.EggAt.Reset()
+				if err := s.EggAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"egg_at\"")
 			}
 		case "luck":
 			if err := func() error {
@@ -6083,6 +6169,12 @@ func (s *UserList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.EggAt.Set {
+			e.FieldStart("egg_at")
+			s.EggAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Luck.Set {
 			e.FieldStart("luck")
 			s.Luck.Encode(e)
@@ -6180,7 +6272,7 @@ func (s *UserList) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserList = [30]string{
+var jsonFieldsNameOfUserList = [31]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -6195,22 +6287,23 @@ var jsonFieldsNameOfUserList = [30]string{
 	11: "created_at",
 	12: "updated_at",
 	13: "raid_at",
-	14: "luck",
-	15: "luck_at",
-	16: "like",
-	17: "like_rank",
-	18: "like_at",
-	19: "fav",
-	20: "ten",
-	21: "ten_su",
-	22: "ten_kai",
-	23: "aiten",
-	24: "ten_card",
-	25: "ten_delete",
-	26: "ten_post",
-	27: "ten_get",
-	28: "ten_at",
-	29: "next",
+	14: "egg_at",
+	15: "luck",
+	16: "luck_at",
+	17: "like",
+	18: "like_rank",
+	19: "like_at",
+	20: "fav",
+	21: "ten",
+	22: "ten_su",
+	23: "ten_kai",
+	24: "aiten",
+	25: "ten_card",
+	26: "ten_delete",
+	27: "ten_post",
+	28: "ten_get",
+	29: "ten_at",
+	30: "next",
 }
 
 // Decode decodes UserList from json.
@@ -6365,6 +6458,16 @@ func (s *UserList) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"raid_at\"")
+			}
+		case "egg_at":
+			if err := func() error {
+				s.EggAt.Reset()
+				if err := s.EggAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"egg_at\"")
 			}
 		case "luck":
 			if err := func() error {
@@ -6677,6 +6780,12 @@ func (s *UserRead) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.EggAt.Set {
+			e.FieldStart("egg_at")
+			s.EggAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Luck.Set {
 			e.FieldStart("luck")
 			s.Luck.Encode(e)
@@ -6774,7 +6883,7 @@ func (s *UserRead) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserRead = [30]string{
+var jsonFieldsNameOfUserRead = [31]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -6789,22 +6898,23 @@ var jsonFieldsNameOfUserRead = [30]string{
 	11: "created_at",
 	12: "updated_at",
 	13: "raid_at",
-	14: "luck",
-	15: "luck_at",
-	16: "like",
-	17: "like_rank",
-	18: "like_at",
-	19: "fav",
-	20: "ten",
-	21: "ten_su",
-	22: "ten_kai",
-	23: "aiten",
-	24: "ten_card",
-	25: "ten_delete",
-	26: "ten_post",
-	27: "ten_get",
-	28: "ten_at",
-	29: "next",
+	14: "egg_at",
+	15: "luck",
+	16: "luck_at",
+	17: "like",
+	18: "like_rank",
+	19: "like_at",
+	20: "fav",
+	21: "ten",
+	22: "ten_su",
+	23: "ten_kai",
+	24: "aiten",
+	25: "ten_card",
+	26: "ten_delete",
+	27: "ten_post",
+	28: "ten_get",
+	29: "ten_at",
+	30: "next",
 }
 
 // Decode decodes UserRead from json.
@@ -6959,6 +7069,16 @@ func (s *UserRead) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"raid_at\"")
+			}
+		case "egg_at":
+			if err := func() error {
+				s.EggAt.Reset()
+				if err := s.EggAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"egg_at\"")
 			}
 		case "luck":
 			if err := func() error {
@@ -7271,6 +7391,12 @@ func (s *UserUpdate) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.EggAt.Set {
+			e.FieldStart("egg_at")
+			s.EggAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Luck.Set {
 			e.FieldStart("luck")
 			s.Luck.Encode(e)
@@ -7368,7 +7494,7 @@ func (s *UserUpdate) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserUpdate = [30]string{
+var jsonFieldsNameOfUserUpdate = [31]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -7383,22 +7509,23 @@ var jsonFieldsNameOfUserUpdate = [30]string{
 	11: "created_at",
 	12: "updated_at",
 	13: "raid_at",
-	14: "luck",
-	15: "luck_at",
-	16: "like",
-	17: "like_rank",
-	18: "like_at",
-	19: "fav",
-	20: "ten",
-	21: "ten_su",
-	22: "ten_kai",
-	23: "aiten",
-	24: "ten_card",
-	25: "ten_delete",
-	26: "ten_post",
-	27: "ten_get",
-	28: "ten_at",
-	29: "next",
+	14: "egg_at",
+	15: "luck",
+	16: "luck_at",
+	17: "like",
+	18: "like_rank",
+	19: "like_at",
+	20: "fav",
+	21: "ten",
+	22: "ten_su",
+	23: "ten_kai",
+	24: "aiten",
+	25: "ten_card",
+	26: "ten_delete",
+	27: "ten_post",
+	28: "ten_get",
+	29: "ten_at",
+	30: "next",
 }
 
 // Decode decodes UserUpdate from json.
@@ -7553,6 +7680,16 @@ func (s *UserUpdate) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"raid_at\"")
+			}
+		case "egg_at":
+			if err := func() error {
+				s.EggAt.Reset()
+				if err := s.EggAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"egg_at\"")
 			}
 		case "luck":
 			if err := func() error {

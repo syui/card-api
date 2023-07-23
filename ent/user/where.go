@@ -130,6 +130,11 @@ func RaidAt(v time.Time) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldRaidAt, v))
 }
 
+// EggAt applies equality check predicate on the "egg_at" field. It's identical to EggAtEQ.
+func EggAt(v time.Time) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldEggAt, v))
+}
+
 // Luck applies equality check predicate on the "luck" field. It's identical to LuckEQ.
 func Luck(v int) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldLuck, v))
@@ -798,6 +803,56 @@ func RaidAtIsNil() predicate.User {
 // RaidAtNotNil applies the NotNil predicate on the "raid_at" field.
 func RaidAtNotNil() predicate.User {
 	return predicate.User(sql.FieldNotNull(FieldRaidAt))
+}
+
+// EggAtEQ applies the EQ predicate on the "egg_at" field.
+func EggAtEQ(v time.Time) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldEggAt, v))
+}
+
+// EggAtNEQ applies the NEQ predicate on the "egg_at" field.
+func EggAtNEQ(v time.Time) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldEggAt, v))
+}
+
+// EggAtIn applies the In predicate on the "egg_at" field.
+func EggAtIn(vs ...time.Time) predicate.User {
+	return predicate.User(sql.FieldIn(FieldEggAt, vs...))
+}
+
+// EggAtNotIn applies the NotIn predicate on the "egg_at" field.
+func EggAtNotIn(vs ...time.Time) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldEggAt, vs...))
+}
+
+// EggAtGT applies the GT predicate on the "egg_at" field.
+func EggAtGT(v time.Time) predicate.User {
+	return predicate.User(sql.FieldGT(FieldEggAt, v))
+}
+
+// EggAtGTE applies the GTE predicate on the "egg_at" field.
+func EggAtGTE(v time.Time) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldEggAt, v))
+}
+
+// EggAtLT applies the LT predicate on the "egg_at" field.
+func EggAtLT(v time.Time) predicate.User {
+	return predicate.User(sql.FieldLT(FieldEggAt, v))
+}
+
+// EggAtLTE applies the LTE predicate on the "egg_at" field.
+func EggAtLTE(v time.Time) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldEggAt, v))
+}
+
+// EggAtIsNil applies the IsNil predicate on the "egg_at" field.
+func EggAtIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldEggAt))
+}
+
+// EggAtNotNil applies the NotNil predicate on the "egg_at" field.
+func EggAtNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldEggAt))
 }
 
 // LuckEQ applies the EQ predicate on the "luck" field.

@@ -20,9 +20,10 @@ n=$((n - 1))
 if [ -n "$1" ];then
 	id=`curl -sL "$host/users?itemsPerPage=2000"|jq ".[]|select(.username == \"$1\")"|jq -r .id`
 	if [ "ai" = "$1" ] || [ "yui" = "$1" ];then
-		curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"$nd\", \"updated_at\":\"$updated_at_n\", \"raid_at\":\"$raid_at_n\", \"token\":\"$token\", \"luck_at\": \"$now_at\", \"luck\": 7, \"like\":0,\"aiten\":1000}" -s $host/users/$id
+		curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"$nd\", \"updated_at\":\"$updated_at_n\", \"raid_at\":\"$raid_at_n\", \"token\":\"$token\", \"luck_at\": \"$now_at\"}" -s $host/users/$id
 	else
-		curl -X PATCH -H "Content-Type: application/json" -d "{\"raid_at\": \"$updated_at_n\",\"token\": \"$token\"}" -s $host/users/$id
+		curl -X PATCH -H "Content-Type: application/json" -d "{\"ten_at\":\"$updated_at_n\", \"token\": \"$token\"}" -s $host/users/$id
+		#curl -X PATCH -H "Content-Type: application/json" -d "{\"updated_at\":\"$updated_at_n\", \"raid_at\":\"$raid_at_n\", \"luck_at\": \"$updated_at_n\",\"egg_at\": \"$updated_at_n\", \"token\": \"$token\"}" -s $host/users/$id
 		#curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"$nd\", \"updated_at\":\"$updated_at_n\", \"raid_at\":\"$raid_at_n\", \"luck_at\": \"$updated_at_n\", \"ten_at\": \"$updated_at_n\",\"token\": \"$token\"}" -s $host/users/$id
 	fi
 	exit
@@ -36,7 +37,8 @@ do
 	if [ "ai" = "$1" ];then
 		curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"$nd\", \"updated_at\":\"$updated_at_n\", \"raid_at\":\"$raid_at_n\", \"token\":\"$token\", \"luck_at\": \"$now_at\", \"luck\": 7}" -s $host/users/$id
 	else
-		curl -X PATCH -H "Content-Type: application/json" -d "{\"raid_at\":\"$raid_at_n\",\"token\": \"$token\", \"ten_at\": \"$updated_at_n\"}" -s $host/users/$id
+		#curl -X PATCH -H "Content-Type: application/json" -d "{\"egg_at\":\"$raid_at_n\", \"raid_at\":\"$raid_at_n\",\"token\": \"$token\"}" -s $host/users/$id
+		curl -X PATCH -H "Content-Type: application/json" -d "{\"ten_at\":\"$updated_at_n\", \"token\": \"$token\"}" -s $host/users/$id
 		#curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"$nd\", \"updated_at\":\"$updated_at_n\", \"raid_at\":\"$raid_at_n\", \"token\":\"$token\", \"luck_at\": \"$now_at\", \"ten_at\": \"$updated_at_n\"}" -s $host/users/$id
 	fi
 done

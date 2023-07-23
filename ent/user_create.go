@@ -215,6 +215,20 @@ func (uc *UserCreate) SetNillableRaidAt(t *time.Time) *UserCreate {
 	return uc
 }
 
+// SetEggAt sets the "egg_at" field.
+func (uc *UserCreate) SetEggAt(t time.Time) *UserCreate {
+	uc.mutation.SetEggAt(t)
+	return uc
+}
+
+// SetNillableEggAt sets the "egg_at" field if the given value is not nil.
+func (uc *UserCreate) SetNillableEggAt(t *time.Time) *UserCreate {
+	if t != nil {
+		uc.SetEggAt(*t)
+	}
+	return uc
+}
+
 // SetLuck sets the "luck" field.
 func (uc *UserCreate) SetLuck(i int) *UserCreate {
 	uc.mutation.SetLuck(i)
@@ -533,6 +547,10 @@ func (uc *UserCreate) defaults() {
 		v := user.DefaultRaidAt()
 		uc.mutation.SetRaidAt(v)
 	}
+	if _, ok := uc.mutation.EggAt(); !ok {
+		v := user.DefaultEggAt()
+		uc.mutation.SetEggAt(v)
+	}
 	if _, ok := uc.mutation.LuckAt(); !ok {
 		v := user.DefaultLuckAt()
 		uc.mutation.SetLuckAt(v)
@@ -654,6 +672,10 @@ func (uc *UserCreate) createSpec() (*User, *sqlgraph.CreateSpec) {
 	if value, ok := uc.mutation.RaidAt(); ok {
 		_spec.SetField(user.FieldRaidAt, field.TypeTime, value)
 		_node.RaidAt = value
+	}
+	if value, ok := uc.mutation.EggAt(); ok {
+		_spec.SetField(user.FieldEggAt, field.TypeTime, value)
+		_node.EggAt = value
 	}
 	if value, ok := uc.mutation.Luck(); ok {
 		_spec.SetField(user.FieldLuck, field.TypeInt, value)

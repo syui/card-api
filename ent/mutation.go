@@ -1503,6 +1503,7 @@ type UserMutation struct {
 	created_at    *time.Time
 	updated_at    *time.Time
 	raid_at       *time.Time
+	egg_at        *time.Time
 	luck          *int
 	addluck       *int
 	luck_at       *time.Time
@@ -2340,6 +2341,55 @@ func (m *UserMutation) RaidAtCleared() bool {
 func (m *UserMutation) ResetRaidAt() {
 	m.raid_at = nil
 	delete(m.clearedFields, user.FieldRaidAt)
+}
+
+// SetEggAt sets the "egg_at" field.
+func (m *UserMutation) SetEggAt(t time.Time) {
+	m.egg_at = &t
+}
+
+// EggAt returns the value of the "egg_at" field in the mutation.
+func (m *UserMutation) EggAt() (r time.Time, exists bool) {
+	v := m.egg_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldEggAt returns the old "egg_at" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldEggAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldEggAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldEggAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldEggAt: %w", err)
+	}
+	return oldValue.EggAt, nil
+}
+
+// ClearEggAt clears the value of the "egg_at" field.
+func (m *UserMutation) ClearEggAt() {
+	m.egg_at = nil
+	m.clearedFields[user.FieldEggAt] = struct{}{}
+}
+
+// EggAtCleared returns if the "egg_at" field was cleared in this mutation.
+func (m *UserMutation) EggAtCleared() bool {
+	_, ok := m.clearedFields[user.FieldEggAt]
+	return ok
+}
+
+// ResetEggAt resets all changes to the "egg_at" field.
+func (m *UserMutation) ResetEggAt() {
+	m.egg_at = nil
+	delete(m.clearedFields, user.FieldEggAt)
 }
 
 // SetLuck sets the "luck" field.
@@ -3361,7 +3411,7 @@ func (m *UserMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *UserMutation) Fields() []string {
-	fields := make([]string, 0, 31)
+	fields := make([]string, 0, 32)
 	if m.username != nil {
 		fields = append(fields, user.FieldUsername)
 	}
@@ -3406,6 +3456,9 @@ func (m *UserMutation) Fields() []string {
 	}
 	if m.raid_at != nil {
 		fields = append(fields, user.FieldRaidAt)
+	}
+	if m.egg_at != nil {
+		fields = append(fields, user.FieldEggAt)
 	}
 	if m.luck != nil {
 		fields = append(fields, user.FieldLuck)
@@ -3493,6 +3546,8 @@ func (m *UserMutation) Field(name string) (ent.Value, bool) {
 		return m.UpdatedAt()
 	case user.FieldRaidAt:
 		return m.RaidAt()
+	case user.FieldEggAt:
+		return m.EggAt()
 	case user.FieldLuck:
 		return m.Luck()
 	case user.FieldLuckAt:
@@ -3564,6 +3619,8 @@ func (m *UserMutation) OldField(ctx context.Context, name string) (ent.Value, er
 		return m.OldUpdatedAt(ctx)
 	case user.FieldRaidAt:
 		return m.OldRaidAt(ctx)
+	case user.FieldEggAt:
+		return m.OldEggAt(ctx)
 	case user.FieldLuck:
 		return m.OldLuck(ctx)
 	case user.FieldLuckAt:
@@ -3709,6 +3766,13 @@ func (m *UserMutation) SetField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetRaidAt(v)
+		return nil
+	case user.FieldEggAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetEggAt(v)
 		return nil
 	case user.FieldLuck:
 		v, ok := value.(int)
@@ -3978,6 +4042,9 @@ func (m *UserMutation) ClearedFields() []string {
 	if m.FieldCleared(user.FieldRaidAt) {
 		fields = append(fields, user.FieldRaidAt)
 	}
+	if m.FieldCleared(user.FieldEggAt) {
+		fields = append(fields, user.FieldEggAt)
+	}
 	if m.FieldCleared(user.FieldLuck) {
 		fields = append(fields, user.FieldLuck)
 	}
@@ -4079,6 +4146,9 @@ func (m *UserMutation) ClearField(name string) error {
 	case user.FieldRaidAt:
 		m.ClearRaidAt()
 		return nil
+	case user.FieldEggAt:
+		m.ClearEggAt()
+		return nil
 	case user.FieldLuck:
 		m.ClearLuck()
 		return nil
@@ -4179,6 +4249,9 @@ func (m *UserMutation) ResetField(name string) error {
 		return nil
 	case user.FieldRaidAt:
 		m.ResetRaidAt()
+		return nil
+	case user.FieldEggAt:
+		m.ResetEggAt()
 		return nil
 	case user.FieldLuck:
 		m.ResetLuck()

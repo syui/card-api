@@ -269,6 +269,26 @@ func (uu *UserUpdate) ClearRaidAt() *UserUpdate {
 	return uu
 }
 
+// SetEggAt sets the "egg_at" field.
+func (uu *UserUpdate) SetEggAt(t time.Time) *UserUpdate {
+	uu.mutation.SetEggAt(t)
+	return uu
+}
+
+// SetNillableEggAt sets the "egg_at" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableEggAt(t *time.Time) *UserUpdate {
+	if t != nil {
+		uu.SetEggAt(*t)
+	}
+	return uu
+}
+
+// ClearEggAt clears the value of the "egg_at" field.
+func (uu *UserUpdate) ClearEggAt() *UserUpdate {
+	uu.mutation.ClearEggAt()
+	return uu
+}
+
 // SetLuck sets the "luck" field.
 func (uu *UserUpdate) SetLuck(i int) *UserUpdate {
 	uu.mutation.ResetLuck()
@@ -790,6 +810,12 @@ func (uu *UserUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	if uu.mutation.RaidAtCleared() {
 		_spec.ClearField(user.FieldRaidAt, field.TypeTime)
 	}
+	if value, ok := uu.mutation.EggAt(); ok {
+		_spec.SetField(user.FieldEggAt, field.TypeTime, value)
+	}
+	if uu.mutation.EggAtCleared() {
+		_spec.ClearField(user.FieldEggAt, field.TypeTime)
+	}
 	if value, ok := uu.mutation.Luck(); ok {
 		_spec.SetField(user.FieldLuck, field.TypeInt, value)
 	}
@@ -1209,6 +1235,26 @@ func (uuo *UserUpdateOne) SetNillableRaidAt(t *time.Time) *UserUpdateOne {
 // ClearRaidAt clears the value of the "raid_at" field.
 func (uuo *UserUpdateOne) ClearRaidAt() *UserUpdateOne {
 	uuo.mutation.ClearRaidAt()
+	return uuo
+}
+
+// SetEggAt sets the "egg_at" field.
+func (uuo *UserUpdateOne) SetEggAt(t time.Time) *UserUpdateOne {
+	uuo.mutation.SetEggAt(t)
+	return uuo
+}
+
+// SetNillableEggAt sets the "egg_at" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableEggAt(t *time.Time) *UserUpdateOne {
+	if t != nil {
+		uuo.SetEggAt(*t)
+	}
+	return uuo
+}
+
+// ClearEggAt clears the value of the "egg_at" field.
+func (uuo *UserUpdateOne) ClearEggAt() *UserUpdateOne {
+	uuo.mutation.ClearEggAt()
 	return uuo
 }
 
@@ -1762,6 +1808,12 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 	}
 	if uuo.mutation.RaidAtCleared() {
 		_spec.ClearField(user.FieldRaidAt, field.TypeTime)
+	}
+	if value, ok := uuo.mutation.EggAt(); ok {
+		_spec.SetField(user.FieldEggAt, field.TypeTime, value)
+	}
+	if uuo.mutation.EggAtCleared() {
+		_spec.ClearField(user.FieldEggAt, field.TypeTime)
 	}
 	if value, ok := uuo.mutation.Luck(); ok {
 		_spec.SetField(user.FieldLuck, field.TypeInt, value)

@@ -183,6 +183,7 @@ func (h *OgentHandler) UpdateCard(ctx context.Context, req *UpdateCardReq, param
 // DeleteCard handles DELETE /cards/{id} requests.
 func (h *OgentHandler) DeleteCard(ctx context.Context, params DeleteCardParams) (DeleteCardRes, error) {
 	err := h.client.Card.DeleteOneID(0).Exec(ctx)
+	//err := h.client.Card.DeleteOneID(params.ID).Exec(ctx)
 	if err != nil {
 		switch {
 		case ent.IsNotFound(err):
@@ -523,6 +524,9 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	if v, ok := req.Token.Get(); ok {
 		b.SetToken(v)
 	}
+	if v, ok := req.EggAt.Get(); ok {
+		b.SetEggAt(v)
+	}
 	if v, ok := req.CreatedAt.Get(); ok {
 		b.SetCreatedAt(v)
 	}
@@ -673,6 +677,9 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 			}
 			if v, ok := req.Handle.Get(); ok {
 				b.SetHandle(v)
+			}
+			if v, ok := req.EggAt.Get(); ok {
+				b.SetEggAt(v)
 			}
 			if v, ok := req.UpdatedAt.Get(); ok {
 				b.SetUpdatedAt(v)

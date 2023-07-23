@@ -38,7 +38,7 @@ func (Card) Fields() []ent.Field {
 			}
 
 			if card == 13 {
-				card = 2
+				card = 29
 			}
 
 			// 2023/04/09 premium card id:15
@@ -103,19 +103,19 @@ func (Card) Fields() []ent.Field {
 		//Immutable().
 		DefaultFunc(func() int {
 			rand.Seed(time.Now().UnixNano())
-			var cp = 1 + rand.Intn(100)
+			var cp = 1 + rand.Intn(200)
 			if cp == 2 {
-				cp = 50 + rand.Intn(150)
+				cp = 50 + rand.Intn(300)
 			}
 			if card >= 1 {
-				cp = 150 + cp + rand.Intn(300)
+				cp = 200 + cp + rand.Intn(500)
 			}
 			if super == "super" {
-				cp = 300 + cp + rand.Intn(500)
+				cp = 400 + cp + rand.Intn(700)
 			}
 
 			if skill == "critical" {
-				cp = 300 + cp + rand.Intn(500)
+				cp = 400 + cp + rand.Intn(700)
 			}
 
 			if card == 22 {

@@ -31,6 +31,3 @@ do
 	fi
 done
 
-aki3
-
-967

@@ -808,6 +808,10 @@
                     "type": "string",
                     "format": "date-time"
                   },
+                  "egg_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
                   "luck": {
                     "type": "integer"
                   },
@@ -1038,6 +1042,10 @@
                     "format": "date-time"
                   },
                   "raid_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "egg_at": {
                     "type": "string",
                     "format": "date-time"
                   },
@@ -1431,6 +1439,10 @@
             "type": "string",
             "format": "date-time"
           },
+          "egg_at": {
+            "type": "string",
+            "format": "date-time"
+          },
           "luck": {
             "type": "integer"
           },
@@ -1621,6 +1633,10 @@
             "type": "string",
             "format": "date-time"
           },
+          "egg_at": {
+            "type": "string",
+            "format": "date-time"
+          },
           "luck": {
             "type": "integer"
           },
@@ -1729,6 +1745,10 @@
             "format": "date-time"
           },
           "raid_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "egg_at": {
             "type": "string",
             "format": "date-time"
           },
@@ -1844,6 +1864,10 @@
             "type": "string",
             "format": "date-time"
           },
+          "egg_at": {
+            "type": "string",
+            "format": "date-time"
+          },
           "luck": {
             "type": "integer"
           },
@@ -1946,6 +1970,10 @@
             "format": "date-time"
           },
           "raid_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "egg_at": {
             "type": "string",
             "format": "date-time"
           },
@@ -2054,6 +2082,10 @@
             "type": "string",
             "format": "date-time"
           },
+          "egg_at": {
+            "type": "string",
+            "format": "date-time"
+          },
           "luck": {
             "type": "integer"
           },
@@ -2156,6 +2188,10 @@
             "format": "date-time"
           },
           "raid_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "egg_at": {
             "type": "string",
             "format": "date-time"
           },

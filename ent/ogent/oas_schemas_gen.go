@@ -2092,6 +2092,7 @@ type UpdateCardReq struct {
 	Status OptString `json:"status"`
 	Token  OptString `json:"token"`
 	Cp     OptInt    `json:"cp"`
+	URL    OptString `json:"url"`
 	Owner  OptInt    `json:"owner"`
 }
 
@@ -2118,6 +2119,11 @@ func (s *UpdateCardReq) GetToken() OptString {
 // GetCp returns the value of Cp.
 func (s *UpdateCardReq) GetCp() OptInt {
 	return s.Cp
+}
+
+// GetURL returns the value of URL.
+func (s *UpdateCardReq) GetURL() OptString {
+	return s.URL
 }
 
 // GetOwner returns the value of Owner.
@@ -2148,6 +2154,11 @@ func (s *UpdateCardReq) SetToken(val OptString) {
 // SetCp sets the value of Cp.
 func (s *UpdateCardReq) SetCp(val OptInt) {
 	s.Cp = val
+}
+
+// SetURL sets the value of URL.
+func (s *UpdateCardReq) SetURL(val OptString) {
+	s.URL = val
 }
 
 // SetOwner sets the value of Owner.

@@ -258,6 +258,9 @@
                   "cp": {
                     "type": "integer"
                   },
+                  "url": {
+                    "type": "string"
+                  },
                   "owner": {
                     "type": "integer"
                   }

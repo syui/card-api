@@ -131,6 +131,9 @@ func (h *OgentHandler) UpdateCard(ctx context.Context, req *UpdateCardReq, param
 			if v, ok := req.Skill.Get(); ok {
 				b.SetSkill(v)
 			}
+			if v, ok := req.URL.Get(); ok {
+				b.SetURL(v)
+			}
 			if v, ok := req.Status.Get(); ok {
 				b.SetStatus(v)
 			}

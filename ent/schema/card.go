@@ -131,7 +131,6 @@ func (Card) Fields() []ent.Field {
 		Optional(),
 
 		field.String("url").
-		Immutable().
 		Default(url).
 		Optional(),
 

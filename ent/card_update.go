@@ -142,6 +142,26 @@ func (cu *CardUpdate) ClearCp() *CardUpdate {
 	return cu
 }
 
+// SetURL sets the "url" field.
+func (cu *CardUpdate) SetURL(s string) *CardUpdate {
+	cu.mutation.SetURL(s)
+	return cu
+}
+
+// SetNillableURL sets the "url" field if the given value is not nil.
+func (cu *CardUpdate) SetNillableURL(s *string) *CardUpdate {
+	if s != nil {
+		cu.SetURL(*s)
+	}
+	return cu
+}
+
+// ClearURL clears the value of the "url" field.
+func (cu *CardUpdate) ClearURL() *CardUpdate {
+	cu.mutation.ClearURL()
+	return cu
+}
+
 // SetOwnerID sets the "owner" edge to the User entity by ID.
 func (cu *CardUpdate) SetOwnerID(id int) *CardUpdate {
 	cu.mutation.SetOwnerID(id)
@@ -246,6 +266,9 @@ func (cu *CardUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	}
 	if cu.mutation.CpCleared() {
 		_spec.ClearField(card.FieldCp, field.TypeInt)
+	}
+	if value, ok := cu.mutation.URL(); ok {
+		_spec.SetField(card.FieldURL, field.TypeString, value)
 	}
 	if cu.mutation.URLCleared() {
 		_spec.ClearField(card.FieldURL, field.TypeString)
@@ -416,6 +439,26 @@ func (cuo *CardUpdateOne) ClearCp() *CardUpdateOne {
 	return cuo
 }
 
+// SetURL sets the "url" field.
+func (cuo *CardUpdateOne) SetURL(s string) *CardUpdateOne {
+	cuo.mutation.SetURL(s)
+	return cuo
+}
+
+// SetNillableURL sets the "url" field if the given value is not nil.
+func (cuo *CardUpdateOne) SetNillableURL(s *string) *CardUpdateOne {
+	if s != nil {
+		cuo.SetURL(*s)
+	}
+	return cuo
+}
+
+// ClearURL clears the value of the "url" field.
+func (cuo *CardUpdateOne) ClearURL() *CardUpdateOne {
+	cuo.mutation.ClearURL()
+	return cuo
+}
+
 // SetOwnerID sets the "owner" edge to the User entity by ID.
 func (cuo *CardUpdateOne) SetOwnerID(id int) *CardUpdateOne {
 	cuo.mutation.SetOwnerID(id)
@@ -550,6 +593,9 @@ func (cuo *CardUpdateOne) sqlSave(ctx context.Context) (_node *Card, err error) 
 	}
 	if cuo.mutation.CpCleared() {
 		_spec.ClearField(card.FieldCp, field.TypeInt)
+	}
+	if value, ok := cuo.mutation.URL(); ok {
+		_spec.SetField(card.FieldURL, field.TypeString, value)
 	}
 	if cuo.mutation.URLCleared() {
 		_spec.ClearField(card.FieldURL, field.TypeString)

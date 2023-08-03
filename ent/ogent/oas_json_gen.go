@@ -4497,6 +4497,12 @@ func (s *UpdateCardReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.URL.Set {
+			e.FieldStart("url")
+			s.URL.Encode(e)
+		}
+	}
+	{
 		if s.Owner.Set {
 			e.FieldStart("owner")
 			s.Owner.Encode(e)
@@ -4504,13 +4510,14 @@ func (s *UpdateCardReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUpdateCardReq = [6]string{
+var jsonFieldsNameOfUpdateCardReq = [7]string{
 	0: "card",
 	1: "skill",
 	2: "status",
 	3: "token",
 	4: "cp",
-	5: "owner",
+	5: "url",
+	6: "owner",
 }
 
 // Decode decodes UpdateCardReq from json.
@@ -4570,6 +4577,16 @@ func (s *UpdateCardReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"cp\"")
+			}
+		case "url":
+			if err := func() error {
+				s.URL.Reset()
+				if err := s.URL.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"url\"")
 			}
 		case "owner":
 			if err := func() error {

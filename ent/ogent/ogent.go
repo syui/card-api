@@ -185,8 +185,8 @@ func (h *OgentHandler) UpdateCard(ctx context.Context, req *UpdateCardReq, param
 
 // DeleteCard handles DELETE /cards/{id} requests.
 func (h *OgentHandler) DeleteCard(ctx context.Context, params DeleteCardParams) (DeleteCardRes, error) {
-	//err := h.client.Card.DeleteOneID(0).Exec(ctx)
-	err := h.client.Card.DeleteOneID(params.ID).Exec(ctx)
+	err := h.client.Card.DeleteOneID(0).Exec(ctx)
+	//err := h.client.Card.DeleteOneID(params.ID).Exec(ctx)
 	if err != nil {
 		switch {
 		case ent.IsNotFound(err):

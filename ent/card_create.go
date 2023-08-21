@@ -111,6 +111,34 @@ func (cc *CardCreate) SetNillableURL(s *string) *CardCreate {
 	return cc
 }
 
+// SetCount sets the "count" field.
+func (cc *CardCreate) SetCount(i int) *CardCreate {
+	cc.mutation.SetCount(i)
+	return cc
+}
+
+// SetNillableCount sets the "count" field if the given value is not nil.
+func (cc *CardCreate) SetNillableCount(i *int) *CardCreate {
+	if i != nil {
+		cc.SetCount(*i)
+	}
+	return cc
+}
+
+// SetAuthor sets the "author" field.
+func (cc *CardCreate) SetAuthor(s string) *CardCreate {
+	cc.mutation.SetAuthor(s)
+	return cc
+}
+
+// SetNillableAuthor sets the "author" field if the given value is not nil.
+func (cc *CardCreate) SetNillableAuthor(s *string) *CardCreate {
+	if s != nil {
+		cc.SetAuthor(*s)
+	}
+	return cc
+}
+
 // SetCreatedAt sets the "created_at" field.
 func (cc *CardCreate) SetCreatedAt(t time.Time) *CardCreate {
 	cc.mutation.SetCreatedAt(t)
@@ -263,6 +291,14 @@ func (cc *CardCreate) createSpec() (*Card, *sqlgraph.CreateSpec) {
 	if value, ok := cc.mutation.URL(); ok {
 		_spec.SetField(card.FieldURL, field.TypeString, value)
 		_node.URL = value
+	}
+	if value, ok := cc.mutation.Count(); ok {
+		_spec.SetField(card.FieldCount, field.TypeInt, value)
+		_node.Count = value
+	}
+	if value, ok := cc.mutation.Author(); ok {
+		_spec.SetField(card.FieldAuthor, field.TypeString, value)
+		_node.Author = value
 	}
 	if value, ok := cc.mutation.CreatedAt(); ok {
 		_spec.SetField(card.FieldCreatedAt, field.TypeTime, value)

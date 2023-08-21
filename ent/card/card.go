@@ -25,6 +25,10 @@ const (
 	FieldCp = "cp"
 	// FieldURL holds the string denoting the url field in the database.
 	FieldURL = "url"
+	// FieldCount holds the string denoting the count field in the database.
+	FieldCount = "count"
+	// FieldAuthor holds the string denoting the author field in the database.
+	FieldAuthor = "author"
 	// FieldCreatedAt holds the string denoting the created_at field in the database.
 	FieldCreatedAt = "created_at"
 	// EdgeOwner holds the string denoting the owner edge name in mutations.
@@ -50,6 +54,8 @@ var Columns = []string{
 	FieldToken,
 	FieldCp,
 	FieldURL,
+	FieldCount,
+	FieldAuthor,
 	FieldCreatedAt,
 }
 

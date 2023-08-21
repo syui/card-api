@@ -31,6 +31,10 @@ type Card struct {
 	Cp int `json:"cp,omitempty"`
 	// URL holds the value of the "url" field.
 	URL string `json:"url,omitempty"`
+	// Count holds the value of the "count" field.
+	Count int `json:"count,omitempty"`
+	// Author holds the value of the "author" field.
+	Author string `json:"author,omitempty"`
 	// CreatedAt holds the value of the "created_at" field.
 	CreatedAt time.Time `json:"created_at,omitempty"`
 	// Edges holds the relations/edges for other nodes in the graph.
@@ -66,9 +70,9 @@ func (*Card) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case card.FieldID, card.FieldCard, card.FieldCp:
+		case card.FieldID, card.FieldCard, card.FieldCp, card.FieldCount:
 			values[i] = new(sql.NullInt64)
-		case card.FieldPassword, card.FieldSkill, card.FieldStatus, card.FieldToken, card.FieldURL:
+		case card.FieldPassword, card.FieldSkill, card.FieldStatus, card.FieldToken, card.FieldURL, card.FieldAuthor:
 			values[i] = new(sql.NullString)
 		case card.FieldCreatedAt:
 			values[i] = new(sql.NullTime)
@@ -137,6 +141,18 @@ func (c *Card) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				c.URL = value.String
 			}
+		case card.FieldCount:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field count", values[i])
+			} else if value.Valid {
+				c.Count = int(value.Int64)
+			}
+		case card.FieldAuthor:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field author", values[i])
+			} else if value.Valid {
+				c.Author = value.String
+			}
 		case card.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
@@ -201,6 +217,12 @@ func (c *Card) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("url=")
 	builder.WriteString(c.URL)
+	builder.WriteString(", ")
+	builder.WriteString("count=")
+	builder.WriteString(fmt.Sprintf("%v", c.Count))
+	builder.WriteString(", ")
+	builder.WriteString("author=")
+	builder.WriteString(c.Author)
 	builder.WriteString(", ")
 	builder.WriteString("created_at=")
 	builder.WriteString(c.CreatedAt.Format(time.ANSIC))

@@ -162,6 +162,53 @@ func (cu *CardUpdate) ClearURL() *CardUpdate {
 	return cu
 }
 
+// SetCount sets the "count" field.
+func (cu *CardUpdate) SetCount(i int) *CardUpdate {
+	cu.mutation.ResetCount()
+	cu.mutation.SetCount(i)
+	return cu
+}
+
+// SetNillableCount sets the "count" field if the given value is not nil.
+func (cu *CardUpdate) SetNillableCount(i *int) *CardUpdate {
+	if i != nil {
+		cu.SetCount(*i)
+	}
+	return cu
+}
+
+// AddCount adds i to the "count" field.
+func (cu *CardUpdate) AddCount(i int) *CardUpdate {
+	cu.mutation.AddCount(i)
+	return cu
+}
+
+// ClearCount clears the value of the "count" field.
+func (cu *CardUpdate) ClearCount() *CardUpdate {
+	cu.mutation.ClearCount()
+	return cu
+}
+
+// SetAuthor sets the "author" field.
+func (cu *CardUpdate) SetAuthor(s string) *CardUpdate {
+	cu.mutation.SetAuthor(s)
+	return cu
+}
+
+// SetNillableAuthor sets the "author" field if the given value is not nil.
+func (cu *CardUpdate) SetNillableAuthor(s *string) *CardUpdate {
+	if s != nil {
+		cu.SetAuthor(*s)
+	}
+	return cu
+}
+
+// ClearAuthor clears the value of the "author" field.
+func (cu *CardUpdate) ClearAuthor() *CardUpdate {
+	cu.mutation.ClearAuthor()
+	return cu
+}
+
 // SetOwnerID sets the "owner" edge to the User entity by ID.
 func (cu *CardUpdate) SetOwnerID(id int) *CardUpdate {
 	cu.mutation.SetOwnerID(id)
@@ -272,6 +319,21 @@ func (cu *CardUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	}
 	if cu.mutation.URLCleared() {
 		_spec.ClearField(card.FieldURL, field.TypeString)
+	}
+	if value, ok := cu.mutation.Count(); ok {
+		_spec.SetField(card.FieldCount, field.TypeInt, value)
+	}
+	if value, ok := cu.mutation.AddedCount(); ok {
+		_spec.AddField(card.FieldCount, field.TypeInt, value)
+	}
+	if cu.mutation.CountCleared() {
+		_spec.ClearField(card.FieldCount, field.TypeInt)
+	}
+	if value, ok := cu.mutation.Author(); ok {
+		_spec.SetField(card.FieldAuthor, field.TypeString, value)
+	}
+	if cu.mutation.AuthorCleared() {
+		_spec.ClearField(card.FieldAuthor, field.TypeString)
 	}
 	if cu.mutation.CreatedAtCleared() {
 		_spec.ClearField(card.FieldCreatedAt, field.TypeTime)
@@ -459,6 +521,53 @@ func (cuo *CardUpdateOne) ClearURL() *CardUpdateOne {
 	return cuo
 }
 
+// SetCount sets the "count" field.
+func (cuo *CardUpdateOne) SetCount(i int) *CardUpdateOne {
+	cuo.mutation.ResetCount()
+	cuo.mutation.SetCount(i)
+	return cuo
+}
+
+// SetNillableCount sets the "count" field if the given value is not nil.
+func (cuo *CardUpdateOne) SetNillableCount(i *int) *CardUpdateOne {
+	if i != nil {
+		cuo.SetCount(*i)
+	}
+	return cuo
+}
+
+// AddCount adds i to the "count" field.
+func (cuo *CardUpdateOne) AddCount(i int) *CardUpdateOne {
+	cuo.mutation.AddCount(i)
+	return cuo
+}
+
+// ClearCount clears the value of the "count" field.
+func (cuo *CardUpdateOne) ClearCount() *CardUpdateOne {
+	cuo.mutation.ClearCount()
+	return cuo
+}
+
+// SetAuthor sets the "author" field.
+func (cuo *CardUpdateOne) SetAuthor(s string) *CardUpdateOne {
+	cuo.mutation.SetAuthor(s)
+	return cuo
+}
+
+// SetNillableAuthor sets the "author" field if the given value is not nil.
+func (cuo *CardUpdateOne) SetNillableAuthor(s *string) *CardUpdateOne {
+	if s != nil {
+		cuo.SetAuthor(*s)
+	}
+	return cuo
+}
+
+// ClearAuthor clears the value of the "author" field.
+func (cuo *CardUpdateOne) ClearAuthor() *CardUpdateOne {
+	cuo.mutation.ClearAuthor()
+	return cuo
+}
+
 // SetOwnerID sets the "owner" edge to the User entity by ID.
 func (cuo *CardUpdateOne) SetOwnerID(id int) *CardUpdateOne {
 	cuo.mutation.SetOwnerID(id)
@@ -599,6 +708,21 @@ func (cuo *CardUpdateOne) sqlSave(ctx context.Context) (_node *Card, err error) 
 	}
 	if cuo.mutation.URLCleared() {
 		_spec.ClearField(card.FieldURL, field.TypeString)
+	}
+	if value, ok := cuo.mutation.Count(); ok {
+		_spec.SetField(card.FieldCount, field.TypeInt, value)
+	}
+	if value, ok := cuo.mutation.AddedCount(); ok {
+		_spec.AddField(card.FieldCount, field.TypeInt, value)
+	}
+	if cuo.mutation.CountCleared() {
+		_spec.ClearField(card.FieldCount, field.TypeInt)
+	}
+	if value, ok := cuo.mutation.Author(); ok {
+		_spec.SetField(card.FieldAuthor, field.TypeString, value)
+	}
+	if cuo.mutation.AuthorCleared() {
+		_spec.ClearField(card.FieldAuthor, field.TypeString)
 	}
 	if cuo.mutation.CreatedAtCleared() {
 		_spec.ClearField(card.FieldCreatedAt, field.TypeTime)

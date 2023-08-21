@@ -59,6 +59,18 @@ func (s *CardCreate) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Count.Set {
+			e.FieldStart("count")
+			s.Count.Encode(e)
+		}
+	}
+	{
+		if s.Author.Set {
+			e.FieldStart("author")
+			s.Author.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -66,14 +78,16 @@ func (s *CardCreate) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCardCreate = [7]string{
+var jsonFieldsNameOfCardCreate = [9]string{
 	0: "id",
 	1: "card",
 	2: "skill",
 	3: "status",
 	4: "cp",
 	5: "url",
-	6: "created_at",
+	6: "count",
+	7: "author",
+	8: "created_at",
 }
 
 // Decode decodes CardCreate from json.
@@ -81,7 +95,7 @@ func (s *CardCreate) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CardCreate to nil")
 	}
-	var requiredBitSet [1]uint8
+	var requiredBitSet [2]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -147,6 +161,26 @@ func (s *CardCreate) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"url\"")
 			}
+		case "count":
+			if err := func() error {
+				s.Count.Reset()
+				if err := s.Count.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"count\"")
+			}
+		case "author":
+			if err := func() error {
+				s.Author.Reset()
+				if err := s.Author.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"author\"")
+			}
 		case "created_at":
 			if err := func() error {
 				s.CreatedAt.Reset()
@@ -166,8 +200,9 @@ func (s *CardCreate) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
+	for i, mask := range [2]uint8{
 		0b00000001,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -258,6 +293,18 @@ func (s *CardList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Count.Set {
+			e.FieldStart("count")
+			s.Count.Encode(e)
+		}
+	}
+	{
+		if s.Author.Set {
+			e.FieldStart("author")
+			s.Author.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -265,14 +312,16 @@ func (s *CardList) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCardList = [7]string{
+var jsonFieldsNameOfCardList = [9]string{
 	0: "id",
 	1: "card",
 	2: "skill",
 	3: "status",
 	4: "cp",
 	5: "url",
-	6: "created_at",
+	6: "count",
+	7: "author",
+	8: "created_at",
 }
 
 // Decode decodes CardList from json.
@@ -280,7 +329,7 @@ func (s *CardList) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CardList to nil")
 	}
-	var requiredBitSet [1]uint8
+	var requiredBitSet [2]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -346,6 +395,26 @@ func (s *CardList) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"url\"")
 			}
+		case "count":
+			if err := func() error {
+				s.Count.Reset()
+				if err := s.Count.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"count\"")
+			}
+		case "author":
+			if err := func() error {
+				s.Author.Reset()
+				if err := s.Author.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"author\"")
+			}
 		case "created_at":
 			if err := func() error {
 				s.CreatedAt.Reset()
@@ -365,8 +434,9 @@ func (s *CardList) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
+	for i, mask := range [2]uint8{
 		0b00000001,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -1068,6 +1138,18 @@ func (s *CardRead) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Count.Set {
+			e.FieldStart("count")
+			s.Count.Encode(e)
+		}
+	}
+	{
+		if s.Author.Set {
+			e.FieldStart("author")
+			s.Author.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -1075,14 +1157,16 @@ func (s *CardRead) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCardRead = [7]string{
+var jsonFieldsNameOfCardRead = [9]string{
 	0: "id",
 	1: "card",
 	2: "skill",
 	3: "status",
 	4: "cp",
 	5: "url",
-	6: "created_at",
+	6: "count",
+	7: "author",
+	8: "created_at",
 }
 
 // Decode decodes CardRead from json.
@@ -1090,7 +1174,7 @@ func (s *CardRead) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CardRead to nil")
 	}
-	var requiredBitSet [1]uint8
+	var requiredBitSet [2]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -1156,6 +1240,26 @@ func (s *CardRead) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"url\"")
 			}
+		case "count":
+			if err := func() error {
+				s.Count.Reset()
+				if err := s.Count.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"count\"")
+			}
+		case "author":
+			if err := func() error {
+				s.Author.Reset()
+				if err := s.Author.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"author\"")
+			}
 		case "created_at":
 			if err := func() error {
 				s.CreatedAt.Reset()
@@ -1175,8 +1279,9 @@ func (s *CardRead) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
+	for i, mask := range [2]uint8{
 		0b00000001,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -1267,6 +1372,18 @@ func (s *CardUpdate) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Count.Set {
+			e.FieldStart("count")
+			s.Count.Encode(e)
+		}
+	}
+	{
+		if s.Author.Set {
+			e.FieldStart("author")
+			s.Author.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -1274,14 +1391,16 @@ func (s *CardUpdate) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCardUpdate = [7]string{
+var jsonFieldsNameOfCardUpdate = [9]string{
 	0: "id",
 	1: "card",
 	2: "skill",
 	3: "status",
 	4: "cp",
 	5: "url",
-	6: "created_at",
+	6: "count",
+	7: "author",
+	8: "created_at",
 }
 
 // Decode decodes CardUpdate from json.
@@ -1289,7 +1408,7 @@ func (s *CardUpdate) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CardUpdate to nil")
 	}
-	var requiredBitSet [1]uint8
+	var requiredBitSet [2]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -1355,6 +1474,26 @@ func (s *CardUpdate) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"url\"")
 			}
+		case "count":
+			if err := func() error {
+				s.Count.Reset()
+				if err := s.Count.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"count\"")
+			}
+		case "author":
+			if err := func() error {
+				s.Author.Reset()
+				if err := s.Author.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"author\"")
+			}
 		case "created_at":
 			if err := func() error {
 				s.CreatedAt.Reset()
@@ -1374,8 +1513,9 @@ func (s *CardUpdate) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
+	for i, mask := range [2]uint8{
 		0b00000001,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -1472,6 +1612,18 @@ func (s *CreateCardReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Count.Set {
+			e.FieldStart("count")
+			s.Count.Encode(e)
+		}
+	}
+	{
+		if s.Author.Set {
+			e.FieldStart("author")
+			s.Author.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -1484,16 +1636,18 @@ func (s *CreateCardReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCreateCardReq = [9]string{
-	0: "password",
-	1: "card",
-	2: "skill",
-	3: "status",
-	4: "token",
-	5: "cp",
-	6: "url",
-	7: "created_at",
-	8: "owner",
+var jsonFieldsNameOfCreateCardReq = [11]string{
+	0:  "password",
+	1:  "card",
+	2:  "skill",
+	3:  "status",
+	4:  "token",
+	5:  "cp",
+	6:  "url",
+	7:  "count",
+	8:  "author",
+	9:  "created_at",
+	10: "owner",
 }
 
 // Decode decodes CreateCardReq from json.
@@ -1577,6 +1731,26 @@ func (s *CreateCardReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"url\"")
 			}
+		case "count":
+			if err := func() error {
+				s.Count.Reset()
+				if err := s.Count.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"count\"")
+			}
+		case "author":
+			if err := func() error {
+				s.Author.Reset()
+				if err := s.Author.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"author\"")
+			}
 		case "created_at":
 			if err := func() error {
 				s.CreatedAt.Reset()
@@ -1588,7 +1762,7 @@ func (s *CreateCardReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"created_at\"")
 			}
 		case "owner":
-			requiredBitSet[1] |= 1 << 0
+			requiredBitSet[1] |= 1 << 2
 			if err := func() error {
 				v, err := d.Int()
 				s.Owner = int(v)
@@ -1610,7 +1784,7 @@ func (s *CreateCardReq) Decode(d *jx.Decoder) error {
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000001,
-		0b00000001,
+		0b00000100,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -4503,6 +4677,18 @@ func (s *UpdateCardReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Count.Set {
+			e.FieldStart("count")
+			s.Count.Encode(e)
+		}
+	}
+	{
+		if s.Author.Set {
+			e.FieldStart("author")
+			s.Author.Encode(e)
+		}
+	}
+	{
 		if s.Owner.Set {
 			e.FieldStart("owner")
 			s.Owner.Encode(e)
@@ -4510,14 +4696,16 @@ func (s *UpdateCardReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUpdateCardReq = [7]string{
+var jsonFieldsNameOfUpdateCardReq = [9]string{
 	0: "card",
 	1: "skill",
 	2: "status",
 	3: "token",
 	4: "cp",
 	5: "url",
-	6: "owner",
+	6: "count",
+	7: "author",
+	8: "owner",
 }
 
 // Decode decodes UpdateCardReq from json.
@@ -4587,6 +4775,26 @@ func (s *UpdateCardReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"url\"")
+			}
+		case "count":
+			if err := func() error {
+				s.Count.Reset()
+				if err := s.Count.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"count\"")
+			}
+		case "author":
+			if err := func() error {
+				s.Author.Reset()
+				if err := s.Author.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"author\"")
 			}
 		case "owner":
 			if err := func() error {
@@ -5329,6 +5537,18 @@ func (s *UserCardList) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Count.Set {
+			e.FieldStart("count")
+			s.Count.Encode(e)
+		}
+	}
+	{
+		if s.Author.Set {
+			e.FieldStart("author")
+			s.Author.Encode(e)
+		}
+	}
+	{
 		if s.CreatedAt.Set {
 			e.FieldStart("created_at")
 			s.CreatedAt.Encode(e, json.EncodeDateTime)
@@ -5336,14 +5556,16 @@ func (s *UserCardList) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUserCardList = [7]string{
+var jsonFieldsNameOfUserCardList = [9]string{
 	0: "id",
 	1: "card",
 	2: "skill",
 	3: "status",
 	4: "cp",
 	5: "url",
-	6: "created_at",
+	6: "count",
+	7: "author",
+	8: "created_at",
 }
 
 // Decode decodes UserCardList from json.
@@ -5351,7 +5573,7 @@ func (s *UserCardList) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UserCardList to nil")
 	}
-	var requiredBitSet [1]uint8
+	var requiredBitSet [2]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -5417,6 +5639,26 @@ func (s *UserCardList) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"url\"")
 			}
+		case "count":
+			if err := func() error {
+				s.Count.Reset()
+				if err := s.Count.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"count\"")
+			}
+		case "author":
+			if err := func() error {
+				s.Author.Reset()
+				if err := s.Author.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"author\"")
+			}
 		case "created_at":
 			if err := func() error {
 				s.CreatedAt.Reset()
@@ -5436,8 +5678,9 @@ func (s *UserCardList) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
+	for i, mask := range [2]uint8{
 		0b00000001,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.

@@ -30,7 +30,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 4000,
+              "maximum": 5000,
               "minimum": 1
             }
           }
@@ -96,6 +96,12 @@
                     "type": "integer"
                   },
                   "url": {
+                    "type": "string"
+                  },
+                  "count": {
+                    "type": "integer"
+                  },
+                  "author": {
                     "type": "string"
                   },
                   "created_at": {
@@ -261,6 +267,12 @@
                   "url": {
                     "type": "string"
                   },
+                  "count": {
+                    "type": "integer"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
                   "owner": {
                     "type": "integer"
                   }
@@ -390,7 +402,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 4000,
+              "maximum": 5000,
               "minimum": 1
             }
           }
@@ -716,7 +728,7 @@
             "description": "item count to render per page",
             "schema": {
               "type": "integer",
-              "maximum": 4000,
+              "maximum": 5000,
               "minimum": 1
             }
           }
@@ -1260,6 +1272,12 @@
           "url": {
             "type": "string"
           },
+          "count": {
+            "type": "integer"
+          },
+          "author": {
+            "type": "string"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1295,6 +1313,12 @@
           "url": {
             "type": "string"
           },
+          "count": {
+            "type": "integer"
+          },
+          "author": {
+            "type": "string"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1323,6 +1347,12 @@
             "type": "integer"
           },
           "url": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "author": {
             "type": "string"
           },
           "created_at": {
@@ -1355,6 +1385,12 @@
           "url": {
             "type": "string"
           },
+          "count": {
+            "type": "integer"
+          },
+          "author": {
+            "type": "string"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -1383,6 +1419,12 @@
             "type": "integer"
           },
           "url": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "author": {
             "type": "string"
           },
           "created_at": {
@@ -2274,6 +2316,12 @@
             "type": "integer"
           },
           "url": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "author": {
             "type": "string"
           },
           "created_at": {

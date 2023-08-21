@@ -16,6 +16,8 @@ type CardCreate struct {
 	Status    OptString   `json:"status"`
 	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
+	Count     OptInt      `json:"count"`
+	Author    OptString   `json:"author"`
 	CreatedAt OptDateTime `json:"created_at"`
 }
 
@@ -47,6 +49,16 @@ func (s *CardCreate) GetCp() OptInt {
 // GetURL returns the value of URL.
 func (s *CardCreate) GetURL() OptString {
 	return s.URL
+}
+
+// GetCount returns the value of Count.
+func (s *CardCreate) GetCount() OptInt {
+	return s.Count
+}
+
+// GetAuthor returns the value of Author.
+func (s *CardCreate) GetAuthor() OptString {
+	return s.Author
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -84,6 +96,16 @@ func (s *CardCreate) SetURL(val OptString) {
 	s.URL = val
 }
 
+// SetCount sets the value of Count.
+func (s *CardCreate) SetCount(val OptInt) {
+	s.Count = val
+}
+
+// SetAuthor sets the value of Author.
+func (s *CardCreate) SetAuthor(val OptString) {
+	s.Author = val
+}
+
 // SetCreatedAt sets the value of CreatedAt.
 func (s *CardCreate) SetCreatedAt(val OptDateTime) {
 	s.CreatedAt = val
@@ -99,6 +121,8 @@ type CardList struct {
 	Status    OptString   `json:"status"`
 	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
+	Count     OptInt      `json:"count"`
+	Author    OptString   `json:"author"`
 	CreatedAt OptDateTime `json:"created_at"`
 }
 
@@ -130,6 +154,16 @@ func (s *CardList) GetCp() OptInt {
 // GetURL returns the value of URL.
 func (s *CardList) GetURL() OptString {
 	return s.URL
+}
+
+// GetCount returns the value of Count.
+func (s *CardList) GetCount() OptInt {
+	return s.Count
+}
+
+// GetAuthor returns the value of Author.
+func (s *CardList) GetAuthor() OptString {
+	return s.Author
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -165,6 +199,16 @@ func (s *CardList) SetCp(val OptInt) {
 // SetURL sets the value of URL.
 func (s *CardList) SetURL(val OptString) {
 	s.URL = val
+}
+
+// SetCount sets the value of Count.
+func (s *CardList) SetCount(val OptInt) {
+	s.Count = val
+}
+
+// SetAuthor sets the value of Author.
+func (s *CardList) SetAuthor(val OptString) {
+	s.Author = val
 }
 
 // SetCreatedAt sets the value of CreatedAt.
@@ -527,6 +571,8 @@ type CardRead struct {
 	Status    OptString   `json:"status"`
 	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
+	Count     OptInt      `json:"count"`
+	Author    OptString   `json:"author"`
 	CreatedAt OptDateTime `json:"created_at"`
 }
 
@@ -558,6 +604,16 @@ func (s *CardRead) GetCp() OptInt {
 // GetURL returns the value of URL.
 func (s *CardRead) GetURL() OptString {
 	return s.URL
+}
+
+// GetCount returns the value of Count.
+func (s *CardRead) GetCount() OptInt {
+	return s.Count
+}
+
+// GetAuthor returns the value of Author.
+func (s *CardRead) GetAuthor() OptString {
+	return s.Author
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -595,6 +651,16 @@ func (s *CardRead) SetURL(val OptString) {
 	s.URL = val
 }
 
+// SetCount sets the value of Count.
+func (s *CardRead) SetCount(val OptInt) {
+	s.Count = val
+}
+
+// SetAuthor sets the value of Author.
+func (s *CardRead) SetAuthor(val OptString) {
+	s.Author = val
+}
+
 // SetCreatedAt sets the value of CreatedAt.
 func (s *CardRead) SetCreatedAt(val OptDateTime) {
 	s.CreatedAt = val
@@ -610,6 +676,8 @@ type CardUpdate struct {
 	Status    OptString   `json:"status"`
 	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
+	Count     OptInt      `json:"count"`
+	Author    OptString   `json:"author"`
 	CreatedAt OptDateTime `json:"created_at"`
 }
 
@@ -641,6 +709,16 @@ func (s *CardUpdate) GetCp() OptInt {
 // GetURL returns the value of URL.
 func (s *CardUpdate) GetURL() OptString {
 	return s.URL
+}
+
+// GetCount returns the value of Count.
+func (s *CardUpdate) GetCount() OptInt {
+	return s.Count
+}
+
+// GetAuthor returns the value of Author.
+func (s *CardUpdate) GetAuthor() OptString {
+	return s.Author
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -678,6 +756,16 @@ func (s *CardUpdate) SetURL(val OptString) {
 	s.URL = val
 }
 
+// SetCount sets the value of Count.
+func (s *CardUpdate) SetCount(val OptInt) {
+	s.Count = val
+}
+
+// SetAuthor sets the value of Author.
+func (s *CardUpdate) SetAuthor(val OptString) {
+	s.Author = val
+}
+
 // SetCreatedAt sets the value of CreatedAt.
 func (s *CardUpdate) SetCreatedAt(val OptDateTime) {
 	s.CreatedAt = val
@@ -693,6 +781,8 @@ type CreateCardReq struct {
 	Token     OptString   `json:"token"`
 	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
+	Count     OptInt      `json:"count"`
+	Author    OptString   `json:"author"`
 	CreatedAt OptDateTime `json:"created_at"`
 	Owner     int         `json:"owner"`
 }
@@ -730,6 +820,16 @@ func (s *CreateCardReq) GetCp() OptInt {
 // GetURL returns the value of URL.
 func (s *CreateCardReq) GetURL() OptString {
 	return s.URL
+}
+
+// GetCount returns the value of Count.
+func (s *CreateCardReq) GetCount() OptInt {
+	return s.Count
+}
+
+// GetAuthor returns the value of Author.
+func (s *CreateCardReq) GetAuthor() OptString {
+	return s.Author
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -775,6 +875,16 @@ func (s *CreateCardReq) SetCp(val OptInt) {
 // SetURL sets the value of URL.
 func (s *CreateCardReq) SetURL(val OptString) {
 	s.URL = val
+}
+
+// SetCount sets the value of Count.
+func (s *CreateCardReq) SetCount(val OptInt) {
+	s.Count = val
+}
+
+// SetAuthor sets the value of Author.
+func (s *CreateCardReq) SetAuthor(val OptString) {
+	s.Author = val
 }
 
 // SetCreatedAt sets the value of CreatedAt.
@@ -2093,6 +2203,8 @@ type UpdateCardReq struct {
 	Token  OptString `json:"token"`
 	Cp     OptInt    `json:"cp"`
 	URL    OptString `json:"url"`
+	Count  OptInt    `json:"count"`
+	Author OptString `json:"author"`
 	Owner  OptInt    `json:"owner"`
 }
 
@@ -2124,6 +2236,16 @@ func (s *UpdateCardReq) GetCp() OptInt {
 // GetURL returns the value of URL.
 func (s *UpdateCardReq) GetURL() OptString {
 	return s.URL
+}
+
+// GetCount returns the value of Count.
+func (s *UpdateCardReq) GetCount() OptInt {
+	return s.Count
+}
+
+// GetAuthor returns the value of Author.
+func (s *UpdateCardReq) GetAuthor() OptString {
+	return s.Author
 }
 
 // GetOwner returns the value of Owner.
@@ -2159,6 +2281,16 @@ func (s *UpdateCardReq) SetCp(val OptInt) {
 // SetURL sets the value of URL.
 func (s *UpdateCardReq) SetURL(val OptString) {
 	s.URL = val
+}
+
+// SetCount sets the value of Count.
+func (s *UpdateCardReq) SetCount(val OptInt) {
+	s.Count = val
+}
+
+// SetAuthor sets the value of Author.
+func (s *UpdateCardReq) SetAuthor(val OptString) {
+	s.Author = val
 }
 
 // SetOwner sets the value of Owner.
@@ -2532,6 +2664,8 @@ type UserCardList struct {
 	Status    OptString   `json:"status"`
 	Cp        OptInt      `json:"cp"`
 	URL       OptString   `json:"url"`
+	Count     OptInt      `json:"count"`
+	Author    OptString   `json:"author"`
 	CreatedAt OptDateTime `json:"created_at"`
 }
 
@@ -2563,6 +2697,16 @@ func (s *UserCardList) GetCp() OptInt {
 // GetURL returns the value of URL.
 func (s *UserCardList) GetURL() OptString {
 	return s.URL
+}
+
+// GetCount returns the value of Count.
+func (s *UserCardList) GetCount() OptInt {
+	return s.Count
+}
+
+// GetAuthor returns the value of Author.
+func (s *UserCardList) GetAuthor() OptString {
+	return s.Author
 }
 
 // GetCreatedAt returns the value of CreatedAt.
@@ -2598,6 +2742,16 @@ func (s *UserCardList) SetCp(val OptInt) {
 // SetURL sets the value of URL.
 func (s *UserCardList) SetURL(val OptString) {
 	s.URL = val
+}
+
+// SetCount sets the value of Count.
+func (s *UserCardList) SetCount(val OptInt) {
+	s.Count = val
+}
+
+// SetAuthor sets the value of Author.
+func (s *UserCardList) SetAuthor(val OptString) {
+	s.Author = val
 }
 
 // SetCreatedAt sets the value of CreatedAt.

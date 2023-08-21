@@ -51,6 +51,12 @@ func (h *OgentHandler) CreateCard(ctx context.Context, req *CreateCardReq) (Crea
 	if v, ok := req.Cp.Get(); ok {
 		b.SetCp(v)
 	}
+	if v, ok := req.Count.Get(); ok {
+		b.SetCount(v)
+	}
+	if v, ok := req.Author.Get(); ok {
+		b.SetAuthor(v)
+	}
 	if v, ok := req.URL.Get(); ok {
 		b.SetURL(v)
 	}
@@ -136,6 +142,12 @@ func (h *OgentHandler) UpdateCard(ctx context.Context, req *UpdateCardReq, param
 			}
 			if v, ok := req.Status.Get(); ok {
 				b.SetStatus(v)
+			}
+			if v, ok := req.Count.Get(); ok {
+				b.SetCount(v)
+			}
+			if v, ok := req.Author.Get(); ok {
+				b.SetAuthor(v)
 			}
 			if v, ok := req.Token.Get(); ok {
 				b.SetToken(v)

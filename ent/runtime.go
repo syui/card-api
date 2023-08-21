@@ -41,7 +41,7 @@ func init() {
 	// card.DefaultURL holds the default value on creation for the url field.
 	card.DefaultURL = cardDescURL.Default.(string)
 	// cardDescCreatedAt is the schema descriptor for created_at field.
-	cardDescCreatedAt := cardFields[7].Descriptor()
+	cardDescCreatedAt := cardFields[9].Descriptor()
 	// card.DefaultCreatedAt holds the default value on creation for the created_at field.
 	card.DefaultCreatedAt = cardDescCreatedAt.Default.(func() time.Time)
 	groupFields := schema.Group{}.Fields()

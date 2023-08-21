@@ -15,6 +15,8 @@ func NewCardCreate(e *ent.Card) *CardCreate {
 	ret.Status = NewOptString(e.Status)
 	ret.Cp = NewOptInt(e.Cp)
 	ret.URL = NewOptString(e.URL)
+	ret.Count = NewOptInt(e.Count)
+	ret.Author = NewOptString(e.Author)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	return &ret
 }
@@ -48,6 +50,8 @@ func NewCardList(e *ent.Card) *CardList {
 	ret.Status = NewOptString(e.Status)
 	ret.Cp = NewOptInt(e.Cp)
 	ret.URL = NewOptString(e.URL)
+	ret.Count = NewOptInt(e.Count)
+	ret.Author = NewOptString(e.Author)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	return &ret
 }
@@ -81,6 +85,8 @@ func NewCardRead(e *ent.Card) *CardRead {
 	ret.Status = NewOptString(e.Status)
 	ret.Cp = NewOptInt(e.Cp)
 	ret.URL = NewOptString(e.URL)
+	ret.Count = NewOptInt(e.Count)
+	ret.Author = NewOptString(e.Author)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	return &ret
 }
@@ -114,6 +120,8 @@ func NewCardUpdate(e *ent.Card) *CardUpdate {
 	ret.Status = NewOptString(e.Status)
 	ret.Cp = NewOptInt(e.Cp)
 	ret.URL = NewOptString(e.URL)
+	ret.Count = NewOptInt(e.Count)
+	ret.Author = NewOptString(e.Author)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	return &ret
 }
@@ -601,6 +609,8 @@ func NewUserCardList(e *ent.Card) *UserCardList {
 	ret.Status = NewOptString(e.Status)
 	ret.Cp = NewOptInt(e.Cp)
 	ret.URL = NewOptString(e.URL)
+	ret.Count = NewOptInt(e.Count)
+	ret.Author = NewOptString(e.Author)
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	return &ret
 }

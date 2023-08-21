@@ -46,6 +46,9 @@ type CardMutation struct {
 	cp            *int
 	addcp         *int
 	url           *string
+	count         *int
+	addcount      *int
+	author        *string
 	created_at    *time.Time
 	clearedFields map[string]struct{}
 	owner         *int
@@ -525,6 +528,125 @@ func (m *CardMutation) ResetURL() {
 	delete(m.clearedFields, card.FieldURL)
 }
 
+// SetCount sets the "count" field.
+func (m *CardMutation) SetCount(i int) {
+	m.count = &i
+	m.addcount = nil
+}
+
+// Count returns the value of the "count" field in the mutation.
+func (m *CardMutation) Count() (r int, exists bool) {
+	v := m.count
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCount returns the old "count" field's value of the Card entity.
+// If the Card object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *CardMutation) OldCount(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCount is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCount requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCount: %w", err)
+	}
+	return oldValue.Count, nil
+}
+
+// AddCount adds i to the "count" field.
+func (m *CardMutation) AddCount(i int) {
+	if m.addcount != nil {
+		*m.addcount += i
+	} else {
+		m.addcount = &i
+	}
+}
+
+// AddedCount returns the value that was added to the "count" field in this mutation.
+func (m *CardMutation) AddedCount() (r int, exists bool) {
+	v := m.addcount
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearCount clears the value of the "count" field.
+func (m *CardMutation) ClearCount() {
+	m.count = nil
+	m.addcount = nil
+	m.clearedFields[card.FieldCount] = struct{}{}
+}
+
+// CountCleared returns if the "count" field was cleared in this mutation.
+func (m *CardMutation) CountCleared() bool {
+	_, ok := m.clearedFields[card.FieldCount]
+	return ok
+}
+
+// ResetCount resets all changes to the "count" field.
+func (m *CardMutation) ResetCount() {
+	m.count = nil
+	m.addcount = nil
+	delete(m.clearedFields, card.FieldCount)
+}
+
+// SetAuthor sets the "author" field.
+func (m *CardMutation) SetAuthor(s string) {
+	m.author = &s
+}
+
+// Author returns the value of the "author" field in the mutation.
+func (m *CardMutation) Author() (r string, exists bool) {
+	v := m.author
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldAuthor returns the old "author" field's value of the Card entity.
+// If the Card object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *CardMutation) OldAuthor(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldAuthor is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldAuthor requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldAuthor: %w", err)
+	}
+	return oldValue.Author, nil
+}
+
+// ClearAuthor clears the value of the "author" field.
+func (m *CardMutation) ClearAuthor() {
+	m.author = nil
+	m.clearedFields[card.FieldAuthor] = struct{}{}
+}
+
+// AuthorCleared returns if the "author" field was cleared in this mutation.
+func (m *CardMutation) AuthorCleared() bool {
+	_, ok := m.clearedFields[card.FieldAuthor]
+	return ok
+}
+
+// ResetAuthor resets all changes to the "author" field.
+func (m *CardMutation) ResetAuthor() {
+	m.author = nil
+	delete(m.clearedFields, card.FieldAuthor)
+}
+
 // SetCreatedAt sets the "created_at" field.
 func (m *CardMutation) SetCreatedAt(t time.Time) {
 	m.created_at = &t
@@ -647,7 +769,7 @@ func (m *CardMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *CardMutation) Fields() []string {
-	fields := make([]string, 0, 8)
+	fields := make([]string, 0, 10)
 	if m.password != nil {
 		fields = append(fields, card.FieldPassword)
 	}
@@ -668,6 +790,12 @@ func (m *CardMutation) Fields() []string {
 	}
 	if m.url != nil {
 		fields = append(fields, card.FieldURL)
+	}
+	if m.count != nil {
+		fields = append(fields, card.FieldCount)
+	}
+	if m.author != nil {
+		fields = append(fields, card.FieldAuthor)
 	}
 	if m.created_at != nil {
 		fields = append(fields, card.FieldCreatedAt)
@@ -694,6 +822,10 @@ func (m *CardMutation) Field(name string) (ent.Value, bool) {
 		return m.Cp()
 	case card.FieldURL:
 		return m.URL()
+	case card.FieldCount:
+		return m.Count()
+	case card.FieldAuthor:
+		return m.Author()
 	case card.FieldCreatedAt:
 		return m.CreatedAt()
 	}
@@ -719,6 +851,10 @@ func (m *CardMutation) OldField(ctx context.Context, name string) (ent.Value, er
 		return m.OldCp(ctx)
 	case card.FieldURL:
 		return m.OldURL(ctx)
+	case card.FieldCount:
+		return m.OldCount(ctx)
+	case card.FieldAuthor:
+		return m.OldAuthor(ctx)
 	case card.FieldCreatedAt:
 		return m.OldCreatedAt(ctx)
 	}
@@ -779,6 +915,20 @@ func (m *CardMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetURL(v)
 		return nil
+	case card.FieldCount:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCount(v)
+		return nil
+	case card.FieldAuthor:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetAuthor(v)
+		return nil
 	case card.FieldCreatedAt:
 		v, ok := value.(time.Time)
 		if !ok {
@@ -800,6 +950,9 @@ func (m *CardMutation) AddedFields() []string {
 	if m.addcp != nil {
 		fields = append(fields, card.FieldCp)
 	}
+	if m.addcount != nil {
+		fields = append(fields, card.FieldCount)
+	}
 	return fields
 }
 
@@ -812,6 +965,8 @@ func (m *CardMutation) AddedField(name string) (ent.Value, bool) {
 		return m.AddedCard()
 	case card.FieldCp:
 		return m.AddedCp()
+	case card.FieldCount:
+		return m.AddedCount()
 	}
 	return nil, false
 }
@@ -834,6 +989,13 @@ func (m *CardMutation) AddField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddCp(v)
+		return nil
+	case card.FieldCount:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddCount(v)
 		return nil
 	}
 	return fmt.Errorf("unknown Card numeric field %s", name)
@@ -860,6 +1022,12 @@ func (m *CardMutation) ClearedFields() []string {
 	}
 	if m.FieldCleared(card.FieldURL) {
 		fields = append(fields, card.FieldURL)
+	}
+	if m.FieldCleared(card.FieldCount) {
+		fields = append(fields, card.FieldCount)
+	}
+	if m.FieldCleared(card.FieldAuthor) {
+		fields = append(fields, card.FieldAuthor)
 	}
 	if m.FieldCleared(card.FieldCreatedAt) {
 		fields = append(fields, card.FieldCreatedAt)
@@ -896,6 +1064,12 @@ func (m *CardMutation) ClearField(name string) error {
 	case card.FieldURL:
 		m.ClearURL()
 		return nil
+	case card.FieldCount:
+		m.ClearCount()
+		return nil
+	case card.FieldAuthor:
+		m.ClearAuthor()
+		return nil
 	case card.FieldCreatedAt:
 		m.ClearCreatedAt()
 		return nil
@@ -927,6 +1101,12 @@ func (m *CardMutation) ResetField(name string) error {
 		return nil
 	case card.FieldURL:
 		m.ResetURL()
+		return nil
+	case card.FieldCount:
+		m.ResetCount()
+		return nil
+	case card.FieldAuthor:
+		m.ResetAuthor()
 		return nil
 	case card.FieldCreatedAt:
 		m.ResetCreatedAt()

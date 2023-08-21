@@ -134,6 +134,12 @@ func (Card) Fields() []ent.Field {
 		Default(url).
 		Optional(),
 
+		field.Int("count").
+		Optional(),
+
+		field.String("author").
+		Optional(),
+
 		field.Time("created_at").
 		Immutable().
 		Optional().

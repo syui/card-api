@@ -18,6 +18,8 @@ var (
 		{Name: "token", Type: field.TypeString, Nullable: true},
 		{Name: "cp", Type: field.TypeInt, Nullable: true},
 		{Name: "url", Type: field.TypeString, Nullable: true, Default: "https://card.syui.ai"},
+		{Name: "count", Type: field.TypeInt, Nullable: true},
+		{Name: "author", Type: field.TypeString, Nullable: true},
 		{Name: "created_at", Type: field.TypeTime, Nullable: true},
 		{Name: "user_card", Type: field.TypeInt},
 	}
@@ -29,7 +31,7 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cards_users_card",
-				Columns:    []*schema.Column{CardsColumns[9]},
+				Columns:    []*schema.Column{CardsColumns[11]},
 				RefColumns: []*schema.Column{UsersColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -88,7 +90,7 @@ var (
 		{Name: "ten_post", Type: field.TypeString, Nullable: true},
 		{Name: "ten_get", Type: field.TypeString, Nullable: true},
 		{Name: "ten_at", Type: field.TypeTime, Nullable: true},
-		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230812"},
+		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230821"},
 		{Name: "group_users", Type: field.TypeInt, Nullable: true},
 	}
 	// UsersTable holds the schema information for the "users" table.

@@ -90,6 +90,16 @@ func URL(v string) predicate.Card {
 	return predicate.Card(sql.FieldEQ(FieldURL, v))
 }
 
+// Count applies equality check predicate on the "count" field. It's identical to CountEQ.
+func Count(v int) predicate.Card {
+	return predicate.Card(sql.FieldEQ(FieldCount, v))
+}
+
+// Author applies equality check predicate on the "author" field. It's identical to AuthorEQ.
+func Author(v string) predicate.Card {
+	return predicate.Card(sql.FieldEQ(FieldAuthor, v))
+}
+
 // CreatedAt applies equality check predicate on the "created_at" field. It's identical to CreatedAtEQ.
 func CreatedAt(v time.Time) predicate.Card {
 	return predicate.Card(sql.FieldEQ(FieldCreatedAt, v))
@@ -558,6 +568,131 @@ func URLEqualFold(v string) predicate.Card {
 // URLContainsFold applies the ContainsFold predicate on the "url" field.
 func URLContainsFold(v string) predicate.Card {
 	return predicate.Card(sql.FieldContainsFold(FieldURL, v))
+}
+
+// CountEQ applies the EQ predicate on the "count" field.
+func CountEQ(v int) predicate.Card {
+	return predicate.Card(sql.FieldEQ(FieldCount, v))
+}
+
+// CountNEQ applies the NEQ predicate on the "count" field.
+func CountNEQ(v int) predicate.Card {
+	return predicate.Card(sql.FieldNEQ(FieldCount, v))
+}
+
+// CountIn applies the In predicate on the "count" field.
+func CountIn(vs ...int) predicate.Card {
+	return predicate.Card(sql.FieldIn(FieldCount, vs...))
+}
+
+// CountNotIn applies the NotIn predicate on the "count" field.
+func CountNotIn(vs ...int) predicate.Card {
+	return predicate.Card(sql.FieldNotIn(FieldCount, vs...))
+}
+
+// CountGT applies the GT predicate on the "count" field.
+func CountGT(v int) predicate.Card {
+	return predicate.Card(sql.FieldGT(FieldCount, v))
+}
+
+// CountGTE applies the GTE predicate on the "count" field.
+func CountGTE(v int) predicate.Card {
+	return predicate.Card(sql.FieldGTE(FieldCount, v))
+}
+
+// CountLT applies the LT predicate on the "count" field.
+func CountLT(v int) predicate.Card {
+	return predicate.Card(sql.FieldLT(FieldCount, v))
+}
+
+// CountLTE applies the LTE predicate on the "count" field.
+func CountLTE(v int) predicate.Card {
+	return predicate.Card(sql.FieldLTE(FieldCount, v))
+}
+
+// CountIsNil applies the IsNil predicate on the "count" field.
+func CountIsNil() predicate.Card {
+	return predicate.Card(sql.FieldIsNull(FieldCount))
+}
+
+// CountNotNil applies the NotNil predicate on the "count" field.
+func CountNotNil() predicate.Card {
+	return predicate.Card(sql.FieldNotNull(FieldCount))
+}
+
+// AuthorEQ applies the EQ predicate on the "author" field.
+func AuthorEQ(v string) predicate.Card {
+	return predicate.Card(sql.FieldEQ(FieldAuthor, v))
+}
+
+// AuthorNEQ applies the NEQ predicate on the "author" field.
+func AuthorNEQ(v string) predicate.Card {
+	return predicate.Card(sql.FieldNEQ(FieldAuthor, v))
+}
+
+// AuthorIn applies the In predicate on the "author" field.
+func AuthorIn(vs ...string) predicate.Card {
+	return predicate.Card(sql.FieldIn(FieldAuthor, vs...))
+}
+
+// AuthorNotIn applies the NotIn predicate on the "author" field.
+func AuthorNotIn(vs ...string) predicate.Card {
+	return predicate.Card(sql.FieldNotIn(FieldAuthor, vs...))
+}
+
+// AuthorGT applies the GT predicate on the "author" field.
+func AuthorGT(v string) predicate.Card {
+	return predicate.Card(sql.FieldGT(FieldAuthor, v))
+}
+
+// AuthorGTE applies the GTE predicate on the "author" field.
+func AuthorGTE(v string) predicate.Card {
+	return predicate.Card(sql.FieldGTE(FieldAuthor, v))
+}
+
+// AuthorLT applies the LT predicate on the "author" field.
+func AuthorLT(v string) predicate.Card {
+	return predicate.Card(sql.FieldLT(FieldAuthor, v))
+}
+
+// AuthorLTE applies the LTE predicate on the "author" field.
+func AuthorLTE(v string) predicate.Card {
+	return predicate.Card(sql.FieldLTE(FieldAuthor, v))
+}
+
+// AuthorContains applies the Contains predicate on the "author" field.
+func AuthorContains(v string) predicate.Card {
+	return predicate.Card(sql.FieldContains(FieldAuthor, v))
+}
+
+// AuthorHasPrefix applies the HasPrefix predicate on the "author" field.
+func AuthorHasPrefix(v string) predicate.Card {
+	return predicate.Card(sql.FieldHasPrefix(FieldAuthor, v))
+}
+
+// AuthorHasSuffix applies the HasSuffix predicate on the "author" field.
+func AuthorHasSuffix(v string) predicate.Card {
+	return predicate.Card(sql.FieldHasSuffix(FieldAuthor, v))
+}
+
+// AuthorIsNil applies the IsNil predicate on the "author" field.
+func AuthorIsNil() predicate.Card {
+	return predicate.Card(sql.FieldIsNull(FieldAuthor))
+}
+
+// AuthorNotNil applies the NotNil predicate on the "author" field.
+func AuthorNotNil() predicate.Card {
+	return predicate.Card(sql.FieldNotNull(FieldAuthor))
+}
+
+// AuthorEqualFold applies the EqualFold predicate on the "author" field.
+func AuthorEqualFold(v string) predicate.Card {
+	return predicate.Card(sql.FieldEqualFold(FieldAuthor, v))
+}
+
+// AuthorContainsFold applies the ContainsFold predicate on the "author" field.
+func AuthorContainsFold(v string) predicate.Card {
+	return predicate.Card(sql.FieldContainsFold(FieldAuthor, v))
 }
 
 // CreatedAtEQ applies the EQ predicate on the "created_at" field.

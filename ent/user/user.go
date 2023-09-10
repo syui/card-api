@@ -41,6 +41,8 @@ const (
 	FieldUpdatedAt = "updated_at"
 	// FieldRaidAt holds the string denoting the raid_at field in the database.
 	FieldRaidAt = "raid_at"
+	// FieldServerAt holds the string denoting the server_at field in the database.
+	FieldServerAt = "server_at"
 	// FieldEggAt holds the string denoting the egg_at field in the database.
 	FieldEggAt = "egg_at"
 	// FieldLuck holds the string denoting the luck field in the database.
@@ -75,6 +77,8 @@ const (
 	FieldTenAt = "ten_at"
 	// FieldNext holds the string denoting the next field in the database.
 	FieldNext = "next"
+	// FieldRoom holds the string denoting the room field in the database.
+	FieldRoom = "room"
 	// EdgeCard holds the string denoting the card edge name in mutations.
 	EdgeCard = "card"
 	// Table holds the table name of the user in the database.
@@ -106,6 +110,7 @@ var Columns = []string{
 	FieldCreatedAt,
 	FieldUpdatedAt,
 	FieldRaidAt,
+	FieldServerAt,
 	FieldEggAt,
 	FieldLuck,
 	FieldLuckAt,
@@ -123,6 +128,7 @@ var Columns = []string{
 	FieldTenGet,
 	FieldTenAt,
 	FieldNext,
+	FieldRoom,
 }
 
 // ForeignKeys holds the SQL foreign-keys that are owned by the "users"
@@ -173,6 +179,8 @@ var (
 	DefaultUpdatedAt func() time.Time
 	// DefaultRaidAt holds the default value on creation for the "raid_at" field.
 	DefaultRaidAt func() time.Time
+	// DefaultServerAt holds the default value on creation for the "server_at" field.
+	DefaultServerAt func() time.Time
 	// DefaultEggAt holds the default value on creation for the "egg_at" field.
 	DefaultEggAt func() time.Time
 	// DefaultLuckAt holds the default value on creation for the "luck_at" field.

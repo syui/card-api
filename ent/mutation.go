@@ -1683,6 +1683,7 @@ type UserMutation struct {
 	created_at    *time.Time
 	updated_at    *time.Time
 	raid_at       *time.Time
+	server_at     *time.Time
 	egg_at        *time.Time
 	luck          *int
 	addluck       *int
@@ -1707,6 +1708,8 @@ type UserMutation struct {
 	ten_get       *string
 	ten_at        *time.Time
 	next          *string
+	room          *int
+	addroom       *int
 	clearedFields map[string]struct{}
 	card          map[int]struct{}
 	removedcard   map[int]struct{}
@@ -2521,6 +2524,55 @@ func (m *UserMutation) RaidAtCleared() bool {
 func (m *UserMutation) ResetRaidAt() {
 	m.raid_at = nil
 	delete(m.clearedFields, user.FieldRaidAt)
+}
+
+// SetServerAt sets the "server_at" field.
+func (m *UserMutation) SetServerAt(t time.Time) {
+	m.server_at = &t
+}
+
+// ServerAt returns the value of the "server_at" field in the mutation.
+func (m *UserMutation) ServerAt() (r time.Time, exists bool) {
+	v := m.server_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldServerAt returns the old "server_at" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldServerAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldServerAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldServerAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldServerAt: %w", err)
+	}
+	return oldValue.ServerAt, nil
+}
+
+// ClearServerAt clears the value of the "server_at" field.
+func (m *UserMutation) ClearServerAt() {
+	m.server_at = nil
+	m.clearedFields[user.FieldServerAt] = struct{}{}
+}
+
+// ServerAtCleared returns if the "server_at" field was cleared in this mutation.
+func (m *UserMutation) ServerAtCleared() bool {
+	_, ok := m.clearedFields[user.FieldServerAt]
+	return ok
+}
+
+// ResetServerAt resets all changes to the "server_at" field.
+func (m *UserMutation) ResetServerAt() {
+	m.server_at = nil
+	delete(m.clearedFields, user.FieldServerAt)
 }
 
 // SetEggAt sets the "egg_at" field.
@@ -3503,6 +3555,76 @@ func (m *UserMutation) ResetNext() {
 	delete(m.clearedFields, user.FieldNext)
 }
 
+// SetRoom sets the "room" field.
+func (m *UserMutation) SetRoom(i int) {
+	m.room = &i
+	m.addroom = nil
+}
+
+// Room returns the value of the "room" field in the mutation.
+func (m *UserMutation) Room() (r int, exists bool) {
+	v := m.room
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldRoom returns the old "room" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldRoom(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldRoom is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldRoom requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldRoom: %w", err)
+	}
+	return oldValue.Room, nil
+}
+
+// AddRoom adds i to the "room" field.
+func (m *UserMutation) AddRoom(i int) {
+	if m.addroom != nil {
+		*m.addroom += i
+	} else {
+		m.addroom = &i
+	}
+}
+
+// AddedRoom returns the value that was added to the "room" field in this mutation.
+func (m *UserMutation) AddedRoom() (r int, exists bool) {
+	v := m.addroom
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearRoom clears the value of the "room" field.
+func (m *UserMutation) ClearRoom() {
+	m.room = nil
+	m.addroom = nil
+	m.clearedFields[user.FieldRoom] = struct{}{}
+}
+
+// RoomCleared returns if the "room" field was cleared in this mutation.
+func (m *UserMutation) RoomCleared() bool {
+	_, ok := m.clearedFields[user.FieldRoom]
+	return ok
+}
+
+// ResetRoom resets all changes to the "room" field.
+func (m *UserMutation) ResetRoom() {
+	m.room = nil
+	m.addroom = nil
+	delete(m.clearedFields, user.FieldRoom)
+}
+
 // AddCardIDs adds the "card" edge to the Card entity by ids.
 func (m *UserMutation) AddCardIDs(ids ...int) {
 	if m.card == nil {
@@ -3591,7 +3713,7 @@ func (m *UserMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *UserMutation) Fields() []string {
-	fields := make([]string, 0, 32)
+	fields := make([]string, 0, 34)
 	if m.username != nil {
 		fields = append(fields, user.FieldUsername)
 	}
@@ -3636,6 +3758,9 @@ func (m *UserMutation) Fields() []string {
 	}
 	if m.raid_at != nil {
 		fields = append(fields, user.FieldRaidAt)
+	}
+	if m.server_at != nil {
+		fields = append(fields, user.FieldServerAt)
 	}
 	if m.egg_at != nil {
 		fields = append(fields, user.FieldEggAt)
@@ -3688,6 +3813,9 @@ func (m *UserMutation) Fields() []string {
 	if m.next != nil {
 		fields = append(fields, user.FieldNext)
 	}
+	if m.room != nil {
+		fields = append(fields, user.FieldRoom)
+	}
 	return fields
 }
 
@@ -3726,6 +3854,8 @@ func (m *UserMutation) Field(name string) (ent.Value, bool) {
 		return m.UpdatedAt()
 	case user.FieldRaidAt:
 		return m.RaidAt()
+	case user.FieldServerAt:
+		return m.ServerAt()
 	case user.FieldEggAt:
 		return m.EggAt()
 	case user.FieldLuck:
@@ -3760,6 +3890,8 @@ func (m *UserMutation) Field(name string) (ent.Value, bool) {
 		return m.TenAt()
 	case user.FieldNext:
 		return m.Next()
+	case user.FieldRoom:
+		return m.Room()
 	}
 	return nil, false
 }
@@ -3799,6 +3931,8 @@ func (m *UserMutation) OldField(ctx context.Context, name string) (ent.Value, er
 		return m.OldUpdatedAt(ctx)
 	case user.FieldRaidAt:
 		return m.OldRaidAt(ctx)
+	case user.FieldServerAt:
+		return m.OldServerAt(ctx)
 	case user.FieldEggAt:
 		return m.OldEggAt(ctx)
 	case user.FieldLuck:
@@ -3833,6 +3967,8 @@ func (m *UserMutation) OldField(ctx context.Context, name string) (ent.Value, er
 		return m.OldTenAt(ctx)
 	case user.FieldNext:
 		return m.OldNext(ctx)
+	case user.FieldRoom:
+		return m.OldRoom(ctx)
 	}
 	return nil, fmt.Errorf("unknown User field %s", name)
 }
@@ -3946,6 +4082,13 @@ func (m *UserMutation) SetField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetRaidAt(v)
+		return nil
+	case user.FieldServerAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetServerAt(v)
 		return nil
 	case user.FieldEggAt:
 		v, ok := value.(time.Time)
@@ -4066,6 +4209,13 @@ func (m *UserMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetNext(v)
 		return nil
+	case user.FieldRoom:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetRoom(v)
+		return nil
 	}
 	return fmt.Errorf("unknown User field %s", name)
 }
@@ -4095,6 +4245,9 @@ func (m *UserMutation) AddedFields() []string {
 	if m.addaiten != nil {
 		fields = append(fields, user.FieldAiten)
 	}
+	if m.addroom != nil {
+		fields = append(fields, user.FieldRoom)
+	}
 	return fields
 }
 
@@ -4117,6 +4270,8 @@ func (m *UserMutation) AddedField(name string) (ent.Value, bool) {
 		return m.AddedTenKai()
 	case user.FieldAiten:
 		return m.AddedAiten()
+	case user.FieldRoom:
+		return m.AddedRoom()
 	}
 	return nil, false
 }
@@ -4175,6 +4330,13 @@ func (m *UserMutation) AddField(name string, value ent.Value) error {
 		}
 		m.AddAiten(v)
 		return nil
+	case user.FieldRoom:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddRoom(v)
+		return nil
 	}
 	return fmt.Errorf("unknown User numeric field %s", name)
 }
@@ -4221,6 +4383,9 @@ func (m *UserMutation) ClearedFields() []string {
 	}
 	if m.FieldCleared(user.FieldRaidAt) {
 		fields = append(fields, user.FieldRaidAt)
+	}
+	if m.FieldCleared(user.FieldServerAt) {
+		fields = append(fields, user.FieldServerAt)
 	}
 	if m.FieldCleared(user.FieldEggAt) {
 		fields = append(fields, user.FieldEggAt)
@@ -4272,6 +4437,9 @@ func (m *UserMutation) ClearedFields() []string {
 	}
 	if m.FieldCleared(user.FieldNext) {
 		fields = append(fields, user.FieldNext)
+	}
+	if m.FieldCleared(user.FieldRoom) {
+		fields = append(fields, user.FieldRoom)
 	}
 	return fields
 }
@@ -4326,6 +4494,9 @@ func (m *UserMutation) ClearField(name string) error {
 	case user.FieldRaidAt:
 		m.ClearRaidAt()
 		return nil
+	case user.FieldServerAt:
+		m.ClearServerAt()
+		return nil
 	case user.FieldEggAt:
 		m.ClearEggAt()
 		return nil
@@ -4376,6 +4547,9 @@ func (m *UserMutation) ClearField(name string) error {
 		return nil
 	case user.FieldNext:
 		m.ClearNext()
+		return nil
+	case user.FieldRoom:
+		m.ClearRoom()
 		return nil
 	}
 	return fmt.Errorf("unknown User nullable field %s", name)
@@ -4430,6 +4604,9 @@ func (m *UserMutation) ResetField(name string) error {
 	case user.FieldRaidAt:
 		m.ResetRaidAt()
 		return nil
+	case user.FieldServerAt:
+		m.ResetServerAt()
+		return nil
 	case user.FieldEggAt:
 		m.ResetEggAt()
 		return nil
@@ -4480,6 +4657,9 @@ func (m *UserMutation) ResetField(name string) error {
 		return nil
 	case user.FieldNext:
 		m.ResetNext()
+		return nil
+	case user.FieldRoom:
+		m.ResetRoom()
 		return nil
 	}
 	return fmt.Errorf("unknown User field %s", name)

@@ -19,5 +19,7 @@ id=`curl -sL "$host/users?itemsPerPage=2000"|jq ".[]|select(.username == \"$1\")
 card=$2
 cp=$3
 s=normal
-skill=ten
-curl -X POST -H "Content-Type: application/json" -d "{\"owner\":$id,\"card\":$card,\"status\":\"$s\",\"cp\":$cp,\"password\":\"$pass\",\"skill\":\"$skill\"}" -sL $host/cards
+skill=normal
+count=1
+author=ai
+curl -X POST -H "Content-Type: application/json" -d "{\"owner\":$id,\"card\":$card,\"status\":\"$s\",\"cp\":$cp,\"password\":\"$pass\",\"skill\":\"$skill\",\"count\":$count,\"author\":\"$author\"}" -sL $host/cards

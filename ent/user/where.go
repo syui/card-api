@@ -130,6 +130,11 @@ func RaidAt(v time.Time) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldRaidAt, v))
 }
 
+// ServerAt applies equality check predicate on the "server_at" field. It's identical to ServerAtEQ.
+func ServerAt(v time.Time) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldServerAt, v))
+}
+
 // EggAt applies equality check predicate on the "egg_at" field. It's identical to EggAtEQ.
 func EggAt(v time.Time) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldEggAt, v))
@@ -213,6 +218,11 @@ func TenAt(v time.Time) predicate.User {
 // Next applies equality check predicate on the "next" field. It's identical to NextEQ.
 func Next(v string) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldNext, v))
+}
+
+// Room applies equality check predicate on the "room" field. It's identical to RoomEQ.
+func Room(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldRoom, v))
 }
 
 // UsernameEQ applies the EQ predicate on the "username" field.
@@ -803,6 +813,56 @@ func RaidAtIsNil() predicate.User {
 // RaidAtNotNil applies the NotNil predicate on the "raid_at" field.
 func RaidAtNotNil() predicate.User {
 	return predicate.User(sql.FieldNotNull(FieldRaidAt))
+}
+
+// ServerAtEQ applies the EQ predicate on the "server_at" field.
+func ServerAtEQ(v time.Time) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldServerAt, v))
+}
+
+// ServerAtNEQ applies the NEQ predicate on the "server_at" field.
+func ServerAtNEQ(v time.Time) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldServerAt, v))
+}
+
+// ServerAtIn applies the In predicate on the "server_at" field.
+func ServerAtIn(vs ...time.Time) predicate.User {
+	return predicate.User(sql.FieldIn(FieldServerAt, vs...))
+}
+
+// ServerAtNotIn applies the NotIn predicate on the "server_at" field.
+func ServerAtNotIn(vs ...time.Time) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldServerAt, vs...))
+}
+
+// ServerAtGT applies the GT predicate on the "server_at" field.
+func ServerAtGT(v time.Time) predicate.User {
+	return predicate.User(sql.FieldGT(FieldServerAt, v))
+}
+
+// ServerAtGTE applies the GTE predicate on the "server_at" field.
+func ServerAtGTE(v time.Time) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldServerAt, v))
+}
+
+// ServerAtLT applies the LT predicate on the "server_at" field.
+func ServerAtLT(v time.Time) predicate.User {
+	return predicate.User(sql.FieldLT(FieldServerAt, v))
+}
+
+// ServerAtLTE applies the LTE predicate on the "server_at" field.
+func ServerAtLTE(v time.Time) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldServerAt, v))
+}
+
+// ServerAtIsNil applies the IsNil predicate on the "server_at" field.
+func ServerAtIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldServerAt))
+}
+
+// ServerAtNotNil applies the NotNil predicate on the "server_at" field.
+func ServerAtNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldServerAt))
 }
 
 // EggAtEQ applies the EQ predicate on the "egg_at" field.
@@ -1748,6 +1808,56 @@ func NextEqualFold(v string) predicate.User {
 // NextContainsFold applies the ContainsFold predicate on the "next" field.
 func NextContainsFold(v string) predicate.User {
 	return predicate.User(sql.FieldContainsFold(FieldNext, v))
+}
+
+// RoomEQ applies the EQ predicate on the "room" field.
+func RoomEQ(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldRoom, v))
+}
+
+// RoomNEQ applies the NEQ predicate on the "room" field.
+func RoomNEQ(v int) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldRoom, v))
+}
+
+// RoomIn applies the In predicate on the "room" field.
+func RoomIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldIn(FieldRoom, vs...))
+}
+
+// RoomNotIn applies the NotIn predicate on the "room" field.
+func RoomNotIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldRoom, vs...))
+}
+
+// RoomGT applies the GT predicate on the "room" field.
+func RoomGT(v int) predicate.User {
+	return predicate.User(sql.FieldGT(FieldRoom, v))
+}
+
+// RoomGTE applies the GTE predicate on the "room" field.
+func RoomGTE(v int) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldRoom, v))
+}
+
+// RoomLT applies the LT predicate on the "room" field.
+func RoomLT(v int) predicate.User {
+	return predicate.User(sql.FieldLT(FieldRoom, v))
+}
+
+// RoomLTE applies the LTE predicate on the "room" field.
+func RoomLTE(v int) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldRoom, v))
+}
+
+// RoomIsNil applies the IsNil predicate on the "room" field.
+func RoomIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldRoom))
+}
+
+// RoomNotNil applies the NotNil predicate on the "room" field.
+func RoomNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldRoom))
 }
 
 // HasCard applies the HasEdge predicate on the "card" edge.

@@ -269,6 +269,26 @@ func (uu *UserUpdate) ClearRaidAt() *UserUpdate {
 	return uu
 }
 
+// SetServerAt sets the "server_at" field.
+func (uu *UserUpdate) SetServerAt(t time.Time) *UserUpdate {
+	uu.mutation.SetServerAt(t)
+	return uu
+}
+
+// SetNillableServerAt sets the "server_at" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableServerAt(t *time.Time) *UserUpdate {
+	if t != nil {
+		uu.SetServerAt(*t)
+	}
+	return uu
+}
+
+// ClearServerAt clears the value of the "server_at" field.
+func (uu *UserUpdate) ClearServerAt() *UserUpdate {
+	uu.mutation.ClearServerAt()
+	return uu
+}
+
 // SetEggAt sets the "egg_at" field.
 func (uu *UserUpdate) SetEggAt(t time.Time) *UserUpdate {
 	uu.mutation.SetEggAt(t)
@@ -658,6 +678,33 @@ func (uu *UserUpdate) ClearNext() *UserUpdate {
 	return uu
 }
 
+// SetRoom sets the "room" field.
+func (uu *UserUpdate) SetRoom(i int) *UserUpdate {
+	uu.mutation.ResetRoom()
+	uu.mutation.SetRoom(i)
+	return uu
+}
+
+// SetNillableRoom sets the "room" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableRoom(i *int) *UserUpdate {
+	if i != nil {
+		uu.SetRoom(*i)
+	}
+	return uu
+}
+
+// AddRoom adds i to the "room" field.
+func (uu *UserUpdate) AddRoom(i int) *UserUpdate {
+	uu.mutation.AddRoom(i)
+	return uu
+}
+
+// ClearRoom clears the value of the "room" field.
+func (uu *UserUpdate) ClearRoom() *UserUpdate {
+	uu.mutation.ClearRoom()
+	return uu
+}
+
 // AddCardIDs adds the "card" edge to the Card entity by IDs.
 func (uu *UserUpdate) AddCardIDs(ids ...int) *UserUpdate {
 	uu.mutation.AddCardIDs(ids...)
@@ -810,6 +857,12 @@ func (uu *UserUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	if uu.mutation.RaidAtCleared() {
 		_spec.ClearField(user.FieldRaidAt, field.TypeTime)
 	}
+	if value, ok := uu.mutation.ServerAt(); ok {
+		_spec.SetField(user.FieldServerAt, field.TypeTime, value)
+	}
+	if uu.mutation.ServerAtCleared() {
+		_spec.ClearField(user.FieldServerAt, field.TypeTime)
+	}
 	if value, ok := uu.mutation.EggAt(); ok {
 		_spec.SetField(user.FieldEggAt, field.TypeTime, value)
 	}
@@ -932,6 +985,15 @@ func (uu *UserUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	}
 	if uu.mutation.NextCleared() {
 		_spec.ClearField(user.FieldNext, field.TypeString)
+	}
+	if value, ok := uu.mutation.Room(); ok {
+		_spec.SetField(user.FieldRoom, field.TypeInt, value)
+	}
+	if value, ok := uu.mutation.AddedRoom(); ok {
+		_spec.AddField(user.FieldRoom, field.TypeInt, value)
+	}
+	if uu.mutation.RoomCleared() {
+		_spec.ClearField(user.FieldRoom, field.TypeInt)
 	}
 	if uu.mutation.CardCleared() {
 		edge := &sqlgraph.EdgeSpec{
@@ -1235,6 +1297,26 @@ func (uuo *UserUpdateOne) SetNillableRaidAt(t *time.Time) *UserUpdateOne {
 // ClearRaidAt clears the value of the "raid_at" field.
 func (uuo *UserUpdateOne) ClearRaidAt() *UserUpdateOne {
 	uuo.mutation.ClearRaidAt()
+	return uuo
+}
+
+// SetServerAt sets the "server_at" field.
+func (uuo *UserUpdateOne) SetServerAt(t time.Time) *UserUpdateOne {
+	uuo.mutation.SetServerAt(t)
+	return uuo
+}
+
+// SetNillableServerAt sets the "server_at" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableServerAt(t *time.Time) *UserUpdateOne {
+	if t != nil {
+		uuo.SetServerAt(*t)
+	}
+	return uuo
+}
+
+// ClearServerAt clears the value of the "server_at" field.
+func (uuo *UserUpdateOne) ClearServerAt() *UserUpdateOne {
+	uuo.mutation.ClearServerAt()
 	return uuo
 }
 
@@ -1627,6 +1709,33 @@ func (uuo *UserUpdateOne) ClearNext() *UserUpdateOne {
 	return uuo
 }
 
+// SetRoom sets the "room" field.
+func (uuo *UserUpdateOne) SetRoom(i int) *UserUpdateOne {
+	uuo.mutation.ResetRoom()
+	uuo.mutation.SetRoom(i)
+	return uuo
+}
+
+// SetNillableRoom sets the "room" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableRoom(i *int) *UserUpdateOne {
+	if i != nil {
+		uuo.SetRoom(*i)
+	}
+	return uuo
+}
+
+// AddRoom adds i to the "room" field.
+func (uuo *UserUpdateOne) AddRoom(i int) *UserUpdateOne {
+	uuo.mutation.AddRoom(i)
+	return uuo
+}
+
+// ClearRoom clears the value of the "room" field.
+func (uuo *UserUpdateOne) ClearRoom() *UserUpdateOne {
+	uuo.mutation.ClearRoom()
+	return uuo
+}
+
 // AddCardIDs adds the "card" edge to the Card entity by IDs.
 func (uuo *UserUpdateOne) AddCardIDs(ids ...int) *UserUpdateOne {
 	uuo.mutation.AddCardIDs(ids...)
@@ -1809,6 +1918,12 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 	if uuo.mutation.RaidAtCleared() {
 		_spec.ClearField(user.FieldRaidAt, field.TypeTime)
 	}
+	if value, ok := uuo.mutation.ServerAt(); ok {
+		_spec.SetField(user.FieldServerAt, field.TypeTime, value)
+	}
+	if uuo.mutation.ServerAtCleared() {
+		_spec.ClearField(user.FieldServerAt, field.TypeTime)
+	}
 	if value, ok := uuo.mutation.EggAt(); ok {
 		_spec.SetField(user.FieldEggAt, field.TypeTime, value)
 	}
@@ -1931,6 +2046,15 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 	}
 	if uuo.mutation.NextCleared() {
 		_spec.ClearField(user.FieldNext, field.TypeString)
+	}
+	if value, ok := uuo.mutation.Room(); ok {
+		_spec.SetField(user.FieldRoom, field.TypeInt, value)
+	}
+	if value, ok := uuo.mutation.AddedRoom(); ok {
+		_spec.AddField(user.FieldRoom, field.TypeInt, value)
+	}
+	if uuo.mutation.RoomCleared() {
+		_spec.ClearField(user.FieldRoom, field.TypeInt)
 	}
 	if uuo.mutation.CardCleared() {
 		edge := &sqlgraph.EdgeSpec{

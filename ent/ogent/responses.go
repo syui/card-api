@@ -163,6 +163,7 @@ func NewCardOwnerRead(e *ent.User) *CardOwnerRead {
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	ret.UpdatedAt = NewOptDateTime(e.UpdatedAt)
 	ret.RaidAt = NewOptDateTime(e.RaidAt)
+	ret.ServerAt = NewOptDateTime(e.ServerAt)
 	ret.EggAt = NewOptDateTime(e.EggAt)
 	ret.Luck = NewOptInt(e.Luck)
 	ret.LuckAt = NewOptDateTime(e.LuckAt)
@@ -180,6 +181,7 @@ func NewCardOwnerRead(e *ent.User) *CardOwnerRead {
 	ret.TenGet = NewOptString(e.TenGet)
 	ret.TenAt = NewOptDateTime(e.TenAt)
 	ret.Next = NewOptString(e.Next)
+	ret.Room = NewOptInt(e.Room)
 	return &ret
 }
 
@@ -332,6 +334,7 @@ func NewGroupUsersList(e *ent.User) *GroupUsersList {
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	ret.UpdatedAt = NewOptDateTime(e.UpdatedAt)
 	ret.RaidAt = NewOptDateTime(e.RaidAt)
+	ret.ServerAt = NewOptDateTime(e.ServerAt)
 	ret.EggAt = NewOptDateTime(e.EggAt)
 	ret.Luck = NewOptInt(e.Luck)
 	ret.LuckAt = NewOptDateTime(e.LuckAt)
@@ -349,6 +352,7 @@ func NewGroupUsersList(e *ent.User) *GroupUsersList {
 	ret.TenGet = NewOptString(e.TenGet)
 	ret.TenAt = NewOptDateTime(e.TenAt)
 	ret.Next = NewOptString(e.Next)
+	ret.Room = NewOptInt(e.Room)
 	return &ret
 }
 
@@ -389,6 +393,7 @@ func NewUserCreate(e *ent.User) *UserCreate {
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	ret.UpdatedAt = NewOptDateTime(e.UpdatedAt)
 	ret.RaidAt = NewOptDateTime(e.RaidAt)
+	ret.ServerAt = NewOptDateTime(e.ServerAt)
 	ret.EggAt = NewOptDateTime(e.EggAt)
 	ret.Luck = NewOptInt(e.Luck)
 	ret.LuckAt = NewOptDateTime(e.LuckAt)
@@ -406,6 +411,7 @@ func NewUserCreate(e *ent.User) *UserCreate {
 	ret.TenGet = NewOptString(e.TenGet)
 	ret.TenAt = NewOptDateTime(e.TenAt)
 	ret.Next = NewOptString(e.Next)
+	ret.Room = NewOptInt(e.Room)
 	return &ret
 }
 
@@ -446,6 +452,7 @@ func NewUserList(e *ent.User) *UserList {
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	ret.UpdatedAt = NewOptDateTime(e.UpdatedAt)
 	ret.RaidAt = NewOptDateTime(e.RaidAt)
+	ret.ServerAt = NewOptDateTime(e.ServerAt)
 	ret.EggAt = NewOptDateTime(e.EggAt)
 	ret.Luck = NewOptInt(e.Luck)
 	ret.LuckAt = NewOptDateTime(e.LuckAt)
@@ -463,6 +470,7 @@ func NewUserList(e *ent.User) *UserList {
 	ret.TenGet = NewOptString(e.TenGet)
 	ret.TenAt = NewOptDateTime(e.TenAt)
 	ret.Next = NewOptString(e.Next)
+	ret.Room = NewOptInt(e.Room)
 	return &ret
 }
 
@@ -503,6 +511,7 @@ func NewUserRead(e *ent.User) *UserRead {
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	ret.UpdatedAt = NewOptDateTime(e.UpdatedAt)
 	ret.RaidAt = NewOptDateTime(e.RaidAt)
+	ret.ServerAt = NewOptDateTime(e.ServerAt)
 	ret.EggAt = NewOptDateTime(e.EggAt)
 	ret.Luck = NewOptInt(e.Luck)
 	ret.LuckAt = NewOptDateTime(e.LuckAt)
@@ -520,6 +529,7 @@ func NewUserRead(e *ent.User) *UserRead {
 	ret.TenGet = NewOptString(e.TenGet)
 	ret.TenAt = NewOptDateTime(e.TenAt)
 	ret.Next = NewOptString(e.Next)
+	ret.Room = NewOptInt(e.Room)
 	return &ret
 }
 
@@ -560,6 +570,7 @@ func NewUserUpdate(e *ent.User) *UserUpdate {
 	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
 	ret.UpdatedAt = NewOptDateTime(e.UpdatedAt)
 	ret.RaidAt = NewOptDateTime(e.RaidAt)
+	ret.ServerAt = NewOptDateTime(e.ServerAt)
 	ret.EggAt = NewOptDateTime(e.EggAt)
 	ret.Luck = NewOptInt(e.Luck)
 	ret.LuckAt = NewOptDateTime(e.LuckAt)
@@ -577,6 +588,7 @@ func NewUserUpdate(e *ent.User) *UserUpdate {
 	ret.TenGet = NewOptString(e.TenGet)
 	ret.TenAt = NewOptDateTime(e.TenAt)
 	ret.Next = NewOptString(e.Next)
+	ret.Room = NewOptInt(e.Room)
 	return &ret
 }
 

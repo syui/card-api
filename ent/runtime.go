@@ -118,24 +118,28 @@ func init() {
 	userDescRaidAt := userFields[14].Descriptor()
 	// user.DefaultRaidAt holds the default value on creation for the raid_at field.
 	user.DefaultRaidAt = userDescRaidAt.Default.(func() time.Time)
+	// userDescServerAt is the schema descriptor for server_at field.
+	userDescServerAt := userFields[15].Descriptor()
+	// user.DefaultServerAt holds the default value on creation for the server_at field.
+	user.DefaultServerAt = userDescServerAt.Default.(func() time.Time)
 	// userDescEggAt is the schema descriptor for egg_at field.
-	userDescEggAt := userFields[15].Descriptor()
+	userDescEggAt := userFields[16].Descriptor()
 	// user.DefaultEggAt holds the default value on creation for the egg_at field.
 	user.DefaultEggAt = userDescEggAt.Default.(func() time.Time)
 	// userDescLuckAt is the schema descriptor for luck_at field.
-	userDescLuckAt := userFields[17].Descriptor()
+	userDescLuckAt := userFields[18].Descriptor()
 	// user.DefaultLuckAt holds the default value on creation for the luck_at field.
 	user.DefaultLuckAt = userDescLuckAt.Default.(func() time.Time)
 	// userDescLikeAt is the schema descriptor for like_at field.
-	userDescLikeAt := userFields[20].Descriptor()
+	userDescLikeAt := userFields[21].Descriptor()
 	// user.DefaultLikeAt holds the default value on creation for the like_at field.
 	user.DefaultLikeAt = userDescLikeAt.Default.(func() time.Time)
 	// userDescTenAt is the schema descriptor for ten_at field.
-	userDescTenAt := userFields[30].Descriptor()
+	userDescTenAt := userFields[31].Descriptor()
 	// user.DefaultTenAt holds the default value on creation for the ten_at field.
 	user.DefaultTenAt = userDescTenAt.Default.(func() time.Time)
 	// userDescNext is the schema descriptor for next field.
-	userDescNext := userFields[31].Descriptor()
+	userDescNext := userFields[32].Descriptor()
 	// user.DefaultNext holds the default value on creation for the next field.
 	user.DefaultNext = userDescNext.Default.(string)
 }

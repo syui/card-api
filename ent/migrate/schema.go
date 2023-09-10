@@ -74,6 +74,7 @@ var (
 		{Name: "created_at", Type: field.TypeTime, Nullable: true},
 		{Name: "updated_at", Type: field.TypeTime, Nullable: true},
 		{Name: "raid_at", Type: field.TypeTime, Nullable: true},
+		{Name: "server_at", Type: field.TypeTime, Nullable: true},
 		{Name: "egg_at", Type: field.TypeTime, Nullable: true},
 		{Name: "luck", Type: field.TypeInt, Nullable: true},
 		{Name: "luck_at", Type: field.TypeTime, Nullable: true},
@@ -90,7 +91,8 @@ var (
 		{Name: "ten_post", Type: field.TypeString, Nullable: true},
 		{Name: "ten_get", Type: field.TypeString, Nullable: true},
 		{Name: "ten_at", Type: field.TypeTime, Nullable: true},
-		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230821"},
+		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230911"},
+		{Name: "room", Type: field.TypeInt, Nullable: true},
 		{Name: "group_users", Type: field.TypeInt, Nullable: true},
 	}
 	// UsersTable holds the schema information for the "users" table.
@@ -101,7 +103,7 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "users_groups_users",
-				Columns:    []*schema.Column{UsersColumns[33]},
+				Columns:    []*schema.Column{UsersColumns[35]},
 				RefColumns: []*schema.Column{GroupsColumns[0]},
 				OnDelete:   schema.SetNull,
 			},

@@ -98,6 +98,12 @@ func (User) Fields() []ent.Field {
 			return time.Now().In(jst)
 		}),
 
+		field.Time("server_at").
+		Optional().
+		Default(func() time.Time {
+			return time.Now().In(jst)
+		}),
+
 		field.Time("egg_at").
 		Optional().
 		Default(func() time.Time {
@@ -160,6 +166,9 @@ func (User) Fields() []ent.Field {
 
 		field.String("next").
 		Default(Nextime()).
+		Optional(),
+
+		field.Int("room").
 		Optional(),
 
 	}

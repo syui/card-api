@@ -46,6 +46,8 @@ type User struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	// RaidAt holds the value of the "raid_at" field.
 	RaidAt time.Time `json:"raid_at,omitempty"`
+	// ServerAt holds the value of the "server_at" field.
+	ServerAt time.Time `json:"server_at,omitempty"`
 	// EggAt holds the value of the "egg_at" field.
 	EggAt time.Time `json:"egg_at,omitempty"`
 	// Luck holds the value of the "luck" field.
@@ -80,6 +82,8 @@ type User struct {
 	TenAt time.Time `json:"ten_at,omitempty"`
 	// Next holds the value of the "next" field.
 	Next string `json:"next,omitempty"`
+	// Room holds the value of the "room" field.
+	Room int `json:"room,omitempty"`
 	// Edges holds the relations/edges for other nodes in the graph.
 	// The values are being populated by the UserQuery when eager-loading is set.
 	Edges       UserEdges `json:"edges"`
@@ -111,11 +115,11 @@ func (*User) scanValues(columns []string) ([]any, error) {
 		switch columns[i] {
 		case user.FieldMember, user.FieldBook, user.FieldManga, user.FieldBadge, user.FieldBsky, user.FieldMastodon, user.FieldDelete, user.FieldHandle, user.FieldTen:
 			values[i] = new(sql.NullBool)
-		case user.FieldID, user.FieldLuck, user.FieldLike, user.FieldLikeRank, user.FieldFav, user.FieldTenSu, user.FieldTenKai, user.FieldAiten:
+		case user.FieldID, user.FieldLuck, user.FieldLike, user.FieldLikeRank, user.FieldFav, user.FieldTenSu, user.FieldTenKai, user.FieldAiten, user.FieldRoom:
 			values[i] = new(sql.NullInt64)
 		case user.FieldUsername, user.FieldDid, user.FieldToken, user.FieldPassword, user.FieldTenCard, user.FieldTenDelete, user.FieldTenPost, user.FieldTenGet, user.FieldNext:
 			values[i] = new(sql.NullString)
-		case user.FieldCreatedAt, user.FieldUpdatedAt, user.FieldRaidAt, user.FieldEggAt, user.FieldLuckAt, user.FieldLikeAt, user.FieldTenAt:
+		case user.FieldCreatedAt, user.FieldUpdatedAt, user.FieldRaidAt, user.FieldServerAt, user.FieldEggAt, user.FieldLuckAt, user.FieldLikeAt, user.FieldTenAt:
 			values[i] = new(sql.NullTime)
 		case user.ForeignKeys[0]: // group_users
 			values[i] = new(sql.NullInt64)
@@ -230,6 +234,12 @@ func (u *User) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				u.RaidAt = value.Time
 			}
+		case user.FieldServerAt:
+			if value, ok := values[i].(*sql.NullTime); !ok {
+				return fmt.Errorf("unexpected type %T for field server_at", values[i])
+			} else if value.Valid {
+				u.ServerAt = value.Time
+			}
 		case user.FieldEggAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field egg_at", values[i])
@@ -332,6 +342,12 @@ func (u *User) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				u.Next = value.String
 			}
+		case user.FieldRoom:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field room", values[i])
+			} else if value.Valid {
+				u.Room = int(value.Int64)
+			}
 		case user.ForeignKeys[0]:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for edge-field group_users", value)
@@ -415,6 +431,9 @@ func (u *User) String() string {
 	builder.WriteString("raid_at=")
 	builder.WriteString(u.RaidAt.Format(time.ANSIC))
 	builder.WriteString(", ")
+	builder.WriteString("server_at=")
+	builder.WriteString(u.ServerAt.Format(time.ANSIC))
+	builder.WriteString(", ")
 	builder.WriteString("egg_at=")
 	builder.WriteString(u.EggAt.Format(time.ANSIC))
 	builder.WriteString(", ")
@@ -465,6 +484,9 @@ func (u *User) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("next=")
 	builder.WriteString(u.Next)
+	builder.WriteString(", ")
+	builder.WriteString("room=")
+	builder.WriteString(fmt.Sprintf("%v", u.Room))
 	builder.WriteByte(')')
 	return builder.String()
 }

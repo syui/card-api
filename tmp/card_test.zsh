@@ -29,11 +29,15 @@ curl -X POST -H "Content-Type: application/json" -d "{\"owner\":$id}" $host/card
 echo "\ntest select card (no password)"
 curl -X POST -H "Content-Type: application/json" -d "{\"owner\":$id,\"card\":0,\"status\":\"normal\",\"cp\":1}" $host/cards
 
+echo "\ntest select card (yes password)"
+curl -X POST -H "Content-Type: application/json" -d "{\"owner\":$id,\"card\":0,\"status\":\"normal\",\"cp\":1,\"password\":\"$pass\"}" $host/cards
+
 ## token
 echo "\ntest token (no token)"
 curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"1\"}" -s $host/users/$id
 echo "\ntest token (yes token)"
 curl -X PATCH -H "Content-Type: application/json" -d "{\"next\":\"$nd\",\"token\":\"$token\"}" -s $host/users/$id
+exit
 
 read
 

@@ -506,6 +506,13 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 
 	b.SetPassword(req.Password)
 
+	if v, ok := req.ServerAt.Get(); ok {
+		b.SetServerAt(v)
+	}
+
+	if v, ok := req.Room.Get(); ok {
+		b.SetRoom(v)
+	}
 	if v, ok := req.Fav.Get(); ok {
 		b.SetFav(v)
 	}
@@ -663,6 +670,12 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 		if v == token {
 			b.SetToken(v)
 
+			if v, ok := req.ServerAt.Get(); ok {
+				b.SetServerAt(v)
+			}
+			if v, ok := req.Room.Get(); ok {
+				b.SetRoom(v)
+			}
 			if v, ok := req.Fav.Get(); ok {
 				b.SetFav(v)
 			}

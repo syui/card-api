@@ -232,6 +232,7 @@ type CardOwnerRead struct {
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
+	ServerAt  OptDateTime `json:"server_at"`
 	EggAt     OptDateTime `json:"egg_at"`
 	Luck      OptInt      `json:"luck"`
 	LuckAt    OptDateTime `json:"luck_at"`
@@ -249,6 +250,7 @@ type CardOwnerRead struct {
 	TenGet    OptString   `json:"ten_get"`
 	TenAt     OptDateTime `json:"ten_at"`
 	Next      OptString   `json:"next"`
+	Room      OptInt      `json:"room"`
 }
 
 // GetID returns the value of ID.
@@ -319,6 +321,11 @@ func (s *CardOwnerRead) GetUpdatedAt() OptDateTime {
 // GetRaidAt returns the value of RaidAt.
 func (s *CardOwnerRead) GetRaidAt() OptDateTime {
 	return s.RaidAt
+}
+
+// GetServerAt returns the value of ServerAt.
+func (s *CardOwnerRead) GetServerAt() OptDateTime {
+	return s.ServerAt
 }
 
 // GetEggAt returns the value of EggAt.
@@ -406,6 +413,11 @@ func (s *CardOwnerRead) GetNext() OptString {
 	return s.Next
 }
 
+// GetRoom returns the value of Room.
+func (s *CardOwnerRead) GetRoom() OptInt {
+	return s.Room
+}
+
 // SetID sets the value of ID.
 func (s *CardOwnerRead) SetID(val int) {
 	s.ID = val
@@ -474,6 +486,11 @@ func (s *CardOwnerRead) SetUpdatedAt(val OptDateTime) {
 // SetRaidAt sets the value of RaidAt.
 func (s *CardOwnerRead) SetRaidAt(val OptDateTime) {
 	s.RaidAt = val
+}
+
+// SetServerAt sets the value of ServerAt.
+func (s *CardOwnerRead) SetServerAt(val OptDateTime) {
+	s.ServerAt = val
 }
 
 // SetEggAt sets the value of EggAt.
@@ -559,6 +576,11 @@ func (s *CardOwnerRead) SetTenAt(val OptDateTime) {
 // SetNext sets the value of Next.
 func (s *CardOwnerRead) SetNext(val OptString) {
 	s.Next = val
+}
+
+// SetRoom sets the value of Room.
+func (s *CardOwnerRead) SetRoom(val OptInt) {
+	s.Room = val
 }
 
 func (*CardOwnerRead) readCardOwnerRes() {}
@@ -949,6 +971,7 @@ type CreateUserReq struct {
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
+	ServerAt  OptDateTime `json:"server_at"`
 	EggAt     OptDateTime `json:"egg_at"`
 	Luck      OptInt      `json:"luck"`
 	LuckAt    OptDateTime `json:"luck_at"`
@@ -966,6 +989,7 @@ type CreateUserReq struct {
 	TenGet    OptString   `json:"ten_get"`
 	TenAt     OptDateTime `json:"ten_at"`
 	Next      OptString   `json:"next"`
+	Room      OptInt      `json:"room"`
 	Card      []int       `json:"card"`
 }
 
@@ -1042,6 +1066,11 @@ func (s *CreateUserReq) GetUpdatedAt() OptDateTime {
 // GetRaidAt returns the value of RaidAt.
 func (s *CreateUserReq) GetRaidAt() OptDateTime {
 	return s.RaidAt
+}
+
+// GetServerAt returns the value of ServerAt.
+func (s *CreateUserReq) GetServerAt() OptDateTime {
+	return s.ServerAt
 }
 
 // GetEggAt returns the value of EggAt.
@@ -1129,6 +1158,11 @@ func (s *CreateUserReq) GetNext() OptString {
 	return s.Next
 }
 
+// GetRoom returns the value of Room.
+func (s *CreateUserReq) GetRoom() OptInt {
+	return s.Room
+}
+
 // GetCard returns the value of Card.
 func (s *CreateUserReq) GetCard() []int {
 	return s.Card
@@ -1207,6 +1241,11 @@ func (s *CreateUserReq) SetUpdatedAt(val OptDateTime) {
 // SetRaidAt sets the value of RaidAt.
 func (s *CreateUserReq) SetRaidAt(val OptDateTime) {
 	s.RaidAt = val
+}
+
+// SetServerAt sets the value of ServerAt.
+func (s *CreateUserReq) SetServerAt(val OptDateTime) {
+	s.ServerAt = val
 }
 
 // SetEggAt sets the value of EggAt.
@@ -1292,6 +1331,11 @@ func (s *CreateUserReq) SetTenAt(val OptDateTime) {
 // SetNext sets the value of Next.
 func (s *CreateUserReq) SetNext(val OptString) {
 	s.Next = val
+}
+
+// SetRoom sets the value of Room.
+func (s *CreateUserReq) SetRoom(val OptInt) {
+	s.Room = val
 }
 
 // SetCard sets the value of Card.
@@ -1446,6 +1490,7 @@ type GroupUsersList struct {
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
+	ServerAt  OptDateTime `json:"server_at"`
 	EggAt     OptDateTime `json:"egg_at"`
 	Luck      OptInt      `json:"luck"`
 	LuckAt    OptDateTime `json:"luck_at"`
@@ -1463,6 +1508,7 @@ type GroupUsersList struct {
 	TenGet    OptString   `json:"ten_get"`
 	TenAt     OptDateTime `json:"ten_at"`
 	Next      OptString   `json:"next"`
+	Room      OptInt      `json:"room"`
 }
 
 // GetID returns the value of ID.
@@ -1533,6 +1579,11 @@ func (s *GroupUsersList) GetUpdatedAt() OptDateTime {
 // GetRaidAt returns the value of RaidAt.
 func (s *GroupUsersList) GetRaidAt() OptDateTime {
 	return s.RaidAt
+}
+
+// GetServerAt returns the value of ServerAt.
+func (s *GroupUsersList) GetServerAt() OptDateTime {
+	return s.ServerAt
 }
 
 // GetEggAt returns the value of EggAt.
@@ -1620,6 +1671,11 @@ func (s *GroupUsersList) GetNext() OptString {
 	return s.Next
 }
 
+// GetRoom returns the value of Room.
+func (s *GroupUsersList) GetRoom() OptInt {
+	return s.Room
+}
+
 // SetID sets the value of ID.
 func (s *GroupUsersList) SetID(val int) {
 	s.ID = val
@@ -1688,6 +1744,11 @@ func (s *GroupUsersList) SetUpdatedAt(val OptDateTime) {
 // SetRaidAt sets the value of RaidAt.
 func (s *GroupUsersList) SetRaidAt(val OptDateTime) {
 	s.RaidAt = val
+}
+
+// SetServerAt sets the value of ServerAt.
+func (s *GroupUsersList) SetServerAt(val OptDateTime) {
+	s.ServerAt = val
 }
 
 // SetEggAt sets the value of EggAt.
@@ -1773,6 +1834,11 @@ func (s *GroupUsersList) SetTenAt(val OptDateTime) {
 // SetNext sets the value of Next.
 func (s *GroupUsersList) SetNext(val OptString) {
 	s.Next = val
+}
+
+// SetRoom sets the value of Room.
+func (s *GroupUsersList) SetRoom(val OptInt) {
+	s.Room = val
 }
 
 type ListCardOKApplicationJSON []CardList
@@ -2336,6 +2402,7 @@ type UpdateUserReq struct {
 	Token     OptString   `json:"token"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
+	ServerAt  OptDateTime `json:"server_at"`
 	EggAt     OptDateTime `json:"egg_at"`
 	Luck      OptInt      `json:"luck"`
 	LuckAt    OptDateTime `json:"luck_at"`
@@ -2353,6 +2420,7 @@ type UpdateUserReq struct {
 	TenGet    OptString   `json:"ten_get"`
 	TenAt     OptDateTime `json:"ten_at"`
 	Next      OptString   `json:"next"`
+	Room      OptInt      `json:"room"`
 	Card      []int       `json:"card"`
 }
 
@@ -2414,6 +2482,11 @@ func (s *UpdateUserReq) GetUpdatedAt() OptDateTime {
 // GetRaidAt returns the value of RaidAt.
 func (s *UpdateUserReq) GetRaidAt() OptDateTime {
 	return s.RaidAt
+}
+
+// GetServerAt returns the value of ServerAt.
+func (s *UpdateUserReq) GetServerAt() OptDateTime {
+	return s.ServerAt
 }
 
 // GetEggAt returns the value of EggAt.
@@ -2501,6 +2574,11 @@ func (s *UpdateUserReq) GetNext() OptString {
 	return s.Next
 }
 
+// GetRoom returns the value of Room.
+func (s *UpdateUserReq) GetRoom() OptInt {
+	return s.Room
+}
+
 // GetCard returns the value of Card.
 func (s *UpdateUserReq) GetCard() []int {
 	return s.Card
@@ -2564,6 +2642,11 @@ func (s *UpdateUserReq) SetUpdatedAt(val OptDateTime) {
 // SetRaidAt sets the value of RaidAt.
 func (s *UpdateUserReq) SetRaidAt(val OptDateTime) {
 	s.RaidAt = val
+}
+
+// SetServerAt sets the value of ServerAt.
+func (s *UpdateUserReq) SetServerAt(val OptDateTime) {
+	s.ServerAt = val
 }
 
 // SetEggAt sets the value of EggAt.
@@ -2649,6 +2732,11 @@ func (s *UpdateUserReq) SetTenAt(val OptDateTime) {
 // SetNext sets the value of Next.
 func (s *UpdateUserReq) SetNext(val OptString) {
 	s.Next = val
+}
+
+// SetRoom sets the value of Room.
+func (s *UpdateUserReq) SetRoom(val OptInt) {
+	s.Room = val
 }
 
 // SetCard sets the value of Card.
@@ -2775,6 +2863,7 @@ type UserCreate struct {
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
+	ServerAt  OptDateTime `json:"server_at"`
 	EggAt     OptDateTime `json:"egg_at"`
 	Luck      OptInt      `json:"luck"`
 	LuckAt    OptDateTime `json:"luck_at"`
@@ -2792,6 +2881,7 @@ type UserCreate struct {
 	TenGet    OptString   `json:"ten_get"`
 	TenAt     OptDateTime `json:"ten_at"`
 	Next      OptString   `json:"next"`
+	Room      OptInt      `json:"room"`
 }
 
 // GetID returns the value of ID.
@@ -2862,6 +2952,11 @@ func (s *UserCreate) GetUpdatedAt() OptDateTime {
 // GetRaidAt returns the value of RaidAt.
 func (s *UserCreate) GetRaidAt() OptDateTime {
 	return s.RaidAt
+}
+
+// GetServerAt returns the value of ServerAt.
+func (s *UserCreate) GetServerAt() OptDateTime {
+	return s.ServerAt
 }
 
 // GetEggAt returns the value of EggAt.
@@ -2949,6 +3044,11 @@ func (s *UserCreate) GetNext() OptString {
 	return s.Next
 }
 
+// GetRoom returns the value of Room.
+func (s *UserCreate) GetRoom() OptInt {
+	return s.Room
+}
+
 // SetID sets the value of ID.
 func (s *UserCreate) SetID(val int) {
 	s.ID = val
@@ -3017,6 +3117,11 @@ func (s *UserCreate) SetUpdatedAt(val OptDateTime) {
 // SetRaidAt sets the value of RaidAt.
 func (s *UserCreate) SetRaidAt(val OptDateTime) {
 	s.RaidAt = val
+}
+
+// SetServerAt sets the value of ServerAt.
+func (s *UserCreate) SetServerAt(val OptDateTime) {
+	s.ServerAt = val
 }
 
 // SetEggAt sets the value of EggAt.
@@ -3104,6 +3209,11 @@ func (s *UserCreate) SetNext(val OptString) {
 	s.Next = val
 }
 
+// SetRoom sets the value of Room.
+func (s *UserCreate) SetRoom(val OptInt) {
+	s.Room = val
+}
+
 func (*UserCreate) createUserRes() {}
 
 // Ref: #/components/schemas/UserList
@@ -3122,6 +3232,7 @@ type UserList struct {
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
+	ServerAt  OptDateTime `json:"server_at"`
 	EggAt     OptDateTime `json:"egg_at"`
 	Luck      OptInt      `json:"luck"`
 	LuckAt    OptDateTime `json:"luck_at"`
@@ -3139,6 +3250,7 @@ type UserList struct {
 	TenGet    OptString   `json:"ten_get"`
 	TenAt     OptDateTime `json:"ten_at"`
 	Next      OptString   `json:"next"`
+	Room      OptInt      `json:"room"`
 }
 
 // GetID returns the value of ID.
@@ -3209,6 +3321,11 @@ func (s *UserList) GetUpdatedAt() OptDateTime {
 // GetRaidAt returns the value of RaidAt.
 func (s *UserList) GetRaidAt() OptDateTime {
 	return s.RaidAt
+}
+
+// GetServerAt returns the value of ServerAt.
+func (s *UserList) GetServerAt() OptDateTime {
+	return s.ServerAt
 }
 
 // GetEggAt returns the value of EggAt.
@@ -3296,6 +3413,11 @@ func (s *UserList) GetNext() OptString {
 	return s.Next
 }
 
+// GetRoom returns the value of Room.
+func (s *UserList) GetRoom() OptInt {
+	return s.Room
+}
+
 // SetID sets the value of ID.
 func (s *UserList) SetID(val int) {
 	s.ID = val
@@ -3364,6 +3486,11 @@ func (s *UserList) SetUpdatedAt(val OptDateTime) {
 // SetRaidAt sets the value of RaidAt.
 func (s *UserList) SetRaidAt(val OptDateTime) {
 	s.RaidAt = val
+}
+
+// SetServerAt sets the value of ServerAt.
+func (s *UserList) SetServerAt(val OptDateTime) {
+	s.ServerAt = val
 }
 
 // SetEggAt sets the value of EggAt.
@@ -3451,6 +3578,11 @@ func (s *UserList) SetNext(val OptString) {
 	s.Next = val
 }
 
+// SetRoom sets the value of Room.
+func (s *UserList) SetRoom(val OptInt) {
+	s.Room = val
+}
+
 // Ref: #/components/schemas/UserRead
 type UserRead struct {
 	ID        int         `json:"id"`
@@ -3467,6 +3599,7 @@ type UserRead struct {
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
+	ServerAt  OptDateTime `json:"server_at"`
 	EggAt     OptDateTime `json:"egg_at"`
 	Luck      OptInt      `json:"luck"`
 	LuckAt    OptDateTime `json:"luck_at"`
@@ -3484,6 +3617,7 @@ type UserRead struct {
 	TenGet    OptString   `json:"ten_get"`
 	TenAt     OptDateTime `json:"ten_at"`
 	Next      OptString   `json:"next"`
+	Room      OptInt      `json:"room"`
 }
 
 // GetID returns the value of ID.
@@ -3554,6 +3688,11 @@ func (s *UserRead) GetUpdatedAt() OptDateTime {
 // GetRaidAt returns the value of RaidAt.
 func (s *UserRead) GetRaidAt() OptDateTime {
 	return s.RaidAt
+}
+
+// GetServerAt returns the value of ServerAt.
+func (s *UserRead) GetServerAt() OptDateTime {
+	return s.ServerAt
 }
 
 // GetEggAt returns the value of EggAt.
@@ -3641,6 +3780,11 @@ func (s *UserRead) GetNext() OptString {
 	return s.Next
 }
 
+// GetRoom returns the value of Room.
+func (s *UserRead) GetRoom() OptInt {
+	return s.Room
+}
+
 // SetID sets the value of ID.
 func (s *UserRead) SetID(val int) {
 	s.ID = val
@@ -3709,6 +3853,11 @@ func (s *UserRead) SetUpdatedAt(val OptDateTime) {
 // SetRaidAt sets the value of RaidAt.
 func (s *UserRead) SetRaidAt(val OptDateTime) {
 	s.RaidAt = val
+}
+
+// SetServerAt sets the value of ServerAt.
+func (s *UserRead) SetServerAt(val OptDateTime) {
+	s.ServerAt = val
 }
 
 // SetEggAt sets the value of EggAt.
@@ -3796,6 +3945,11 @@ func (s *UserRead) SetNext(val OptString) {
 	s.Next = val
 }
 
+// SetRoom sets the value of Room.
+func (s *UserRead) SetRoom(val OptInt) {
+	s.Room = val
+}
+
 func (*UserRead) readUserRes() {}
 
 // Ref: #/components/schemas/UserUpdate
@@ -3814,6 +3968,7 @@ type UserUpdate struct {
 	CreatedAt OptDateTime `json:"created_at"`
 	UpdatedAt OptDateTime `json:"updated_at"`
 	RaidAt    OptDateTime `json:"raid_at"`
+	ServerAt  OptDateTime `json:"server_at"`
 	EggAt     OptDateTime `json:"egg_at"`
 	Luck      OptInt      `json:"luck"`
 	LuckAt    OptDateTime `json:"luck_at"`
@@ -3831,6 +3986,7 @@ type UserUpdate struct {
 	TenGet    OptString   `json:"ten_get"`
 	TenAt     OptDateTime `json:"ten_at"`
 	Next      OptString   `json:"next"`
+	Room      OptInt      `json:"room"`
 }
 
 // GetID returns the value of ID.
@@ -3901,6 +4057,11 @@ func (s *UserUpdate) GetUpdatedAt() OptDateTime {
 // GetRaidAt returns the value of RaidAt.
 func (s *UserUpdate) GetRaidAt() OptDateTime {
 	return s.RaidAt
+}
+
+// GetServerAt returns the value of ServerAt.
+func (s *UserUpdate) GetServerAt() OptDateTime {
+	return s.ServerAt
 }
 
 // GetEggAt returns the value of EggAt.
@@ -3988,6 +4149,11 @@ func (s *UserUpdate) GetNext() OptString {
 	return s.Next
 }
 
+// GetRoom returns the value of Room.
+func (s *UserUpdate) GetRoom() OptInt {
+	return s.Room
+}
+
 // SetID sets the value of ID.
 func (s *UserUpdate) SetID(val int) {
 	s.ID = val
@@ -4056,6 +4222,11 @@ func (s *UserUpdate) SetUpdatedAt(val OptDateTime) {
 // SetRaidAt sets the value of RaidAt.
 func (s *UserUpdate) SetRaidAt(val OptDateTime) {
 	s.RaidAt = val
+}
+
+// SetServerAt sets the value of ServerAt.
+func (s *UserUpdate) SetServerAt(val OptDateTime) {
+	s.ServerAt = val
 }
 
 // SetEggAt sets the value of EggAt.
@@ -4141,6 +4312,11 @@ func (s *UserUpdate) SetTenAt(val OptDateTime) {
 // SetNext sets the value of Next.
 func (s *UserUpdate) SetNext(val OptString) {
 	s.Next = val
+}
+
+// SetRoom sets the value of Room.
+func (s *UserUpdate) SetRoom(val OptInt) {
+	s.Room = val
 }
 
 func (*UserUpdate) updateUserRes() {}

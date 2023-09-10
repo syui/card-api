@@ -215,6 +215,20 @@ func (uc *UserCreate) SetNillableRaidAt(t *time.Time) *UserCreate {
 	return uc
 }
 
+// SetServerAt sets the "server_at" field.
+func (uc *UserCreate) SetServerAt(t time.Time) *UserCreate {
+	uc.mutation.SetServerAt(t)
+	return uc
+}
+
+// SetNillableServerAt sets the "server_at" field if the given value is not nil.
+func (uc *UserCreate) SetNillableServerAt(t *time.Time) *UserCreate {
+	if t != nil {
+		uc.SetServerAt(*t)
+	}
+	return uc
+}
+
 // SetEggAt sets the "egg_at" field.
 func (uc *UserCreate) SetEggAt(t time.Time) *UserCreate {
 	uc.mutation.SetEggAt(t)
@@ -453,6 +467,20 @@ func (uc *UserCreate) SetNillableNext(s *string) *UserCreate {
 	return uc
 }
 
+// SetRoom sets the "room" field.
+func (uc *UserCreate) SetRoom(i int) *UserCreate {
+	uc.mutation.SetRoom(i)
+	return uc
+}
+
+// SetNillableRoom sets the "room" field if the given value is not nil.
+func (uc *UserCreate) SetNillableRoom(i *int) *UserCreate {
+	if i != nil {
+		uc.SetRoom(*i)
+	}
+	return uc
+}
+
 // AddCardIDs adds the "card" edge to the Card entity by IDs.
 func (uc *UserCreate) AddCardIDs(ids ...int) *UserCreate {
 	uc.mutation.AddCardIDs(ids...)
@@ -546,6 +574,10 @@ func (uc *UserCreate) defaults() {
 	if _, ok := uc.mutation.RaidAt(); !ok {
 		v := user.DefaultRaidAt()
 		uc.mutation.SetRaidAt(v)
+	}
+	if _, ok := uc.mutation.ServerAt(); !ok {
+		v := user.DefaultServerAt()
+		uc.mutation.SetServerAt(v)
 	}
 	if _, ok := uc.mutation.EggAt(); !ok {
 		v := user.DefaultEggAt()
@@ -673,6 +705,10 @@ func (uc *UserCreate) createSpec() (*User, *sqlgraph.CreateSpec) {
 		_spec.SetField(user.FieldRaidAt, field.TypeTime, value)
 		_node.RaidAt = value
 	}
+	if value, ok := uc.mutation.ServerAt(); ok {
+		_spec.SetField(user.FieldServerAt, field.TypeTime, value)
+		_node.ServerAt = value
+	}
 	if value, ok := uc.mutation.EggAt(); ok {
 		_spec.SetField(user.FieldEggAt, field.TypeTime, value)
 		_node.EggAt = value
@@ -740,6 +776,10 @@ func (uc *UserCreate) createSpec() (*User, *sqlgraph.CreateSpec) {
 	if value, ok := uc.mutation.Next(); ok {
 		_spec.SetField(user.FieldNext, field.TypeString, value)
 		_node.Next = value
+	}
+	if value, ok := uc.mutation.Room(); ok {
+		_spec.SetField(user.FieldRoom, field.TypeInt, value)
+		_node.Room = value
 	}
 	if nodes := uc.mutation.CardIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
